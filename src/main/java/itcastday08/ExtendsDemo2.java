@@ -1,16 +1,16 @@
 package itcastday08;
 
 /*
-ÔÚ×Ó¸¸ÀàÖĞ£¬³ÉÔ±µÄÌØµãÌåÏÖ¡£
-	1£¬³ÉÔ±±äÁ¿¡£
-	2£¬³ÉÔ±º¯Êı¡£
-	3£¬¹¹Ôìº¯Êı¡£
+åœ¨å­çˆ¶ç±»ä¸­ï¼Œæˆå‘˜çš„ç‰¹ç‚¹ä½“ç°ã€‚
+	1ï¼Œæˆå‘˜å˜é‡ã€‚
+	2ï¼Œæˆå‘˜å‡½æ•°ã€‚
+	3ï¼Œæ„é€ å‡½æ•°ã€‚
 
-thisºÍsuperµÄÓÃ·¨ºÜÏàËÆ¡£
-	1 µ±±¾ÀàµÄ³ÉÔ±ºÍ¾Ö²¿±äÁ¿Í¬ÃûÓÃthisÇø·Ö¡£
-	  µ±×Ó¸¸ÀàÖĞµÄ³ÉÔ±±äÁ¿Í¬ÃûÓÃsuperÇø·Ö¸¸Àà¡£
-	2 this:´ú±íÒ»¸ö±¾Àà¶ÔÏóµÄÒıÓÃ¡£
-	  super£º´ú±íÒ»¸ö¸¸Àà¿Õ¼ä¡£
+thiså’Œsuperçš„ç”¨æ³•å¾ˆç›¸ä¼¼ã€‚
+	1 å½“æœ¬ç±»çš„æˆå‘˜å’Œå±€éƒ¨å˜é‡åŒåç”¨thisåŒºåˆ†ã€‚
+	  å½“å­çˆ¶ç±»ä¸­çš„æˆå‘˜å˜é‡åŒåç”¨superåŒºåˆ†çˆ¶ç±»ã€‚
+	2 this:ä»£è¡¨ä¸€ä¸ªæœ¬ç±»å¯¹è±¡çš„å¼•ç”¨ã€‚
+	  superï¼šä»£è¡¨ä¸€ä¸ªçˆ¶ç±»ç©ºé—´ã€‚
 */
 class Fu
 {
@@ -18,10 +18,9 @@ class Fu
 
 	public int getNum()
 	{
-		return num;
+		return this.num;
 	}
 }
-
 
 class Zi extends Fu
 {
@@ -29,14 +28,13 @@ class Zi extends Fu
 
 	void show()
 	{
-		System.out.println(this.num+"....."+super.getNum());
+		System.out.println(this.num + "....." + super.getNum());
 	}
 }
 
-
-class ExtendsDemo2 
+class ExtendsDemo2
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		Zi z = new Zi();
 		z.show();

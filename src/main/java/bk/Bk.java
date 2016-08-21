@@ -324,18 +324,33 @@ StaticCodeDemo.java  //BK --day07 Class 3Static 4静态&构造代码块
 	  	2 构造代码块。可以给所有对象进行初始化的,是给对应的对象进行针对性的初始化。
 
 
-------------------My own practice
 TestInnerStatic.java
+static 可以修饰成员，当成员是类时，也可以用static修饰 --//BK --day07 Class 3Static 5Static Inner Class
 
 
 //BK --day08 Class
+ArrayUtil.java  --复习，把以前的知识综合运用一下。
 
-ArrayToolDemo.java
-ArrayTool.java
-SingleDemo.java
+SingleDemo08.java  //BK --day08 Class 1单例
 单例内存图解.bmp
+	设计模式：对问题行之有效的解决方式。其实它是一种思想。
 
------------------------//BK --day08 Class Inheritance
+	1,单例设计模式。
+		解决的问题：就是可以保证一个类在内存中的对象唯一性。
+
+		应用方向：对于多个程序使用同一个配置信息对象时，就需要保证该对象的唯一性。
+
+	如何保证对象唯一性呢？
+		1，不允许其他程序用new创建该类对象。
+		2，在该类创建一个本类实例。
+		3，对外提供一个方法让其他程序可以获取该对象。
+
+	步骤：
+		1，私有化该类构造函数。
+		2，通过new在本类中创建一个本类对象。
+		3，定义一个公有的方法，将创建的对象返回。static
+
+-----------------------//BK --day08 Class 2Inheritance
 继承.bmp
 ExtendsDemo.java
 ExtendsDemo2.java
@@ -730,7 +745,7 @@ DeadLockTest.java
 郁闷答疑图解.bmp
 
 
-//BK --day14 Multithreading Thread--------------------------------------------------
+//BK --day14 Multithreading Thread
 23-多线程(线程间通信-示例).avi (37: 4)
 ResourceDemo.java
 
