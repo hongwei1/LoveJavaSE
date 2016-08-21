@@ -6,45 +6,49 @@ package itcastday10;
 
 class 毕姥爷
 {
-	void 讲课()
+	protected void 讲课()
 	{
 		System.out.println("管理");
 	}
-	void 钓鱼()
+
+	protected void 钓鱼()
 	{
 		System.out.println("钓鱼");
 	}
 }
 
-class 毕老师 extends 毕姥爷
+final class 毕老师 extends 毕姥爷
 {
-	void 讲课()
+	@Override
+	protected void 讲课()
 	{
 		System.out.println("Java");
 	}
-	void 看电影()
+
+	protected void 看电影()
 	{
 		System.out.println("看电影");
 	}
 }
 
-class  DuoTaiDemo2
+public class DuoTaiDemo2
 {
-	public static void main(String[] args) 
+	DuoTaiDemo2()
 	{
-//		毕老师 x = new 毕老师();
-//		x.讲课();
-//		x.看电影();
+	}
 
-		毕姥爷 x = new 毕老师();
+	public static void main(String[] args)
+	{
+		毕老师 x = new 毕老师();
 		x.讲课();
-		x.钓鱼();
+		x.看电影();
 
-		毕老师 y = (毕老师)x;//ClassCastException
+		毕姥爷 x1 = new 毕老师();
+		x1.讲课();
+		x1.钓鱼();
+
+		毕老师 y = (毕老师) x1;// ClassCastException
 		y.看电影();
-
-
-
 
 	}
 }

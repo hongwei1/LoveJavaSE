@@ -1,4 +1,3 @@
-//-- wht
 /**
 <pre>
 //BK --day01 概述
@@ -570,21 +569,155 @@ abstract class AbsDemo
 		eg:犬按功能分：有导盲犬，搜爆犬- 他们是犬，具有导盲，搜爆的功能。
 
 //BK --day10 Class
- * BookPC.java  //BK --day09 Class 7Interface 2PC-USB
- * USB.bmp
+BookPC.java  //BK --day10 Class 7Interface 2PC-USB
+USB.bmp
 
 ----------------//BK --day10 Class 8Polymorphism
 DuoTaiDemo.java
+	1 definition  对象的多态性:父类型引用指向了子类对象。
+		class 动物{}
+		class 猫 extends 动物{}
+		class 狗 extends 动物 {}
+		猫 x = new 猫();
+		动物 x = new 猫();//一个对象，两种形态。
+
+		猫这类事物即具备者猫的形态，又具备着动物的形态。
+		这就是对象的多态性。
+		简单说：就是一个对象对应着不同类型.
+
+		多态在代码中的体现：
+			父类或者接口的引用指向其子类的对象。
+
+	2 多态的好处：//BK --day10 Class 8Polymorphism 1好处弊端前提
+		提高了代码的扩展性，前期定义的代码可以使用后期的内容。
+		eg:void method(Animal a)//Animal a = new Dog();  only design a method.
+
+	3 多态的弊端：
+		前期定义的内容不能使用(调用)后期子类的特有内容。
+		eg:a.catchMouse(); // a is animal ,but catMouse is belong to cat. it can not use there.
+
+	4 多态的前提：
+		1，类间必须有关系：继承 or 实现。
+		2，要有覆盖。
+
+	5 转型//BK --day10 Class 8Polymorphism 2向上向下转型
+		1 向上转型
+			Animal a = new Cat();
+			自动类型提升，猫对象提升了动物类型。
+			但是特有功能无法访问作用就是限制对特有功能的访问。c.catchMouse(); is wrong!
+			专业讲：向上转型。将子类型隐藏。就不能使用子类的特有方法。
+		2 向下转型
+			//如果还想用具体动物猫的特有功能,你可以将该对象进行向下转型。
+			Cat c = (Cat)a; //向下转型的目的是为了使用子类中的特有方法。
+			c.eat();
+			c.catchMouse();
+		3 注意：
+			1 对于转型，自始自终都是子类对象在做着类型的变化。
+			2 会抛出异常：
+				Animal a1 = new Dog();
+				Cat c1 = (Cat)a1; //ClassCastException
+
 DuoTaiDemo2.java
-DuoTaiDemo3.java
+		4 eg:毕老师和毕姥爷的故事。
+			毕姥爷 x= 毕老师();  dress up as father.No his own functions.
+
+			毕老师 y= (毕老师)x;  turn into himself, has many own features.
+
+	6 if(a instanceof Cat)
+			instanceof：用于判断对象的具体类型,只能用于引用数据类型判断
+			通常在向下转型前用于健壮性的判断。
+
+DuoTaiDemo3.java //BK --day10 Class 8Polymorphism 4变量函数
+	7 成员的特点：
+		1，成员变量。
+			编译时：参考引用型变量所属的类中的是否有调用的成员变量，有，编译通过，没有，编译失败。
+			运行时：参考引用型变量所属的类中的是否有调用的成员变量，并运行该所属类中的成员变量。
+			简单说：编译和运行都参考等号的左边。哦了。
+			eg: only care about in the Fu class
+				Fu f = new Zi();
+				f.show();
+成员函数-动态绑定.png
+		2，成员函数(非静态)。
+			编译时：参考引用型变量所属的类中的是否有调用的函数。有，编译通过，没有，编译失败。
+			运行时：参考的是对象所属的类中是否有调用的函数。
+			简单说：编译看左边，运行看右边。
+
+			tips: why is it different from variables?
+				  因为成员函数存在覆盖特性，动态绑定。
+			eg  : Fu f = new Zi();
+				  f.show();
+静态成员函数-静态的方法区绑定类名
+		3，静态函数。
+			编译时：参考引用型变量所属的类中的是否有调用的静态方法。
+			运行时：参考引用型变量所属的类中的是否有调用的静态方法。
+			简单说，编译和运行都看左边。
+
+			tips: 其实对于静态方法，是不需要对象的。直接用类名调用即可。
+			eg :f.staticMethod();
 
 ----------------//BK --day10 Class 9Inner class
 InnerClassDemo.java
-InnerClassDemo2.java
-InnerClassDemo3.java
+	1 definition
+		将一个类定义在另一个类的里面，对里面那个类就称为内部类（内置类，嵌套类）。
 
-----------------//BK --day10 Class 10Anonymous inner class
+	2 内部类访问特点：
+		1，内部类可以直接访问外部类中的成员。 		--即使private 也可以访问
+		2，外部类要访问内部类，必须建立内部类的对象。 --即使private 也可以访问
+
+	3 一般用于类的设计：
+		分析事物时，发现该事物描述中还有事物，而且这个事物还在访问被描述事物的内容。
+		这时就是还有的事物定义成内部类来描述。
+		eg: I have heart. The heart is inner class, it use lots of my body resource.
+
+	4  Three call ways
+		1  直接访问外部类中的内部类中的成员。
+		// Outer.Inner in = new Outer().new Inner();
+		// in.show();
+
+		2  如果内部类是静态的。 相当于一个外部类
+		// Outer.Inner in = new Outer.Inner();
+		// in.show();
+
+		3  如果内部类是静态的，成员是静态的。
+		// Outer.Inner.function();
+		tips:if Inner method is static,  the inner class must be static.
+
+InnerClassDemo2.java
+	5 为什么内部类能直接访问外部类中成员呢？
+		那是因为内部类持有了外部类的引用。  "外部类名.this"
+		eg: System.out.println(Outer2.this.num);
+
+InnerClassDemo3.java
+	6 内部类可以存放在局部位置上。
+		内部类在局部位置上只能访问局部中被final修饰的局部变量。
+
+
+----------------//BK --day10 Class 9Inner class 2Anonymous
 InnerClassDemo4.java
+	1 definition:
+		前提：
+			内部类必须继承或者实现一个外部类或者接口。
+		本质：匿名内部类：其实就是一个匿名子类对象，就是内部类的简写格式。
+
+	2	格式：new 父类or接口(){子类内容}
+
+	3  通常的使用场景之一： InnerClassDemo5.java
+		当函数参数是接口类型时，而且接口中的方法不超过三个。
+		可以用匿名内部类作为实际参数进行传递
+		eg:show(new Inter()
+
+	4 一道面试题：InnerClassDemo6.java
+
+		Object obj = new Object()
+		{
+			public void show()
+			{
+				System.out.println("show run");
+			}
+
+		};
+		obj.show();//因为匿名内部类这个子类对象被向上转型为了Object类型。
+						//这样就不能在使用子类特有的方法了。
 InnerClassDemo5.java
 InnerClassDemo6.java
 
@@ -597,7 +730,6 @@ Test2.java
          -->初始化子类的非静态代码-->初始化子类的构造
 
 
-
 //BK --day11 Exception
 ExceptionDemo.java
 异常抛出过程.bmp
@@ -606,7 +738,7 @@ ExceptionDemo.java
 			描述不正常的情况的类，就称为异常类。
 			其实异常就是java通过面向对象的思想将问题封装成了对象,用异常类对其进行描述。
 
-		以前:正常流程代码和问题处理代码相结合. 			eg:public static void sleep2(int time)
+		以前:正常流程代码和问题处理代码相结合. 			 eg:public static void sleep2(int time)
 		现在:将正常流程代码和问题处理代码分离。提高阅读性. eg:public static void sleep(int time)
 
 	2 体系 System
@@ -629,11 +761,11 @@ ExceptionDemo.java
 			throws and throw ,凡是可以被这两个关键字所操作的类和对象都具备可抛性.
 
 		4 该体系的特点：
-			子类的后缀名都是用其父类名作为后缀，阅读性很想。
+			子类的后缀名都是用其父类名作为后缀，阅读性很强。
 
 ExceptionDemo2.java
-	3 运行原理 ( running principle )eg:ExceptionDemo2.java
-		1 As the information said, the exception will be thrower level by level.
+	3 运行原理 ( running principle )
+		1 As the information said, the exception will be throwered level by level.
 		  Until to the main and to JVM, if no one resolve it.
 
 			Exception in thread "main" java.lang.NullPointerException
@@ -641,7 +773,7 @@ ExceptionDemo2.java
 			at itcastday11.ExceptionDemo2.main(ExceptionDemo2.java:39)
 		2 the sentences under the exception will not be executed.
 			eg: System.out.println("over");
-		3 When I know how the exception work by default, I can initialise my own exceptions.
+		3 When I know how the exception work by default, I can initialize my own exceptions.
 			eg: throw new NullPointerException("数组的引用不能为空！");
 
 ExceptionDemo3.java
@@ -700,7 +832,7 @@ ExceptionDemo4.java
 
 ExceptionDemo5.java
 	8 Finally 的使用 eg:ExceptionDemo5.java
-		1 // return ; 					-- finally 执行
+		1 // return ; 					 -- finally 执行
 		  // System.exit(0);//退出jvm。   -- finally 不执行
 		2 应用
 			连接数据库 查询。Exception 关闭连接。
@@ -725,14 +857,12 @@ ExceptionTest.java
 			throw new NoPlanException("课时进度无法完成，原因："+e.getMessage());
 		}
 
-ExceptionDemo6.java
+ExceptionDemo6.java //BK --day11 Exception 注意事项 ???
 	10 异常的注意事项：
 		1，子类在覆盖父类方法时，父类的方法如果抛出了异常，
 		那么子类的方法只能抛出父类的异常或者该异常的子类。
 
 		2，如果父类抛出多个异常，那么子类只能抛出父类异常的子集。
-
-
 
 		简单说：子类覆盖父类只能抛出父类的异常或者子类或者子集。
 
@@ -751,17 +881,16 @@ ObjectDemo.java --1 Construction ,11 methods
 		default：
 			1 比较对象地址
 			2 默认形式：boolean equals(Object obj)，可以任意两个对象比较。
-		eg: ObjectDemo.java Line 44 --53 (没overwrite equals)
+			eg: public boolean equals(Person obj) (没overwrite equals, input must be Object )
 	02-面向对象(Object类-equals方法覆盖).avi (15:22)
 		1 Overwrite：
 			根据对象的特有内容，建立判断对象是否相同的依据，传入参数还必须是Object。
 			If write like this "equals(Person obj)"--It is not overwrite
 		2 instanceof
 			取到实例进行比较 : "Hello" instanceof String
-		eg: ObjectDemo.java Line 14 --2 (overwrite equals)
+		eg: public boolean equals(Object obj) (overwrite equals)
 	03-面向对象(Object类-hashCode方法).avi ( 8:17)
 		default: 调用系统的方法。
-		eg: ObjectDemo.java Line 53 --54 (overwrite equals)
 	04-面向对象(Object类-getClass方法).avi (13:10)
 		类对象.gif
 	05-面向对象(Object类-toString方法).avi ( 4:30)

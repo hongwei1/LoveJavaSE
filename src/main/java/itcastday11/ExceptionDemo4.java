@@ -1,71 +1,56 @@
 package itcastday11;
 
-/*
-6 异常处理的捕捉形式： 可以对异常进行针对性处理的方式。
-	1 格式	：
-		try
-		{
-			//需要被检测异常的代码。
-		}
-		catch(异常类 变量)//该变量用于接收发生的异常对象
-		{
-			//处理异常的代码。
-		}
-		finally
-		{
-			//一定会被执行的代码。
-		}
-
-7 异常处理的原则：
-	1，函数内容如果抛出需要检测的异常，那么函数上必须要声明。
-		否则必须在函数内用trycatch捕捉，否则编译失败。
-		
-	2，如果调用到了声明异常的函数，要么trycatch要么throws，否则编译失败。
-	
-	3，什么时候catch，什么时候throws 呢？
-		功能内容可以解决，用catch。
-		解决不了，用throws告诉调用者，由调用者解决 。
-	
-	4，一个功能如果抛出了多个异常，那么调用时，必须有对应多个catch进行针对性的处理。
-		内部又几个需要检测的异常，就抛几个异常，抛出几个，就catch几个。
-*/
-
-class FuShuIndexException4 extends Exception {
+class FuShuIndexException4 extends Exception
+{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
-	FuShuIndexException4() {
+	FuShuIndexException4()
+	{
 	}
 
-	FuShuIndexException4(String msg) {
+	FuShuIndexException4(String msg)
+	{
 		super(msg);
 	}
 }
 
-class Demo4 {
+class Demo4
+{
 	public int method(int[] arr, int index) throws FuShuIndexException4
 	{
 		if (arr == null)
+		{
 			throw new NullPointerException("没有任何数组实体");
+		}
 		if (index < 0)
+		{
 			throw new FuShuIndexException4();
+		}
 
 		return arr[index];
 	}
 }
 
-class ExceptionDemo4 {
-	public static void main(String[] args) {
+class ExceptionDemo4
+{
+	public static void main(String[] args)
+	{
 		int[] arr = new int[3];
 		Demo4 d = new Demo4();
-		try {
+		try
+		{
 			int num = d.method(arr, -1);
 			System.out.println("num=" + num);
-		} catch (NullPointerException e) {
+		}
+		catch (NullPointerException e)
+		{
 			System.out.println(e.toString());
-		} catch (FuShuIndexException4 e) {
+		}
+		catch (FuShuIndexException4 e)
+		{
 			System.out.println("message:" + e.getMessage());
 			System.out.println("string:" + e.toString());
 			System.out.println("string:" + e.getCause());
@@ -75,7 +60,7 @@ class ExceptionDemo4 {
 		}
 		/*
 		 * catch(Exception e)//多catch父类的catch放在最下面。 {
-		 * 
+		 *
 		 * }
 		 */
 		System.out.println("over");

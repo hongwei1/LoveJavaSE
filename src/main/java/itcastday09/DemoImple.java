@@ -97,14 +97,15 @@ class Test implements A, Z// ∂‡ µœ÷
 
 }
 
-class Q
+abstract class Q implements A, Z
 {
+
 	public void method()
 	{
 	}
 }
 
-abstract class Test2 extends Q implements A, Z
+abstract class Test2 extends Q
 {
 
 }
@@ -119,7 +120,7 @@ interface MM
 	void method();
 }
 
-interface QQ extends CC, MM//
+interface QQ extends CC, MM
 {
 	void function();
 }
