@@ -10,7 +10,7 @@ package itcastday08;
 public class ArrayMyUtil
 {
 	/**
-	 * 该类中的方法都是静态的，所以该类是不需要的创建对象的。 为了保证不让其他成创建该类对象可以将构造函数私有化。
+	 * 该类中的方法都是静态的，所以该类是不需要的创建对象的。 为了保证不让其他成创建该类对象可以将构造函数私有化。nihao
 	 */
 	private ArrayMyUtil()
 	{
