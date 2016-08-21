@@ -16,7 +16,7 @@ package itcastday09;
 		行为：工作。
 
 	程序员和经理不存在着直接继承关系，但是程序员和经理却具有共性内容。
-		可以进行抽取。因为他们都是公司的雇员 
+		可以进行抽取。因为他们都是公司的雇员
 		可以将程序员和经理进行抽取.建立体系.
 */
 
@@ -26,7 +26,8 @@ abstract class Employee
 	private String name;
 	private String id;
 	private double pay;
-	Employee(String name,String id,double pay)
+
+	Employee(String name, String id, double pay)
 	{
 		this.name = name;
 		this.id = id;
@@ -34,60 +35,66 @@ abstract class Employee
 	}
 
 	public abstract void work();
-	
+
 }
 
-
-//描述程序员。
+// 描述程序员。
 class Programmer extends Employee
 {
-	Programmer(String name,String id,double pay)
+	Programmer(String name, String id, double pay)
 	{
-		super(name,id,pay);
+		super(name, id, pay);
 	}
+
+	@Override
 	public void work()
 	{
 		System.out.println("code...");
 	}
 }
 
-//描述经理。 
+// 描述经理。
 class Manager extends Employee
 {
 	private int bonus;
-	Manager(String name,String id,double pay,int bonus)
+
+	Manager(String name, String id, double pay, int bonus)
 	{
-		super(name,id,pay);
+		super(name, id, pay);
 		this.bonus = bonus;
 	}
+
+	@Override
 	public void work()
 	{
 		System.out.println("manage");
 	}
 }
 
-class  AbstractTest
+class AbstractTest
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		System.out.println("Hello World!");
 	}
 }
 
-class Person
+abstract class Person
 {
 	private String name;
 	private int age;
 
-	Person(String name,int age)
+	Person(String name, int age)
 	{
 		this.name = name;
 		this.age = age;
 	}
+
 	public String getName()
 	{
-		return name;
+		return this.name;
 	}
+
 	public void setName(String name)
 	{
 		this.name = name;
@@ -96,18 +103,18 @@ class Person
 
 class Student extends Person
 {
-	Student(String name,int age)
+	Student(String name, int age)
 	{
-		super(name,age);
+		super(name, age);
 	}
 
 }
 
 class Worker extends Person
 {
-	Worker(String name,int age)
+	Worker(String name, int age)
 	{
-		super(name,age);
+		super(name, age);
 	}
 
 }

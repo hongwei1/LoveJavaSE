@@ -443,7 +443,7 @@
         </rule>
         <rule>
             <name>AssignmentInOperand</name>
-            <ruleset>Basic Ecmascript</ruleset>
+            <ruleset>Controversial</ruleset>
         </rule>
         <rule>
             <name>UnreachableCode</name>
@@ -683,19 +683,19 @@
         </rule>
         <rule>
             <name>VariableNamingConventions</name>
-            <ruleset>Style</ruleset>
+            <ruleset>Naming</ruleset>
         </rule>
         <rule>
             <name>MethodNamingConventions</name>
-            <ruleset>Style</ruleset>
+            <ruleset>Naming</ruleset>
         </rule>
         <rule>
             <name>ClassNamingConventions</name>
-            <ruleset>Style</ruleset>
+            <ruleset>Naming</ruleset>
         </rule>
         <rule>
             <name>MethodWithSameNameAsEnclosingClass</name>
-            <ruleset>Style</ruleset>
+            <ruleset>Naming</ruleset>
         </rule>
         <rule>
             <name>AvoidLogicInTrigger</name>
@@ -815,7 +815,7 @@
         </rule>
         <rule>
             <name>ExcessiveParameterList</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>ExcessiveObjectLength</name>
@@ -839,11 +839,11 @@
         </rule>
         <rule>
             <name>TooManyFields</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>NcssMethodCount</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>NcssObjectCount</name>
@@ -855,7 +855,7 @@
         </rule>
         <rule>
             <name>UnnecessaryParentheses</name>
-            <ruleset>Unnecessary</ruleset>
+            <ruleset>Controversial</ruleset>
         </rule>
         <rule>
             <name>UnnecessaryBlock</name>
@@ -979,11 +979,11 @@
         </rule>
         <rule>
             <name>AvoidDeeplyNestedIfStmts</name>
-            <ruleset>Basic Velocity</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>CollapsibleIfStatements</name>
-            <ruleset>Basic Velocity</ruleset>
+            <ruleset>Basic</ruleset>
         </rule>
         <rule>
             <name>ExcessiveTemplateLength</name>
@@ -995,7 +995,7 @@
         </rule>
         <rule>
             <name>EmptyIfStmt</name>
-            <ruleset>Basic Velocity</ruleset>
+            <ruleset>Empty Code</ruleset>
         </rule>
         <rule>
             <name>EmptyForeachStmt</name>
@@ -1051,11 +1051,11 @@
         </rule>
         <rule>
             <name>ExcessiveParameterList</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>ExcessiveClassLength</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>CyclomaticComplexity</name>
@@ -1063,7 +1063,7 @@
         </rule>
         <rule>
             <name>StdCyclomaticComplexity</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>ModifiedCyclomaticComplexity</name>
@@ -1071,23 +1071,23 @@
         </rule>
         <rule>
             <name>ExcessivePublicCount</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>TooManyFields</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>NcssMethodCount</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>NcssTypeCount</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>NcssConstructorCount</name>
-            <ruleset>Code Size</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>TooManyMethods</name>
@@ -1111,11 +1111,11 @@
         </rule>
         <rule>
             <name>AvoidDeeplyNestedIfStmts</name>
-            <ruleset>Design</ruleset>
+            <ruleset>Complexity</ruleset>
         </rule>
         <rule>
             <name>AvoidReassigningParameters</name>
-            <ruleset>Design</ruleset>
+            <ruleset>Basic Velocity</ruleset>
         </rule>
         <rule>
             <name>SwitchDensity</name>

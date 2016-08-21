@@ -214,7 +214,7 @@ PersonDemo06.java  //BK --day06 Class 4Encapsulation
 
 
 //BK --day07 Class
-------------------//BK --day07 Class 1Construct
+------------------//BK --day07 Class 4Encapsulation 1Construct
 ConsDemo.java
 构造函数.bmp --内存调用
 	构造函数：构建创造对象时调用的函数。作用：可以给对象进行初始化。
@@ -242,7 +242,7 @@ ConsDemo.java
 		3，构造函数如果前面加了void就变成了一般函数。
 		4，构造函数中是可以有显示return语句的,自带return在结尾。
 
-------------------//BK --day07 Class 2This
+------------------//BK --day07 Class 4Encapsulation 2This
 ThisDemo.java
 this.bmp
 构造函数间调用.bmp
@@ -256,7 +256,7 @@ this.bmp
 			注意：2.1只能定义在构造函数的第一行。因为初始化动作要先执行。
 				 2.2 注意递归调用this
 
-------------------//BK --day07 Class 3Static
+------------------//BK --day07 Class 4Encapsulation 3Static
 StaticDemo.java
 	1 static的特点：
 		1，static是一个修饰符，用于修饰成员。
@@ -265,7 +265,7 @@ StaticDemo.java
 		4，static修饰的成员多了一种调用方式，就可以直接被类名所调用 。 类名.静态成员 。
 		5，static修饰的数据是共享数据，对象中的存储的是特有数据。
 
-	2 成员变量和静态变量的区别？ //BK --day07 Class 3Static 1成员变量和静态变量
+	2 成员变量和静态变量的区别？ //BK --day07 Class 4Encapsulation 3Static 1成员变量和静态变量
 		1，两个变量的生命周期不同。
 			成员变量随着对象的创建而存在，随着对象的被回收而释放。
 			静态变量随着类的加载而存在，随着类的消失而消失。
@@ -286,7 +286,7 @@ StaticDemo.java
 		2，静态方法中不可以使用this或者super关键字。
 		3，主函数是静态的。
 
-MainDemo.java //BK --day07 Class 3Static 2Main
+MainDemo.java //BK --day07 Class 4Encapsulation 3Static 2Main
 	4 主函数特殊之处：
 		1，格式是固定的。
 		2，被JVM所识别和调用。
@@ -298,7 +298,7 @@ MainDemo.java //BK --day07 Class 3Static 2Main
 			main  :函数名，不是关键字，只是一个jvm识别的固定的名字。
 			String[] args:这是主函数的参数列表，是一个数组类型的参数，而且元素都是字符串类型。
 
-StaticDemo2.java //BK --day07 Class 3Static 3Memery
+StaticDemo2.java //BK --day07 Class 4Encapsulation 3Static 3Memery
 静态内存图解.bmp
 
 StaticDemo3.java
@@ -316,7 +316,7 @@ StaticDemo3.java
 			但是非静态需要被对象调用，而仅创建对象调用非静态的
 			没有访问特有数据的方法，该对象的创建是没有意义。
 
-StaticCodeDemo.java  //BK --day07 Class 3Static 4静态&构造代码块
+StaticCodeDemo.java  //BK --day07 Class 4Encapsulation 3Static 4静态&构造代码块
 	6  特殊代码块
 		1 静态代码块。随着类的加载而执行。而且只执行一次。
 			作用：
@@ -325,13 +325,13 @@ StaticCodeDemo.java  //BK --day07 Class 3Static 4静态&构造代码块
 
 
 TestInnerStatic.java
-static 可以修饰成员，当成员是类时，也可以用static修饰 --//BK --day07 Class 3Static 5Static Inner Class
+static 可以修饰成员，当成员是类时，也可以用static修饰 --//BK --day07 Class 4Encapsulation 3Static 5Static Inner Class
 
 
 //BK --day08 Class
 ArrayUtil.java  --复习，把以前的知识综合运用一下。
 
-SingleDemo08.java  //BK --day08 Class 1单例
+SingleDemo08.java  //BK --day08 Class 4Encapsulation 4单例
 单例内存图解.bmp
 	设计模式：对问题行之有效的解决方式。其实它是一种思想。
 
@@ -350,55 +350,252 @@ SingleDemo08.java  //BK --day08 Class 1单例
 		2，通过new在本类中创建一个本类对象。
 		3，定义一个公有的方法，将创建的对象返回。static
 
------------------------//BK --day08 Class 2Inheritance
+
+
+-----------------------//BK --day08 Class 5Inheritance
+ExtendsDemo08.java //TODO 2继承和包的关系，不同包？不同继承关系的处理。
 继承.bmp
-ExtendsDemo.java
-ExtendsDemo2.java
+	继承的好处：
+		1，提高了代码的复用性。
+		2，让类与类之间产生了关系，给第三个特征多态提供了前提.
+
+	java中支持单继承。不直接支持多继承，但对C++中的多继承机制进行改良。
+		单继承：一个子类只能有一个直接父类。
+		多继承：一个子类可以有多个直接父类(java中不允许,进行改良)
+			不直接支持，因为多个父类中有相同成员，会产生调用不确定性。
+			在java中是通过"多实现"的方式来体现。
+
+	java支持多层(多重)继承。
+		C继承B，B继承A。就会出现继承体系。
+
+	当要使用一个继承体系时，
+		1，查看该体系中的顶层类，了解该体系的基本功能。
+		2，创建体系中的最子类对象，完成功能的使用。
+
+	什么时候定义继承呢？
+		当类与类之间存在着所属关系的时候，就定义继承。xxx是yyy中的一种。 xxx extends yyy
+		所属关系： is a 关系。
+	在子父类中，成员的特点体现。
+		1，成员变量。
+		2，成员函数。
+		3，构造函数。
+
+ExtendsDemo2.java //BK --day08 Class 5Inheritance 1成员变量
 继承中成员变量.bmp
-ExtendsDemo3.java
+	this和super的用法很相似。 //BK --day08 Class 5Inheritance 2Super
+		1 当本类的成员和局部变量同名用this区分。
+		  当子父类中的成员变量同名用super区分父类。
+		2 this:代表一个本类对象的引用。
+		  super：代表一个父类空间。 --见"继承中成员变量.bmp"图中，super的变量。
+
+ExtendsDemo3.java //BK --day08 Class 5Inheritance 3成员函数
 函数覆盖.bmp
-
-
-DemoDemo.java
-面向对象上大纲.txt
-
+	当子父类中出现成员函数一模一样的情况，会运行子类的函数。 这种现象，称为覆盖操作。这是函数在子父类中的特性。
+	函数两个特性：
+		1，重载。同一个类中。overload
+		2，覆盖。子类中。覆盖也称为重写，覆写。override
+	覆盖注意事项：
+		1，子类方法覆盖父类方法时，子类权限必须要大于等于父类的权限。
+		2，静态只能覆盖静态，或被静态覆盖。
+		3，必须保证子父一模一样：包括返回值。
+		4，父类中的私有方法不可以被覆盖。
+	什么时候使用覆盖操作?  Phone class for this meaning
+		当对一个类进行子类的扩展时，子类需要保留父类的功能声明，
+		但是要定义子类中该功能的特有内容时，就使用覆盖操作完成.
 
 //BK --day09 Class
-ExtendsDemo.java
-ExtendsDemo4.java
+
+ExtendsDemo4.java //BK --day09 Class 5Inheritance 4构造函数
+	1子父类中的构造函数的特点。
+		为什么在子类构造对象时，发现，访问子类构造函数时，父类也运行了?
+		原因是：在子类的构造函数中第一行有一个默认的隐式语句。 super();
+
+	2子类的实例化过程：子类中所有的构造函数默认都会访问父类中的空参数的构造函数。
+
+	3为什么子类实例化的时候要访问父类中的构造函数呢？
+		那是因为子类继承了父类，获取到了父类中内容(属性)，所以在使用父类内容之前，
+		要先看父类是如何对自己的内容进行初始化的。
+
+		所以子类在构造对象时，必须访问父类中的构造函数。
+		为什么完成这个必须的动作，就在子类的构造函数中加入了super()语句。
+
+	4注意：
+		1 super语句必须要定义在子类构造函数的第一行,因为父类的初始化动作要先完成。
+		2 如果父类中没有定义空参数构造函数，那么子类的构造函数必须用super明确要调用
+			父类中哪个构造函数。同时子类构造函数中如果使用this调用了本类构造函数时，
+			那么super就没有了，因为super和this都只能定义第一行。所以只能有一个。
+			但是可以保证的是，子类中肯定会有其他的构造函数访问父类的构造函数。
+
+	5so any constructs: always have two clauses.
+		class Demo extends Object
+		{
+			Demo() {
+				//super(); default call
+				//return;  default call
+			}
+		}
+
 ExtendsDemo5.java
 子类的实例化过程图解.bmp
+	一个对象实例化过程：Person p = new Person();
+		1，JVM会读取指定的路径下的Person.class文件，并加载进内存，
+		  并会先加载Person的父类(如果有直接的父类的情况下).
+		2，在堆内存中的开辟空间，分配地址。
+		3，并在对象空间中，对对象中的属性进行默认初始化。
+		4，调用对应的构造函数进行初始化。
+		5，在构造函数中，第一行会先到调用父类中构造函数进行初始化。
+		6，父类初始化完毕后，在对子类的属性进行显示初始化。
+		7，在进行子类构造函数的特定初始化。
+		8，初始化完毕后，将地址值赋值给引用变量.
 
-FinalDemo.java
+FinalDemo.java //BK --day09 Class 5Inheritance 5Final
+继承弊端：打破了封装性,继承可以修改方法。
+final关键字：
+	1，final是一个修饰符，可以修饰类，方法，变量。
+	2，final修饰的类不可以被继承。
+	3，final修饰的方法不可以被覆盖。
+	4，final修饰的变量是一个常量，只能赋值一次。
+		为什么要用final修饰变量。其实在程序如果一个数据是固定的，
+		那么直接使用这个数据就可以了，但是这样阅读性差，所以它该数据起个名称。
+		而且这个变量名称的值不能变化，所以加上final固定。
+	5,写法规范：常量所有字母都大写，多个单词，中间用_连接。
+	6,BOLGS: http://wenjiesu.iteye.com/blog/799332
 
-AbstractDemo.java //BK --day09 Class Abstract
-AbstractTest.java
+AbstractDemo.java //BK --day09 Class 6Abstract
+AbstractTest.java--example
+	1 抽象类：
+		抽象：笼统，模糊，看不懂！不具体。
+		Java中可以定义没有方法体的方法，该方法的具体实现由子类完成，该方法称为抽象方法，包含抽象方法的类就是抽象类。
+	2 特点：
+		1，方法只有声明没有实现时，该方法就是抽象方法，需要被abstract修饰。
+		   抽象方法必须定义在抽象类中。该类必须也被abstract修饰。
+		2，抽象类不可以被实例化。为什么？因为调用抽象方法没意义。
+		3，抽象类必须有其子类覆盖了所有的抽象方法后，该子类才可以实例化。
+		   否则，这个子类还是抽象类。
+	3 疑惑点：
+		1)，抽象类中有构造函数吗？
+			有，用于给子类对象进行初始化。
+		2)，抽象类可以不定义抽象方法吗？
+			可以的。 但是很少见，目的就是不让该类创建对象。AWT的适配器对象就是这种类。
+			通常这个类中的方法有方法体，但是却没有内容。
 
-InterfaceDemo.java //BK --day09 Class Interface
-InterfaceDemo2.java
+			abstract class Demo
+			{
+				void show1()
+				{}
+
+				void show2()
+				{}
+			}
+		3)，抽象关键字不可以和那些关键字共存?
+			private 不行
+			static	不行  //static can be called by class name ,but abstract 通过类调用没有意义。
+			final	不行  //
+		4)，抽象类和一般类的异同点。
+			相同点：
+				抽象类和一般类都是用来描述事物的，都在内部定了成员。
+			不同：
+				1，一般类有足够的信息描述事物。
+				   抽象类描述事物的信息有可能不足。
+				2，一般类中不能定义抽象方法，只能定非抽象方法。
+				   抽象类中可定义抽象方法，同时也可以定义非抽象方法。
+				3，一般类可以被实例化。
+				   抽象类不可以被实例化。
+		5)，抽象类一定是个父类吗？
+			是的。因为需要子类覆盖其方法后才可以对子类实例化。
+	4 Example: AbstractTest.java
+		雇员示例：
+			需求：公司中程序员有姓名，工号，薪水，工作内容。
+				 项目经理除了有姓名，工号，薪水，还有奖金，工作内容。
+				 对给出需求进行数据建模。
+		分析：
+			在这个问题领域中，先找出涉及的对象。
+			通过名词提炼法。
+			程序员：
+				属性：姓名，工号，薪水、
+				行为：工作。
+			经理：
+				属性：姓名，工号，薪水，奖金。
+				行为：工作。
+
+			程序员和经理不存在着直接继承关系，但是程序员和经理却具有共性内容。
+				可以进行抽取。因为他们都是公司的雇员
+				可以将程序员和经理进行抽取.建立体系.
+
+DemoImple.java //BK --day09 Class 7Interface
+abstract class AbsDemo
+{
+	abstract void show1();
+	abstract void show2();
+}
+知识点： key points
+	1 definition: 当一个抽象类中的方法都是抽象的时候，这时可以将该抽象类用另一种形式定义和表示，就是 接口 interface。
+	  定义接口使用的关键字不是class，是interface.
+
+	2 characteristic: 对于接口当中常见的成员：而且这些成员都有固定的修饰符。
+		1，全局常量: public static final --if don't write the compiler do it
+		2，抽象方法: public abstract
+		由此得出结论，接口中的成员都是公共的权限
+
+	3 implement:类与类之间是继承关系，类与接口直接是实现关系。
+		接口不可以实例化,只能由实现了接口的子类并覆盖了接口中所有的抽象方法后，该子类才可以实例化。
+		否则，这个子类就是一个抽象类。
+
+	4 many implements:
+		在java中不直接支持多继承，因为会出现调用的不确定性。
+		所以java将多继承机制进行改良，在java中变成了多实现。
+		一个类可以实现多个接口。
+
+	5 一个类在继承另一个类的同时，还可以实现多个接口。 eg:class Q and Class Test
+		接口的出现避免了单继承的局限性。            eg: class Test2
+		接口与接口之间是继承关系，而且接口可以多继承。 eg:CC QQ MM ,因为没有方法体，不会影响功能。
+
+	6 接口的特点
+		接口是对外暴露的规则。
+		接口是程序的功能扩展。
+		接口可以用来多实现。
+		类与接口之间是实现关系，而且类可以 继承一个类的同时实现多个接口。
+		接口与接口之间可以有继承关系。
+
+	7 抽象类和接口的异同点： eg: InterfaceDemo2.java
+		相同点：
+			都是不断向上抽取而来的。
+		不同点：
+			1，抽象类需要被继承，而且只能单继承。
+			   接口需要被实现，而且可以多实现。
+			2，抽象类中可以定义抽象方法和非抽象方法，子类继承后，可以直接使用非抽象方法。
+			   接口中只能定义抽象方法，必须由子类去实现。
+			3，抽象类的继承，是is  a 关系，在定义该体系的基本共性内容。
+			   接口的实现,  是has a 关系，在定义体系额外功能。
+		eg:犬按功能分：有导盲犬，搜爆犬- 他们是犬，具有导盲，搜爆的功能。
 
 //BK --day10 Class
-----------------interface
- * BookPC.java
+ * BookPC.java  //BK --day09 Class 7Interface 2PC-USB
  * USB.bmp
 
-----------------//BK --day10 Class Polymorphism
+----------------//BK --day10 Class 8Polymorphism
 DuoTaiDemo.java
 DuoTaiDemo2.java
 DuoTaiDemo3.java
 
-----------------//BK --day10 Class Inner class
+----------------//BK --day10 Class 9Inner class
 InnerClassDemo.java
 InnerClassDemo2.java
 InnerClassDemo3.java
 
-----------------//BK --day10 Class Anonymous inner class
+----------------//BK --day10 Class 10Anonymous inner class
 InnerClassDemo4.java
 InnerClassDemo5.java
 InnerClassDemo6.java
 
 构造代码块初始化过程.bmp
-FinalTest.java
+Test.java
+Test2.java
+
+先初始化父类的静态代码-->初始化子类的静态代码-->
+     (创建使历史，如果不创建实例，则后面的不执行)初始化父类的非静态代码-->初始化父类的构造
+         -->初始化子类的非静态代码-->初始化子类的构造
+
 
 
 //BK --day11 Exception
@@ -899,6 +1096,7 @@ StringMethodDemo.java
 				String substring(int beginIndex);
 	2，转换。
 		2.1 将字符串变成字符串数组(字符串的切割)
+			@Override
 			@Override
 			String[]  split(String regex):涉及到正则表达式.
 		2.2 将字符串变成字符数组。
@@ -1418,7 +1616,7 @@ SystemDemo.java & 系统信息.txt --0Cons+26Meds
 	2 获取系统的属性信息，并存储到了Properties集合中。
 		properties集合中存储都是String类型的键和值,最好使用它自己的存储和取出的方法来完成元素的操作。
 		Properties properties = System.getProperties();
-	  	Set<Entry<Object, Object>> entrySet = properties.entrySet();
+	  	Set<Entry<Object, Object>> entrySet = this.properties.entrySet();
 	3 定义常量
 		private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 		private static final String PATH           = System.getProperty("user.dir");
@@ -1463,7 +1661,7 @@ FileWriterDemo.java
    		1 字符串写入文件。
    		2 换行 LINE_SEPARATOR = System.getProperty("line.separator");
    		3 续写 如果构造函数中加入true，可以实现对文件进行续写！
-   			eg:FileWriter fw = new FileWriter(PATH+"/demo.txt", true);
+   			eg:FileWriter fw = new FileWriter(表示.PATH+"/demo.txt", true);
 IOExceptionDemo.java
 4 Exception
 	1 写入三步都要异常处理

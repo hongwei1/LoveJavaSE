@@ -10,7 +10,7 @@ class StaticCode
 	static int num;
 	static
 	{
-		num = 10;
+		StaticCode.num = 10;
 		// num *=3;
 		System.out.println("hahahah");
 	}
@@ -21,7 +21,7 @@ class StaticCode
 
 	static void show()
 	{
-		System.out.println(num);
+		System.out.println(StaticCode.num);
 	}
 }
 
@@ -41,7 +41,7 @@ class PersonDemo
 
 	PersonDemo()/// 构造代码块。可以给所有对象进行初始化的,是给对应的对象进行针对性的初始化。
 	{
-		name = "baby";
+		this.name = "baby";
 		// cry();
 	}
 
@@ -59,7 +59,7 @@ class PersonDemo
 
 	public void speak()
 	{
-		System.out.println("name:" + name);
+		System.out.println("name:" + this.name);
 	}
 
 	static void show()
