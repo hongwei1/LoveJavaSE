@@ -1,19 +1,24 @@
 package itcastday10;
 
 /*
-内部类可以存放在局部位置上。 
+内部类可以存放在局部位置上。
 	内部类在局部位置上只能访问局部中被final修饰的局部变量。
 */
 
-class Outer3 {
+class Outer3
+{
 	int num = 3;
 
-	Object method() {
+	Object method()
+	{
 
-		final int x = 9;
+		final int x = 9; // BK --day10 Class 9Inner class 2局部位置Final
 
-		class Inner {
-			public String toString() {
+		class Inner
+		{
+			@Override
+			public String toString()
+			{
 				return "show ..." + x;
 			}
 		}
@@ -25,8 +30,10 @@ class Outer3 {
 
 }
 
-class InnerClassDemo3 {
-	public static void main(String[] args) {
+public class InnerClassDemo3
+{
+	public static void main(String[] args)
+	{
 		Outer3 out = new Outer3();
 		Object obj = out.method();
 		System.out.println(obj);
@@ -34,10 +41,10 @@ class InnerClassDemo3 {
 	}
 }
 /*
- * 
+ *
  * class Fu extends Object { } class zi extends Fu { }
- * 
+ *
  * Fu f = new zi();
- * 
+ *
  * Object o = new Fu();
  */

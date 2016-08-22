@@ -2,30 +2,30 @@ package itcastday05;
 
 class ArrayTest3
 {
-	// BK --day05 Array 2进制转换 查表法
+	// BK --day05 4Array 2进制转换 查表法
 	public static void main(String[] args)
 	{
-		toHex(0xff);
-		toBinary(-6);
-		toOctal(26);
+		ArrayTest3.toHex(0xff);
+		ArrayTest3.toBinary(-6);
+		ArrayTest3.toOctal(26);
 	}
 
 	// 十进制-->十六进制。
 	public static void toHex(int num)
 	{
-		trans(num, 15, 4);
+		ArrayTest3.trans(num, 15, 4);
 	}
 
 	// 十进制-->二进制。
 	public static void toBinary(int num)
 	{
-		trans(num, 1, 1);
+		ArrayTest3.trans(num, 1, 1);
 	}
 
 	// 十进制-->八进制。
 	public static void toOctal(int num)
 	{
-		trans(num, 7, 3);
+		ArrayTest3.trans(num, 7, 3);
 	}
 
 	public static void trans(int num, int base, int offset)

@@ -6,7 +6,7 @@ class OperateTest
 	{
 		// 最有效率的方式算出2乘以8等于几？
 		System.out.println(2 << 3);
-		// BK --day03 1语句 换变量位置三方法
+		// BK --day03 2语句 1if&swich 换变量位置三方法
 		// 对两个整数变量的值进行互换 (不需要第三方变量)
 		int a = 3, b = 5;
 

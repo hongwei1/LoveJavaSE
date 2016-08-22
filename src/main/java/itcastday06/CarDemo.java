@@ -9,7 +9,7 @@ class Car1
 	// method
 	void show()
 	{
-		System.out.println(color);
+		System.out.println(this.color);
 	}
 
 	public static void main(String[] args)
@@ -27,7 +27,7 @@ class Car
 	// methods
 	void run()
 	{
-		System.out.println(num + "..." + color);
+		System.out.println(this.num + "..." + this.color);
 	}
 }
 
@@ -57,7 +57,7 @@ class CarDemo
 
 		/**
 		 * <pre>
-		 * //BK --day06 Class 1匿名对象。
+		 * //BK --day06 Class 3匿名对象。
 		 * 没有名字的对象，其实就是定义对象的简写格式。
 		 * 两种使用情况 ：
 			 * 1，当对象对方法仅进行一次调用的时候，就可以简化成匿名对象。
@@ -71,7 +71,7 @@ class CarDemo
 
 		// Car c1 = new Car();
 		// show(c1);
-		show(new Car());
+		CarDemo.show(new Car());
 	}
 
 	// 汽车改装厂。

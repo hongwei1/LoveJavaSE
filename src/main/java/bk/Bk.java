@@ -19,11 +19,20 @@
 0 Note.java 		 -- p1--P19   I took the notes by going though the PPT.
 1 Demo.java          -- P8 	      03-Java语言基础(注释).avi
 2 VarDemo.java       -- P10--P15  10-Java语言基础(变量的基本演示).avi
+	八种基本类型：
+		整数类型(byte-8bits, short-16bits, int-32bits, long-64bits) 数值型
+		浮点类型(float-32bits, double-64bits)
+		字符型(char-[0-255])
+		布尔型（boolean）
+	三种引用：
+		类(class)
+		接口(interface)
+		数组( [ ] )
 3 VarDemo2.java      -- P15       11-Java语言基础(类型提升&强制转换).avi
 4 OperateDemo.java   -- P17-P18   arithmetic operator eg: ++
 5 OperateDemo2.java  -- P19       assignment operator
 
-//BK --day03 1语句 if swith
+//BK --day03 2语句 1if&swich
 0 Note.java
 1 OperateDemo3.java -- P20--P22 compare and logic operator
 2 OperateDemo4.java -- P23 Bit operator
@@ -42,14 +51,14 @@
 12 SwitchTest.java
 13 if和switch.java
 
-//BK --day03 2While
+//BK --day03 2语句 2While
 14 WhileDemo.java
 15 DoWhileDemo.java
 16 WhileTest.java  -- P32 20-Java语言基础(while练习-累加思想).avi
 17 WhileTest2.java -- 21-Java语言基础(while练习-计数器思想).avi
 
 
-//BK --day04 1For
+//BK --day04 2语句 3For
 18 ForDemo.java -- P33  22-Java语言基础(语句-for).avi
 19 ForTest.java
 
@@ -69,7 +78,7 @@
 		continue：结束本次循环，继续下次循环。
 		如果continue单独存在时，下面不要有任何语句，因为执行不到。
 
-//BK --day04 2函数
+//BK --day04 3函数
 7 FunctionDemo.java
 	 定义函数的格式：
 		 修饰符 返回值类型 函数名(参数类型 形式参数1，参数类型 形式参数2，...)
@@ -87,7 +96,7 @@
 9 FunctionDemo3.java
 10 FunctionDemo4.java
 
-//BK --day04 3Array
+//BK --day04 4Array
 ArrayDemo.java
 	1,内存的划分：--5
  		1，寄存器。
@@ -124,7 +133,7 @@ ArrayDemo3.java
  	7 数组的操作
  		对数组操作最基本的动作就是存和取。 核心思想：就是对角标的操作。
 
-ArrayDemo4.java //BK --day05 Array 1最值 排序 折半查找 反转 查表法
+ArrayDemo4.java //BK --day05 4Array 1最值 排序 折半查找 反转 查表法
 	8 数组的算法
 		冒泡排序.bmp
 		选择排序.bmp
@@ -185,7 +194,7 @@ CarDemo.java
 			成员函数<-->行为。
 
 
-	成员变量和局部变量的区别：//BK --day06 class 2成员变量和局部变量的区别
+	成员变量和局部变量的区别：//BK --day06 class 1成员变量和局部变量的区别
 		1，
 			成员变量定义在类中，整个类中都可以访问。
 			局部变量定义在函数，语句，局部代码块中，只在所属的区域有效。
@@ -203,7 +212,7 @@ CarDemo.java
 			局部变量没有默认初始化值。
 
 对象的内存图.bmp
-Demo06.java //BK --day06 Class 3基本参数&引用参数
+Demo06.java //BK --day06 Class 2基本参数&引用参数
 基本和引用类型参数传递图解.bmp
 
 
@@ -281,7 +290,7 @@ StaticDemo.java
 			成员变量数据存储在堆内存的对象中，所以也叫对象的特有数据.
 			静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据.
 	3 静态使用的注意事项：
-		1，静态方法只能访问静态成员。(非静态既可以访问静态，又可以访问非静态)
+		1，静态方法只能访问静态成员。(非静态方法既可以访问静态，又可以访问非静态)
 		2，静态方法中不可以使用this或者super关键字。
 		3，主函数是静态的。
 
@@ -324,6 +333,7 @@ StaticCodeDemo.java  //BK --day07 Class 4Encapsulation 3Static 4静态&构造代
 
 
 TestInnerStatic.java
+itcastday10.InnerClassDemo3
 static 可以修饰成员，当成员是类时，也可以用static修饰 --//BK --day07 Class 4Encapsulation 3Static 5Static Inner Class
 
 
@@ -555,8 +565,8 @@ abstract class AbsDemo
 		接口可以用来多实现。
 		类与接口之间是实现关系，而且类可以 继承一个类的同时实现多个接口。
 		接口与接口之间可以有继承关系。
-
-	7 抽象类和接口的异同点： eg: InterfaceDemo2.java
+InterfaceDemo2.java //BK --day09 Class 7Interface 2抽象类和接口的异同点
+	7 抽象类和接口的异同点
 		相同点：
 			都是不断向上抽取而来的。
 		不同点：
@@ -569,7 +579,7 @@ abstract class AbsDemo
 		eg:犬按功能分：有导盲犬，搜爆犬- 他们是犬，具有导盲，搜爆的功能。
 
 //BK --day10 Class
-BookPC.java  //BK --day10 Class 7Interface 2PC-USB
+Laptop.java  //BK --day10 Class 7Interface 3PC-USB
 USB.bmp
 
 ----------------//BK --day10 Class 8Polymorphism
@@ -662,7 +672,7 @@ InnerClassDemo.java
 
 	2 内部类访问特点：
 		1，内部类可以直接访问外部类中的成员。 		--即使private 也可以访问
-		2，外部类要访问内部类，必须建立内部类的对象。 --即使private 也可以访问
+		2，外部类要访问内部类，必须建立内部类的对象。
 
 	3 一般用于类的设计：
 		分析事物时，发现该事物描述中还有事物，而且这个事物还在访问被描述事物的内容。
@@ -692,22 +702,21 @@ InnerClassDemo3.java
 		内部类在局部位置上只能访问局部中被final修饰的局部变量。
 
 
-----------------//BK --day10 Class 9Inner class 2Anonymous
+----------------//BK --day10 Class 9Inner class 3Anonymous
 InnerClassDemo4.java
-	1 definition:
+	1 Definition:
 		前提：
 			内部类必须继承或者实现一个外部类或者接口。
 		本质：匿名内部类：其实就是一个匿名子类对象，就是内部类的简写格式。
 
 	2	格式：new 父类or接口(){子类内容}
-
-	3  通常的使用场景之一： InnerClassDemo5.java
+InnerClassDemo5.java
+	3  通常的使用场景之一：
 		当函数参数是接口类型时，而且接口中的方法不超过三个。
 		可以用匿名内部类作为实际参数进行传递
 		eg:show(new Inter()
-
-	4 一道面试题：InnerClassDemo6.java
-
+InnerClassDemo6.java
+	4 一道面试题：
 		Object obj = new Object()
 		{
 			public void show()
@@ -717,18 +726,16 @@ InnerClassDemo4.java
 
 		};
 		obj.show();//因为匿名内部类这个子类对象被向上转型为了Object类型。
-						//这样就不能在使用子类特有的方法了。
-InnerClassDemo5.java
-InnerClassDemo6.java
+				  //这样就不能在使用子类特有的方法了。
 
+
+//BK --day10 Class 终极类初始化
 构造代码块初始化过程.bmp
 Test.java
 Test2.java
-
 先初始化父类的静态代码-->初始化子类的静态代码-->
-     (创建使历史，如果不创建实例，则后面的不执行)初始化父类的非静态代码-->初始化父类的构造
-         -->初始化子类的非静态代码-->初始化子类的构造
-
+     (创建实例)-->父类默认初始化-->父类显示初始化-->初始化父类的构造
+             -->子类默认初始化-->子类显示初始化-->初始化子类的构造
 
 //BK --day11 Exception
 ExceptionDemo.java
@@ -857,11 +864,10 @@ ExceptionTest.java
 			throw new NoPlanException("课时进度无法完成，原因："+e.getMessage());
 		}
 
-ExceptionDemo6.java //BK --day11 Exception 注意事项 ???
+ExceptionDemo6.java //BK --day11 Exception 子类注意
 	10 异常的注意事项：
 		1，子类在覆盖父类方法时，父类的方法如果抛出了异常，
-		那么子类的方法只能抛出父类的异常或者该异常的子类。
-
+			那么子类的方法只能抛出父类的异常或者该异常的子类。
 		2，如果父类抛出多个异常，那么子类只能抛出父类异常的子集。
 
 		简单说：子类覆盖父类只能抛出父类的异常或者子类或者子集。
@@ -869,8 +875,8 @@ ExceptionDemo6.java //BK --day11 Exception 注意事项 ???
 		注意：如果父类的方法没有抛出异常，那么子类覆盖时绝对不能抛，就只能try .
 
 
-//BK --day11 Object
-ObjectDemo.java --1 Construction ,11 methods
+//BK --day11 Object 1Cons+12methods
+ObjectDemo.java --
 	Object:所有类的根类，Object是不断抽取而来，具备着所有对象都具备的共性内容。
 	1 Object构造函数： --1 by JVM, can not control
 	    static {
@@ -895,121 +901,147 @@ ObjectDemo.java --1 Construction ,11 methods
 		类对象.gif
 	05-面向对象(Object类-toString方法).avi ( 4:30)
 
-//BK --day12-13 Multithreading Thread   -- 8Cons+42Meds
-1:definition
-	进程：正在进行中的程序(直译). 只分配开应用程序的应用空间
-	线程：就是进程中一个负责程序执行的控制单元(执行路径)；一个进程中可以多执行路径，称之为多线程。
-		 每一个线程都有自己运行的内容。这个内容可以称为线程要执行的任务。
-	关系：一个进程中至少要有一个线程，开启多个线程是为了同时运行多部分代码。
-2：Pro and Con
-	好处：解决了多部分同时运行的问题。
-	弊端：线程太多回到效率的降低。其实应用程序的执行都是在做着快速的切换完成的。这个切换是随机的。
-	eg:  I/O例子：点对点的聊天工具，需要在我们编写信息的同时能够接受并打印出来对方说的话。
-	     如果将信息的发送和接受放在一个线程里，发送和接受两者不能兼顾。
+//BK --day12 A包管理
+haha.jar
+DemoA.java
+DemoB.java
+ExceptionTest2.java
+JarDemo.java
+package-info.java
+PackageDemo.java
 
+
+//BK --day12 Multithreading
 ThreadDemo.java
-3: JVM multithreading
-	JVM启动时就启动了多个线程，至少有两个线程可以分析的出来。
-		1，执行main函数的线程--该线程的任务代码都定义在main函数中。
-		2，负责垃圾回收的线程。
-	eg: ThreadDemo 中有main和多个匿名对象。匿名对象一创建就是垃圾，就等着被回收的。
-	tips:垃圾回收还没结束，虚拟机就可能直接关闭，就不等垃圾回收了，所有有时只输出一个或两个值（ ThreadDemo 中的结果）
+	1:Definition
+		进程：正在进行中的程序(直译). 只分配开应用程序的应用空间
+		线程：就是进程中一个负责程序执行的控制单元(执行路径)；一个进程中可以多执行路径，称之为多线程。
+			 每一个线程都有自己运行的内容。这个内容可以称为线程要执行的任务。
+		关系：一个进程中至少要有一个线程，开启多个线程是为了同时运行多部分代码。
+
+	2：Pros and cons
+		好处：解决了多部分同时运行的问题。
+		弊端：线程太多回到效率的降低。其实应用程序的执行都是在做着快速的切换完成的。这个切换是随机的。
+		eg:  I/O例子：点对点的聊天工具，需要在我们编写信息的同时能够接受并打印出来对方说的话。
+		     如果将信息的发送和接受放在一个线程里，发送和接受两者不能兼顾。
+
+
+	3: JVM multithreading
+		JVM启动时就启动了多个线程，至少有两个线程可以分析的出来。
+			1，执行main函数的线程--该线程的任务代码都定义在main函数中。
+			2，负责垃圾回收的线程。
+		eg: ThreadDemo 中有main和多个匿名对象。匿名对象一创建就是垃圾，就等着被回收的。
+		tips:垃圾回收还没结束，虚拟机就可能直接关闭，就不等垃圾回收了，所有有时只输出一个或两个值（ ThreadDemo 中的结果）
 
 ThreadDemo2.java
-4：Main Threading Example
-	eg:ThreadDemo2 line 20--42 :  one main threading. No multi threading
+05-多线程(多线程创建的方式一-继承Thread类).avi (25:27)
+	4：Main Threading Example
+	5: Multithreading
+		1 Thread Concept
+			创建线程的目的是为了开启一条执行路径，去运行指定的代码和其他代码实现同时运行。
+			而运行的指定代码就是这个执行路径的任务。
+			JVM创建的主线程的任务都定义在了主函数中。
+			而自定义的线程它的任务在哪儿呢？
+			Thread类用于描述线程，线程是需要任务的。所以Thread类也对任务的描述。
+			这个任务就通过Thread类中的run方法来体现。也就是说，run方法就是封装自定义线程运行任务的函数。
+			run方法中定义就是线程要运行的任务代码。
+			开启线程是为了运行指定代码，所以只有继承Thread类，并复写run方法。
+			将运行的代码定义在run方法中即可。
+		2 创建线程方式一：继承Thread类。
+			步骤：
+			1，定义一个类继承Thread类。
+			2，覆盖Thread类中的run方法。
+			3，直接创建Thread的子类对象创建线程。
+			4，调用start方法开启线程并调用线程的任务run方法执行。
 
-5: Multithreading 1 -- 05-多线程(多线程创建的方式一-继承Thread类).avi (25:27)
-	1 Thread Concept
-		创建线程的目的是为了开启一条执行路径，去运行指定的代码和其他代码实现同时运行。
-		而运行的指定代码就是这个执行路径的任务。
-		JVM创建的主线程的任务都定义在了主函数中。
-		而自定义的线程它的任务在哪儿呢？
-		Thread类用于描述线程，线程是需要任务的。所以Thread类也对任务的描述。
-		这个任务就通过Thread类中的run方法来体现。也就是说，run方法就是封装自定义线程运行任务的函数。
-		run方法中定义就是线程要运行的任务代码。
-		开启线程是为了运行指定代码，所以只有继承Thread类，并复写run方法。
-		将运行的代码定义在run方法中即可。
-	2 创建线程方式一：继承Thread类。
-		步骤：
-		1，定义一个类继承Thread类。
-		2，覆盖Thread类中的run方法。
-		3，直接创建Thread的子类对象创建线程。
-		4，调用start方法开启线程并调用线程的任务run方法执行。
-	eg:ThreadDemo2 line 44--68
-6: Thread name and methods -- 06-多线程(Thread类中的方法&线程名称).avi (10:33)
-	1 methods:
-		1 getName() --Returns this thread's name.
-		2 Thread.currentThread() -- Returns a reference to the currently executing thread object.
-		3 Thread.currentThread().getName() -- Returns this running thread's name.
-	2 可以通过Thread的getName获取线程的名称 Thread-编号(从0开始)  eg:ThreadDemo2 92 93
-	  主线程的名字就是main。 eg:ThreadDemo2 89 90
-	eg:ThreadDemo2 line 70--100
-7: Memory using -- 07-多线程(多线程运行图解).avi (15:30)
+	6: Thread name and methods -- 06-多线程(Thread类中的方法&线程名称).avi (10:33)
+		//BK --day12 Multithreading 1Thread 8Cons+42Meds
+		1 methods:
+			1 getName() --Returns this thread's name.
+			2 Thread.currentThread() -- Returns a reference to the currently executing thread object.
+			3 Thread.currentThread().getName() -- Returns this running thread's name.
+		2 可以通过Thread的getName获取线程的名称 Thread-编号(从0开始)
+		  主线程的名字就是main.
+
+ThreadDemo3.java
+07-多线程(多线程运行图解).avi (15:30)
 多线程运行图.bmp
-	different threads use different stack memory, and they are independent.
-	If main thread meet errors ,the other threads can work properly.
+	7: Memory using
+		different threads use different stack memory, and they are independent.
+		If main thread meet errors ,the other threads can work properly.
+08-多线程(线程的状态).avi (22:40)
+线程4状态.png
+	8 :	MutiThread states //BK --day12 Multithreading 3FourStates
+			1 concepts
+			    CPU执行权 : 现在做(Yes1);
+			    执行资格   ：在排队(Yes2)
+				四个状态：被创建--> 执行   -->冻结   -->临时阻塞  -->消亡
+				        No,No-->Yes,Yes-->No,No -->No,Yes  --> No,No
+			 tips: only one thread has the execute right ,all others are in the block or freeze.
 
-	eg: ThreadDemo3.java -- exceptions happen in main and threads.
-
-8 08-多线程(线程的状态).avi (22:40)
-多线程状态图.bmp
-MutiThread states
-	1 concepts
-	    CPU执行权 : 现在做(Yes1);
-	    执行资格   ：在排队(Yes2)
-		四个状态：被创建--> 执行   -->冻结   -->临时阻塞  -->消亡
-		        No,No-->Yes,Yes-->No,No -->No,Yes  --> No,No
-	 tips: only one thread has the execute right ,all others are in the block or freeze.
-	 eg:多线程状态图.bmp
-
---day13 Multithreading Thread
+//BK --day13 Multithreading
+ThreadDemo13.java
 09-多线程(创建线程的第二种方式—实现Runnable接口).avi (22:56)
-ThreadDemo.java
-	二:实现Runnable接口。
-		1，定义类实现Runnable接口。
-		2，覆盖接口中的run方法，将线程的任务代码封装到run方法中。
-		3，通过Thread类创建线程对象，并将Runnable接口的子类对象作为Thread类的构造函数的参数传递。
-			为什么？因为线程的任务都封装在Runnable接口子类对象的run方法中。
-			所以要在线程对象创建时就必须明确要运行的任务。
-		4，调用线程对象的start方法开启线程。
-	eg:ThreadDemo.java line 26 --54
+		二:实现Runnable接口。
+			1，定义类实现Runnable接口。
+			2，覆盖接口中的run方法，将线程的任务代码封装到run方法中。
+			3，通过Thread类创建线程对象，并将Runnable接口的子类对象作为Thread类的构造函数的参数传递。
+				为什么？因为线程的任务都封装在Runnable接口子类对象的run方法中。
+				所以要在线程对象创建时就必须明确要运行的任务。
+			4，调用线程对象的start方法开启线程。
 
 10-多线程(第二种方式的细节).avi ( 7:41)
-	Thread内部有Thread（Runnable Target)构造函数，
-	eg:ThreadDemo.java line 57 --104
+	传入接口的实现细节：Thread内部有Thread（Runnable Target)构造函数，
+		class Thread
+		{
+			private Runnable r;
+
+			Thread(){}
+
+			Thread(Runnable r)
+			{
+				this.r = r;
+			}
+
+			public void run()
+			{
+				if (this.r != null)
+				{
+					this.r.run();
+				}
+			}
+
+			public void start()
+			{
+				this.run();
+			}
+		}
 
 11-多线程(第二种方式的好处).avi (11:51)
-	实现Runnable接口的好处：
-		1，将线程的任务从线程的子类中分离出来，进行了单独的封装。
-		   按照面向对象的思想将任务的封装成对象。
-		2，避免了java单继承的局限性。
-	所以，创建线程的第二种方式较为常用。
+Runnable实现的思想.png
+		实现Runnable接口的好处：
+			1，将线程的任务从线程的子类中分离出来，进行了单独的封装。
+			   按照面向对象的思想将任务的封装成对象。
+			2，避免了java单继承的局限性。
+		所以，创建线程的第二种方式较为常用。
 
- TicketDemo.java & 售票内存图.bmp
+//BK --day13 Multithreading 5Model-一生产者多消费者
+TicketDemo3.java -- three different ways. finally use the syn-block
+售票内存图.bmp
 12-多线程(卖票示例).avi (27:26)
-	eg1: TicketDemo line 6--30
-		it use the static number to share data with four different objects.
-		while the problem is still happening when add line 39
-		"for (long i = -99999999; i < 99999999; i++);"
-		This app needs more than one command to finish its job.
-		So the -1,-2 ticket is coming .
-	eg2:TicketDemo line 30--60
-		If the ticket object has the relevant with the number,(kinds of tickets)
-		so it should not be static.
-		This way use the runnable interface ,do not use the static key words.
 
 13-多线程(线程安全问题的现象).avi (14:42) --210
 	eg: way1 & way2 both has the problem
 
+
 14-多线程(线程安全问题产生的原因).avi ( 6:21)
+多线程出错.gif
 	线程安全问题产生的原因：
 		1，多个线程在操作共享的数据。
 		2，操作共享数据的线程代码有多条。
 		3，当一个线程在执行操作共享数据的多条代码过程中，其他线程参与了运算，就会导致线程安全问题。
-	eg:多线程出错.gif
 
-SynFunctionLockDemo.java
+//BK --day13 Multithreading 6同步代码块和同步函数
 15-多线程(同步代码块).avi ( 9:43)
 	解决思路；
 		就是将多条操作共享数据的线程代码封装起来，当有线程在执行这些代码的时候，其他不可以参与运算.
@@ -1021,8 +1053,6 @@ SynFunctionLockDemo.java
 			{
 				需要被同步的代码 ；
 			}
-	eg:eg2: TicketDemo line 60--90
-
 16-多线程(同步的好处和弊端).avi (11:55)
 	1同步的机制：synchronized(对象):“对象”是个锁，有对象进入同步块，则加锁，别人进不去。直到它出来，才解锁。
 	2同步的好处：解决了线程的安全问题。
@@ -1032,9 +1062,10 @@ SynFunctionLockDemo.java
 	同步的前提：同步中必须有多个线程并使用同一个锁。
 
 18-多线程(同步函数).avi (15: 9)
+BankDemo.java
 	在函数上加个关键字“synchronized”，就可以变成同步函数了。
-	eg:BankDemo.java
 
+SynFunctionLockDemo.java
 19-多线程(验证同步函数的锁).avi (20:52)
 	同步函数的使用的锁是this；
 	同步函数和同步代码块的区别：
@@ -1049,50 +1080,52 @@ StaticSynFunctionLockDemo.java
 	Two ways to get it :
 		1 可以用 getClass方法获取，
 		2 也可以用当前  类名.class 表示。
-	eg:StaticSynFunctionLockDemo.java
 
-
+SingleDemo.java //BK --day13 Multithreading 7单例
 21-多线程(单例模式涉及的多线程问题).avi (12:13)--300
-SingleDemo.java
-	1 饿汉式，没有安全问题
-	2 SingleDemo line 39--41//懒汉式
-		//加入同步为了解决多线程安全问题。
-		//加入双重判断是为了解决效率问题。
+		1 饿汉式，没有安全问题
+		2 SingleDemo line 39--41//懒汉式
+			//加入同步为了解决多线程安全问题。
+			//加入双重判断是为了解决效率问题。
 
 
+DeadLockDemo.java //BK --day13 Multithreading 8死锁
+DeadLockTest.java --remember one Lock, easy one .
 22-多线程(死锁示例).avi (18:38)
-DeadLockDemo.java
 	1 死锁：常见情景之一：同步的嵌套。
 			eg:DeadLockDemo.java
 		   常见情景之二：while（flag）wait，no notify()。
 		   	eg:ProducerConsumerDemo.java line 36.while + notify()
-DeadLockTest.java
-	remember one Lock, easy one .
+
+
+
+
 郁闷答疑图解.bmp
 
 
-//BK --day14 Multithreading Thread
+//BK --day14 Multithreading
 23-多线程(线程间通信-示例).avi (37: 4)
 ResourceDemo.java
 
 24-多线程(线程间通信-等待唤醒机制).avi (34:23)
 ResourceDemo2.java
-wait-notify应用.gif
-	1 等待/唤醒机制，涉及的方法：
-		1，wait(): 让线程处于冻结状态，被wait的线程会被存储到线程池中。
-		2，notify():唤醒线程池中一个线程(任意).
-		3，notifyAll():唤醒线程池中的所有线程。
-		tips：
-			这些方法都必须定义在同步中，因为这些方法是用于操作线程状态的方法。
-			必须要明确到底操作的是哪个锁上的线程。
+	wait-notify应用.gif
+		1 等待/唤醒机制，涉及的方法：
+			1，wait(): 让线程处于冻结状态，被wait的线程会被存储到线程池中。
+			2，notify():唤醒线程池中一个线程(任意).
+			3，notifyAll():唤醒线程池中的所有线程。
+			tips：
+				这些方法都必须定义在同步中，因为这些方法是用于操作线程状态的方法。
+				必须要明确到底操作的是哪个锁上的线程。
 
-	2 为什么操作线程的方法wait notify notifyAll定义在了Object类中？
-		因为这些方法是监视器的方法，监视器其实就是锁。
-		锁可以是任意的对象，任意的对象调用的方式一定定义在Object类中。
+		2 为什么操作线程的方法wait notify notifyAll定义在了Object类中？
+			因为这些方法是监视器的方法，监视器其实就是锁。
+			锁可以是任意的对象，任意的对象调用的方式一定定义在Object类中。
 
 25-多线程(线程间通信-等待唤醒机制-代码优化).avi ( 6:48)
 ResourceDemo3.java
 
+//BK --day14 Multithreading 6Model-多生产者多消费者
 26-多线程(线程间通信-多生产者多消费者问题).avi (34: 3)
 ProducerConsumerDemo.java
 
@@ -1167,7 +1200,6 @@ JoinDemo.java
 
 37-多线程(面试题).avi ( 8: 9) --575m
 ThreadTest.java
-
 
 
 多线程技术总结.java
@@ -2330,7 +2362,7 @@ class BK
 {
 	public static void main(String[] args) throws IOException
 	{
-		// BK --day03 2while 两重while嵌套
+		// BK --day03 2语句 2while 两重while嵌套
 		BK.readMyKey();
 	}
 

@@ -16,6 +16,8 @@ class Outer2
 		{
 			int num = 5;
 			System.out.println(Outer2.this.num);
+			System.out.println(Inner.this.num);
+			System.out.println(num);
 		}
 	}
 

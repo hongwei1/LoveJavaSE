@@ -1,68 +1,93 @@
 package itcastday13;
 
 /*
-同步函数的使用的锁是this；
+	同步函数的使用的锁是this；
 
-同步函数和同步代码块的区别：
-同步函数的锁是固定的this。
+	同步函数和同步代码块的区别：同步函数的锁是固定的this。
 
-同步代码块的锁是任意的对象。
+	同步代码块的锁是任意的对象。
 
-建议使用同步代码块。
-
-
+	建议使用同步代码块。
 */
-class Ticket2 implements Runnable {
-	private int num = 100;
-	// Object obj = new Object();
+class Ticket2 implements Runnable
+{
+	private int num = 10;
+	Object obj = new Object();
 	boolean flag = true;
 
-	public void run() {
+	@Override
+	public void run()
+	{
 		// System.out.println("this:"+this);
 
-		if (flag)
-			while (true) {
-				synchronized (this) {
-					if (num > 0) {
-						try {
+		if (this.flag)
+		{
+			while (true)
+			{
+				synchronized (this) // this.obj
+				{
+					if (this.num > 0)
+					{
+						try
+						{
 							Thread.sleep(10);
-						} catch (InterruptedException e) {
 						}
-						System.out.println(Thread.currentThread().getName() 
-								+ ".....obj...." + num--);
+						catch (InterruptedException e)
+						{
+						}
+						System.out.println(Thread.currentThread().getName() + ".....obj...." + this.num--);
 					}
 				}
 			}
+		}
 		else
+		{
 			while (true)
+			{
 				this.show();
+			}
+		}
 	}
 
-	public synchronized void show() {
-		if (num > 0) {
-			try {
+	public synchronized void show()
+	{
+		if (this.num > 0)
+		{
+			try
+			{
 				Thread.sleep(10);
-			} catch (InterruptedException e) {
+			}
+			catch (InterruptedException e)
+			{
 			}
 
-			System.out.println(Thread.currentThread().getName() 
-					+ ".....function...." + num--);
+			System.out.println(Thread.currentThread().getName() + ".....function...." + this.num--);
 		}
 	}
 }
 
-class SynFunctionLockDemo {
-	public static void main(String[] args) {
+/**
+ * 线程1是同步代码块 ，线程2同步函数。要不是同一个this锁就会出现重复。 通过换锁Object obj = new Object(); 来验证函数正确。
+ *
+ * @author zhanghongwei
+ *
+ */
+public class SynFunctionLockDemo
+{
+	public static void main(String[] args)
+	{
 		Ticket2 t = new Ticket2();
-		// System.out.println("t:"+t);
 
 		Thread t1 = new Thread(t);
 		Thread t2 = new Thread(t);
 
 		t1.start();
-		try {
+		try
+		{
 			Thread.sleep(10);
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e)
+		{
 		}
 		t.flag = false;
 		t2.start();

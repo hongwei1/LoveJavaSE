@@ -2,7 +2,7 @@ package itcastday07;
 
 import itcastday07.TestInnerStatic.InnerClass;
 
-class TestInnerStatic
+public class TestInnerStatic
 {
 	public static class InnerClass
 	{
@@ -24,6 +24,5 @@ class Test
 	{
 		TestInnerStatic.InnerClass.doSomething();
 		InnerClass.doSomething();
-
 	}
 }

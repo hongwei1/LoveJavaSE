@@ -1,40 +1,58 @@
 package itcastday10;
 
-class FuT2 {
+class FuT2
+{
+	static
+	{
+		System.out.println("fu lei static construction code run ");
+	}
 	{
 		System.out.println("fu lei construction code run ");
 	}
-	
-	FuT2() {
-		System.out.println("fu lei fuction run ");
-		show();
-	}
 
-	void show() {
-		System.out.println("hehe");
-	}
-}
-
-class ZiT2 extends FuT2{
-	int num = 9;
+	FuT2()
 	{
-		System.out.println("constructor code ..." + num);
-		num = 10;
+		System.out.println("fu lei constructor run ");
+		this.show();
 	}
 
-	ZiT2() {
+	void show()
+	{
+		System.out.println("fu show ");
+	}
+}
+
+class ZiT2 extends FuT2
+{
+	static int num = 1;
+	static
+	{
+		System.out.println("zi static constructor code ..." + ZiT2.num);
+		ZiT2.num = 2;
+	}
+	{
+		System.out.println("zi constructor code ..." + ZiT2.num);
+		ZiT2.num = 3;
+	}
+
+	ZiT2()
+	{
 		super();
-		System.out.println("zi constructor ..." + num);
+		System.out.println("zi constructor ..." + ZiT2.num);
 	}
 
-	void show() {
-		System.out.println("show ... " + num);
+	@Override
+	void show()
+	{
+		System.out.println("zi show ... " + ZiT2.num);
 	}
 
 }
 
-public class Test2 {
-	public static void main(String[] args) {
+public class Test2
+{
+	public static void main(String[] args)
+	{
 		new ZiT2();
 	}
 }

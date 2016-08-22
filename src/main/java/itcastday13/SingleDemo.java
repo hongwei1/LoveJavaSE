@@ -1,10 +1,5 @@
 package itcastday13;
 
-/*
-//BK --day13 Multithreading Thread 多线程下的单例
-
-*/
-
 //饿汉式
 class Single2
 {
@@ -38,7 +33,7 @@ class Single1
 	{
 		if (Single1.s == null) // 效率问题
 		{
-			synchronized (Single1.class) // 同步安全问题
+			synchronized (Single1.class) // 同步安全问题, 静态函数只能用字节码
 			{
 				if (Single1.s == null)
 				{
@@ -56,77 +51,5 @@ class SingleDemo
 	public static void main(String[] args)
 	{
 		System.out.println("Hello World!");
-	}
-}
-
-// my heaven
-
-class myFH
-{
-	private myFH()
-	{
-	};
-
-	private static myFH myFHInstance = new myFH();
-
-	public static myFH getInstance()
-	{
-		return myFH.myFHInstance;
-	}
-}
-
-class mySc
-{
-	private mySc()
-	{
-	};
-
-	private static mySc myInsatnce = null;
-
-	public static mySc getInstance()
-	{
-		if (mySc.myInsatnce == null)
-		{
-			mySc.myInsatnce = new mySc();
-		}
-
-		return mySc.myInsatnce;
-	}
-}
-
-class myThread1 implements Runnable
-{
-
-	private Object lock = new Object();
-	mySc instance = null;
-
-	@Override
-	public void run()
-	{
-		if (mySc.getInstance() != null)
-		{
-			this.instance = mySc.getInstance();
-		}
-		else
-		{
-			synchronized (this.lock)
-			{
-				this.instance = mySc.getInstance();
-				System.out.println(this.instance);
-			}
-		}
-	}
-
-}
-
-class myMain1
-{
-	public static void main(String[] args)
-	{
-		myThread1 myThread = new myThread1();
-		Thread thread1 = new Thread(myThread);
-		Thread thread2 = new Thread(myThread);
-		thread1.start();
-		thread2.start();
 	}
 }

@@ -1,14 +1,14 @@
 package itcastday11;
 
-interface Inter
+interface Interface
 {
 	void function();
 }
 
-class D implements Inter
+class D implements Interface
 {
 	@Override
-	public void function()// throws Exception
+	public void function() // throws Exception
 	{
 	}
 }
@@ -27,13 +27,22 @@ class C extends Exception
 
 // Exception
 // |--A
-// |--B
+// A--|--B
 // |--C
 
 class Fu
 {
 	void show() throws A
 	{
+	}
+}
+
+class Zi extends Fu
+{
+	@Override
+	void show() throws B // only can thrwo A,B, can't C.
+	{
+
 	}
 }
 
@@ -46,7 +55,8 @@ class Test
 			f.show();
 
 		}
-		catch (A a)
+		catch (A a) // BK --day11 Exception 子类抛异常受限原因
+		// 要保证多态的正确，传入的父类，只能处理父类的异常。要是多了子类异常，代码将会改动。
 		{
 		}
 	}
@@ -56,20 +66,12 @@ class Test
 	}
 }
 
-class Zi extends Fu
-{
-	@Override
-	void show()
-	{
-
-	}
-}
-
 public class ExceptionDemo6
 {
 	public static void main(String[] args)
 	{
 		Test t = new Test();
 		t.show(new Zi());
+		t.method(new Zi());
 	}
 }
