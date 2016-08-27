@@ -1,29 +1,49 @@
 package itcastday17.p2.linkedlist.test;
-//堆栈：先进后出 First In Last Out  FILO
 /*
  * stack has two functions :add and remove
  * add first and remove last
- * 
- * 
+ *
  * */
 
 import java.util.LinkedList;
 
-public class Stack {
+/**
+ * 堆栈：先进后出 First In Last Out FILO
+ * 
+ * @author zhanghongwei
+ *
+ */
+public class Stack
+{
 	private LinkedList stackList;
-	
-	public Stack() {
-		stackList=new LinkedList();
+
+	public Stack()
+	{
+		this.stackList = new LinkedList();
 	}
-	
-	public void add(Object ob){
-		stackList.add(ob);
+
+	public void add(Object ob)
+	{
+		this.stackList.add(ob);
 	}
-	public Object remove(){
-		return stackList.removeLast();
+
+	public Object myGet()
+	{
+		return this.stackList.removeLast();
 	}
-	public Object getItem( int i) {
-		return stackList.get(i);
+
+	public Object remove()
+	{
+		return this.stackList.removeLast();
+	}
+
+	public Object getItem(int i)
+	{
+		return this.stackList.get(i);
+	}
+
+	public boolean isNull()
+	{
+		return this.stackList.isEmpty();
 	}
 }
-//a b c d

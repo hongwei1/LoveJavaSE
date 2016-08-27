@@ -30,10 +30,6 @@ public class LinkedListDemo
 		link.remove("abc4");
 		link.remove(2);
 
-		while (!link.isEmpty())
-		{
-			System.out.println(link.removeLast());
-		}
 		// 3,¸Ä
 		link.set(2, "abc7");
 
@@ -54,6 +50,11 @@ public class LinkedListDemo
 		while (it.hasNext())
 		{
 			System.out.println(it.next());
+		}
+
+		while (!link.isEmpty())
+		{
+			System.out.println(link.removeLast());
 		}
 
 	}

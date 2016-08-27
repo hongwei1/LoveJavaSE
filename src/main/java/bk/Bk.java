@@ -1436,10 +1436,17 @@ WrapperDemo.java
 WrapperDemo2.java //BK --day16 8种包装类 自动拆箱装箱
 	5 自动拆箱装箱
 		jdk1.5以后，自动装箱，如果装箱的是一个字节，那么该数据会被共享不会重新开辟空间。
-
 WrapperTest.java
 
 //BK --day16 Collection
+Collection --15 methods
+	|--List：有序(存入和取出的顺序一致),元素都有索引(角标)，元素可以重复。
+		|--Vector    :内部是数组数据结构，是同步的。 增删，查询都很慢！          --4 constructions  42 methods
+		|--ArrayList :内部是数组数据结构，是不同步的。替代了Vector。查询的速度快! --3 constructions  20 methods
+		|--LinkedList:内部是链表数据结构，是不同步的。增删元素的速度很快。		   --2 constructions  39 methods
+	|--Set ：无序，元素不能重复。
+		|--HashSet：内部数据结构是哈希表 ，是不同步的。 --4Con + 8Meds
+		|--TreeSet：可以对Set集合中的元素进行排序。是不同步的。 --4Con + 26Meds
 CollectionDemo.java //BK --day16 Collection 1-16methods
 	1 集合类的由来：
 		对象用于封装特有数据，对象多了需要存储，如果对象的个数不确定，就使用集合容器进行存储。
@@ -1488,7 +1495,11 @@ CollectionDemo.java //BK --day16 Collection 1-16methods
 			 E next()
 			 void remove()
 
-//BK --day16 List
+//BK --day16 Collection 3List
+|--List：有序(存入和取出的顺序一致),元素都有索引(角标)，元素可以重复。
+		|--Vector    :内部是数组数据结构，是同步的。 增删，查询都很慢！          --4 constructions  42 methods
+		|--ArrayList :内部是数组数据结构，是不同步的。替代了Vector。查询的速度快! --3 constructions  20 methods
+		|--LinkedList:内部是链表数据结构，是不同步的。增删元素的速度很快。		   --2 constructions  39 methods
 List:
 	//TODO 3 数组和链表的结构
 		http://www.cnblogs.com/smyhvae/p/4761593.html
@@ -1498,7 +1509,7 @@ List:
 		http://cmsblogs.com/?p=155
 		http://wiki.jikexueyuan.com/project/java-enhancement/java-twenty.html
 
-ListDemo.java //BK --day16 List 1特有的常见方法--可以操作角标
+ListDemo.java //BK --day16 Collection 3List 1特有的常见方法--可以操作角标
 	1 List -- 25(=15+10 ,15 collection's methods)特有的常见方法：共性特点--可以操作角标。
 		1)，添加
 			void add(index,element);
@@ -1512,20 +1523,13 @@ ListDemo.java //BK --day16 List 1特有的常见方法--可以操作角标
 			int indexOf(object);
 			int lastIndexOf(object);
 			List subList(from,to);
-ListDemo2.java // BK --day16 Collection ArrayList 1特有ListIterator
+
+ListDemo2.java // BK --day16 Collection 3List 4ArrayList 1特有ListIterator
 	2 listIterator -- 9 methods (3 Iterator +6 增加功能)
 		add(E e) ，  hasPrevious() ， nextIndex()
 		previous() ，previousIndex(), set(E e)
 		tips: listIterator可以实现在迭代过程中完成对元素的增删改查。
 		      只有list集合具备该迭代功能.
-
-Test16.txt
-	4 作业：
-		1，自己去查文档演示Vector中的elements()方法。
-		2，LinkedList中的，addFirst addLast getFirst，getLast  removeFirst removeLast。
-		3，既然集合是存储对象的，请定义ArryaList集合，并存储Person对象。如new Person("lisi",20);
-		   并取出。将姓名和年龄打印出来。
-
 
 10-常用对象API(集合框架-List常用子类的特点).avi (19:18)
 Collection --15 methods
@@ -1535,13 +1539,21 @@ Collection --15 methods
 		|--LinkedList:内部是链表数据结构，是不同步的。增删元素的速度很快。		   --2 constructions  39 methods
 	|--Set ：无序，元素不能重复。
 
-
-//BK --day17 List
+//BK --day17 Collection 3List 5Vector
 VectorDemo.java
 	5 Vector 有element的都是特有方法。
 	有自己的迭代器：Enumeration en = v.elements();
 
-LinkedListDemo.java  //BK --day17 LinkedList 1特有的常见方法
+12-常用对象API(集合框架-Vector集合).avi
+		1) difference with Enumeration --2
+			 1Iterator增加： remove elements
+			 2Method names improved
+		2) three methods
+			 boolean hasNext()
+			 E next()
+			 void remove()
+
+LinkedListDemo.java  //BK --day17 Collection 3List 6LinkedList 1特有的常见方法
 	6 LinkedList
 		1，增加
 			addFirst();
@@ -1561,15 +1573,18 @@ LinkedListDemo.java  //BK --day17 LinkedList 1特有的常见方法
 			jdk1.6
 			pollFirst();//获取并移除，如果链表为空，返回null.
 			pollLast();
-DuiLie.java
+//BK --day17 Collection 3List 6LinkedList 2模拟题
 LinkedTest.java
+DuiLie.java
+Stack.java
 	7 两个模拟题
 		 请使用LinkedList来模拟一个堆栈或者队列数据结构。
 		 堆栈：先进后出 First In Last Out  FILO
 		 队列：先进先出 First In First Out FIFO
 		 我们应该描述这样一个容器，给使用提供一个容器对象完成这两种结构中的一种。
 
-ArrayListTest.java & Person.java
+ArrayListTest.java //BK --day17 Collection 3List 7ArrayList 1特有的常见方法
+Person.java
 	8 ArrayList
 	请定义ArryaList集合，并存储Person对象。如new Person("lisi",20);
 	并取出。将姓名和年龄打印出来。
@@ -1577,11 +1592,13 @@ ArrayListTest2.java  --20-常用对象API(集合框架练习).avi (17:35)
 	定义功能去除ArrayList中的重复元素。
 	tips: contains, remove 等的判断也用到了equals，方法，所以要overwrite.
 
-//BK --day17 Set
-Set:元素不可以重复，是无序。
-	Set接口和Collection一致。--15 methods
-HashSetDemo.java
-	|--HashSet: 内部数据结构是哈希表 ，是不同步的。 --4Con + 8Meds
+//BK --day17 Collection 4Set
+Set ：无序，元素不能重复。 Set接口和Collection一致。--16 methods
+	|--HashSet ：内部数据结构是哈希表 ，是不同步的。        --4Con + 8Meds
+	|--TreeSet ：可以对Set集合中的元素进行排序。是不同步的。 --4Con + 26Meds
+
+HashSetDemo.java  //BK --day17 Collection 4Set 1HashSet
+	|--HashSet: 内部数据结构是哈希表 ，是不同步的。 --4Con + 8Meds (all from set)
 哈希表.bmp
 		1 如何保证该集合的元素唯一性呢？哈希表确定元素是否相同
 			1)，hashCode的方法
@@ -1594,19 +1611,23 @@ HashSetDemo.java
 			如果元素要存储到HashSet集合中，必须覆盖hashCode方法和equals方法。
 			一般情况下，如果定义的类会产生很多对象，比如人，学生，书，通常都需要覆盖equals，hashCode方法。
 			建立对象判断是否相同的依据。
-HashSetTest.java
 		3 Test ：
 			往hashSet集合中存储Person对象。如果姓名和年龄相同，视为同一个人。视为相同元素。
-LinkedHashSetDemo.java
+ArrayListTest2.java
+			定义功能去除ArrayList中的重复元素。
+				o.contains(e) 只用到o.equals(e) 方法。
+				o.remove(e)，只用到了o.equals(e)判断
+
+LinkedHashSetDemo.java  //BK --day17 Collection 4Set 1HashSet 1LinkedHashSet
 		4 LinkedHashSet:有序  --4Con+0 Med
 
+TreeSetDemo.java //BK --day17 Collection 4Set 2TreeSet
 	|--TreeSet:可以对Set集合中的元素进行排序。是不同步的。 --4Con + 26Meds
-TreeSetDemo.java
 		1 判断元素唯一性的方式：就是根据比较方法的返回结果是否是0，是0，就是相同元素，不存。
-		2 TreeSet对元素进行排序的方式一：
-			让元素自身具备比较功能，元就需要实现Comparable接口,覆盖compareTo方法。
+		2 TreeSet对元素进行排序的方式一： //BK --day17 Collection 4Set 2TreeSet 1比较器1
+			让元素自身具备比较功能，Person类实现Comparable接口,覆盖compareTo方法。
 ComparatorByLength.java
-ComparatorByName.java
+ComparatorByName.java //BK --day17 Collection 4Set 2TreeSet 1比较器2
 		3 TreeSet集合第二种排序方式二：(如果不要按照对象中具备的自然顺序进行排序。如果对象中不具备自然顺序。怎么办？)
 			让集合自身具备比较功能，定义一个类实现Comparator接口，覆盖compare方法。
 			将该类对象作为参数传递给TreeSet集合的构造函数。
@@ -1614,7 +1635,7 @@ ComparatorByName.java
 TreeSetTest.java
 	对字符串进行长度排序。
 
-//BK --day18 Generics-------------------------------------
+//BK --day18 Generics
 GenericDemo.java
 	1 泛型：
 		jdk1.5出现的安全机制，只能引用类型。
@@ -1705,7 +1726,7 @@ GenericAdvanceDemo5.java
 
 4 通常这些常用的集合容器都是不同步的。
 
-//BK --day18 Map------------------------------------------
+//BK --day18 Map
 //TODO 1 如何理解一个map，它怎么存储，怎么使用？Test18.txt
   		http://www.importnew.com/10620.html
   		http://java.freesion.com/article/31342852080/
@@ -1757,7 +1778,7 @@ MapTest.java
 MapTest2.java
 	查表法
 
-//BK --day19 Collections Arrays------------------------------------------
+//BK --day19 Collections Arrays
 CollectionsDemo.java
 ComparatorByLength.java
 	Collections --52 static methods
@@ -1785,7 +1806,7 @@ ToArray.java
 		  所以建议，最后长度就指定为，集合的size。
 
 
-//BK --day19 JDK5.0------------------------------------------
+//BK --day19 JDK5.0
 ForEachDemo.java
  	foreach语句：
 		1 格式：

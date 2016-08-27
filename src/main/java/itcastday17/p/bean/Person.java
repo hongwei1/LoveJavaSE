@@ -1,81 +1,139 @@
 package itcastday17.p.bean;
 
-public class Person implements Comparable {
+public class Person implements Comparable
+{
 
 	private String name;
 	private int age;
 
-	public Person() {
-		super();
-
+	/**
+	 * @return the name
+	 */
+	public String getName()
+	{
+		return this.name;
 	}
 
-	public Person(String name, int age) {
+	/**
+	 * @param name
+	 * @param age
+	 */
+	public Person(String name, int age)
+	{
 		super();
 		this.name = name;
 		this.age = age;
 	}
 
-	@Override
-	public int hashCode() {
-		// System.out.println(this+".......hashCode");
-
-		return name.hashCode() + age * 27;
-		// return 100;
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
+	/**
+	 * @return the age
+	 */
+	public int getAge()
+	{
+		return this.age;
+	}
 
+	/**
+	 * @param age
+	 *            the age to set
+	 */
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+
+	/**
+	 *
+	 */
+	public Person()
+	{
+		super();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+	{
+		return "Person [name=" + this.name + ", age=" + this.age + "]";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + this.age;
+		result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
+		{
 			return true;
+		}
+		if (obj == null)
+		{
+			return false;
+		}
 		if (!(obj instanceof Person))
-			throw new ClassCastException("ÀàĞÍ´íÎó");
+		{
+			return false;
+		}
+		Person other = (Person) obj;
+		if (this.age != other.age)
+		{
+			return false;
+		}
 
-		// System.out.println(this+"....equals....."+obj);
-		Person p = (Person) obj;
-
-		return this.name.equals(p.name) && this.age == p.age;
+		if (this.name == null)
+		{
+			if (other.name != null)
+			{
+				return false;
+			}
+		}
+		else if (!this.name.equals(other.name))
+		{
+			return false;
+		}
+		return true;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String toString() {
-		return name + ":" + age;
-	}
-	
 	@Override
-	public int compareTo(Object o) {
+	public int compareTo(Object o)
+	{
 
 		Person p = (Person) o;
 
 		int temp = this.age - p.age;
 		return temp == 0 ? this.name.compareTo(p.name) : temp;
 
-		// int temp = this.name.compareTo(p.name);
-		// return temp==0?this.age-p.age:temp;
-
-		/*
-		 * if(this.age>p.age) return 1; if(this.age<p.age) return -1;
-		 * 
-		 * else{
-		 * 
-		 * return this.name.compareTo(p.name); }
-		 */
-
 	}
+
 }

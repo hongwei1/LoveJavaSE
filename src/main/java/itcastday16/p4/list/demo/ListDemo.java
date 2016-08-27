@@ -17,7 +17,6 @@ public class ListDemo
 		list.add("abc2");
 		list.add("abc3");
 		System.out.println(list);
-		String s = null;
 		// 2 ²åÈëÔªËØ¡£
 		list.add(1, "abc9");
 

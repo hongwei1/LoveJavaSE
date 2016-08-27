@@ -10,14 +10,14 @@ public class ListDemo2
 	public static void main(String[] args)
 	{
 
-		List list = new ArrayList();
+		List<String> list = new ArrayList<String>();
 
 		list.add("abc1");
 		list.add("abc2");
 		list.add("abc3");
 		list.add("abc4");
 
-		Iterator it = list.iterator();
+		Iterator<String> it = list.iterator();
 		while (it.hasNext())
 		{
 			System.out.println("next:" + it.next());
@@ -41,9 +41,9 @@ public class ListDemo2
 	 * @throws java.util.ConcurrentModificationException
 	 *
 	 */
-	private static void commonAbtain(List list)
+	private static void commonAbtain(List<String> list)
 	{
-		Iterator it1 = list.iterator();
+		Iterator<String> it1 = list.iterator();
 		while (it1.hasNext())
 		{
 			Object obj = it1.next();
@@ -51,7 +51,7 @@ public class ListDemo2
 			// 可以使用Iterator接口的子接口ListIterator来完成在迭代中对元素进行更多的操作。
 			if (obj.equals("abc9"))
 			{
-				list.add("abc2"); // java.util.ConcurrentModificationException
+				// list.add("abc2"); // java.util.ConcurrentModificationException
 			}
 			else
 			{
@@ -64,9 +64,9 @@ public class ListDemo2
 	/**
 	 * @param list
 	 */
-	private static void listSepcialAbtain(List list)
+	private static void listSepcialAbtain(List<String> list)
 	{
-		ListIterator it = list.listIterator();// 获取列表迭代器对象
+		ListIterator<String> it = list.listIterator();// 获取列表迭代器对象
 		// 它可以实现在迭代过程中完成对元素的增删改查。
 		// 注意：只有list集合具备该迭代功能.
 
