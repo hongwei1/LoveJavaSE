@@ -1,8 +1,10 @@
-package cn.itcast.reflect.test;
+package itcastday28.reflect.test;
 
-public interface PCI {
-	
+public interface PciInterface
+{
+
 	public void open();
+
 	public void close();
 
 }

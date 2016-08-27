@@ -61,13 +61,13 @@ class CarDemo
 		 * 没有名字的对象，其实就是定义对象的简写格式。
 		 * 两种使用情况 ：
 			 * 1，当对象对方法仅进行一次调用的时候，就可以简化成匿名对象。
-				 * new Car().num = 5;
-				 * new Car().color = "green";
-				 * new Car().run();
 			 * 2，匿名对象可以作为实际参数进行传递。
-		 *
 		 * </pre>
 		 */
+		// 匿名对象
+		new Car().num = 5;
+		new Car().color = "green";
+		new Car().run();
 
 		// Car c1 = new Car();
 		// show(c1);

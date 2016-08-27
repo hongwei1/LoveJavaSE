@@ -1,10 +1,16 @@
-package cn.itcast.reflect.test;
+package itcastday28.reflect.test;
 
-public class SoundCard implements PCI {
-	public void open(){
+public class SoundCard implements PciInterface
+{
+	@Override
+	public void open()
+	{
 		System.out.println("sound open");
 	}
-	public void close(){
+
+	@Override
+	public void close()
+	{
 		System.out.println("sound close");
 	}
 

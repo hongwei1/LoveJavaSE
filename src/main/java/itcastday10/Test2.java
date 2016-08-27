@@ -24,27 +24,29 @@ class FuT2
 
 class ZiT2 extends FuT2
 {
-	static int num = 1;
+	int numNormal = 1;
+	static int numStatic = 1;
 	static
 	{
-		System.out.println("zi static constructor code ..." + ZiT2.num);
-		ZiT2.num = 2;
+		System.out.println("zi static constructor code ..." + ZiT2.numStatic);
+		ZiT2.numStatic = 2;
 	}
 	{
-		System.out.println("zi constructor code ..." + ZiT2.num);
-		ZiT2.num = 3;
+		System.out.println("zi constructor code ..." + ZiT2.numStatic);
+		ZiT2.numStatic = 3;
+		this.numNormal = 2;
 	}
 
 	ZiT2()
 	{
 		super();
-		System.out.println("zi constructor ..." + ZiT2.num);
+		System.out.println("zi constructor ..." + ZiT2.numStatic);
 	}
 
 	@Override
 	void show()
 	{
-		System.out.println("zi show ... " + ZiT2.num);
+		System.out.println("zi show ... " + ZiT2.numStatic);
 	}
 
 }
@@ -53,6 +55,9 @@ public class Test2
 {
 	public static void main(String[] args)
 	{
+		System.out.println("----new1 object");
+		new ZiT2();
+		System.out.println("----new2 object");
 		new ZiT2();
 	}
 }

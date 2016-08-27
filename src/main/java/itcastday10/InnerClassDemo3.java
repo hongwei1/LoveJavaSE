@@ -9,10 +9,11 @@ class Outer3
 {
 	int num = 3;
 
-	Object method()
+	public Object method()
 	{
 
-		final int x = 9; // BK --day10 Class 9Inner class 2局部位置Final
+		final int x = 9; // BK --day10 Class 9Inner class 2放在局部代码块
+		// BK --day10 Class 9Inner class 4注意事项 1Final -JDK1.8 支持
 
 		class Inner
 		{
@@ -40,11 +41,3 @@ public class InnerClassDemo3
 
 	}
 }
-/*
- *
- * class Fu extends Object { } class zi extends Fu { }
- *
- * Fu f = new zi();
- *
- * Object o = new Fu();
- */

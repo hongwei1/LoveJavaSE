@@ -1,12 +1,16 @@
 eclipse.preferences.version=1
+encoding//src/main=GBK
+encoding//src/main/java=GBK
 encoding//src/main/java/bk/Bk.java=UTF-8
 encoding//src/main/java/itcastday05/ArrayDemo4.java=UTF-8
 encoding//src/main/java/itcastday05/ArrayTest2.java=GBK
 encoding//src/main/java/itcastday06/Array2Demo.java=UTF-8
 encoding//src/main/java/itcastday06/CarDemo.java=UTF-8
-encoding//src/main/java/itcastday08/ArrayMyUtil.java=UTF-8
 encoding//src/main/java/itcastday08/ExtendsDemo2.java=UTF-8
 encoding//src/main/java/itcastday09/AbstractTest.java=UTF-8
+encoding//src/main/resources=GBK
+encoding//src/test=GBK
+encoding//src/test/java=GBK
 encoding//src/test/resources=GBK
 encoding/<project>=GBK
 encoding/README.md=UTF-8

@@ -5,160 +5,93 @@ package itcastday14;
 */
 
 //资源
-class Resource1 {
+class Resource1
+{
 	String name;
 	String sex;
 }
 
 // 输入
-class Input implements Runnable {
-	Resource1 r;
+class Input implements Runnable
+{
+	Resource1 resource;
 
-	// Object obj = new Object();
-	Input(Resource1 r) {
-		this.r = r;
+	Input(Resource1 r)
+	{
+		this.resource = r;
 	}
 
-	public void run() {
-		int x = 0;
-		while (true) {
-			synchronized (r) {
-				if (x == 0) {
-					r.name = "mike";
-					r.sex = "nan";
-				} else {
-					r.name = "丽丽";
-					r.sex = "女女女女女女";
+	@Override
+	public void run()
+	{
+		boolean writeDifferentValueFlag = true;
+		while (true)
+		{
+			synchronized (this.resource)
+			{
+				if (writeDifferentValueFlag)
+				{
+					this.resource.name = "mike";
+					this.resource.sex = "nan";
 				}
+				else
+				{
+					this.resource.name = "丽丽";
+					this.resource.sex = "女女女女女女";
+				}
+				writeDifferentValueFlag = !writeDifferentValueFlag;
 			}
-			x = (x + 1) % 2;
 		}
 	}
 }
 
 // 输出
-class Output implements Runnable {
+class Output implements Runnable
+{
 
-	Resource1 r;
+	Resource1 resource;
 
-	// Object obj = new Object();
-	Output(Resource1 r) {
-		this.r = r;
+	Output(Resource1 r)
+	{
+		this.resource = r;
 	}
 
-	public void run() {
-		while (true) {
-			synchronized (r) {
-				System.out.println(r.name + "....." + r.sex);
+	@Override
+	public void run()
+	{
+		while (true)
+		{
+			synchronized (this.resource)
+			{
+				System.out.println(this.resource.name + "....." + this.resource.sex);
 			}
 		}
 	}
 }
 
-class ResourceDemo {
-	public static void main(String[] args) {
-		// 创建资源。
+/**
+ * 一个线程写资源，另一个线程读资源。同步代码块可以保证，两个线程不会同时处理一个资源。但是不能保证访问的顺序。要写完才开始读，写一个读一个这样的顺序要通过wait 和 notify函数实现。
+ *
+ * @author zhanghongwei
+ *
+ */
+class ResourceDemo
+{
+	public static void main(String[] args)
+	{
+		// 1创建资源。
 		Resource1 r = new Resource1();
-		// 创建任务。
+
+		// 2创建任务。
 		Input in = new Input(r);
 		Output out = new Output(r);
-		// 创建线程，执行路径。
+
+		// 3创建线程，执行路径。
 		Thread t1 = new Thread(in);
 		Thread t2 = new Thread(out);
-		// 开启线程
+
+		// 4开启线程
 		t1.start();
 		t2.start();
-	}
-}
-
-// My Heaven
-class MyTestResource {
-	public static void main(String[] args) {
-		// 1 creat the recource
-		RecourceMy myResource = new RecourceMy();
-
-		// 2 discribute the resource
-		WriteJob writeJob = new WriteJob(myResource);
-		ReadJob readJob = new ReadJob(myResource);
-
-		Thread t1 = new Thread(writeJob);
-		Thread t2 = new Thread(readJob);
-
-		// 3 start job
-		t1.start();
-		t2.start();
-	}
-}
-
-class RecourceMy {
-	private String name;
-	private String sex;
-	private boolean writeReadFlag = false;
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	synchronized void set() {
-		if (writeReadFlag)
-			try {
-				this.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		name = "A";
-		sex = "A";
-		writeReadFlag = true;
-		System.out.println(this.name + "....." + this.sex);
-		this.notify();
-	}
-
-	synchronized void get() {
-		if (!writeReadFlag)
-			try {
-				this.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		name = "B";
-		sex = "B";
-		writeReadFlag = false;
-		System.out.println(this.name + "....." + this.sex);
-		this.notify();
-	}
-
-}
-
-class WriteJob implements Runnable {
-	RecourceMy my;
-
-	public WriteJob(RecourceMy myResource) {
-		this.my = myResource;
-	}
-
-	@Override
-	public void run() {
-		while (true) {
-			my.set();
-		}
-	}
-
-}
-
-class ReadJob implements Runnable {
-	RecourceMy my;
-
-	public ReadJob(RecourceMy myResource) {
-		this.my = myResource;
-	}
-
-	@Override
-	public void run() {
-		while (true) {
-			my.get();
-		}
 	}
 }

@@ -20,7 +20,7 @@ package itcastday12;
 			3，直接创建Thread的子类对象创建线程。
 
 */
-class Demo2 extends Thread // BK --day12 Multithreading 2继承Thread类
+class Demo2 extends Thread // BK --day12 Multithreading 02继承Thread类
 {
 
 	Demo2(String name)

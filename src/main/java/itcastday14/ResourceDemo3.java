@@ -1,50 +1,70 @@
 package itcastday14;
 
-class Resource3 {
+class Resource3
+{
 	private String name;
 	private String sex;
 	private boolean flag = false;
 
-	public synchronized void set(String name, String sex) {
-		if (flag)
-			try {
+	public synchronized void set(String name, String sex)
+	{
+		if (this.flag)
+		{
+			try
+			{
 				this.wait();
-			} catch (InterruptedException e) {
 			}
+			catch (InterruptedException e)
+			{
+			}
+		}
 		this.name = name;
 		this.sex = sex;
-		flag = true;
+		this.flag = true;
 		this.notify();
 	}
 
-	public synchronized void out() {
-		if (!flag)
-			try {
+	public synchronized void out()
+	{
+		if (!this.flag)
+		{
+			try
+			{
 				this.wait();
-			} catch (InterruptedException e) {
 			}
-		System.out.println(name + "...+...." + sex);
-		flag = false;
-		notify();
+			catch (InterruptedException e)
+			{
+			}
+		}
+		System.out.println(this.name + "...+...." + this.sex);
+		this.flag = false;
+		this.notify();
 	}
 }
 
 // 输入
-class Input3 implements Runnable {
+class Input3 implements Runnable
+{
 	Resource3 r;
 
-	// Object obj = new Object();
-	Input3(Resource3 r) {
+	Input3(Resource3 r)
+	{
 		this.r = r;
 	}
 
-	public void run() {
+	@Override
+	public void run()
+	{
 		int x = 0;
-		while (true) {
-			if (x == 0) {
-				r.set("mike", "nan");
-			} else {
-				r.set("丽丽", "女女女女女女");
+		while (true)
+		{
+			if (x == 0)
+			{
+				this.r.set("mike", "nan");
+			}
+			else
+			{
+				this.r.set("丽丽", "女女女女女女");
 			}
 			x = (x + 1) % 2;
 		}
@@ -52,24 +72,38 @@ class Input3 implements Runnable {
 }
 
 // 输出
-class Output3 implements Runnable {
+class Output3 implements Runnable
+{
 
 	Resource3 r;
 
-	// Object obj = new Object();
-	Output3(Resource3 r) {
+	Output3(Resource3 r)
+	{
 		this.r = r;
 	}
 
-	public void run() {
-		while (true) {
-			r.out();
+	@Override
+	public void run()
+	{
+		while (true)
+		{
+			this.r.out();
 		}
 	}
 }
 
-class ResourceDemo3 {
-	public static void main(String[] args) {
+/**
+ *
+ * 整理了，代码结构，把代码放在正确的类里面。
+ *
+ * @author zhanghongwei
+ *
+ */
+
+class ResourceDemo3
+{
+	public static void main(String[] args)
+	{
 		// 创建资源。
 		Resource3 r = new Resource3();
 		// 创建任务。

@@ -1,11 +1,10 @@
 package itcastday16.p2.wrapper.demo;
 
-public class WrapperDemo {
+public class WrapperDemo
+{
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		// 1 基本应用
 		System.out.println(Integer.MAX_VALUE);
 		System.out.println(Integer.toBinaryString(-6));
@@ -14,7 +13,7 @@ public class WrapperDemo {
 		// 2 two constructors
 		int num = 4;
 		Integer i = new Integer(5); // primitive number to Integer
-		i.parseInt("12");
+		Integer.parseInt("12");
 		i = new Integer("45"); // String to Integer
 		System.out.println(i + 1);
 
@@ -47,7 +46,7 @@ public class WrapperDemo {
 		String sWei3 = valueOf1.toString();
 
 		// 4 十进制-->其他进制。
-		
+
 		System.out.println(Integer.toBinaryString(60));
 		System.out.println(Integer.toOctalString(60));
 		System.out.println(Integer.toHexString(60));

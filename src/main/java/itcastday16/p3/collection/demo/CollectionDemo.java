@@ -1,119 +1,70 @@
 package itcastday16.p3.collection.demo;
 
-import java.security.acl.Permission;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import commontools.*;;
+public class CollectionDemo
+{
 
-public class CollectionDemo {
+	public static void main(String[] args)
+	{
+		Collection<String> c1 = new ArrayList<String>();
+		Collection<String> c2 = new ArrayList<String>();
 
-	public static void main(String[] args) {
-		Collection coll = new ArrayList();
-		show(coll);
-		Collection c1 = new ArrayList();
-		Collection c2 = new ArrayList();
-		show(c1, c2);
-		
-//		myPracticeSpace();
-
-	}
-
-	/**
-	 * @param c1
-	 */
-	private static void myPracticeSpace() {
-		System.out.println("--------My free test space-------");
-		//my practice to know more about the array and objects
-		int [] arr= new int[3];
-		Person [] person = new Person [2];
-		for (int i = 0; i < person.length; i++) {
-			person[i]= new Person(String.valueOf(i),i);
-		}
-		System.out.println(person[1].getAge()+person[1].getName());
-		//my practice to know more about the collections and objects
-		Collection c1= new ArrayList();	
-		c1.add(new Person [2]);
-		c1.add(null);
-		c1.add(5.5);
-		c1.add(true);
-		c1.add('a');
-		c1.add("I love you");
-		c1.add(arr);
-		System.out.println("----"+c1.size());
-		for (Iterator iterator = c1.iterator(); iterator.hasNext();) {
-			Object object = (Object) iterator.next();
-			System.out.println(""+object);
-		}
-		
-		
-		//end my practice
-	}
-
-	public static void show(Collection c1, Collection c2) {
-
-		// ç»™c1æ·»åŠ å…ƒç´ ã€‚
+		// 1 Ìí¼ÓÔªËØ¡£
 		c1.add("abc1");
 		c1.add("abc2");
 		c1.add("abc3");
 		c1.add("abc4");
 
-		// ç»™c2æ·»åŠ å…ƒç´ ã€‚
+		c2.add("abc3");
 		c2.add("abc1");
 		c2.add("abc2");
-		c2.add("abc3");
-		c2.add("abc4");
-		c2.add("abc5");
+		// c2.add("abc4");
+		// c2.add("abc5");
+		c1.containsAll(c2);
 
-		System.out.println("c1:" + c1);
-		System.out.println("c2:" + c2);
+		// ÑİÊ¾addAll
+		c1.addAll(c2);// ½«c2ÖĞµÄÔªËØÌí¼Óµ½c1ÖĞ¡£
 
-		// 1 æ¼”ç¤ºaddAll
-		c1.addAll(c2);//å°†c2ä¸­çš„å…ƒç´ æ·»åŠ åˆ°c1ä¸­ã€‚
+		// 2£¬É¾³ıÔªËØ¡£remove
+		c1.remove("abc2");// »á¸Ä±ä¼¯ºÏµÄ³¤¶È
+		// ÑİÊ¾removeAll
+		boolean b = c2.removeAll(c1);// ½«Á½¸ö¼¯ºÏÖĞµÄÏàÍ¬ÔªËØ´Óµ÷ÓÃremoveAllµÄ¼¯ºÏÖĞÉ¾³ı¡£
+		System.out.println("removeAll:" + b);
+		// Çå¿Õ¼¯ºÏ.
+		c2.clear();
 
-		// 2 æ¼”ç¤ºremoveAll
-		 boolean b = c1.removeAll(c2);//å°†ä¸¤ä¸ªé›†åˆä¸­çš„ç›¸åŒå…ƒç´ ä»è°ƒç”¨removeAllçš„é›†åˆä¸­åˆ é™¤ã€‚
-		 System.out.println("removeAll:"+b);
+		// 3£¬ÅĞ¶Ï
+		System.out.println(c1.contains("abc3"));
+		// ÑİÊ¾containsAll
 
-		// 3 æ¼”ç¤ºretainAll -- å’ŒremoveAllåŠŸèƒ½ç›¸å ã€‚
-//		boolean b = c1.retainAll(c2);// å–äº¤é›†ï¼Œä¿ç•™å’ŒæŒ‡å®šçš„é›†åˆç›¸åŒçš„å…ƒç´ ï¼Œè€Œåˆ é™¤ä¸åŒçš„å…ƒç´ ã€‚
+		System.out.println("containsAll:" + b);
+
+		// 4, »ñÈ¡£º
+		c1.size();
+
+		// 4.1 Ê¹ÓÃÁËCollectionÖĞµÄiterator()·½·¨,µ÷ÓÃ¼¯ºÏÖĞµÄµü´úÆ÷·½·¨£¬ÊÇÎªÁË»ñÈ¡¼¯ºÏÖĞµÄµü´úÆ÷¶ÔÏó¡£
+		Iterator<String> iteratorWhile = c1.iterator();
+		while (iteratorWhile.hasNext())
+		{
+			System.out.println(iteratorWhile.next()); // java.util.NoSuchElementException
+		}
+
+		System.out.println(c1.size());
+
+		// 4.2 use the for loop
+		for (Iterator<String> iteratorFor = c1.iterator(); iteratorFor.hasNext();)
+		{
+			System.out.println(iteratorFor.next());
+		}
+
+		// 5 ÆäËû
+		// ÑİÊ¾retainAll,ºÍremoveAll¹¦ÄÜÏà·´ ¡£
+		b = c1.retainAll(c2);// È¡½»¼¯£¬±£ÁôºÍÖ¸¶¨µÄ¼¯ºÏÏàÍ¬µÄÔªËØ£¬¶øÉ¾³ı²»Í¬µÄÔªËØ¡£
 		System.out.println("retainAll:" + b);
-		
-		// 4 æ¼”ç¤ºcontainsAll
-//		boolean b = c1.containsAll(c2);
-		System.out.println("containsAll:"+b);
-		
 		System.out.println("c1:" + c1);
-	}
-
-	public static void show(Collection coll) {
-
-		// 1,æ·»åŠ å…ƒç´ ã€‚add.
-
-		coll.add("Love you ");
-		coll.add("haha");
-		coll.add("abc1");
-		coll.add("abc2");
-		coll.add("abc3");
-		coll.addAll(coll);
-		System.out.println(coll);
-
-		// 2ï¼Œåˆ é™¤å…ƒç´ ã€‚remove
-		System.out.println(coll.size());
-		System.out.println(coll.remove("abc2"));//ä¼šæ”¹å˜é›†åˆçš„é•¿åº¦
-		System.out.println(coll.size());
-		System.out.println(coll.remove("xxx"));//ä¼šæ”¹å˜é›†åˆçš„é•¿åº¦
-		System.out.println(coll.size());
-		
-		// 3 æ¸…ç©ºé›†åˆ.
-		coll.clear();//ä¼šæ”¹å˜é›†åˆçš„é•¿åº¦
-		System.out.println(coll.size());
-		coll.removeAll(coll);
-		System.out.println(coll.size());
-		System.out.println(coll.contains("abc3"));
-
-		System.out.println(coll);
 
 	}
 

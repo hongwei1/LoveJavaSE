@@ -1,14 +1,17 @@
-package cn.itcast.reflect.test;
+package itcastday28.reflect.test;
 
-public class NetCard implements PCI {
+public class NetCard implements PciInterface
+{
 
 	@Override
-	public void open() {
+	public void open()
+	{
 		System.out.println("net open");
 	}
 
 	@Override
-	public void close() {
+	public void close()
+	{
 		System.out.println("net close");
 	}
 

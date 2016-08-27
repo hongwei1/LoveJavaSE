@@ -1,13 +1,16 @@
-package cn.itcast.reflect.test;
+package itcastday28.reflect.test;
 
-public class Mainboard {
-
-	public void run() {
+public class Mainboard
+{
+	public void run()
+	{
 		System.out.println("main board run....");
 	}
 
-	public void usePCI(PCI p) {//PCI p = new SouncCard();
-		if (p != null) {
+	public void usePCI(PciInterface p)
+	{// PCI p = new SouncCard();
+		if (p != null)
+		{
 			p.open();
 			p.close();
 		}

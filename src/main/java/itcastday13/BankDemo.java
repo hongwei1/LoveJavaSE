@@ -40,7 +40,7 @@ class Custermer implements Runnable
 	}
 }
 
-class BankDemo
+public class BankDemo
 {
 	public static void main(String[] args)
 	{

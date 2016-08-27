@@ -1,22 +1,60 @@
 package itcastday10;
 
+import java.util.Iterator;
+
 class Outer
 {
 	private static int num = 31;
+	InnerPrivate innerPrivate = new InnerPrivate();
+	Inner innerPublic = new Inner();
+
+	public InnerPrivate getInnerPrivateInstance()
+	{
+		return new InnerPrivate();
+	}
 
 	class Inner// 内部类。
 	{
+		int test = 5;
+
 		void show()
 		{
 			System.out.println("show run..." + Outer.num);
 		}
-		/*
-		 * static void function()//如果内部类中定义了静态成员，该内部类也必须是静态的。 { System.out.println("function run ...."+num); }
-		 */
+
+		// BK --day10 Class 9Inner class 4注意事项 2Static
+		// 如果内部类中定义了静态成员，该内部类也必须是静态的。
+		// static int number = 5;// 或者变成final
+		//
+		// static void function()
+		// {
+		// System.out.println("function run ...." + Outer.num);
+		// }
+
+	}
+
+	// BK --day10 Class 9Inner class 4注意事项 3Priavte 还可能访问
+	private class InnerPrivate implements Iterable<Object>// 内部类。
+	{
+		int test = 5;
+
+		void show()
+		{
+			System.out.println("show run..." + Outer.num);
+		}
+
+		@Override
+		public Iterator<Object> iterator()
+		{
+			return null;
+		}
+
 	}
 
 	static class InnerStatic// 内部类。
 	{
+		static int number = 5;
+
 		void show()
 		{
 			System.out.println("show run..." + Outer.num);
@@ -41,13 +79,14 @@ class Outer
 
 class InnerClassDemo
 {
+
 	public static void main(String[] args)
 	{
 		Outer out = new Outer();
 		Outer.methodStatic();
 
 		// BK --day10 Class 9Inner class 1三种访问方式
-		// 直接访问外部类中的内部类中的成员-不多见
+		// 先创建外部类对象，再创建内部类对象-不多见
 		Outer.Inner in1 = new Outer().new Inner();
 		in1.show();
 
@@ -59,5 +98,12 @@ class InnerClassDemo
 		// 如果内部类是静态的，成员是静态的。-常见
 		Outer.InnerStatic.showStatic();
 
+	}
+
+	public void aa()
+	{
+		Outer out = new Outer();
+		Iterable<Object> in1 = out.getInnerPrivateInstance();
+		in1.iterator();
 	}
 }

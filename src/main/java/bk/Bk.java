@@ -20,12 +20,12 @@
 1 Demo.java          -- P8 	      03-Java语言基础(注释).avi
 2 VarDemo.java       -- P10--P15  10-Java语言基础(变量的基本演示).avi
 	八种基本类型：
-		整数类型(byte-8bits, short-16bits, int-32bits, long-64bits) 数值型
-		浮点类型(float-32bits, double-64bits)
+		数值型--整数类型(byte-8bits, short-16bits, int-32bits, long-64bits)
+		     --浮点类型(float-32bits, double-64bits)
 		字符型(char-[0-255])
 		布尔型（boolean）
 	三种引用：
-		类(class)
+		类(class)-String ,int []a,
 		接口(interface)
 		数组( [ ] )
 3 VarDemo2.java      -- P15       11-Java语言基础(类型提升&强制转换).avi
@@ -289,12 +289,14 @@ StaticDemo.java
 		4，数据存储位置不同。
 			成员变量数据存储在堆内存的对象中，所以也叫对象的特有数据.
 			静态变量数据存储在方法区(共享数据区)的静态区，所以也叫对象的共享数据.
+
+//BK --day07 Class 4Encapsulation 3Static 2使用注意事项
 	3 静态使用的注意事项：
 		1，静态方法只能访问静态成员。(非静态方法既可以访问静态，又可以访问非静态)
 		2，静态方法中不可以使用this或者super关键字。
 		3，主函数是静态的。
 
-MainDemo.java //BK --day07 Class 4Encapsulation 3Static 2Main
+MainDemo.java
 	4 主函数特殊之处：
 		1，格式是固定的。
 		2，被JVM所识别和调用。
@@ -334,12 +336,10 @@ StaticCodeDemo.java  //BK --day07 Class 4Encapsulation 3Static 4静态&构造代
 
 TestInnerStatic.java
 itcastday10.InnerClassDemo3
-static 可以修饰成员，当成员是类时，也可以用static修饰 --//BK --day07 Class 4Encapsulation 3Static 5Static Inner Class
+static 可以修饰成员，当成员是类时，也可以用static修饰 --//BK --day07 Class 4Encapsulation 3Static 5Static修饰内部类
 
 
 //BK --day08 Class
-ArrayUtil.java  --复习，把以前的知识综合运用一下。
-
 SingleDemo08.java  //BK --day08 Class 4Encapsulation 4单例
 单例内存图解.bmp
 	设计模式：对问题行之有效的解决方式。其实它是一种思想。
@@ -672,7 +672,7 @@ InnerClassDemo.java
 
 	2 内部类访问特点：
 		1，内部类可以直接访问外部类中的成员。 		--即使private 也可以访问
-		2，外部类要访问内部类，必须建立内部类的对象。
+		2，外部类要访问内部类，必须建立内部类的对象，即使内部类private，也可以创建。
 
 	3 一般用于类的设计：
 		分析事物时，发现该事物描述中还有事物，而且这个事物还在访问被描述事物的内容。
@@ -697,24 +697,27 @@ InnerClassDemo2.java
 		那是因为内部类持有了外部类的引用。  "外部类名.this"
 		eg: System.out.println(Outer2.this.num);
 
+// BK --day10 Class 9Inner class 4注意事项
 InnerClassDemo3.java
 	6 内部类可以存放在局部位置上。
-		内部类在局部位置上只能访问局部中被final修饰的局部变量。
+		内部类在局部位置上只能访问局部中被final修饰的局部变量。JDK1.8 支持了？？
 
-
-----------------//BK --day10 Class 9Inner class 3Anonymous
+----------------//BK --day10 Class 9Inner class 3匿名内部类
 InnerClassDemo4.java
 	1 Definition:
 		前提：
-			内部类必须继承或者实现一个外部类或者接口。
-		本质：匿名内部类：其实就是一个匿名子类对象，就是内部类的简写格式。
+			匿名内部类必须继承或者实现一个外部类或者接口。
+		本质：其实就是一个匿名子类，就是内部类的简写格式。
 
-	2	格式：new 父类or接口(){子类内容}
+	2 格式：new 父类or接口(){子类内容}
+
+// BK --day10 Class 9Inner class 3匿名内部类 使用场景
 InnerClassDemo5.java
 	3  通常的使用场景之一：
 		当函数参数是接口类型时，而且接口中的方法不超过三个。
 		可以用匿名内部类作为实际参数进行传递
 		eg:show(new Inter()
+
 InnerClassDemo6.java
 	4 一道面试题：
 		Object obj = new Object()
@@ -734,8 +737,8 @@ InnerClassDemo6.java
 Test.java
 Test2.java
 先初始化父类的静态代码-->初始化子类的静态代码-->
-     (创建实例)-->父类默认初始化-->父类显示初始化-->初始化父类的构造
-             -->子类默认初始化-->子类显示初始化-->初始化子类的构造
+     (创建实例)-->父类默认初始化-->父类显示初始化-->父类构造代码块-->初始化父类的构造
+             -->子类默认初始化-->子类显示初始化-->子类构造代码块-->初始化子类的构造
 
 //BK --day11 Exception
 ExceptionDemo.java
@@ -875,8 +878,8 @@ ExceptionDemo6.java //BK --day11 Exception 子类注意
 		注意：如果父类的方法没有抛出异常，那么子类覆盖时绝对不能抛，就只能try .
 
 
-//BK --day11 Object 1Cons+12methods
-ObjectDemo.java --
+//BK --day11 Object
+ObjectDemo.java --1Cons (Object,是JVM调用不能显示调用)+9publicmethods+2protected (clone,finalize)+1native (registerNatives)
 	Object:所有类的根类，Object是不断抽取而来，具备着所有对象都具备的共性内容。
 	1 Object构造函数： --1 by JVM, can not control
 	    static {
@@ -902,14 +905,40 @@ ObjectDemo.java --
 	05-面向对象(Object类-toString方法).avi ( 4:30)
 
 //BK --day12 A包管理
-haha.jar
-DemoA.java
-DemoB.java
-ExceptionTest2.java
-JarDemo.java
-package-info.java
-PackageDemo.java
+PackageDemo.java //BK --day12 A包管理 1Java命令行
+02-面向对象(包-包之间访问-protected).avi
+	Basic Java Commands:
+		javac -d . DemoB.java   -- 编译文件会自动加路劲，产生文件夹
+		java itcastday12.DemoB  -- 执行生成的字节码文件，要加包的路径
+DemoA.java --子类
+DemoB.java --父类//BK --day12 A包管理 2Protected
 
+              public		protected		default		  private
+同一类中        ok             ok              ok           ok
+同一包中        ok             ok              ok
+不同包的子类中   ok             ok
+不同包不在子类   ok
+
+
+03-面向对象(包-导入import).avi
+//import packa.DemoA; //导入了packa包中的DemoA类
+import packa.*;       //导入了packa包中所有的类
+import packa.abc.*;   //并不导入所有目录下的包,需要自己写包路劲，自己导入
+
+packa\DemoA.class
+packa\abc\DemoAbc.class
+
+//导包的原则：用到哪个类，就导入哪个类。
+//import 干嘛用的啊？为了简化类名书写。
+
+//BK --day12 A包管理 3jar
+04-面向对象(Jar包).avi
+JarDemo.java
+haha.jar --相当于class 文件夹，只要设定classpath就可以运行其中类了：
+eg: set classpath = ./haha.jar
+    java pack.JarDemo -->Helo Jar
+
+ExceptionTest2.java
 
 //BK --day12 Multithreading
 ThreadDemo.java
@@ -921,10 +950,9 @@ ThreadDemo.java
 
 	2：Pros and cons
 		好处：解决了多部分同时运行的问题。
-		弊端：线程太多回到效率的降低。其实应用程序的执行都是在做着快速的切换完成的。这个切换是随机的。
+		弊端：线程太多会降低效率，其实应用程序的执行都是在做着快速的切换完成的。这个切换是随机的。
 		eg:  I/O例子：点对点的聊天工具，需要在我们编写信息的同时能够接受并打印出来对方说的话。
 		     如果将信息的发送和接受放在一个线程里，发送和接受两者不能兼顾。
-
 
 	3: JVM multithreading
 		JVM启动时就启动了多个线程，至少有两个线程可以分析的出来。
@@ -955,7 +983,7 @@ ThreadDemo2.java
 			4，调用start方法开启线程并调用线程的任务run方法执行。
 
 	6: Thread name and methods -- 06-多线程(Thread类中的方法&线程名称).avi (10:33)
-		//BK --day12 Multithreading 1Thread 8Cons+42Meds
+		//BK --day12 Multithreading 01Thread 8Cons+42Meds
 		1 methods:
 			1 getName() --Returns this thread's name.
 			2 Thread.currentThread() -- Returns a reference to the currently executing thread object.
@@ -971,7 +999,7 @@ ThreadDemo3.java
 		If main thread meet errors ,the other threads can work properly.
 08-多线程(线程的状态).avi (22:40)
 线程4状态.png
-	8 :	MutiThread states //BK --day12 Multithreading 3FourStates
+	8 :	MutiThread states //BK --day12 Multithreading 03FourStates
 			1 concepts
 			    CPU执行权 : 现在做(Yes1);
 			    执行资格   ：在排队(Yes2)
@@ -1025,7 +1053,7 @@ Runnable实现的思想.png
 			2，避免了java单继承的局限性。
 		所以，创建线程的第二种方式较为常用。
 
-//BK --day13 Multithreading 5Model-一生产者多消费者
+//BK --day13 Multithreading 05Model-单任务多线程
 TicketDemo3.java -- three different ways. finally use the syn-block
 售票内存图.bmp
 12-多线程(卖票示例).avi (27:26)
@@ -1041,7 +1069,7 @@ TicketDemo3.java -- three different ways. finally use the syn-block
 		2，操作共享数据的线程代码有多条。
 		3，当一个线程在执行操作共享数据的多条代码过程中，其他线程参与了运算，就会导致线程安全问题。
 
-//BK --day13 Multithreading 6同步代码块和同步函数
+//BK --day13 Multithreading 06同步代码块和同步函数
 15-多线程(同步代码块).avi ( 9:43)
 	解决思路；
 		就是将多条操作共享数据的线程代码封装起来，当有线程在执行这些代码的时候，其他不可以参与运算.
@@ -1081,7 +1109,7 @@ StaticSynFunctionLockDemo.java
 		1 可以用 getClass方法获取，
 		2 也可以用当前  类名.class 表示。
 
-SingleDemo.java //BK --day13 Multithreading 7单例
+SingleDemo.java //BK --day13 Multithreading 07单例
 21-多线程(单例模式涉及的多线程问题).avi (12:13)--300
 		1 饿汉式，没有安全问题
 		2 SingleDemo line 39--41//懒汉式
@@ -1089,7 +1117,7 @@ SingleDemo.java //BK --day13 Multithreading 7单例
 			//加入双重判断是为了解决效率问题。
 
 
-DeadLockDemo.java //BK --day13 Multithreading 8死锁
+DeadLockDemo.java //BK --day13 Multithreading 08死锁
 DeadLockTest.java --remember one Lock, easy one .
 22-多线程(死锁示例).avi (18:38)
 	1 死锁：常见情景之一：同步的嵌套。
@@ -1097,51 +1125,72 @@ DeadLockTest.java --remember one Lock, easy one .
 		   常见情景之二：while（flag）wait，no notify()。
 		   	eg:ProducerConsumerDemo.java line 36.while + notify()
 
-
-
-
 郁闷答疑图解.bmp
-
+郁闷答疑.avi
+--讲了同步锁必须相同，会同步锁错乱
 
 //BK --day14 Multithreading
 23-多线程(线程间通信-示例).avi (37: 4)
 ResourceDemo.java
 
+//BK --day14 Multithreading 09多线程通信
 24-多线程(线程间通信-等待唤醒机制).avi (34:23)
 ResourceDemo2.java
-	wait-notify应用.gif
-		1 等待/唤醒机制，涉及的方法：
-			1，wait(): 让线程处于冻结状态，被wait的线程会被存储到线程池中。
-			2，notify():唤醒线程池中一个线程(任意).
-			3，notifyAll():唤醒线程池中的所有线程。
-			tips：
-				这些方法都必须定义在同步中，因为这些方法是用于操作线程状态的方法。
-				必须要明确到底操作的是哪个锁上的线程。
+wait-notify应用.gif
+	1 等待/唤醒机制，涉及的方法：
+		1，wait(): 释放执行权和执行资格，让线程处于冻结状态，被wait的线程会被存储到线程池中。
+		2，notify():唤醒线程池中一个线程(任意).
+		3，notifyAll():唤醒线程池中的所有线程。
+		tips：
+			这些方法都必须定义在同步中，因为这些方法是用于操作线程状态的方法。
+			必须要明确到底操作的是哪个锁上的线程。
 
-		2 为什么操作线程的方法wait notify notifyAll定义在了Object类中？
-			因为这些方法是监视器的方法，监视器其实就是锁。
-			锁可以是任意的对象，任意的对象调用的方式一定定义在Object类中。
+	2 为什么操作线程的方法wait notify notifyAll定义在了Object类中？
+		因为这些方法是监视器的方法，监视器其实就是锁。
+		锁可以是任意的对象，任意的对象调用的方式一定定义在Object类中。
 
 25-多线程(线程间通信-等待唤醒机制-代码优化).avi ( 6:48)
 ResourceDemo3.java
 
-//BK --day14 Multithreading 6Model-多生产者多消费者
+//BK --day14 Multithreading 10Model-多生产者多消费者
 26-多线程(线程间通信-多生产者多消费者问题).avi (34: 3)
-ProducerConsumerDemo.java
+ProducerConsumerDemo01.java
+	if判断标记，只有一次，会导致不该运行的线程运行了。出现了数据错误的情况。
+	while判断标记，解决了线程获取执行权后，是否要运行！
+
+ProducerConsumerDemo02.java
+	notify:只能唤醒一个线程，如果本方唤醒了本方，没有意义。而且while判断标记+notify会导致死锁。
+	notifyAll解决了本方线程一定会唤醒对方线程的问题。
 
 27-多线程(线程间通信-多生产者多消费者问题解决).avi (13:23)
-ProducerConsumerDemo2.java
+ProducerConsumerDemo.java
+T11ManyProduceManyBuyers.java -- My own practice on it without any issues
 多生产多消费.bmp
-	My own practices:
-		ProducerConsumerDemoMy.java
-		ProducerConsumerDemoMyOne.java-- one Pro one Consumer
+	多生产者，多消费者的问题，完美解决方案
 
+
+//BK --day14 Multithreading 11JDK1.5 New
 28-多线程(线程间通信-多生产者多消费者问题-JDK1.5新特性-Lock).avi (18:41)
 ProducerConsumerDemo2.java -- line 33
 Lock升级原因.gif
 
+	jdk1.5以后将同步和锁封装成了对象。
+	并将操作锁的隐式方式定义到了该对象中，
+	将隐式动作变成了显示动作。
+
+	Lock接口： 出现替代了同步代码块或者同步函数。将同步的隐式锁操作变成现实锁操作。
+	同时更为灵活。可以一个锁上加上多组监视器。
+	lock():获取锁。
+	unlock():释放锁，通常需要定义finally代码块中。
+
 29-多线程(线程间通信-多生产者多消费者问题-JDK1.5新特性-Condition).avi (16:11)
 ProducerConsumerDemo2.java -- line 38
+	Condition接口：出现替代了Object中的wait notify notifyAll方法。
+				将这些监视器方法单独进行了封装，变成Condition监视器对象。
+				可以任意锁进行组合。
+	await();
+	signal();
+	signalAll();
 
 30-多线程(线程间通信-多生产者多消费者问题-JDK1.5解决办法).avi ( 9: 6)
 ProducerConsumerDemo2.java -- line 82
@@ -1151,22 +1200,8 @@ ProducerConsumerDemo2.java -- line 82
 31-多线程(线程间通信-多生产者多消费者问题-JDK1.5解决办法-范例).avi (14:48)--506
 BoundedBuffer.java
 范例.gif
-	jdk1.5以后将同步和锁封装成了对象。
-	并将操作锁的隐式方式定义到了该对象中，
-	将隐式动作变成了显示动作。
 
-	Lock接口： 出现替代了同步代码块或者同步函数。将同步的隐式锁操作变成现实锁操作。
-	 		  同时更为灵活。可以一个锁上加上多组监视器。
-		lock():获取锁。
-		unlock():释放锁，通常需要定义finally代码块中。
-
-	Condition接口：
-		出现替代了Object中的wait notify notifyAll方法。
-		将这些监视器方法单独进行了封装，变成Condition监视器对象，可以任意锁进行组合。
-		await();
-		signal();
-		signalAll();
-
+//BK --day14 Multithreading 12 Other Methods
 32-多线程(wait和sleep的区别).avi (12:33)
 wait和sleep的区别.java
 	1，wait可以指定时间也可以不指定。
@@ -1191,27 +1226,25 @@ StopThreadDemo.java
 	  当时强制动作会发生了InterruptedException，记得要处理
 
 35-多线程(守护线程-setDaemon).avi ( 5:58)
-StopThreadDemo.java
-	4 后台进程，line 60.必须先于start（）运行,而且不用控制结束。
+StopThreadDemo.java --t2.setDaemon(true);
+	4 后台进程，line 60.必须先于start()运行,而且不用控制结束。
+	运行和普通进程一模一样，仅仅是不用控制结束。当前台进程结束后，它自动结束，看方法说明。
 
 36-多线程(其他方法-join等).avi (18:53)
 JoinDemo.java
 	join,setPriority(1-10,仅仅是概率),toString,threadGroup，yield
 
+//BK --day14 Multithreading 13Test
 37-多线程(面试题).avi ( 8: 9) --575m
 ThreadTest.java
 
 
 多线程技术总结.java
-
-
-
 1: 为什么不用run，而重新一个start了？
 	run():  only a normal method of the sub Thread class,it is called by the
 			Current thread. it can not created a new thread.
 	start():JVM call this method,it will get another thread by the VM.
 			Has two functions: 1 Create a new thread ; 2 run() on new thread
-
 2：为什么实现个接口就可以启动线程了？？？
  	1 Thread also inherit the runnable interface
  	2 Thread has the constructor of runnable parameters
@@ -1221,21 +1254,20 @@ ThreadTest.java
 
 
 //BK --day15 String
-StringDemo.java
+StringDemo.java //BK --day15 String 1特点
 01-常用对象API(String类-特点).avi (23:42)
 	1 特点：字符串对象一旦被初始化就不会被改变。
 	2 字符串常量池--池中没有就建立，池中有，直接用。
 		String s = "abc";
 	3 new 出的对象在堆中。
-	eg:StringDemo.java
+		String s = new String("abc");
 
 StringConstructorDemo.java
 	1 一共有15个constructors： 1+8+2+1+3 =15
-	2 byte[]--> String
-	3 char[]--> String
-	eg: StringConstructorDemo
+	2 byte[]--> String ： 8个，涉及到了字节到字符集的转化
+	3 char[]--> String ： 2个
 
-StringMethodDemo.java
+StringMethodDemo.java //BK --day15 String 2四类:获取,转换,判断,比较
 	1 一共有65个methods：按照面向对象的思想对字符串进行功能分类。
 	1,获取：
 		1.1 获取字符串中字符的个数(长度).
@@ -1257,8 +1289,6 @@ StringMethodDemo.java
 				String substring(int beginIndex);
 	2，转换。
 		2.1 将字符串变成字符串数组(字符串的切割)
-			@Override
-			@Override
 			String[]  split(String regex):涉及到正则表达式.
 		2.2 将字符串变成字符数组。
 			char[] toCharArray();
@@ -1288,10 +1318,12 @@ StringMethodDemo.java
 	4，比较。
 		4.1 "abc".compareTo("aqz")
 
-StringObjectDemo.java
+StringObjectDemo.java //BK --day15 String 3常量池操作
 	//intern():对字符串池进行操作的,把堆中数据，放入常量池中
 
+//BK --day15 String 4Practice
 StringTest.java
+	0, String 当形式参数传参数
 StringTest_1.java
 	1，给定一个字符串数组。按照字典顺序进行从小到大的排序。
 		{"nba","abc","cba","zz","qq","haha"}
@@ -1336,9 +1368,16 @@ StringBufferDemo.java
 		4，修改：
 				StringBuffer replace(start,end,string);
 				void setCharAt(index,char);
+
+
 //BK --day15 StringBuilder
 StringBuilderDemo.java
-	jdk1.5以后出现了功能和StringBuffer一模一样的对象。就是StringBuilder
+	JDK升级
+		1，简化书写。
+		2，提高效率。
+		3，增加安全性。
+
+	jdk1.5以后出现了功能和StringBuffer一模一样的类，就是StringBuilder
 	不同的是：
 		StringBuffer是线程同步的。通常用于多线程。
 		StringBuilder是线程不同步的。通常用于单线程。 它的出现提高效率。
@@ -1350,17 +1389,13 @@ StringBuilderTest.java
 	如果你保存的数据要以字符串的形式来使用则用stringbuffer 和stringbuilder的形式。
 	一旦进入他们取出的就只有字符串了数组，存入和取出的格式一样的。
 
-JDK升级
-	1，简化书写。
-	2，提高效率。
-	3，增加安全性。
-
-StringBuilderTest.java
+//BK --day16 0StringBuilder 1形式参数
+StringBuilderTest16.java
 	形式参数的变化
 	stringbuilder练习.bmp
 	string内存图.bmp
 
-//BK --day16 8种基本数据包装类--------------------------------------
+//BK --day16 8种包装类
 WrapperDemo.java
 	1 基本数据类型对象包装类--用于描述该对象的类就称为基本数据类型对象包装类。
 		为了方便操作基本数据类型值，将其封装成了对象，在对象中定义了属性和行为丰富了该数据的操作。
@@ -1375,10 +1410,10 @@ WrapperDemo.java
 			char		Character
 			boolean		Boolean
 	2 该包装对象主要用基本类型和字符串之间的转换。
-		基本类型--->字符串 --2
+		1.基本类型--->字符串 --2
 			1,基本类型数值+""
 			2,用String类中的静态方法valueOf(基本类型数值);
-		字符串--->基本类型 --2
+		2.字符串--->基本类型 --2
 			1,静态方法
 				包装类中  xxx parseXxx("xxx类型的字符串");*****
 					int parseInt("111");
@@ -1397,16 +1432,15 @@ WrapperDemo.java
 		其他制-->十进制。
 			parseInt("string",radix)
 	4 包装类的计算和比较
-WrapperDemo2.java
+
+WrapperDemo2.java //BK --day16 8种包装类 自动拆箱装箱
 	5 自动拆箱装箱
 		jdk1.5以后，自动装箱，如果装箱的是一个字节，那么该数据会被共享不会重新开辟空间。
+
 WrapperTest.java
 
-//BK --day16 Collection--------------------------------------
-Collection --15 methods
-	|--List：有序(存入和取出的顺序一致),元素都有索引(角标)，元素可以重复。
-	|--Set ：无序，元素不能重复。
-集合框架_1.txt
+//BK --day16 Collection
+CollectionDemo.java //BK --day16 Collection 1-16methods
 	1 集合类的由来：
 		对象用于封装特有数据，对象多了需要存储，如果对象的个数不确定，就使用集合容器进行存储。
 	2 集合特点：
@@ -1415,18 +1449,16 @@ Collection --15 methods
 		3，集合中不可以存储基本数据类型值。
 		tips:数组和集合类同是容器，有何不同？
 			数组虽然也可以存储对象，但长度是固定的；
-			集合长度是可变，切存入元素页可以变。
+			集合长度是可变，切存入元素也可以变。
 			数组中可以存储基本数据类型，集合只能存储对象。
-
 集合框架.bmp
-	3 集合框架:集合容器因为内部的数据结构不同，有多种具体容器，不断的向上抽取，就形成了集合框架。
-
-CollectionDemo.java
+	3 集合框架:
+		集合容器因为内部的数据结构不同，有多种具体容器，不断的向上抽取，就形成了集合框架。
 	4 框架的顶层Collection接口 --16 methods
-		1)，增 Creat。 --2
+		1)，增 Create --2
 			boolean add(Object obj):
 			boolean addAll(Collection coll):
-		2)，删 Delete。--3
+		2)，删 Delete--3
 			boolean remove(object obj):
 			boolean removeAll(Collection coll);
 			void clear();
@@ -1434,7 +1466,7 @@ CollectionDemo.java
 			boolean contains(object obj):
 			boolean containsAll(Colllection coll);
 			boolean isEmpty():判断集合中是否有元素。
-		4)，取：--2
+		4)，查：--2
 			int size():
 			Iterator iterator():取出元素的方式：迭代器。
 			该对象必须依赖于具体容器，因为每一个容器的数据结构都不同。
@@ -1447,21 +1479,17 @@ CollectionDemo.java
 		5)，其他：--2
 			boolean retainAll(Collection coll);取交集。
 			Object[] toArray():将集合转成数组。
-IteratorDemo.java
-	5 the iterator -- 3 methods
+	5  Iterator -- 3 methods // BK --day16 Collection 2Iterator
 		1) difference with Enumeration --2
-			 remove elements
-			 Method names improved
+			 1Iterator增加： remove elements
+			 2Method names improved
 		2) three methods
 			 boolean hasNext()
 			 E next()
 			 void remove()
 
-//BK --day16 List----------------------------------------------------------
+//BK --day16 List
 List:
-	|--Vector    :内部是数组数据结构，是同步的。 增删，查询都很慢！          --4 constructions  42 methods
-	|--ArrayList :内部是数组数据结构，是不同步的。替代了Vector。查询的速度快! --3 constructions  20 methods
-	|--LinkedList:内部是链表数据结构，是不同步的。增删元素的速度很快。		   --2 constructions  39 methods
 	//TODO 3 数组和链表的结构
 		http://www.cnblogs.com/smyhvae/p/4761593.html
 		https://book.douban.com/reading/10711140/
@@ -1470,7 +1498,7 @@ List:
 		http://cmsblogs.com/?p=155
 		http://wiki.jikexueyuan.com/project/java-enhancement/java-twenty.html
 
-ListDemo.java
+ListDemo.java //BK --day16 List 1特有的常见方法--可以操作角标
 	1 List -- 25(=15+10 ,15 collection's methods)特有的常见方法：共性特点--可以操作角标。
 		1)，添加
 			void add(index,element);
@@ -1484,14 +1512,12 @@ ListDemo.java
 			int indexOf(object);
 			int lastIndexOf(object);
 			List subList(from,to);
-ListDemo2.java
+ListDemo2.java // BK --day16 Collection ArrayList 1特有ListIterator
 	2 listIterator -- 9 methods (3 Iterator +6 增加功能)
 		add(E e) ，  hasPrevious() ， nextIndex()
 		previous() ，previousIndex(), set(E e)
-		tips: listIterator集合是可以完成对元素的增删改查。
-
-LinkedListSlow.gif
-	3 the slow reason for LinkedList.
+		tips: listIterator可以实现在迭代过程中完成对元素的增删改查。
+		      只有list集合具备该迭代功能.
 
 Test16.txt
 	4 作业：
@@ -1500,12 +1526,22 @@ Test16.txt
 		3，既然集合是存储对象的，请定义ArryaList集合，并存储Person对象。如new Person("lisi",20);
 		   并取出。将姓名和年龄打印出来。
 
-//BK --day17 List------------------------------------------------------------------------------------
+
+10-常用对象API(集合框架-List常用子类的特点).avi (19:18)
+Collection --15 methods
+	|--List：有序(存入和取出的顺序一致),元素都有索引(角标)，元素可以重复。
+		|--Vector    :内部是数组数据结构，是同步的。 增删，查询都很慢！          --4 constructions  42 methods
+		|--ArrayList :内部是数组数据结构，是不同步的。替代了Vector。查询的速度快! --3 constructions  20 methods
+		|--LinkedList:内部是链表数据结构，是不同步的。增删元素的速度很快。		   --2 constructions  39 methods
+	|--Set ：无序，元素不能重复。
+
+
+//BK --day17 List
 VectorDemo.java
 	5 Vector 有element的都是特有方法。
 	有自己的迭代器：Enumeration en = v.elements();
 
-LinkedListDemo.java
+LinkedListDemo.java  //BK --day17 LinkedList 1特有的常见方法
 	6 LinkedList
 		1，增加
 			addFirst();
@@ -1541,7 +1577,7 @@ ArrayListTest2.java  --20-常用对象API(集合框架练习).avi (17:35)
 	定义功能去除ArrayList中的重复元素。
 	tips: contains, remove 等的判断也用到了equals，方法，所以要overwrite.
 
-//BK --day17 Set------------------------------------------------------------------------------------
+//BK --day17 Set
 Set:元素不可以重复，是无序。
 	Set接口和Collection一致。--15 methods
 HashSetDemo.java
@@ -2332,13 +2368,55 @@ OutputStream
 
 RandomAccessFile:
 
+
+//BK --day28 Reflection
+01-反射机制(概述&应用场景).avi
+Class类.bmp
+反射机制.bmp
+ReflectDemo.java
+	JAVA反射机制是在运行状态中，对于任意一个类 (class文件)，都能够知道这个类的所有属性和方法；
+	对于任意一个对象，都能够调用它的任意一个方法和属性；
+	这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
+
+	动态获取类中信息，就是java反射 。
+	可以理解为对类的解剖。
+
+	要想要对字节码文件进行解剖，必须要有字节码文件对象.
+	如何获取字节码文件对象呢？
+
+02-反射机制(细节&Class对象).avi
+反射机制.bmp
+03-反射机制(获取Class对象的三种方式).avi
+
+04-反射机制(获取Class中的构造函数).avi
+ReflectDemo2.java  // BK --day28 Reflection 2Get Constructor
+
+
+05-反射机制(获取Class中的字段).avi
+ReflectDemo3.java  // BK --day28 Reflection 3Get Field
+
+
+06-反射机制(获取Class中的方法).avi
+ReflectDemo4.java  // BK --day28 Reflection 4Get Method
+
+
+07-反射机制(反射练习).avi
+RunComputer.java// BK --day28 Reflection 4Practice
+
+
 //BK --day36 Debug Tricks
 http://langgufu.iteye.com/blog/1168366
 9.我们常说的断点(breakpoints)是指line breakpoints,除了line breakpoints,还有其他的断点类型：field(watchpoint)breakpoint,method breakpoint ,exception breakpoint.
 10.field breakpoint 也叫watchpoint(监视点) 当成员变量被读取或修改时暂挂
 11.添加method breakpoint 进入/离开此方法时暂挂(Run-method breakpoint)
 12.添加Exception breakpoint 捕抓到Execption时暂挂(待续...)
-
+13 Drop to Frame：
+	1.不能drop到已经执行过的方法栈中的方法中。
+	2.drop到stack frame中时，不会改变全局数据原有的值，比如，一个包含元素的vertor并不会被清空。
+	3,但是在执行过程中也会产生一些副作用，比如插入到数据库里面的数据是无法删除的！
+14 Display View ：
+	可以使用这个视图，输入或者演算一些新的代码。这些代码在当前的调试位置的上下文环境中被执行，这意味着，你可以使用
+	所有变量甚至是内容助手。要执行你的代码的话，只需标记它，并使用右键菜单或者CTRL+U(执行)或者 CTRL+SHIFT+I (检查).
 
 
 

@@ -1,104 +1,146 @@
 package itcastday14;
 
-/*
-等待/唤醒机制。 
-
-涉及的方法：
-
-1，wait(): 让线程处于冻结状态，被wait的线程会被存储到线程池中。
-2，notify():唤醒线程池中一个线程(任意).
-3，notifyAll():唤醒线程池中的所有线程。
-
-这些方法都必须定义在同步中。
-因为这些方法是用于操作线程状态的方法。
-必须要明确到底操作的是哪个锁上的线程。
-
-
-为什么操作线程的方法wait notify notifyAll定义在了Object类中？ 
-
-因为这些方法是监视器的方法。监视器其实就是锁。
-锁可以是任意的对象，任意的对象调用的方式一定定义在Object类中。
-
-*/
 //资源
-class Resource2 {
+class Resource2
+{
 	String name;
 	String sex;
-	boolean flag = false;
+	/**
+	 * the state of resource, if there is data ,no need to write . If there is no data, can not be read .
+	 */
+	boolean resouceExsitingState = false;
 }
 
 // 输入
-class Input2 implements Runnable {
-	Resource2 r;
+class Input2 implements Runnable
+{
+	Resource2 resource2;
 
-	// Object obj = new Object();
-	Input2(Resource2 r) {
-		this.r = r;
+	Input2(Resource2 resource2)
+	{
+		this.resource2 = resource2;
 	}
 
-	public void run() {
-		int x = 0;
-		while (true) {
-			synchronized (r) {
-				if (r.flag)
-					try {
-						r.wait();
-					} catch (InterruptedException e) {
+	@Override
+	public void run()
+	{
+		boolean writeDifferentValueFlag = true;
+		while (true)
+		{
+			synchronized (this.resource2)
+			{
+				// if there is existing data,wait for read
+				if (this.resource2.resouceExsitingState)
+				{
+					try
+					{
+						this.resource2.wait();
 					}
-				if (x == 0) {
-					r.name = "mike";
-					r.sex = "nan";
-				} else {
-					r.name = "丽丽";
-					r.sex = "女女女女女女";
+					catch (InterruptedException e)
+					{
+					}
 				}
-				r.flag = true;
-				r.notify();
+				else // if there is no data, write data directly
+				{
+					if (writeDifferentValueFlag)
+					{
+						this.resource2.name = "mike";
+						this.resource2.sex = "nan";
+					}
+					else
+					{
+						this.resource2.name = "丽丽";
+						this.resource2.sex = "女女女女女女";
+					}
+					this.resource2.resouceExsitingState = true;
+					this.resource2.notify();
+					writeDifferentValueFlag = !writeDifferentValueFlag;
+					try
+					{
+						this.resource2.wait();
+					}
+					catch (InterruptedException e)
+					{
+						e.printStackTrace();
+					}
+				}
 			}
-			x = (x + 1) % 2;
 
 		}
 	}
 }
 
 // 输出
-class Output2 implements Runnable {
+class Output2 implements Runnable
+{
 
-	Resource2 r;
+	Resource2 resource2;
 
-	// Object obj = new Object();
-	Output2(Resource2 r) {
-		this.r = r;
+	Output2(Resource2 resource2)
+	{
+		this.resource2 = resource2;
 	}
 
-	public void run() {
-		while (true) {
-			synchronized (r) {
-				if (!r.flag)
-					try {
-						r.wait();
-					} catch (InterruptedException e) {
+	@Override
+	public void run()
+	{
+		while (true)
+		{
+			synchronized (this.resource2)
+			{
+				// if there is resource ,so read .
+				if (this.resource2.resouceExsitingState)
+				{
+					System.out.println(this.resource2.name + "....." + this.resource2.sex);
+					this.resource2.resouceExsitingState = false;
+					this.resource2.notify();
+					try
+					{
+						this.resource2.wait();
 					}
-				System.out.println(r.name + "....." + r.sex);
-				r.flag = false;
-				r.notify();
+					catch (InterruptedException e)
+					{
+						e.printStackTrace();
+					}
+				}
+				// if there is no resource ,so wait .
+				else
+				{
+					try
+					{
+						this.resource2.wait();
+					}
+					catch (InterruptedException e)
+					{
+					}
+				}
+
 			}
 		}
 	}
 }
 
-class ResourceDemo2 {
-	public static void main(String[] args) {
+/**
+ *
+ * 在方法处使用了wait 和notify ，在多个线程间通信。 可以一个写完，另一个才读数据。
+ * 
+ * @author zhanghongwei
+ *
+ */
+class ResourceDemo2
+{
+	public static void main(String[] args)
+	{
 		// 创建资源。
 		Resource2 r = new Resource2();
+
 		// 创建任务。
 		Input2 in = new Input2(r);
 		Output2 out = new Output2(r);
+
 		// 创建线程，执行路径。
-		Thread t1 = new Thread(in);
-		Thread t2 = new Thread(out);
-		// 开启线程
-		t1.start();
-		t2.start();
+		new Thread(in).start();
+		new Thread(out).start();
+
 	}
 }

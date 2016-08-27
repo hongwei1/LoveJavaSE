@@ -1,19 +1,15 @@
 package itcastday12;
 
-/*
+/**
+ * Jar:java的压缩包。
+ */
 
-Jar:java的压缩包。
-
-
-
-*/
-
-class JarDemo 
+class JarDemo
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		System.out.println("Hello Jar!");
 	}
 }
-//./pack
-//./haha.jar/pack
+// ./pack
+// ./haha.jar/pack

@@ -1,69 +1,72 @@
-package cn.itcast.reflect.demo;
+package itcastday28.reflect.demo;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-public class ReflectDemo4 {
+import itcastday28.bean.Person;
 
-	public ReflectDemo4() {
+public class ReflectDemo4
+{
+
+	public static void main(String[] args) throws Exception
+	{
+		ReflectDemo4.getMethodDemo1();
+		ReflectDemo4.getMethodDemo2();
+		ReflectDemo4.getMethodDemo3();
 	}
 
 	/**
-	 * @param args
-	 * @throws Exception 
+	 * 获取指定Class中的所有共有，私有方法
 	 */
-	public static void main(String[] args) throws Exception {
+	public static void getMethodDemo1() throws Exception
+	{
 
-		getMethodDemo_3();
-		
-	}
-	
-	
+		Class<?> clazz = Class.forName(Person.PERSON_PATH);
 
-	public static void getMethodDemo_3() throws Exception {
-		
-		Class clazz = Class.forName("cn.itcast.bean.Person");
-		
-		Method method = clazz.getMethod("paramMethod", String.class,int.class);
-		
-		Object obj = clazz.newInstance();
-		
-		method.invoke(obj, "小强",89);
-		
-		
-	}
-
-	public static void getMethodDemo_2() throws Exception {
-		
-		Class clazz = Class.forName("cn.itcast.bean.Person");
-		
-		Method method = clazz.getMethod("show", null);//获取空参数一般方法。
-		
-//		Object obj = clazz.newInstance();
-		Constructor constructor = clazz.getConstructor(String.class,int.class);
-		Object obj = constructor.newInstance("小明",37);
-		
-		
-		method.invoke(obj, null);
-		
-		
-		
-	}
-
-	/*
-	 * 获取指定Class中的所有公共函数。
-	 */
-	public static void getMethodDemo() throws Exception {
-		
-		Class clazz = Class.forName("cn.itcast.bean.Person");
-		
-		Method[] methods  = clazz.getMethods();//获取的都是公有的方法。 
-		methods = clazz.getDeclaredMethods();//只获取本类中所有方法，包含私有。 
-		for(Method method : methods){
+		Method[] methods = clazz.getMethods();// 获取的都是公有的方法。
+		methods = clazz.getDeclaredMethods();// 只获取本类中所有方法，包含私有。
+		for (Method method : methods)
+		{
 			System.out.println(method);
 		}
-		
-		
+
+	}
+
+	/**
+	 * // 获取空参数一般方法。
+	 *
+	 * @throws Exception
+	 */
+	public static void getMethodDemo2() throws Exception
+	{
+
+		Class<?> clazz = Class.forName(Person.PERSON_PATH);
+
+		Method method = clazz.getMethod("show");// 获取空参数一般方法。
+
+		Constructor<?> constructor = clazz.getConstructor(String.class, int.class);
+		Object obj = constructor.newInstance("小明", 37);
+
+		method.invoke(obj);
+
+	}
+
+	/**
+	 * 获取带参数的方法
+	 *
+	 * @throws Exception
+	 */
+	public static void getMethodDemo3() throws Exception
+	{
+
+		Class<?> clazz = Class.forName(Person.PERSON_PATH);
+
+		Method method = clazz.getMethod("paramMethod", String.class, int.class);
+
+		Object obj = clazz.newInstance();
+
+		method.invoke(obj, "小强", 89);
+
 	}
 
 }

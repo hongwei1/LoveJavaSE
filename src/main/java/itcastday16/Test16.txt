@@ -82,6 +82,6 @@ public void method(Collection coll)
 将多个Person对象存储到集合中。
 并取出。打印Person的姓名和年龄.
 
-明天预习 ：linkedlist特有方法。  栈，队列。
+明天预习 ：linkedlist特有方法。栈，队列。
 
 Set集合。HashSet，TreeSet

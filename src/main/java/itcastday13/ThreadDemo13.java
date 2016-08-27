@@ -23,7 +23,7 @@ package itcastday13;
 
 
 */
-//BK --day13 Multithreading 4实现Runnable接口
+//BK --day13 Multithreading 04实现Runnable接口
 class Demo implements Runnable// extends Fu //准备扩展Demo类的功能，让其中的内容可以作为线程的任务执行。
 // 通过接口的形式完成。
 {
@@ -53,17 +53,3 @@ class ThreadDemo13
 		t2.start();
 	}
 }
-
-// class ThreadImpl implements Runnable
-// {
-// @Override
-// public void run()
-// {
-// System.out.println("runnable run");
-// }}
-//
-// ThreadImpl i = new ThreadImpl();
-// Thread t = new Thread(this.i);t.start();
-//
-// class SubThread extends Thread { @Override
-// public void run() { System.out.println("hahah"); } } // SubThread s = new SubThread(); //s.start();
