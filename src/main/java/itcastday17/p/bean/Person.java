@@ -1,6 +1,6 @@
 package itcastday17.p.bean;
 
-public class Person implements Comparable
+public class Person<T> implements Comparable<T>
 {
 
 	private String name;
@@ -105,7 +105,7 @@ public class Person implements Comparable
 		{
 			return false;
 		}
-		Person other = (Person) obj;
+		Person<?> other = (Person<?>) obj;
 		if (this.age != other.age)
 		{
 			return false;
@@ -126,13 +126,19 @@ public class Person implements Comparable
 	}
 
 	@Override
-	public int compareTo(Object o)
+	public int compareTo(T o)
 	{
+		if (o instanceof Person)
+		{
+			Person<?> p = (Person<?>) o;
 
-		Person p = (Person) o;
-
-		int temp = this.age - p.age;
-		return temp == 0 ? this.name.compareTo(p.name) : temp;
+			int temp = this.age - p.age;
+			return temp == 0 ? this.name.compareTo(p.name) : temp;
+		}
+		else
+		{
+			throw new RuntimeException("");
+		}
 
 	}
 

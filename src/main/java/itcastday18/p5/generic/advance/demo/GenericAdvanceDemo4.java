@@ -8,61 +8,70 @@ import itcastday18.p2.bean.Person;
 import itcastday18.p2.bean.Student;
 import itcastday18.p2.bean.Worker;
 
-public class GenericAdvanceDemo4 {
-	public static void main(String[] args) {
+public class GenericAdvanceDemo4
+{
+	public static void main(String[] args)
+	{
 
-		TreeSet<Person> al1 = new TreeSet<Person>(new CompByName()); // person 中既有学生又有人，怎么排序？
-																	 // 可以用父类的比较器。
+		TreeSet<Person> al1 = new TreeSet<Person>(new CompByPersonName()); // person 中既有学生又有人，怎么排序？
+																			// 可以用父类的比较器。
 
 		al1.add(new Person("abc4", 34));
 		al1.add(new Person("abc1", 30));
 		al1.add(new Person("abc2", 38));
 
-		TreeSet<Student> al2  = new TreeSet<Student>(new CompByStuName());// 学生可以传入自己的比较器
-		TreeSet<Student> al22 = new TreeSet<Student>(new CompByName());   // 学生可以传入自己爹的比较器
-//		TreeSet<Student> al222 = new TreeSet<Student>(new CompByWorkerName());  // 学生不可以传入自己儿子的比较器
+		TreeSet<Student> al2 = new TreeSet<Student>(new CompByStuName());// 学生可以传入自己的比较器
+		// TreeSet<Student> al222 = new TreeSet<Student>(new CompByWorkerName()); // 学生不可以传入自己儿子的比较器
 
 		al2.add(new Student("stu1", 11));
 		al2.add(new Student("stu7", 20));
 		al2.add(new Student("stu2", 22));
+		al2.add(new Worker("stu2", 22));
 
-		TreeSet<Worker> al3 = new TreeSet<Worker>(new CompByName());// 学生可以传入自己爷爷的比较器
+		TreeSet<Worker> al3 = new TreeSet<Worker>(new CompByPersonName());// 学生可以传入自己爷爷的比较器
 
-		al3.add(new Worker("stu1", 11));
-		al3.add(new Worker("stu2", 22));
+		al3.add(new Worker("Worker1", 11));
+		al3.add(new Worker("Worker2", 22));
 
 		al1.addAll(al2);
 		al1.addAll(al3);
 
-		System.out.println(al1.size());
-
+		System.out.println("Person------------");
+		Iterator<Person> it1 = al1.iterator();
+		while (it1.hasNext())
+		{
+			System.out.println(it1.next());
+		}
+		System.out.println("Student------------");
 		Iterator<Student> it = al2.iterator();
-		while (it.hasNext()) {
+		while (it.hasNext())
+		{
 			System.out.println(it.next());
 		}
-		System.out.println("------------");
-		Iterator<Person> it1 = al1.iterator();
-		while (it1.hasNext()) {
-			System.out.println(it1.next());
+
+		System.out.println("Worker------------");
+		Iterator<Worker> itWorker = al3.iterator();
+		while (itWorker.hasNext())
+		{
+			System.out.println(itWorker.next());
 		}
 
 	}
 }
 
 /*
- * class TreeSet<E> { 
- * 	TreeSet(Comparator<? super E> comparator) );
- *  TreeSet(Comparator<? extends E> comparator) ); 
- * }
- * 
+ * class TreeSet<E> { TreeSet(Comparator<? super E> comparator) ); TreeSet(Comparator<? extends E> comparator) ); }
+ *
  * 什么时候用下限呢？通常对集合中的元素进行取出操作时，可以是用下限。
- * 
+ *
  */
 
-class CompByName implements Comparator<Person> {
+class CompByPersonName implements Comparator<Person>
+{
 
 	@Override
-	public int compare(Person o1, Person o2) {
+	public int compare(Person o1, Person o2)
+	{
 
 		int temp = o1.getName().compareTo(o2.getName());
 
@@ -71,10 +80,12 @@ class CompByName implements Comparator<Person> {
 
 }
 
-class CompByStuName implements Comparator<Student> {
+class CompByStuName implements Comparator<Student>
+{
 
 	@Override
-	public int compare(Student o1, Student o2) {
+	public int compare(Student o1, Student o2)
+	{
 
 		int temp = o1.getName().compareTo(o2.getName());
 
@@ -83,10 +94,12 @@ class CompByStuName implements Comparator<Student> {
 
 }
 
-class CompByWorkerName implements Comparator<Worker> {
+class CompByWorkerName implements Comparator<Worker>
+{
 
 	@Override
-	public int compare(Worker o1, Worker o2) {
+	public int compare(Worker o1, Worker o2)
+	{
 
 		int temp = o1.getName().compareTo(o2.getName());
 

@@ -11,6 +11,8 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import commontools.MyTools;
+
 /**
  * @author zhanghongwei
  *
@@ -57,7 +59,7 @@ public class ArrayUtilTest
 	@Test
 	public final void testGetMax()
 	{
-		int actual = ArrayMyUtil.getMax(this.arr);
+		int actual = MyTools.getMax(this.arr);
 		int expected = 72;
 		Assert.assertEquals(expected, actual);
 	}
@@ -78,20 +80,9 @@ public class ArrayUtilTest
 	@Test
 	public final void testGetIndex()
 	{
-		int actual = ArrayMyUtil.getIndex(this.arr, 8);
+		int actual = MyTools.getIndex(this.arr, 8);
 		int expected = 1;
 		Assert.assertEquals(expected, actual);
-	}
-
-	/**
-	 * Test method for {@link itcastday08.ArrayMyUtil#arrayToString(int[])}.
-	 */
-	@Test
-	public final void testArrayToString()
-	{
-		final String arrayToString = ArrayMyUtil.arrayToString(this.arr);
-		Assert.assertEquals("[4, 8, 2, 9, 72, 6]", arrayToString);
-
 	}
 
 }

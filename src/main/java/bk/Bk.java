@@ -572,8 +572,8 @@ InterfaceDemo2.java //BK --day09 Class 7Interface 2抽象类和接口的异同�
 		不同点：
 			1，抽象类需要被继承，而且只能单继承。
 			   接口需要被实现，而且可以多实现。
-			2，抽象类中可以定义抽象方法和非抽象方法，子类继承后，可以直接使用非抽象方法。
-			   接口中只能定义抽象方法，必须由子类去实现。
+			2，抽象类中可以定义抽象方法和非抽象方法，子类继承后，可以直接使用非抽象方法。可以定义构造。
+			   接口中只能定义抽象方法，必须由子类去实现。不可以定义构造函数。
 			3，抽象类的继承，是is  a 关系，在定义该体系的基本共性内容。
 			   接口的实现,  是has a 关系，在定义体系额外功能。
 		eg:犬按功能分：有导盲犬，搜爆犬- 他们是犬，具有导盲，搜爆的功能。
@@ -1372,11 +1372,6 @@ StringBufferDemo.java
 
 //BK --day15 StringBuilder
 StringBuilderDemo.java
-	JDK升级
-		1，简化书写。
-		2，提高效率。
-		3，增加安全性。
-
 	jdk1.5以后出现了功能和StringBuffer一模一样的类，就是StringBuilder
 	不同的是：
 		StringBuffer是线程同步的。通常用于多线程。
@@ -1602,7 +1597,7 @@ HashSetDemo.java  //BK --day17 Collection 4Set 1HashSet
 哈希表.bmp
 		1 如何保证该集合的元素唯一性呢？哈希表确定元素是否相同
 			1)，hashCode的方法
-			  	判断的是两个元素的哈希值是否相同-hashcode
+			  	判断的是两个元素的哈希值是否相同-hashCode
 			  	如果相同，在判断两个对象的内容是否相同-equals
 			2)，equals方法
 				判断内容相同，用的是equals方法。
@@ -1624,19 +1619,21 @@ LinkedHashSetDemo.java  //BK --day17 Collection 4Set 1HashSet 1LinkedHashSet
 TreeSetDemo.java //BK --day17 Collection 4Set 2TreeSet
 	|--TreeSet:可以对Set集合中的元素进行排序。是不同步的。 --4Con + 26Meds
 		1 判断元素唯一性的方式：就是根据比较方法的返回结果是否是0，是0，就是相同元素，不存。
-		2 TreeSet对元素进行排序的方式一： //BK --day17 Collection 4Set 2TreeSet 1比较器1
+itcastday17.p.bean.Person.java //BK --day17 Collection 4Set 2TreeSet 1比较器1
+		2 TreeSet对元素进行排序的方式一：
 			让元素自身具备比较功能，Person类实现Comparable接口,覆盖compareTo方法。
-ComparatorByLength.java
-ComparatorByName.java //BK --day17 Collection 4Set 2TreeSet 1比较器2
-		3 TreeSet集合第二种排序方式二：(如果不要按照对象中具备的自然顺序进行排序。如果对象中不具备自然顺序。怎么办？)
+ComparatorByLength.java //BK --day17 Collection 4Set 2TreeSet 1比较器2
+ComparatorByName.java
+		3 TreeSet集合第二种排序方式二：
 			让集合自身具备比较功能，定义一个类实现Comparator接口，覆盖compare方法。
 			将该类对象作为参数传递给TreeSet集合的构造函数。
 二叉树.bmp //TODO 3 二叉树 数据结构
 TreeSetTest.java
 	对字符串进行长度排序。
 
-//BK --day18 Generics
+//BK --day18 Generic
 GenericDemo.java
+01-常用对象API(集合框架-泛型-概述).avi (23: 7)
 	1 泛型：
 		jdk1.5出现的安全机制，只能引用类型。
 	2 好处：
@@ -1647,32 +1644,49 @@ GenericDemo.java
 	      其实<>就是一个用于接收具体引用数据类型的参数范围。
 	    2 集合存入需要泛型 && 迭代器也得指定。
 	    3 就当使用数组，类型必须先确定。
-	4 tips -擦除-补偿
+
+02-常用对象API(集合框架-泛型-擦除&补偿).avi (12:43)
+	4 Tips -擦除-补偿
 		1 在程序中，只要用到了带有<>的类或者接口，就要明确传入的具体引用数据类型 。
-		2 泛型技术是给编译器使用的技术,用于编译时期。确保了类型的安全。
+		2 泛型技术是给编译器使用的技术,用于编译时期,确保类型的安全。
 		3 运行时，会将泛型去掉，生成的class文件中是不带泛型的,这个称为泛型的擦除。
 		  为什么擦除呢？因为为了兼容运行的类加载器。以前的类加载器没有此功能。
 		4 泛型的补偿：在运行时，通过获取元素的类型（object.getClass().getName()）进行转换动作,不用使用者在强制转换了。
-GenericDemo2.java--泛型应用与接口
-Tool.java
-GenericDefineDemo3.java --泛型类--04-常用对象API(集合框架-泛型-泛型类).avi (14:14)
+
+03-常用对象API(集合框架-泛型-在集合中的应用).avi (21:11)
+GenericDemo2.java
+
+04-常用对象API(集合框架-泛型-泛型类).avi (14:14)
+GenericDefineDemo3.java --泛型类
+Tool.java //BK --day18 Generic 1类
 	5 泛型类。
 		eg:class Tool<QQ>{}
-GenericDefineDemo4.java --泛型方法--05-常用对象API(集合框架-泛型-泛型方法).avi (12:42)
+
+05-常用对象API(集合框架-泛型-泛型方法).avi (12:42)
+GenericDefineDemo4.java --泛型方法 //BK --day18 Generic 2方法
 	6 将泛方法。
 		eg1 general :
 			public <W> void show(W a){}
 		eg2 static :当方法静态时，不能访问类上定义的泛型。如果静态方法使用泛型，只能将泛型定义在方法上。
 			public static <Y> void method(Y obj){}
-GenericDefineDemo5.java --泛型接口--06-常用对象API(集合框架-泛型-泛型接口).avi ( 4:19)
+
+
+06-常用对象API(集合框架-泛型-泛型接口).avi ( 4:19)
+GenericDefineDemo5.java --泛型接口 //BK --day18 Generic 3接口
 	7 泛型接口
 		eg1:interface Inter<T>{}
 			可以在实现它的类中写出泛型， line37
 			也可以在实现具体对象时，写出泛型 line30
 
+
+07-常用对象API(集合框架-泛型-泛型限定(上限)).avi (25:45)
+08-常用对象API(集合框架-泛型-泛型限定(下限)).avi ( 5:53)
+09-常用对象API(集合框架-泛型-泛型限定(上限的体现)).avi (11:42)
+10-常用对象API(集合框架-泛型-泛型限定(下限的体现)).avi (18: 1)
+11-常用对象API(集合框架-泛型-泛型限定(通配符的体现)).avi ( 8:16)
 GenericAdvanceDemo.java
 	8 泛型的通配符：? 未知类型,用于泛型的限定：
-GenericAdvanceDemo2.java
+GenericAdvanceDemo2.java //BK --day18 Generic 4上下限
 		1 <? extends E>: 接收E类型或者E的子类型对象。上限
 		一般存储对象的时候用。比如 添加元素 addAll.
 
@@ -1691,12 +1705,12 @@ GenericAdvanceDemo4.java
 				TreeSet<Student> a = new TreeSet<Student>(new CompByName());        // 学生可以传入自己的爹的比较器
 			Wrong:TreeSet<Student> a = new TreeSet<Student>(new CompByWorkerName());//学生可以传入自己的儿子的比较器
 
-GenericAdvanceDemo5.java
-		3）?单独使用
+GenericAdvanceDemo5.java //BK --day18 Generic 5通配符
+		3）?单独使用：equals，containsAll，removeAll比较的是任意对象，可以不写，为了约束就写？
 		containsAll(Collection<?> c)
 
-
-//BK --day18 Collections Summary 12-常用对象API(集合框架-集合查阅的技巧).avi ( 8:10)-----------------------------------
+//BK --day18 Collection 6Summary
+12-常用对象API(集合框架-集合查阅的技巧).avi ( 8:10)
 集合的一些技巧：
 1 唯一吗？
 	需要：Set
@@ -1726,37 +1740,48 @@ GenericAdvanceDemo5.java
 
 4 通常这些常用的集合容器都是不同步的。
 
-//BK --day18 Map
+//BK --day18 Collection 5Map
+	 |--Hashtable :内部结构是哈希表，是同步的。不允许null作为键，null作为值。
+		 |--Properties：用来存储键值对型的配置文件的信息，可以和IO技术相结合。
+Map--|--HashMap : 内部结构是哈希表，不是同步的。允许null作为键，null作为值。
+		 |--LinkedHashMap: 内部有哈希表和双向链表
+	 |--TreeMap : 内部结构是二叉树，不是同步的。可以对Map集合中的键进行排序。
+
 //TODO 1 如何理解一个map，它怎么存储，怎么使用？Test18.txt
   		http://www.importnew.com/10620.html
   		http://java.freesion.com/article/31342852080/
   		http://www.iteye.com/topic/838030
   		http://blog.csdn.net/csfreebird/article/details/7347026
-
+//BK --day18 Collection 5Map 1-14 Methods
+MapDemo.java
 	1 Map：--0 Cons+ 14 Methods
 		一次添加一对元素。Collection 一次添加一个元素。
 		Map也称为双列集合，Collection集合称为单列集合。
 		其实map集合中存储的就是键值对。
 		map集合中必须保证键的唯一性。
-MapDemo.java
 	2 常用方法：
-		1，添加。
+		1，增。
 			value put(key,value):返回前一个和key关联的值，如果没有返回null.
-		2，删除。
+		2，删。
 			void  clear():清空map集合。
 			value remove(key):根据指定的key翻出这个键值对。
-		3，判断。
+		3，改。
+			No-Only has put
+			迭代器里面有：setValue(V value)
+		4，查。
 			boolean containsKey(key):
 			boolean containsValue(value):
 			boolean isEmpty();
-		4，获取。
+
 			1)value get(key):通过键获取值，如果没有该键返回null。
-							当然可以通过返回null，来判断是否包含指定键。
+							 当然可以通过返回null，来判断是否包含指定键。
 			2)int size(): 获取键值对的个数。
-KeySet图解.bmp & MapDemo.java
+
+KeySet图解.bmp
 			3)通过Map转成set就可以迭代:keySet()
 			eg:    Set<K>	keySet()
-entrySet图解.bmp	& MapDemo.java
+
+entrySet图解.bmp
 			4)另一个方法:entrySet。
 				该方法将键和值的映射关系作为对象存储到了Set集合中，而这个映射关系的类型就是Map.Entry类型(结婚证)
 				见 代码“ class MyDemo implements MyMap.MyEntry {}” 自己定了了接口中的接口.为什么用内部类？
@@ -1764,14 +1789,19 @@ entrySet图解.bmp	& MapDemo.java
 					内部类static 暴露，能让外部直接用到。
 			5) map.values(); 返回一个collections
 
+
+//BK --day18 Collection 5Map 2常用子类
 	3 Map常用的子类：
 		|--Hashtable :内部结构是哈希表，是同步的。不允许null作为键，null作为值。
 			|--Properties：用来存储键值对型的配置文件的信息，可以和IO技术相结合。
-HashMapDemo.java --	将学生对象和学生的归属地通过键与值存储到map集合中。
+HashMapDemo.java  //BK --day18 Collection 5Map 2常用子类 1HashMap
 		|--HashMap : 内部结构是哈希表，不是同步的。允许null作为键，null作为值。
-TreeMapDemo.java
+LinkedHashMapDemo.java --有序的map //BK --day18 Collection 5Map 2常用子类 3LinkedHashMap
+			|--LinkedHashMap: 内部有哈希表和双向链表
+TreeMapDemo.java //BK --day18 Collection 5Map 2常用子类 2TreeMap
 		|--TreeMap : 内部结构是二叉树，不是同步的。可以对Map集合中的键进行排序。
-LinkedHashMapDemo.java --有序的map
+
+
 	4 Test
 MapTest.java
 	"fdgavcbsacdfs" 获取该字符串中，每一个字母出现的次数。
@@ -1806,9 +1836,13 @@ ToArray.java
 		  所以建议，最后长度就指定为，集合的size。
 
 
-//BK --day19 JDK5.0
-ForEachDemo.java
- 	foreach语句：
+//BK --day19 JDK5
+JDK升级
+	1，简化书写。
+	2，提高效率。
+	3，增加安全性。
+ForEachDemo.java//BK --day19 JDK5 1ForEach
+ 	Foreach语句：
 		1 格式：
 			for(类型  变量   ：Collection集合|数组){}
 		2 传统for和高级for的区别？
@@ -1819,11 +1853,15 @@ ForEachDemo.java
 		  如果要对数组的角标进行操作建议使用传统for。
 		3 应用于Map
 		   可以使用高级for遍历map集合吗？不能直接用，但是可以将map转成单列的set，就可以用了。
-ParamterDemo.java
+
+
+ParamterDemo.java //BK --day19 JDK5 2ParameterFunction
 	函数的可变参数。 其实就是一个数组，但是接收的是数组的元素。 自动将这些元素封装成数组。简化了调用者的书写。
 		注意：可变参数类型，必须定义在参数列表的结尾。
 		eg：public static int newAdd(int a, int... arr) {
-StaticImportDemo.java
+
+
+StaticImportDemo.java  //BK --day19 JDK5 3StaticImport
 	import static java.util.Collections.*;  //静态导入，其实到入的是类中的静态成员。
 	import static java.util.Collections.max;//静态导入，其实到入的是类中的静态成员。
 

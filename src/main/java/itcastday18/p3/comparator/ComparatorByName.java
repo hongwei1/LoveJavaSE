@@ -2,16 +2,26 @@ package itcastday18.p3.comparator;
 
 import java.util.Comparator;
 
-import itcastday18.p2.bean.Person;
+import itcastday17.p.bean.Person;
 
-
-public class ComparatorByName implements Comparator<Person> {
+public class ComparatorByName<T> implements Comparator<T>
+{
 
 	@Override
-	public int compare(Person o1, Person o2) {
-		
-		int temp = o1.getName().compareTo(o2.getName());
-		return temp==0? o1.getAge()-o2.getAge(): temp;
+	public int compare(T o1, T o2)
+	{
+		if (o1 instanceof Person<?> && o2 instanceof Person<?>)
+		{
+			Person<?> o11 = (Person<?>) o1;
+			Person<?> o12 = (Person<?>) o2;
+			int temp = o11.getName().compareTo(o12.getName());
+			return temp == 0 ? o11.getAge() - o12.getAge() : temp;
+		}
+		else
+		{
+			throw new RuntimeException();
+		}
+
 	}
 
 }

@@ -11,6 +11,7 @@ public class ListDemo
 		List<String> list = new ArrayList<String>();
 		// 1 添加元素
 		list.add("abc1");
+		list.add("abc55");
 		List<String> linkedList = new LinkedList<String>();
 		linkedList.add("aa");
 
@@ -18,7 +19,7 @@ public class ListDemo
 		list.add("abc3");
 		System.out.println(list);
 		// 2 插入元素。
-		list.add(1, "abc9");
+		list.set(2, "abc9");
 
 		// 3 删除元素。
 		System.out.println("remove:" + list.remove(2));

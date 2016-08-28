@@ -5,16 +5,11 @@ import java.util.Iterator;
 
 import itcastday17.p.bean.Person;
 
-/*
- * 定义功能去除ArrayList中的重复元素。
+/**
+ * 定义功能去除ArrayList中的重复元素: 判断时用contains 方法，也底层用到了equals方法
  */
-
 public class ArrayListTest2
 {
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
 

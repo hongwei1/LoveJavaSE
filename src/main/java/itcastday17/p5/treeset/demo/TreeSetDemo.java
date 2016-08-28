@@ -1,61 +1,48 @@
 package itcastday17.p5.treeset.demo;
 
-import java.util.Iterator;
 import java.util.TreeSet;
 
 import itcastday17.p.bean.Person;
+import itcastday17.p5.myComparableByname;
+import itcastday18.p3.comparator.ComparatorByName;
 
+/**
+ * 两种方式使用TreeSet：
+ *
+ * <pre>
+ * 1 存储的class Person implements Comparable
+ * 	TreeSet<Person> ts = new TreeSet<Person>();
+ * 2 TreeSet 构造时传入比较器对象 implements Comparator。
+ * 	TreeSet<Person> ts1 = new TreeSet<Person>(new ComparatorByName());
+ * </pre>
+ *
+ * @author zhanghongwei
+ *
+ */
 public class TreeSetDemo
 {
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
 
-		TreeSet<Person> ts = new TreeSet<Person>();
-		// TreeSet ts = new TreeSet(new ComparatorByName());
-		// TreeSet ts = new TreeSet(new myComparableByname());
+		TreeSet<Person<?>> ts = new TreeSet<Person<?>>();
+		TreeSet<Person<?>> ts1 = new TreeSet<Person<?>>(new ComparatorByName<Object>());
+		TreeSet<Person<?>> ts2 = new TreeSet<Person<?>>(new myComparableByname());
 
 		/*
 		 * 以Person对象年龄进行从小到大的排序。
 		 *
 		 */
 
-		ts.add(new Person("zhangsan", 28));
-		ts.add(new Person("lisi", 21));
-		ts.add(new Person("zhouqi", 29));
-		ts.add(new Person("zhaoliu", 25));
-		ts.add(new Person("wangu", 24));
+		ts.add(new Person<Person<?>>("zhangsan", 28));
+		ts.add(new Person<Person<?>>("lisi", 21));
+		ts.add(new Person<Person<?>>("zhouqi", 29));
+		ts.add(new Person<Person<?>>("zhaoliu", 25));
+		ts.add(new Person<Person<?>>("wangu", 24));
 
-		for (Iterator<Person> it = ts.iterator(); it.hasNext();)
+		for (Person<?> p : ts)
 		{
-			Person p = it.next();
 			System.out.println(p.getName() + ":" + p.getAge());
 		}
 
 	}
-
-	/**
-	 *
-	 */
-	public static void demo1()
-	{
-		TreeSet ts = new TreeSet();
-
-		ts.add("abc");
-		ts.add("zaa");
-		ts.add("aa");
-		ts.add("nba");
-		ts.add("cba");
-
-		Iterator it = ts.iterator();
-
-		while (it.hasNext())
-		{
-			System.out.println(it.next());
-		}
-	}
-
 }

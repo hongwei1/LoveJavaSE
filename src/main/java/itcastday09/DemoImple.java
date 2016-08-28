@@ -1,6 +1,6 @@
 package itcastday09;
 
-abstract class AbstractDemoFather implements DemoIf
+abstract class AbstractDemoFather implements DemoInterface
 {
 	@Override
 	public abstract void show1();
@@ -23,7 +23,7 @@ class AbstractDemoSon extends AbstractDemoFather
 
 }
 
-interface DemoIf
+interface DemoInterface
 {
 	int NUM = 4;
 
@@ -32,7 +32,7 @@ interface DemoIf
 	public abstract void show2();
 }
 
-public class DemoImple implements DemoIf
+public class DemoImple implements DemoInterface
 {
 	int a;
 
@@ -48,12 +48,12 @@ public class DemoImple implements DemoIf
 
 	public void show()
 	{
-		System.out.println(DemoIf.NUM);
+		System.out.println(DemoInterface.NUM);
 	}
 
 }
 
-class DemoImpl implements DemoIf
+class DemoImpl implements DemoInterface
 {
 	@Override
 	public void show1()

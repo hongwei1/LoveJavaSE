@@ -3,6 +3,12 @@ package itcastday17.p4.hashset.demo;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
+/**
+ * ÓÐÐò
+ * 
+ * @author zhanghongwei
+ *
+ */
 public class LinkedHashSetDemo
 {
 	public static void main(String[] args)
