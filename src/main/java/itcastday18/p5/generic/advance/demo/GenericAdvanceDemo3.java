@@ -1,56 +1,108 @@
 package itcastday18.p5.generic.advance.demo;
 
-import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
 
-import itcastday18.p2.bean.Person;
-import itcastday18.p2.bean.Student;
-import itcastday18.p2.bean.Worker;
+import itcastday18.p2.bean.Father;
+import itcastday18.p2.bean.GrandFa;
+import itcastday18.p2.bean.Son;
 
-public class GenericAdvanceDemo3 {
-	public static void main(String[] args) {
+public class GenericAdvanceDemo3
+{
+	public static void main(String[] args)
+	{
 
-		ArrayList<Person> al1 = new ArrayList<Person>();
+		TreeSet<GrandFa> al1 = new TreeSet<GrandFa>(new CompByPersonName()); // person 中既有学生又有人，怎么排序？
+																				// 可以用父类的比较器。
+		al1.add(new GrandFa("abc4", 34));
+		al1.add(new GrandFa("abc1", 30));
+		al1.add(new GrandFa("abc2", 38));
 
-		al1.add(new Person("abc", 30));
-		al1.add(new Person("abc4", 34));
+		TreeSet<Father> al2 = new TreeSet<Father>(new CompByStuName());// 学生可以传入自己的比较器
+		// TreeSet<Student> al222 = new TreeSet<Student>(new CompByWorkerName()); // 学生不可以传入自己儿子的比较器
 
-		ArrayList<Student> al2 = new ArrayList<Student>();
+		al2.add(new Father("stu1", 11));
+		al2.add(new Father("stu7", 20));
+		al2.add(new Father("stu2", 22));
+		al2.add(new Son("stu2", 22));
 
-		al2.add(new Student("stu1", 11));
-		al2.add(new Student("stu2", 22));
+		TreeSet<Son> al3 = new TreeSet<Son>(new CompByPersonName());// 学生可以传入自己爷爷的比较器
 
-		ArrayList<Worker> al3 = new ArrayList<Worker>();
-
-		al3.add(new Worker("stu1", 11));
-		al3.add(new Worker("stu2", 22));
-
-		ArrayList<String> al4 = new ArrayList<String>();
-		al4.add("abcdeef");
-		// al1.addAll(al4);//错误，类型不匹配。
+		al3.add(new Son("Worker1", 11));
+		al3.add(new Son("Worker2", 22));
 
 		al1.addAll(al2);
 		al1.addAll(al3);
-		
-//		al3.addAll(al2);
 
-		System.out.println(al1.size());
+		System.out.println("Person------------");
+		Iterator<GrandFa> it1 = al1.iterator();
+		while (it1.hasNext())
+		{
+			System.out.println(it1.next());
+		}
+		System.out.println("Student------------");
+		Iterator<Father> it = al2.iterator();
+		while (it.hasNext())
+		{
+			System.out.println(it.next());
+		}
 
-		// printCollection(al2);
-		// printCollection(al);
+		System.out.println("Worker------------");
+		Iterator<Son> itWorker = al3.iterator();
+		while (itWorker.hasNext())
+		{
+			System.out.println(itWorker.next());
+		}
+
+	}
+}
+
+/*
+ * class TreeSet<E> { TreeSet(Comparator<? super E> comparator) ); TreeSet(Comparator<? extends E> comparator) ); }
+ *
+ * 什么时候用下限呢？通常对集合中的元素进行取出操作时，可以是用下限。
+ *
+ */
+
+class CompByPersonName implements Comparator<GrandFa>
+{
+
+	@Override
+	public int compare(GrandFa o1, GrandFa o2)
+	{
+
+		int temp = o1.getName().compareTo(o2.getName());
+
+		return temp == 0 ? o1.getAge() - o2.getAge() : temp;
 	}
 
 }
 
-/*
- * 一般在存储元素的时候都是用上限，因为这样取出都是按照上限类型来运算的。不会出现类型安全隐患。
- * 下面类仅仅用于说明
- */
-class MyCollection<E> {
-	public void add(E e) {
+class CompByStuName implements Comparator<Father>
+{
 
+	@Override
+	public int compare(Father o1, Father o2)
+	{
+
+		int temp = o1.getName().compareTo(o2.getName());
+
+		return temp == 0 ? o1.getAge() - o2.getAge() : temp;
 	}
 
-	public void addAll(MyCollection<? extends E> e) {
+}
 
+class CompByWorkerName implements Comparator<Son>
+{
+
+	@Override
+	public int compare(Son o1, Son o2)
+	{
+
+		int temp = o1.getName().compareTo(o2.getName());
+
+		return temp == 0 ? o1.getAge() - o2.getAge() : temp;
 	}
+
 }

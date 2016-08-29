@@ -3,87 +3,90 @@ package itcastday19.p3.toolclass.arrays.demo;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 数组转成集合。Arrays：集合框架的工具类。里面的方法都是静态的。
+ *
+ * @author zhanghongwei
+ *
+ */
+public class ArraysDemo
+{
+	public static void main(String[] args)
+	{
+		int[] arr = { 3, 1, 5, 6, 3, 6 };
+		// 把数组内容输出,默认是class格式
+		System.out.println(Arrays.toString(arr));
+		System.out.println(arr);
 
-//数组转成集合。
-public class ArraysDemo {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		/*
-		 * Arrays：集合框架的工具类。里面的方法都是静态的。
-		 */
-		
-//		int[] arr = {3,1,5,6,3,6};		
-//		System.out.println(Arrays.toString(arr));
-		
-		demo_2();
-	}
-
-	public static void demo_2() {
-		
-		/*
-		 * 如果数组中的元素是对象，那么转成集合时，直接将数组中的元素作为集合中的元素进行集合存储。
-		 * 
-		 * 如果数组中的元素是基本类型数值，那么会将该数组作为集合中的元素进行存储。
-		 * 
-		 */
-		int[] arr = {31,11,51,61};
-		
-		List<int[]> list = Arrays.asList(arr);
-		
-		System.out.println(list);
-	}
-
-	/**
-	 * 
-	 */
-	public static void demo_1() {
-		/*
+		/**
 		 * 重点：List asList(数组)将数组转成集合。
-		 * 
+		 *
 		 * 好处：其实可以使用集合的方法操作数组中的元素。
-		 * 注意：数组的长度是固定的，所以对于集合的增删方法是不可以使用的
-		 * 否则会发生UnsupportedOperationException
-		 * 
-		 * 
+		 *
+		 * 注意：数组的长度是固定的，所以对于集合的增删方法是不可以使用的 否则会发生UnsupportedOperationException
+		 *
 		 */
-		String[] arr = {"abc","haha","xixi"};
-		
-		boolean b = myContains(arr, "xixi");
-		System.out.println("contains:"+b);
-		
-		List<String> list = Arrays.asList(arr);
+
+		String[] arrString = { "abc", "haha", "xixi" };
+		// 数组提供的方法很少,要自己写如下包含方法,可以转为List去判断
+		boolean b = ArraysDemo.myContains(arrString, "xixi");
+		System.out.println("contains:" + b);
+
+		List<String> list = Arrays.asList(arrString);
 		boolean b1 = list.contains("xixi");
-		System.out.println("list contaisn:="+b1);
-//		list.add("hiahia");//UnsupportedOperationException
-		
-		System.out.println(list);
+		System.out.println("list contaisn:=" + b1);
+		list.set(1, "hiahia");// 可以修改,但是不能改变长度
+		// list.add(1, "hiahia");// UnsupportedOperationException
+
+		/**
+		 * 如果数组中的元素是对象，那么转成集合时，直接将数组中的元素作为集合中的元素进行集合存储。
+		 *
+		 * 如果数组中的元素是基本类型数值，那么会将该数组作为集合中的元素进行存储。
+		 *
+		 */
+
+		int[] arrInt = { 31, 11, 51, 61 };
+		List<int[]> listInt = Arrays.asList(arrInt);
+		System.out.println(listInt);
+
+		String[] arrString1 = { "abc", "haha", "xixi" };
+		List<String> listString = Arrays.asList(arrString1);
+		System.out.println(listString);
+
 	}
-	
-	public static boolean myContains(String[] arr,String key){
-		for (int i = 0; i < arr.length; i++) {
-			if(arr[i].equals(key))
+
+	public static boolean myContains(String[] arr, String key)
+	{
+		for (String element : arr)
+		{
+			if (element.equals(key))
+			{
 				return true;
+			}
 		}
 		return false;
 	}
-	
-	//toString的经典实现。
-	public static String myToString(int[] a){
+
+	// toString的经典实现。
+	public static String myToString(int[] a)
+	{
 		int iMax = a.length - 1;
 		if (iMax == -1)
-	            return "[]";
+		{
+			return "[]";
+		}
 
-        StringBuilder b = new StringBuilder();
-        b.append('[');
-        for (int i = 0;  ; i++) {//中间省略条件判断，提高了效率。
-            b.append(a[i]);
-	    if (i == iMax)
-	    	return b.append(']').toString();
-           b.append(", ");
-        }
+		StringBuilder b = new StringBuilder();
+		b.append('[');
+		for (int i = 0;; i++)
+		{// 中间省略条件判断，提高了效率。
+			b.append(a[i]);
+			if (i == iMax)
+			{
+				return b.append(']').toString();
+			}
+			b.append(", ");
+		}
 	}
 
 }

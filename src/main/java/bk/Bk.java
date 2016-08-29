@@ -1481,7 +1481,8 @@ CollectionDemo.java //BK --day16 Collection 1-16methods
 		5)，其他：--2
 			boolean retainAll(Collection coll);取交集。
 			Object[] toArray():将集合转成数组。
-	5  Iterator -- 3 methods // BK --day16 Collection 2Iterator
+CollectionDemo.java// BK --day16 Collection 2Iterator
+	5  Iterator -- 3 methods
 		1) difference with Enumeration --2
 			 1Iterator增加： remove elements
 			 2Method names improved
@@ -1534,8 +1535,7 @@ Collection --15 methods
 		|--LinkedList:内部是链表数据结构，是不同步的。增删元素的速度很快。		   --2 constructions  39 methods
 	|--Set ：无序，元素不能重复。
 
-//BK --day17 Collection 3List 5Vector
-VectorDemo.java
+VectorDemo.java //BK --day17 Collection 3List 5Vector
 	5 Vector 有element的都是特有方法。
 	有自己的迭代器：Enumeration en = v.elements();
 
@@ -1568,7 +1568,7 @@ LinkedListDemo.java  //BK --day17 Collection 3List 6LinkedList 1特有的常见�
 			jdk1.6
 			pollFirst();//获取并移除，如果链表为空，返回null.
 			pollLast();
-//BK --day17 Collection 3List 6LinkedList 2模拟题
+//BK --day17 Collection 3List 6LinkedList 2模拟队列和栈
 LinkedTest.java
 DuiLie.java
 Stack.java
@@ -1578,7 +1578,7 @@ Stack.java
 		 队列：先进先出 First In First Out FIFO
 		 我们应该描述这样一个容器，给使用提供一个容器对象完成这两种结构中的一种。
 
-ArrayListTest.java //BK --day17 Collection 3List 7ArrayList 1特有的常见方法
+ArrayListTest.java //BK --day17 Collection 3List 7ArrayList 1常见方法
 Person.java
 	8 ArrayList
 	请定义ArryaList集合，并存储Person对象。如new Person("lisi",20);
@@ -1647,7 +1647,7 @@ GenericDemo.java
 
 02-常用对象API(集合框架-泛型-擦除&补偿).avi (12:43)
 	4 Tips -擦除-补偿
-		1 在程序中，只要用到了带有<>的类或者接口，就要明确传入的具体引用数据类型 。
+		1 在程序中，只要用到了带有<>的类或者接口，就要明确传入的具体引用数据类型。
 		2 泛型技术是给编译器使用的技术,用于编译时期,确保类型的安全。
 		3 运行时，会将泛型去掉，生成的class文件中是不带泛型的,这个称为泛型的擦除。
 		  为什么擦除呢？因为为了兼容运行的类加载器。以前的类加载器没有此功能。
@@ -1663,51 +1663,49 @@ Tool.java //BK --day18 Generic 1类
 		eg:class Tool<QQ>{}
 
 05-常用对象API(集合框架-泛型-泛型方法).avi (12:42)
-GenericDefineDemo4.java --泛型方法 //BK --day18 Generic 2方法
+GenericDefineDemo4.java --泛型方法
+Tool.java //BK --day18 Generic 2方法
 	6 将泛方法。
 		eg1 general :
 			public <W> void show(W a){}
 		eg2 static :当方法静态时，不能访问类上定义的泛型。如果静态方法使用泛型，只能将泛型定义在方法上。
 			public static <Y> void method(Y obj){}
 
-
 06-常用对象API(集合框架-泛型-泛型接口).avi ( 4:19)
 GenericDefineDemo5.java --泛型接口 //BK --day18 Generic 3接口
 	7 泛型接口
 		eg1:interface Inter<T>{}
-			可以在实现它的类中写出泛型， line37
-			也可以在实现具体对象时，写出泛型 line30
-
+			可以在实现它的类中写出泛型 ：class InterImpl2<Q> implements Inter<Q>
+			也可以在实现具体对象时，写出泛型 ： class InterImpl implements Inter<String>
 
 07-常用对象API(集合框架-泛型-泛型限定(上限)).avi (25:45)
 08-常用对象API(集合框架-泛型-泛型限定(下限)).avi ( 5:53)
 09-常用对象API(集合框架-泛型-泛型限定(上限的体现)).avi (11:42)
 10-常用对象API(集合框架-泛型-泛型限定(下限的体现)).avi (18: 1)
 11-常用对象API(集合框架-泛型-泛型限定(通配符的体现)).avi ( 8:16)
-GenericAdvanceDemo.java
+GenericAdvanceDemo.java//BK --day18 Generic 4通配符1
 	8 泛型的通配符：? 未知类型,用于泛型的限定：
-GenericAdvanceDemo2.java //BK --day18 Generic 4上下限
-		1 <? extends E>: 接收E类型或者E的子类型对象。上限
-		一般存储对象的时候用。比如 添加元素 addAll.
-
-		2 <? super E>: 接收E类型或者E的父类型对象。 下限。
-		一般取出对象的时候用。比如比较器。
-	9 应用
-GenericAdvanceDemo3.java
-		1） 一般在存储元素的时候都是用上限，因为这样取出都是按照上限类型来运算的。不会出现类型安全隐患。
-			eg: addAll(Collection<? extends E> c)
-
-GenericAdvanceDemo4.java
-		2）什么时候用下限呢？通常对集合中的元素进行取出操作时，可以是用下限。
-			eg: Tree(Comparator<? super Worker> comp);
-			精华在：line 22 ,GenericAdvanceDemo4.java
-				TreeSet<Student> a = new TreeSet<Student>(new CompByStuName());     // 学生可以传入自己的比较器
-				TreeSet<Student> a = new TreeSet<Student>(new CompByName());        // 学生可以传入自己的爹的比较器
-			Wrong:TreeSet<Student> a = new TreeSet<Student>(new CompByWorkerName());//学生可以传入自己的儿子的比较器
-
-GenericAdvanceDemo5.java //BK --day18 Generic 5通配符
+		eg: public static void printCollection(Collection<?> al)
+GenericAdvanceDemo4.java //BK --day18 Generic 4通配符2
 		3）?单独使用：equals，containsAll，removeAll比较的是任意对象，可以不写，为了约束就写？
 		containsAll(Collection<?> c)
+
+GenericAdvanceDemo2.java //BK --day18 Generic 5上限
+		1 <? extends E>: 接收E类型或者E的子类型对象。上限
+		一般存储对象的时候用。比如 添加元素 addAll.
+			eg: java.util.ArrayList.addAll(Collection<? extends E>)
+
+GenericAdvanceDemo3.java //BK --day18 Generic 5下限
+		2 <? super E>: 接收E类型或者E的父类型对象。 下限。
+		一般取出对象的时候用。比如比较器:
+			java.util.TreeSet.TreeSet<Worker>(Comparator<? super Worker> comparator)
+			2）什么时候用下限呢？通常对集合中的元素进行取出操作时，可以是用下限。
+				eg: Tree(Comparator<? super Worker> comp);
+				精华在：line 22 ,GenericAdvanceDemo4.java
+					TreeSet<Student> a = new TreeSet<Student>(new CompByStuName());     // 学生可以传入自己的比较器
+					TreeSet<Student> a = new TreeSet<Student>(new CompByName());        // 学生可以传入自己的爹的比较器
+				Wrong:TreeSet<Student> a = new TreeSet<Student>(new CompByWorkerName());//学生可以传入自己的儿子的比较器
+
 
 //BK --day18 Collection 6Summary
 12-常用对象API(集合框架-集合查阅的技巧).avi ( 8:10)
@@ -1808,7 +1806,7 @@ MapTest.java
 MapTest2.java
 	查表法
 
-//BK --day19 Collections Arrays
+//BK --day19 1Collections
 CollectionsDemo.java
 ComparatorByLength.java
 	Collections --52 static methods
@@ -1817,24 +1815,28 @@ ComparatorByLength.java
 		15-常用对象API(集合框架-工具类-Collections-逆序&替换).avi (11:58)
 		16-常用对象API(集合框架-工具类-Collections-其他方法&将非同步集合转成同步集合的方法).avi (15:34)
 
-ArraysDemo.java--17-常用对象API(集合框架-工具类-Arrays-方法介绍).avi (11:32)
+//BK --day19 2Arrays
+ArraysDemo.java
+17-常用对象API(集合框架-工具类-Arrays-方法介绍).avi (11:32)
 	Arrays--105 static methods
-	1 array --> list --18-常用对象API(集合框架-工具类-Arrays-asList方法).avi (15:16)
+	1 Array --> list
+18-常用对象API(集合框架-工具类-Arrays-asList方法).avi (15:16)
 		1) 重点：List asList(数组)将数组转成集合。
 		   好处：其实可以使用集合的方法操作数组中的元素。
 		   注意：数组的长度是固定的，所以对于集合的增删方法是不可以使用的,否则会发生UnsupportedOperationException
 		2) 如果数组中的元素是对象，那么转成集合时，直接将数组中的元素作为集合中的元素进行集合存储。
 		   如果数组中的元素是基本类型数值，那么会将该数组作为集合中的元素进行存储。
+
 ToArray.java
-	2 Collections -- Array --19-常用对象API(集合框架-工具类-Collection-toArray方法).avi (11:49)
+	2 Collections --> Array
+19-常用对象API(集合框架-工具类-Collection-toArray方法).avi (11:49)
 	 	1)使用的就是Collection接口中的toArray方法。
-		  集合转成数组：可以对集合中的元素操作的方法进行限定。不允许对其进行增删。
+		  集合转成数组：可以对集合中的元素操作的方法进行限定,不允许对其进行增删。
 		2)toArray方法需要传入一个指定类型的数组。
 		  长度该如何定义呢？
 		  如果长度小于集合的size，那么该方法会创建一个同类型并和集合相同size的数组。
 		  如果长度大于集合的size，那么该方法就会使用指定的数组，存储集合中的元素，其他位置默认为null。
 		  所以建议，最后长度就指定为，集合的size。
-
 
 //BK --day19 JDK5
 JDK升级

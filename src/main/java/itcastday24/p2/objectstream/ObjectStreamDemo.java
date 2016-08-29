@@ -26,7 +26,7 @@ public class ObjectStreamDemo {
 		
 		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("obj.object"));
 		//对象的反序列化。 
-		Person p = (Person)ois.readObject();
+		GrandFa p = (GrandFa)ois.readObject();
 		
 		System.out.println(p.getName()+":"+p.getAge());
 		
@@ -38,7 +38,7 @@ public class ObjectStreamDemo {
 		
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("obj.object"));
 		//对象序列化。  被序列化的对象必须实现Serializable接口。 
-		oos.writeObject(new Person("小强",30));
+		oos.writeObject(new GrandFa("小强",30));
 		
 		oos.close();
 		

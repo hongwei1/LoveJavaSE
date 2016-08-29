@@ -49,7 +49,8 @@ public class CollectionDemo
 		Iterator<String> iteratorWhile = c1.iterator();
 		while (iteratorWhile.hasNext())
 		{
-			System.out.println(iteratorWhile.next()); // java.util.NoSuchElementException
+			final String next = iteratorWhile.next();
+			System.out.println(next); // java.util.NoSuchElementException
 		}
 
 		System.out.println(c1.size());

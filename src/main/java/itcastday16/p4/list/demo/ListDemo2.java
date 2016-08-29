@@ -28,8 +28,8 @@ public class ListDemo2
 			System.out.println("get" + list.get(i));
 		}
 
-		ListDemo2.listSepcialAbtain(list);
 		ListDemo2.commonAbtain(list);
+		ListDemo2.listSepcialAbtain(list);
 
 	}
 
@@ -67,7 +67,7 @@ public class ListDemo2
 	private static void listSepcialAbtain(List<String> list)
 	{
 		ListIterator<String> it = list.listIterator();// 获取列表迭代器对象
-		// 它可以实现在迭代过程中完成对元素的增删改查。
+
 		// 注意：只有list集合具备该迭代功能.
 
 		while (it.hasNext())
@@ -75,7 +75,7 @@ public class ListDemo2
 			Object obj = it.next();
 			if (obj.equals("abc2"))
 			{
-				it.add("abc9");
+				it.add("abc9"); // 它可以实现在迭代过程中完成对元素的增删改查。
 			}
 		}
 

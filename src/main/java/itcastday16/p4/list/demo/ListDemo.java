@@ -1,7 +1,6 @@
 package itcastday16.p4.list.demo;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class ListDemo
@@ -12,9 +11,6 @@ public class ListDemo
 		// 1 Ìí¼ÓÔªËØ
 		list.add("abc1");
 		list.add("abc55");
-		List<String> linkedList = new LinkedList<String>();
-		linkedList.add("aa");
-
 		list.add("abc2");
 		list.add("abc3");
 		System.out.println(list);

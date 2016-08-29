@@ -1,15 +1,15 @@
 package itcastday18.p2.bean;
 
-public class Student extends Person implements Comparable<Person>
+public class Father extends GrandFa implements Comparable<GrandFa>
 {
 
-	public Student()
+	public Father()
 	{
 		super();
 
 	}
 
-	public Student(String name, int age)
+	public Father(String name, int age)
 	{
 		super(name, age);
 

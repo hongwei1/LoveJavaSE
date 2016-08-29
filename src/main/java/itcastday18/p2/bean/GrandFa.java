@@ -1,18 +1,18 @@
 package itcastday18.p2.bean;
 
-public class Person implements Comparable<Person>
+public class GrandFa implements Comparable<GrandFa>
 {
 
 	private String name;
 	private int age;
 
-	public Person()
+	public GrandFa()
 	{
 		super();
 
 	}
 
-	public Person(String name, int age)
+	public GrandFa(String name, int age)
 	{
 		super();
 		this.name = name;
@@ -20,7 +20,7 @@ public class Person implements Comparable<Person>
 	}
 
 	@Override
-	public int compareTo(Person p)
+	public int compareTo(GrandFa p)
 	{
 		int temp = this.name.compareTo(p.name);
 		return temp == 0 ? this.age - p.age : temp;
@@ -51,7 +51,7 @@ public class Person implements Comparable<Person>
 		{
 			return false;
 		}
-		Person other = (Person) obj;
+		GrandFa other = (GrandFa) obj;
 		if (this.age != other.age)
 		{
 			return false;

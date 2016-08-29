@@ -1,13 +1,13 @@
 package itcastday18.p2.bean;
 
-public class Worker extends Student {
+public class Son extends Father {
 
-	public Worker() {
+	public Son() {
 		super();
 		
 	}
 
-	public Worker(String name, int age) {
+	public Son(String name, int age) {
 		super(name, age);
 		
 	}

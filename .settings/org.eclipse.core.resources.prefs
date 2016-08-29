@@ -15,4 +15,3 @@ encoding//src/test/resources=GBK
 encoding/<project>=GBK
 encoding/README.md=UTF-8
 encoding/src=GBK
-encoding/test=GBK

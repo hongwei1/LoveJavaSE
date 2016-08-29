@@ -1,11 +1,13 @@
 package itcastday18.p4.generic.define.demo;
 
-public class GenericDefineDemo5 {
+public class GenericDefineDemo5
+{
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 
 		InterImpl in = new InterImpl();
 		in.show("abc");
@@ -16,35 +18,25 @@ public class GenericDefineDemo5 {
 }
 
 // 泛型接口，将泛型定义在接口上。
-interface Inter<T> {
+interface Inter<T>
+{
 	public void show(T t);
 }
 
-interface MyInfer<T> {
-	public void show(T t);
-}
-
-class MyClass1<Q> implements MyInfer<Q> {
+class InterImpl2<Q> implements Inter<Q> // 实现类继续泛型，实现方法上写明类型
+{
 	@Override
-	public void show(Q t) {
-	}
-
-}
-
-// class InterImpl2<Q> implements Inter<Q>{
-// public void show(Q q){
-// System.out.println("show :"+q);
-// }
-// }
-
-class InterImpl2<Q> implements Inter<Q> {
-	public void show(Q q) {
+	public void show(Q q)
+	{
 		System.out.println("show :" + q);
 	}
 }
 
-class InterImpl implements Inter<String> {
-	public void show(String str) {
+class InterImpl implements Inter<String> // 实现类上写明类型
+{
+	@Override
+	public void show(String str)
+	{
 		System.out.println("show :" + str);
 	}
 }

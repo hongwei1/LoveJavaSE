@@ -9,20 +9,20 @@ public class VectorDemo
 	public static void main(String[] args)
 	{
 
-		Vector v = new Vector();
+		Vector<String> v = new Vector<String>();
 
 		v.addElement("abc1");
 		v.addElement("abc2");
 		v.addElement("abc3");
 		v.addElement("abc4");
 
-		Enumeration en = v.elements();
+		Enumeration<String> en = v.elements();
 		while (en.hasMoreElements())
 		{
 			System.out.println("nextelment:" + en.nextElement());
 		}
 
-		Iterator it = v.iterator();
+		Iterator<String> it = v.iterator();
 
 		while (it.hasNext())
 		{
