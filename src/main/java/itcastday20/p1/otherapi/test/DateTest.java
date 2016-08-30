@@ -1,4 +1,4 @@
-package cn.itcast.p1.otherapi.test;
+package itcastday20.p1.otherapi.test;
 
 import java.text.DateFormat;
 import java.text.ParseException;

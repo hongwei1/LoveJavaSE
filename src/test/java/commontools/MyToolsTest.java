@@ -74,7 +74,7 @@ public class MyToolsTest
 	@Test
 	public final void testMyStringToFile()
 	{
-		MyTools.myStringToFile("src/test/resources/t.txt", "Hi,Hongwei");
+		MyTools.myStringToFile("src/test/resources/t.txt", "Hi,Hongwei", true);
 	}
 
 	@Test

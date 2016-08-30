@@ -22,12 +22,23 @@
 	八种基本类型：
 		数值型--整数类型(byte-8bits, short-16bits, int-32bits, long-64bits)
 		     --浮点类型(float-32bits, double-64bits)
-		字符型(char-[0-255])
+		字符型(char-[0～65535])
 		布尔型（boolean）
 	三种引用：
 		类(class)-String ,int []a,
 		接口(interface)
 		数组( [ ] )
+
+			基本型别	大小	最小值	最大值
+	boolean	-----	-----	------
+	char	16-bit	Unicode 0	Unicode 2^16-1
+	byte	8-bit	-128	+127
+	short	16-bit	-2^15	+2^15-1
+	int	32-bit	-2^31	+2^31-1
+	long	64-bit	-2^63	+2^63-1
+	float	32-bit	IEEE754	IEEE754
+	double	64-bit	IEEE754	IEEE754
+	void
 3 VarDemo2.java      -- P15       11-Java语言基础(类型提升&强制转换).avi
 4 OperateDemo.java   -- P17-P18   arithmetic operator eg: ++
 5 OperateDemo2.java  -- P19       assignment operator
@@ -1867,7 +1878,7 @@ StaticImportDemo.java  //BK --day19 JDK5 3StaticImport
 	import static java.util.Collections.*;  //静态导入，其实到入的是类中的静态成员。
 	import static java.util.Collections.max;//静态导入，其实到入的是类中的静态成员。
 
-//BK --day20 OtherAPI-------------------------------------------
+//BK --day20 0OtherAPI
 SystemDemo.java & 系统信息.txt --0Cons+26Meds
 	1 获取当前时间的毫秒值
 		long l2 = System.currentTimeMillis();
@@ -1886,12 +1897,14 @@ MathDemo.java
 DateDemo.java
 CalendarDemo.java
 
-//BK --day20 IO-------------------------------------------
---day20 IO-1字符字节-----------------
+//BK --day20 IO
+01-IO流(输入流&输出流).avi ( 9:53)
 1 Basic
  	1)输入流和输出流相对于内存设备而言.
 		输入:将外设中的数据读取到内存中.
 		输出:将内存的数写入到外设中.
+
+02-IO流(字节流&字符流).avi (10:31)
 	2)字节流和字符流
 		字节流-- 电脑识别的都是二进制文件。
 		字符流-- 字节流+编码表
@@ -1899,72 +1912,80 @@ CalendarDemo.java
 			获取对应的文字，在对这个文字进行操作。简单说：字节流+编码表
 			eg: Ascall码表，让计算机识别生活中的文字。a-97,A-67.把字母对应到了人可以识别的文字。
 				Unicode，世界通用的编码。因为各个国家的编码不同，同一个字母a，对应不同的编码。所以出生了Unicode
-2 BaseClass
-	字节流的两个顶层父类：
-		InputStream
-		OutputStream.
-	字符流的两个顶层父类：
-		Reader -- 2Cons+10Meds
-		Writer -- 2Cons+10Meds
-	Tips：这些体系的子类都以父类名作为后缀，而且子类名的前缀就是该对象的功能。
-		eg:BufferedWriter, CharArrayWriter, FilterWriter,
 
-FileWriterDemo.java
-3 Write
-	需求：将一些文字存储到硬盘一个文件中。
-	思路：记住；如果要操作文字数据，建议优先考虑字符流。
-		 而且要将数据从内存写到硬盘上，要使用字符流中的输出流	    -->Writer
-   		 硬盘的数据基本体现是文件。 希望找到一个可以操作文件的Writer-->找到了FileWriter
-   	实现：
-   		1 字符串写入文件。
-   		2 换行 LINE_SEPARATOR = System.getProperty("line.separator");
-   		3 续写 如果构造函数中加入true，可以实现对文件进行续写！
-   			eg:FileWriter fw = new FileWriter(表示.PATH+"/demo.txt", true);
-IOExceptionDemo.java
+03-IO流(字符流-FileWriter).avi (26:55)
+04-IO流(字符流-FileWriter-细节(换行和续写)).avi ( 6:45)
+FileWriterDemo.java //BK --day20 IO 1写字符到文件
+	2 BaseClass
+		字节流的两个顶层父类：
+			InputStream
+			OutputStream.
+		字符流的两个顶层父类：
+			Reader -- 2Cons+10Meds
+			Writer -- 2Cons+10Meds
+		Tips：这些体系的子类都以父类名作为后缀，而且子类名的前缀就是该对象的功能。
+			eg:BufferedWriter, CharArrayWriter, FilterWriter,
+	3 Write
+		需求：将一些文字存储到硬盘一个文件中。
+		思路：记住；如果要操作文字数据，建议优先考虑字符流。
+			 而且要将数据从内存写到硬盘上，要使用字符流中的输出流	    -->Writer
+	   		 硬盘的数据基本体现是文件。 希望找到一个可以操作文件的Writer-->找到了FileWriter
+	   	实现：
+	   		1 字符串写入文件。
+	   		2 换行 LINE_SEPARATOR = System.getProperty("line.separator");
+	   		3 续写 如果构造函数中加入true，可以实现对文件进行续写！
+	   			eg:FileWriter fw = new FileWriter(表示.PATH+"/demo.txt", true);
+
+
+05-IO流(字符流-FileWriter-IO异常处理).avi ( 8:24)
+IOExceptionDemo.java  //BK --day20 IO 1写字符到文件 1异常处理
 4 Exception
 	1 写入三步都要异常处理
-	2 Close().必须有，放在finally
+	2 close().必须有，放在finally
 	3 先判断文件是否存在，在close();
 
 5 Read
 	需求：读取一个文本文件。将读取到的字符打印到控制台.
 	思路：同上，找到了FileReader
-FileReaderDemo.java
+FileReaderDemo.java  //BK --day20 IO 2读文件到字符 1单个字符
 	返回单个字符
-FileReaderDemo2.java
+FileReaderDemo2.java //BK --day20 IO 2读文件到字符 2字符数组
 	返回字符数组 读取原理：ReadArrays.gif
 
---day21
+//BK --day21
 6 Test:将c盘的一个文本文件复制到d盘。
 	分析：复制原理：
 		读取c盘文件中的数据，
 		将这些数据写入到d盘当中。
 		连读带写。
-CopyTextTest.java
+CopyTextTest.java  //BK --day21 IO 3复制文件1
 	单个字符的复制
-CopyTextTest_2.java
+CopyTextTest_2.java //BK --day21 IO 3复制文件2
 	字符数组的复制
 复制文本文件图解.bmp
 
-//BK --day20 IO-2字符流缓冲区-----------------
+
 	BufferedWriter
 		：newLine();
 	BufferedReader:
 		: readLine();
-BufferedWriterDemo.java
+BufferedWriterDemo.java //BK --day21 IO-4缓冲1写
 	创建了一个字符写入流的缓冲区对象，并和指定要被缓冲的流对象相关联
-BufferedReaderDemo.java
+
+BufferedReaderDemo.java //BK --day21 IO-4缓冲2读
 	读取字符从文件，通过buffer
 readLine方法原理.bmp
 	二级缓存，一级缓存的数据用回车符分割成二级数据。
-CopyTextByBufTest.java
+
+CopyTextByBufTest.java //BK --day21 IO-4缓冲3Copy
 	使用缓冲区复制一个文本文件。
-MyBufferedReader.java & MyBufferedReaderDemo.java
+
+MyBufferedReader.java //BK --day21 IO-4缓冲4DIY
+MyBufferedReaderDemo.java
 	自定义的读取缓冲区。其实就是模拟一个BufferedReader.
 
 
-//BK --day21 IO-3装饰设计模式----------
-PersonDemo.java
+PersonDemo.java //BK --day21 IO-3装饰设计模式
 	对一组对象的功能进行增强时，就可以使用该模式进行问题的解决。
 
 	装饰和继承都能实现一样的特点：进行功能的扩展增强。
@@ -2022,7 +2043,7 @@ CopyMp3Test.java
 	复制mp3
 
 //BK --day22
-ReadKey.java
+ReadKey.java  //BK --day22 IO-5键盘
 	1） 读取一个键盘录入的数据，并打印在控制台上。
 		键盘本身就是一个标准的输入设备。
 		对于java而言，对于这种输入设备都有对应的对象。

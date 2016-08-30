@@ -1,7 +1,13 @@
 package commontools;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.Charset;
 
 import org.apache.commons.io.FileUtils;
 
@@ -14,10 +20,40 @@ import org.apache.commons.io.FileUtils;
 
 public class MyTools
 {
+
+	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
+	public static final String LINE_TABLEKEY = "\t";
+	public static final String PATH = "src/main/java/commontools/1.txt";
+	public static final String LINE_SPACE = "   ";
+
 	public static String readFileToString;
 
 	private MyTools()
 	{
+	}
+
+	public static void main(String[] args) throws IOException
+	{
+		String orignalPath = "/Users/zhanghongwei/Desktop/1.txt";
+		String newPath = "/Users/zhanghongwei/Desktop/2.txt";
+
+		try (Reader reader = new FileReader(orignalPath); Writer writer = new FileWriter(newPath);)
+		{
+			char[] cbuf = new char[1024];
+			for (int read = 0; read != -1; read = reader.read(cbuf))
+			{
+				writer.write(cbuf, 0, read);
+			}
+
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -139,16 +175,18 @@ public class MyTools
 	}
 
 	/**
-	 * Example: MyTools.myStringToFile("src/test/resources/t.txt", "Hi,Hongwei"); Always will create a new file .
+	 * Example: MyTools.myStringToFile("src/test/resources/t.txt", "Hi,Hongwei",true); Always will create a new file .
 	 *
 	 * @param path
 	 * @param content
+	 * @param flag
+	 *            : true will append the content following . false will create a new file
 	 */
-	public static void myStringToFile(String path, String content)
+	public static void myStringToFile(String path, String content, Boolean flag)
 	{
 		try
 		{
-			FileUtils.writeStringToFile(new File(path), content);
+			FileUtils.writeStringToFile(new File(path), content, Charset.defaultCharset(), flag);
 		}
 		catch (IOException e)
 		{

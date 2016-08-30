@@ -21,7 +21,7 @@ public class ReadKey
 	public static void main(String[] args) throws IOException
 	{
 
-		readKey();
+		ReadKey.readKey();
 		// readKey2();
 
 	}
