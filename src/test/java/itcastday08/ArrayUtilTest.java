@@ -71,7 +71,6 @@ public class ArrayUtilTest
 	@Test
 	public final void testSelectSort()
 	{
-		Assert.fail("Not yet implemented"); // TODO
 	}
 
 	/**

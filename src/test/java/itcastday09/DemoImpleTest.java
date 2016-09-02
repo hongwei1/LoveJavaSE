@@ -2,7 +2,6 @@ package itcastday09;
 
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -37,14 +36,12 @@ public class DemoImpleTest
 	@Ignore
 	public final void testShow1()
 	{
-		Assert.fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	@Ignore
 	public final void testShow2()
 	{
-		Assert.fail("Not yet implemented"); // TODO
 	}
 
 	@Test

@@ -2450,6 +2450,34 @@ OutputStream
 
 RandomAccessFile:
 
+//BK --day25 GUI
+
+FrameDemo.java
+01-GUI(概述).avi (22:28)
+02-GUI(Frame演示).avi (12:51)
+03-GUI(事件监听机制).avi (25:31)
+事件监听机制.bmp
+04-GUI(ActionListener演示).avi ( 4:56)
+
+MouseAndKeyDemo.java
+05-GUI(鼠标事件).avi (22:12)
+06-GUI(键盘事件).avi (15:15)
+
+
+
+07-GUI(Swing演示&装插件).avi (17:47) //BK --day25 GUI Jigloo
+NewJFrame.java
+MouseAndKeyDemo.java
+
+08-GUI(练习-列出目录内容).avi (11:50)
+09-GUI(菜单).avi (10:50)
+10-GUI(练习).avi (22:48)
+MyWindow.java
+MySwing.java
+MyMenu.java
+
+
+
 
 //BK --day28 Reflection
 01-反射机制(概述&应用场景).avi
