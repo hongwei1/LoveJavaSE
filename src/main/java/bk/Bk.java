@@ -1537,6 +1537,7 @@ ListDemo2.java // BK --day16 Collection 3List 4ArrayList 1特有ListIterator
 		previous() ，previousIndex(), set(E e)
 		tips: listIterator可以实现在迭代过程中完成对元素的增删改查。
 		      只有list集合具备该迭代功能.
+Test13.java -- exam1:
 
 10-常用对象API(集合框架-List常用子类的特点).avi (19:18)
 Collection --15 methods
@@ -1879,7 +1880,7 @@ StaticImportDemo.java  //BK --day19 JDK5 3StaticImport
 	import static java.util.Collections.max;//静态导入，其实到入的是类中的静态成员。
 
 //BK --day20 0OtherAPI
-SystemDemo.java & 系统信息.txt --0Cons+26Meds
+SystemDemo.java & 系统信息.txt --0Cons+26Meds //BK --day20 0OtherAPI 1System
 	1 获取当前时间的毫秒值
 		long l2 = System.currentTimeMillis();
 	2 获取系统的属性信息，并存储到了Properties集合中。
@@ -1892,7 +1893,11 @@ SystemDemo.java & 系统信息.txt --0Cons+26Meds
 	4 给系统设置一些属性信息。这些信息是全局，其他程序都可以使用。
 		System.setProperty("myclasspath", "c:\myclass");
 
-RuntimeDemo.java
+RuntimeDemo.java  //BK --day20 0OtherAPI 2Runtime
+	Runtime:没有构造方法摘要，说明该类不可以创建对象。
+	又发现还有非静态的方法。说明该类应该提供静态的返回该类对象的方法。
+	而且只有一个，说明Runtime类使用了单例设计模式。
+
 MathDemo.java
 DateDemo.java
 CalendarDemo.java
@@ -1939,36 +1944,32 @@ FileWriterDemo.java //BK --day20 IO 1写字符到文件
 
 05-IO流(字符流-FileWriter-IO异常处理).avi ( 8:24)
 IOExceptionDemo.java  //BK --day20 IO 1写字符到文件 1异常处理
-4 Exception
-	1 写入三步都要异常处理
-	2 close().必须有，放在finally
-	3 先判断文件是否存在，在close();
+	4 Exception
+		1 写入三步都要异常处理
+		2 close().必须有，放在finally
+		3 先判断文件是否存在，在close();
 
-5 Read
-	需求：读取一个文本文件。将读取到的字符打印到控制台.
-	思路：同上，找到了FileReader
 FileReaderDemo.java  //BK --day20 IO 2读文件到字符 1单个字符
-	返回单个字符
 FileReaderDemo2.java //BK --day20 IO 2读文件到字符 2字符数组
-	返回字符数组 读取原理：ReadArrays.gif
+	5 Read
+		需求：读取一个文本文件。将读取到的字符打印到控制台.
+		思路：同上，找到了FileReader
 
 //BK --day21
-6 Test:将c盘的一个文本文件复制到d盘。
-	分析：复制原理：
-		读取c盘文件中的数据，
-		将这些数据写入到d盘当中。
-		连读带写。
 CopyTextTest.java  //BK --day21 IO 3复制文件1
-	单个字符的复制
 CopyTextTest_2.java //BK --day21 IO 3复制文件2
-	字符数组的复制
 复制文本文件图解.bmp
-
+	6 Test:将c盘的一个文本文件复制到d盘。
+		分析：复制原理：
+			读取c盘文件中的数据，
+			将这些数据写入到d盘当中。
+			连读带写。
 
 	BufferedWriter
 		：newLine();
 	BufferedReader:
 		: readLine();
+
 BufferedWriterDemo.java //BK --day21 IO-4缓冲1写
 	创建了一个字符写入流的缓冲区对象，并和指定要被缓冲的流对象相关联
 
@@ -1985,7 +1986,7 @@ MyBufferedReaderDemo.java
 	自定义的读取缓冲区。其实就是模拟一个BufferedReader.
 
 
-PersonDemo.java //BK --day21 IO-3装饰设计模式
+PersonDemo21.java //BK --day21 IO-3装饰设计模式
 	对一组对象的功能进行增强时，就可以使用该模式进行问题的解决。
 
 	装饰和继承都能实现一样的特点：进行功能的扩展增强。
@@ -2004,7 +2005,7 @@ PersonDemo.java //BK --day21 IO-3装饰设计模式
 			|--BufferTextWriter:加入了缓冲技术的操作文本的对象。
 		|--MediaWriter：用于操作媒体。
 			|--BufferMediaWriter:
-	到这里就哦了。但是这样做好像并不理想。
+	但是这样做并不理想。
 	如果这个体系进行功能扩展，有多了流对象。
 	那么这个流要提高效率，是不是也要产生子类呢？是。这时就会发现只为提高功能，进行的继承，
 	导致继承体系越来越臃肿。不够灵活。
@@ -2035,11 +2036,16 @@ PersonDemo.java //BK --day21 IO-3装饰设计模式
 
 	装饰比继承灵活。
 	特点：装饰类和被装饰类都必须所属同一个接口或者父类。
+
 LineNumberReaderDemo.java
 	lnr.getLineNumber()可以得道行号
-ByteStreamDemo.java
+
+
+ByteStreamDemo.java //BK --day21 IO-5字节流
+ByteStreamDemoTest.java
+
 	字节流输入输出
-CopyMp3Test.java
+CopyMp3Test.java //BK --day21 IO-5字节流 1copyMp3 4ways
 	复制mp3
 
 //BK --day22
@@ -2051,10 +2057,77 @@ ReadKey.java  //BK --day22 IO-5键盘
 	2） 获取用户键盘录入的数据，
 		并将数据变成大写显示在控制台上，
 		如果用户输入的是over，结束键盘录入。
+字节流：
+    InputStream
+    OutputStream
+        FileInputStream
+        FileOutputStream
+        BufferedInputStream
+        BufferedOutputStream
+字符流：
+    Writer
+    Reader
+        FileReader
+        FileWriter
+        BufferedReader
+        BufferedWriter
 
-//BK --day22 转换流桥梁------------------------------------
+
+//BK --day22 转换流桥梁
 TransStreamDemo.java
 转换流桥梁.bmp
+TransStreamDemo2.java --简化版
+
+============================================================
+TransStreamDemo3.java
+	转换流：
+	InputStreamReader ：字节到字符的桥梁。解码。
+	OutputStreamWriter：字符到字节的桥梁。编码。
+
+	流的操作规律：
+	之所以要弄清楚这个规律，是因为流对象太多，开发时不知道用哪个对象合适。
+
+	想要知道开发时用到哪些对象。只要通过四个明确即可。
+
+	1，明确源和目的(汇)
+		源：InputStream  Reader
+		目的：OutputStream  Writer
+
+	2，明确数据是否是纯文本数据。
+		源：是纯文本：Reader
+			否：InputStream
+		目的：是纯文本 Writer
+			否：OutputStream
+
+		到这里，就可以明确需求中具体要使用哪个体系。
+
+	3，明确具体的设备。
+		源设备：
+			硬盘：File
+			键盘：System.in
+			内存：数组
+			网络：Socket流
+
+		目的设备：
+			硬盘：File
+			控制台：System.out
+			内存：数组
+			网络：Socket流
+
+	4，是否需要其他额外功能。
+		1，是否需要高效(缓冲区);
+			是，就加上buffer.
+		2，转换。
+
+
+	什么时候使用转换流呢？
+
+		1，源或者目的对应的设备是字节流，但是操作的却是文本数据，可以使用转换作为桥梁。
+			提高对文本操作的便捷。
+		2，一旦操作文本涉及到具体的指定编码表时，必须使用转换流 。
+
+
+
 //TODO JavaStopHere-- 8:51:56 AM
 
 TransStreamDemo2.java
@@ -2449,34 +2522,6 @@ OutputStream
 	|--PrintStream
 
 RandomAccessFile:
-
-//BK --day25 GUI
-
-FrameDemo.java
-01-GUI(概述).avi (22:28)
-02-GUI(Frame演示).avi (12:51)
-03-GUI(事件监听机制).avi (25:31)
-事件监听机制.bmp
-04-GUI(ActionListener演示).avi ( 4:56)
-
-MouseAndKeyDemo.java
-05-GUI(鼠标事件).avi (22:12)
-06-GUI(键盘事件).avi (15:15)
-
-
-
-07-GUI(Swing演示&装插件).avi (17:47) //BK --day25 GUI Jigloo
-NewJFrame.java
-MouseAndKeyDemo.java
-
-08-GUI(练习-列出目录内容).avi (11:50)
-09-GUI(菜单).avi (10:50)
-10-GUI(练习).avi (22:48)
-MyWindow.java
-MySwing.java
-MyMenu.java
-
-
 
 
 //BK --day28 Reflection
