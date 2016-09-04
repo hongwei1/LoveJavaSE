@@ -1537,7 +1537,6 @@ ListDemo2.java // BK --day16 Collection 3List 4ArrayList 1特有ListIterator
 		previous() ，previousIndex(), set(E e)
 		tips: listIterator可以实现在迭代过程中完成对元素的增删改查。
 		      只有list集合具备该迭代功能.
-Test13.java -- exam1:
 
 10-常用对象API(集合框架-List常用子类的特点).avi (19:18)
 Collection --15 methods
@@ -2404,7 +2403,7 @@ File类：
 
 
 
-//BK --day23 IO-6 Others--------------------
+//BK --day23 IO-6 Others
 IO中的其他功能流对象：
 
 1,打印流：
@@ -2523,6 +2522,36 @@ OutputStream
 
 RandomAccessFile:
 
+//BK --day25 GUI
+
+FrameDemo.java
+01-GUI(概述).avi (22:28)
+02-GUI(Frame演示).avi (12:51)
+03-GUI(事件监听机制).avi (25:31)
+事件监听机制.bmp
+04-GUI(ActionListener演示).avi ( 4:56)
+
+MouseAndKeyDemo.java
+05-GUI(鼠标事件).avi (22:12)
+06-GUI(键盘事件).avi (15:15)
+
+
+07-GUI(Swing演示&装插件).avi (17:47) //BK --day25 GUI Jigloo
+MouseAndKeyDemo.java
+
+08-GUI(练习-列出目录内容).avi (11:50)
+09-GUI(菜单).avi (10:50)
+10-GUI(练习).avi (22:48)
+
+
+DebugDemo.java
+DebugDemo.java
+MyMenu.java
+MySwing.java
+MyWindow.java
+NewJFrame.java
+
+
 
 //BK --day28 Reflection
 01-反射机制(概述&应用场景).avi
@@ -2574,6 +2603,46 @@ http://langgufu.iteye.com/blog/1168366
 	所有变量甚至是内容助手。要执行你的代码的话，只需标记它，并使用右键菜单或者CTRL+U(执行)或者 CTRL+SHIFT+I (检查).
 
 
+//BK --day37 ThinkInJava
+2-Object
+HelloDate.java
+ShowProperties.java
+
+文档注释:
+Documentation1.java
+Documentation2.java
+Documentation3.java
+
+
+3-Operate
+HelloDate.java --static import
+Precedence.java--P72
+Assignment.java--P73
+PassObject.java--P73
+
+
+AllOps.java
+
+AutoInc.java
+BitManipulation.java
+Bool.java
+Casting.java
+CastingNumbers.java
+EqualsMethod.java
+EqualsMethod2.java
+Equivalence.java
+Exponents.java
+
+Literals.java
+MathOps.java
+Overflow.java
+
+
+RoundingNumbers.java
+ShortCircuit.java
+StringOperators.java
+TernaryIfElse.java
+URShift.java
 
 
 

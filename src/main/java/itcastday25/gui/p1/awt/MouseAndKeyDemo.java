@@ -15,33 +15,29 @@ import java.awt.event.WindowEvent;
 
 public class MouseAndKeyDemo
 {
-
-	private Frame f;
-	private TextField tf;
-	private Button but;
+	private Frame frame;
+	private TextField testField;
+	private Button button;
 
 	public MouseAndKeyDemo()
 	{
 		this.init();
-
 	}
 
 	private void init()
 	{
+		this.frame = new Frame("演示鼠标和键盘监听");
+		this.frame.setBounds(400, 200, 500, 400);
+		this.frame.setLayout(new FlowLayout());
 
-		this.f = new Frame("演示鼠标和键盘监听");
-		this.f.setBounds(400, 200, 500, 400);
-		this.f.setLayout(new FlowLayout());
+		this.button = new Button("一个按钮");
+		this.testField = new TextField(40);
 
-		this.tf = new TextField(35);
-		this.but = new Button("一个按钮");
-
-		this.f.add(this.tf);
-		this.f.add(this.but);
+		this.frame.add(this.button);
+		this.frame.add(this.testField);
 
 		this.myEvent();
-
-		this.f.setVisible(true);
+		this.frame.setVisible(true);
 
 	}
 
@@ -49,52 +45,53 @@ public class MouseAndKeyDemo
 	{
 
 		// 给文本框添加键盘监听。
-		this.tf.addKeyListener(new KeyAdapter()
+		this.testField.addKeyListener(new KeyAdapter()
 		{
-
 			@Override
 			public void keyPressed(KeyEvent e)
 			{
+				System.out.println("key run..." + KeyEvent.getKeyText(e.getKeyCode()) + "::::" + e.getKeyCode());
+				int code = e.getKeyCode();
+				if (!(code >= KeyEvent.VK_0 && code <= KeyEvent.VK_9))
+				{
+					System.out.println("必须是数字");
+					// e.consume();
+				}
 
-				// System.out.println("key run..."+KeyEvent.getKeyText(e.getKeyCode())+"::::"+e.getKeyCode());
-				// int code = e.getKeyCode();
-				// if(!(code>=KeyEvent.VK_0 && code<=KeyEvent.VK_9)){
-				// System.out.println("必须是数字");
-				// e.consume();
+				// if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_ENTER)
+				// {
+				// System.out.println("enter run ...");
 				// }
 
-				if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_ENTER)
+				if (e.getKeyCode() == 8)
 				{
-					System.out.println("enter run ...");
+					MouseAndKeyDemo.this.testField.setText("");
 				}
 			}
 
 		});
 
-		this.f.addWindowListener(new WindowAdapter()
+		this.frame.addWindowListener(new WindowAdapter()
 		{
-
 			@Override
 			public void windowClosing(WindowEvent e)
 			{
-
 				System.exit(0);
 			}
 
 		});
 
-		this.but.addActionListener(new ActionListener()
+		this.button.addActionListener(new ActionListener()
 		{
-
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				// System.out.println("action run.....");
+				System.out.println("action run.....");
 			}
 		});
 
 		// 在按钮上添加一个鼠标监听.
-		this.but.addMouseListener(new MouseAdapter()
+		this.button.addMouseListener(new MouseAdapter()
 		{
 
 			private int count = 1;
@@ -115,18 +112,13 @@ public class MouseAndKeyDemo
 
 				if (e.getClickCount() == 2)
 				{
-					MouseAndKeyDemo.this.tf.setText("mouse double click..." + this.count++);
-					// System.out.println("mouse click..."+count++);
-					// System.out.println(e);
+					MouseAndKeyDemo.this.testField.setText("mouse double click..." + this.count++);
 				}
 			}
 
 		});
 	}
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
 
