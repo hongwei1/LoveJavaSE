@@ -12,7 +12,7 @@ package ThinkingInJava4.Object;
 // and ordinary method overloading.
 
 /**
- * creates type Tree wth two constructors and one info method
+ * creates type Tree with two constructors and one info method
  */
 
 class Tree

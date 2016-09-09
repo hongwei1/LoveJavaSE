@@ -1,7 +1,12 @@
-//: initialization/Measurement.java
-class Depth {}
+package ThinkingInJava4.initialization;
 
-public class Measurement {
-  Depth d = new Depth();
-  // ...
-} ///:~
+//: initialization/Measurement.java
+class Depth
+{
+}
+
+public class Measurement
+{
+	Depth d = new Depth();
+	// ...
+} /// :~

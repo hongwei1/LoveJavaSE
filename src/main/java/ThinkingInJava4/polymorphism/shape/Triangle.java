@@ -1,8 +1,19 @@
 //: polymorphism/shape/Triangle.java
-package polymorphism.shape;
-import static net.mindview.util.Print.*;
+package ThinkingInJava4.polymorphism.shape;
 
-public class Triangle extends Shape {
-  public void draw() { print("Triangle.draw()"); }
-  public void erase() { print("Triangle.erase()"); }
-} ///:~
+import static ThinkingInJava4.net.mindview.util.Print.print;
+
+public class Triangle extends Shape
+{
+	@Override
+	public void draw()
+	{
+		print("Triangle.draw()");
+	}
+
+	@Override
+	public void erase()
+	{
+		print("Triangle.erase()");
+	}
+} /// :~

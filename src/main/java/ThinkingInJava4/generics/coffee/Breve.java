@@ -1,3 +1,6 @@
 //: generics/coffee/Breve.java
-package generics.coffee;
-public class Breve extends Coffee {} ///:~
+package ThinkingInJava4.generics.coffee;
+
+public class Breve extends Coffee
+{
+} /// :~

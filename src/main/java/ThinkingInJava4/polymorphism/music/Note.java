@@ -1,7 +1,8 @@
 //: polymorphism/music/Note.java
 // Notes to play on musical instruments.
-package polymorphism.music;
+package ThinkingInJava4.polymorphism.music;
 
-public enum Note {
-    MIDDLE_C, C_SHARP, B_FLAT; // Etc.
-} ///:~
+public enum Note
+{
+	MIDDLE_C, C_SHARP, B_FLAT; // Etc.
+} /// :~

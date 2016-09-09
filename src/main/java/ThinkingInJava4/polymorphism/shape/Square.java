@@ -1,8 +1,19 @@
 //: polymorphism/shape/Square.java
-package polymorphism.shape;
-import static net.mindview.util.Print.*;
+package ThinkingInJava4.polymorphism.shape;
 
-public class Square extends Shape {
-  public void draw() { print("Square.draw()"); }
-  public void erase() { print("Square.erase()"); }
-} ///:~
+import static ThinkingInJava4.net.mindview.util.Print.print;
+
+public class Square extends Shape
+{
+	@Override
+	public void draw()
+	{
+		print("Square.draw()");
+	}
+
+	@Override
+	public void erase()
+	{
+		print("Square.erase()");
+	}
+} /// :~

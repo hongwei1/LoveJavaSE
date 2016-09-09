@@ -1,7 +1,15 @@
 //: typeinfo/pets/Mouse.java
-package typeinfo.pets;
+package ThinkingInJava4.typeinfo.pets;
 
-public class Mouse extends Rodent {
-  public Mouse(String name) { super(name); }
-  public Mouse() { super(); }
-} ///:~
+public class Mouse extends Rodent
+{
+	public Mouse(String name)
+	{
+		super(name);
+	}
+
+	public Mouse()
+	{
+		super();
+	}
+} /// :~

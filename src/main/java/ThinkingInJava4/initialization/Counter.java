@@ -1,6 +1,13 @@
+package ThinkingInJava4.initialization;
+
 //: initialization/Counter.java
-public class Counter {
-  int i;
-  Counter() { i = 7; }
-  // ...
-} ///:~
+public class Counter
+{
+	int i;
+
+	Counter()
+	{
+		i = 7;
+	}
+	// ...
+} /// :~

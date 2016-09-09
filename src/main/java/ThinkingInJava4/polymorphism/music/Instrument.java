@@ -1,10 +1,13 @@
 //: polymorphism/music/Instrument.java
-package polymorphism.music;
-import static net.mindview.util.Print.*;
+package ThinkingInJava4.polymorphism.music;
 
-class Instrument {
-  public void play(Note n) {
-    print("Instrument.play()");
-  }
+import static ThinkingInJava4.net.mindview.util.Print.print;
+
+class Instrument
+{
+	public void play(Note n)
+	{
+		print("Instrument.play()");
+	}
 }
- ///:~
+/// :~

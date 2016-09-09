@@ -1,7 +1,10 @@
+package ThinkingInJava4.operators;
+
+import static thinkinginjava4.net.mindview.util.Print.*;
+
 //: operators/BitManipulation.java
 // Using the bitwise operators.
 import java.util.*;
-import static net.mindview.util.Print.*;
 
 public class BitManipulation {
   public static void main(String[] args) {

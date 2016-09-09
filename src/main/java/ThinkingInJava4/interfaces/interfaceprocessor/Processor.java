@@ -1,7 +1,9 @@
 //: interfaces/interfaceprocessor/Processor.java
-package interfaces.interfaceprocessor;
+package ThinkingInJava4.interfaces.interfaceprocessor;
 
-public interface Processor {
-  String name();
-  Object process(Object input);
-} ///:~
+public interface Processor
+{
+	String name();
+
+	Object process(Object input);
+} /// :~

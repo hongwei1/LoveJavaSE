@@ -6,6 +6,7 @@ class FuT2
 	{
 		System.out.println("fu lei static construction code run ");
 	}
+
 	{
 		System.out.println("fu lei construction code run ");
 	}
@@ -13,7 +14,7 @@ class FuT2
 	FuT2()
 	{
 		System.out.println("fu lei constructor run ");
-		this.show();
+		show();
 	}
 
 	void show()
@@ -34,7 +35,7 @@ class ZiT2 extends FuT2
 	{
 		System.out.println("zi constructor code ..." + ZiT2.numStatic);
 		ZiT2.numStatic = 3;
-		this.numNormal = 2;
+		numNormal = 2;
 	}
 
 	ZiT2()

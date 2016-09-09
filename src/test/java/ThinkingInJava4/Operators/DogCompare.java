@@ -1,62 +1,66 @@
-// operators/DogCompare.java
-// TIJ4 Chapter Operators, Exercise 6, page 105
-/* Create a class called Dog containing two Strings: name and says.
-* Following exercise 5, create a new Dog reference and assign it to spot's
-* object. Test for comparison using == and equals() for all references.
-*/
+package ThinkingInJava4.Operators;
 
-import org.greggordon.tools.*;
-
-class Dog {
+class Dog1
+{
 	String name;
 	String says;
-	void setName(String n) {
-		name = n;
+
+	void setName(String n)
+	{
+		this.name = n;
 	}
-	void setSays(String s) {
-		says = s;
+
+	void setSays(String s)
+	{
+		this.says = s;
 	}
-	void showName() {
-		P.rintln(name);
+
+	void showName()
+	{
+		System.out.println(this.name);
 	}
-	void speak() {
-		P.rintln(says);
+
+	void speak()
+	{
+		System.out.println(this.says);
 	}
 }
 
-public class DogCompare {
-	public static void main(String[] args) {
-		Dog spot = new Dog();
+public class DogCompare
+{
+	public static void main(String[] args)
+	{
+		Dog1 spot = new Dog1();
 		spot.setName("Spot");
 		spot.setSays("Ruff!");
-		Dog scruffy = new Dog();
+		Dog1 scruffy = new Dog1();
 		scruffy.setName("Scruffy");
 		scruffy.setSays("Wurf!");
 		spot.showName();
 		spot.speak();
-		scruffy.showName(); 
+		scruffy.showName();
 		scruffy.speak();
-		Dog butch = new Dog();
+		Dog1 butch = new Dog1();
 		butch.setName("Butch");
 		butch.setSays("Hello!");
 		butch.showName();
 		butch.speak();
-		P.rintln("Comparison: ");
-		P.rintln("spot == butch: " + (spot == butch));
-		P.rintln("spot.equals(butch): " + spot.equals(butch));
-		P.rintln("butch.equals(spot): " + butch.equals(spot));
-		P.rintln("Now assign: spot = butch");
+		System.out.println("Comparison: ");
+		System.out.println("spot == butch: " + (spot == butch));
+		System.out.println("spot.equals(butch): " + spot.equals(butch));
+		System.out.println("butch.equals(spot): " + butch.equals(spot));
+		System.out.println("Now assign: spot = butch");
 		spot = butch;
-		P.rintln("Compare again: ");
-		P.rintln("spot == butch: " + (spot == butch));
-		P.rintln("spot.equals(butch): " + spot.equals(butch));
-		P.rintln("butch.equals(spot): " + butch.equals(spot));
-		P.rintln("Spot: ");
+		System.out.println("Compare again: ");
+		System.out.println("spot == butch: " + (spot == butch));
+		System.out.println("spot.equals(butch): " + spot.equals(butch));
+		System.out.println("butch.equals(spot): " + butch.equals(spot));
+		System.out.println("Spot: ");
 		spot.showName();
 		spot.speak();
-		P.rintln("Butch: ");
+		System.out.println("Butch: ");
 		butch.showName();
 		butch.speak();
-			
+
 	}
 }

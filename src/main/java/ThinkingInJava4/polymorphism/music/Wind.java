@@ -1,5 +1,5 @@
 //: polymorphism/music/Wind.java
-package polymorphism.music;
+package ThinkingInJava4.polymorphism.music;
 
 // Wind objects are instruments
 // because they have the same interface:

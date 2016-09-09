@@ -1,6 +1,6 @@
 package ThinkingInJava4.operators;
 
-import ThinkingInJava4.net.mindview.util.Print;
+import thinkinginjava4.net.mindview.util.Print;
 
 //: operators/PassObject.java
 //Passing objects to methods may not be what you're used to.

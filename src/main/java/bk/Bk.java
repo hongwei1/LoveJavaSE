@@ -748,8 +748,8 @@ InnerClassDemo6.java
 Test.java
 Test2.java
 先初始化父类的静态代码-->初始化子类的静态代码-->
-     (创建实例)-->父类默认初始化-->父类显示初始化-->父类构造代码块-->初始化父类的构造
-             -->子类默认初始化-->子类显示初始化-->子类构造代码块-->初始化子类的构造
+     (创建实例)-->父类默认初始化-->父类显示初始化-->父类构造代码块-->子类默认初始化
+             -->初始化父类构造函数-->子类显示初始化-->子类构造代码块-->初始化子类构造函
 
 //BK --day11 Exception
 ExceptionDemo.java
@@ -2590,7 +2590,8 @@ RunComputer.java// BK --day28 Reflection 4Practice
 
 //BK --day36 Debug Tricks
 http://langgufu.iteye.com/blog/1168366
-9.我们常说的断点(breakpoints)是指line breakpoints,除了line breakpoints,还有其他的断点类型：field(watchpoint)breakpoint,method breakpoint ,exception breakpoint.
+9.我们常说的断点(breakpoints)是指line breakpoints,除了line breakpoints,
+还有其他的断点类型：field(watchpoint)breakpoint,method breakpoint ,exception breakpoint.
 10.field breakpoint 也叫watchpoint(监视点) 当成员变量被读取或修改时暂挂
 11.添加method breakpoint 进入/离开此方法时暂挂(Run-method breakpoint)
 12.添加Exception breakpoint 捕抓到Execption时暂挂(待续...)
@@ -2603,7 +2604,7 @@ http://langgufu.iteye.com/blog/1168366
 	所有变量甚至是内容助手。要执行你的代码的话，只需标记它，并使用右键菜单或者CTRL+U(执行)或者 CTRL+SHIFT+I (检查).
 
 
-//BK --day37 ThinkInJava
+//BK --day37 Think
 2-Object
 HelloDate.java
 ShowProperties.java
@@ -2614,43 +2615,251 @@ Documentation2.java
 Documentation3.java
 
 
-3-Operate
+//BK --day37 Think 03Operate
 HelloDate.java --static import
 Precedence.java--P72
 Assignment.java--P73
 PassObject.java--P73
+MathOps.java--P74
+AutoInc.java--P76
+Equivalence.java--P76
+EqualsMethod.java--P76
+EqualsMethod2.java--P77
+Bool.java--P78
+ShortCircuit.java--P79
+Literals.java--P80
+Exponents.java--P81
+URShift.java--P83
+BitManipulation.java--P84
+TernaryIfElse.java--P86
+StringOperators.java--P86
+Casting.java--P88
+CastingNumbers.java--P88
+RoundingNumbers.java--P88
+AllOps.java--P89
+Overflow.java--P96
+
+//BK --day37 Think 04Controlls
+IfElse.java--P94
+WhileTest.java--P98
+ListCharacters.java--P99
+CommaOperator.java--P100
+ForEachFloat.java--P100
+ForEachString.java--P101
+ForEachInt.java--P101
+IfElse2.java--P102
+BreakAndContinue.java --P103
+LabeledFor.java --P104
+LabeledWhile.java --P105
+VowelsAndConsonants.java --P107
+
+//BK --day37 Think 05Initialization
+SimpleConstructor.java --P109
+SimpleConstructor2.java --P110
+Overloading.java--P111
+OverloadingOrder.java --P112
+PrimitiveOverloading.java
+
+Demotion.java--P114
+DefaultConstructor.java--P116
+NoSynthesis.java--P116
+BananaPeel.java--P117
+Apricot.java
+Leaf.java
+
+PassingThis.java--P118
+
+Flower.java--P118
+TerminationCondition.java --P122
+
+InitialValues.java --P125
+InitialValues2.java
+Measurement.java --P126
+MethodInit.java
+MethodInit2.java
+MethodInit3.java
+
+Counter.java--P127
+OrderOfInitialization.java--P127
+StaticInitialization.java--P128
+Spoon.java--P130
+ExplicitStatic.java
+Mugs.java
+
+ArraysOfPrimitives.java--P132
+ArrayNew.java
+ArrayClassObj.java
+ArrayInit.java
+DynamicArray.java
+
+OverloadingVarargs.java --P137
+OverloadingVarargs2.java
+OverloadingVarargs3.java
+
+VarArgs.java--P135
+NewVarArgs.java
+VarargType.java
+
+SimpleEnumUse.java --P139 枚举
+Spiciness.java
+EnumOrder.java
+Burrito.java
+
+AutoboxingVarargs.java
+OptionalTrailingArguments.java
 
 
-AllOps.java
-
-AutoInc.java
-BitManipulation.java
-Bool.java
-Casting.java
-CastingNumbers.java
-EqualsMethod.java
-EqualsMethod2.java
-Equivalence.java
-Exponents.java
-
-Literals.java
-MathOps.java
-Overflow.java
+//BK --day37 Think 06Access
+FullQualification.java --P142
+SingleImport.java
 
 
-RoundingNumbers.java
-ShortCircuit.java
-StringOperators.java
-TernaryIfElse.java
-URShift.java
+Cake.java
+ChocolateChip.java
+ChocolateChip2.java
+Dinner.java
+
+IceCream.java
+ImportedMyClass.java
+LibTest.java
+Lunch.java
+OrganizedByAccess.java
+Pie.java
+PrintTest.java
+QualifiedMyClass.java
+
+//BK --day37 Think 07Resusing
+
+SprinklerSystem.java
+Bath.java
+Detergent.java
+Cartoon.java --P162
+Chess.java
+
+SpaceShipControls.java
+SpaceShip.java
+SpaceShipDelegation.java
+
+Hide.java
+PlaceSetting.java
+CADSystem.java--P166
+Car.java
+
+Orc.java
+Wind.java--P172
 
 
+FinalData.java--P173
+FinalArguments.java
 
 
+FinalOverridingIllusion.java--P173
+BlankFinal.java
+Jurassic.java
+
+Beetle.java--P179
 
 
+Lisa.java
+
+
+//BK --day37 Think 08Polymorphism
+Note.java--P181
+Instrument.java
+Music.java
+Music2.java
+Wind.java
+
+Shapes.java--P185
+Circle.java
+RandomShapeGenerator.java
+Shape.java
+Square.java
+Triangle.java
+
+Music3.java--P188
+PrivateOverride.java
+FieldAccess.java
+StaticPolymorphism.java--P189
+
+Sandwich.java--P191
+Frog.java
+ReferenceCounting.java
+
+PolyConstructors.java--P196
+CovariantReturn.java--P197
+Transmogrify.java--P198
+RTTI.java
+
+//BK --day37 Think 09Interfaces-202
+AdaptedRandomDoubles.java--P216
+Adventure.java
+Months.java
+Factories.java
+Games.java
+HorrorShow.java
+InterfaceCollision.java
+RandomDoubles.java
+RandomWords.java
+RandVals.java
+TestRandVals.java
+
+//BK --day37 Think 10Inner Classes-223
+AnonymousConstructor.java
+BigEgg.java
+BigEgg2.java
+Callbacks.java
+ClassInInterface.java
+Contents.java
+Destination.java
+DotNew.java
+DotThis.java
+Factories.java
+Games.java
+GreenhouseController.java
+GreenhouseControls.java
+InheritInner.java
+LocalInnerClass.java
+MultiImplementation.java
+MultiInterfaces.java
+MultiNestingAccess.java
+Parcel1.java
+Parcel10.java
+Parcel11.java
+Parcel2.java
+Parcel3.java
+Parcel5.java
+Parcel6.java
+Parcel7.java
+Parcel7b.java
+Parcel8.java
+Parcel9.java
+Sequence.java
+TestBed.java
+TestParcel.java
+Wrapping.java
+
+
+//BK --day37 Think 11Holding Objects-249 =32
+//BK --day37 Think 12Error Handling-281 =35
+//BK --day37 Think 13Strings-316 =30
+//BK --day37 Think 14Type Information-346 =39
+//BK --day37 Think 15Generics-385 =81
+//BK --day37 Think 16Arrays-466 =26
+//BK --day37 Think 17Containers in Depth-492 = 66
+//BK --day37 Think 18I/O-558 =74
+//BK --day37 Think 19Enumerated Types-632 =21
+//BK --day37 Think 20Annotations-653 =30
  *
  *
+//BK --day37 Think 21Concurrency-683 =206
+//BK --day37 Think 22GUI-801-889 = 88
+
+
+
+
+
+
 </pre>
  * @author zhanghongwei
  *

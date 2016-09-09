@@ -1,31 +1,35 @@
-// operators/DogTest.java
-// TIJ4 Chapter Operators, Exercise 5, page 105
-/* Create a class called Dog containing two Strings: name and says.
-* In main(), create two dog objects with names "spot" (who says "Ruff!") and
-* "scruffy" (who says "Wurf!").  Then display their names and what they say.
-*/
+package ThinkingInJava4.Operators;
 
-import org.greggordon.tools.*;
-
-class Dog {
+class Dog
+{
 	String name;
 	String says;
-	void setName(String n) {
-		name = n;
+
+	void setName(String n)
+	{
+		this.name = n;
 	}
-	void setSays(String s) {
-		says = s;
+
+	void setSays(String s)
+	{
+		this.says = s;
 	}
-	void showName() {
-		P.rintln(name);
+
+	void showName()
+	{
+		System.out.println(this.name);
 	}
-	void speak() {
-		P.rintln(says);
+
+	void speak()
+	{
+		System.out.println(this.says);
 	}
 }
 
-public class DogTest {
-	public static void main(String[] args) {
+public class DogTest
+{
+	public static void main(String[] args)
+	{
 		Dog spot = new Dog();
 		spot.setName("Spot");
 		spot.setSays("Ruff!");
@@ -34,7 +38,7 @@ public class DogTest {
 		scruffy.setSays("Wurf!");
 		spot.showName();
 		spot.speak();
-		scruffy.showName(); 
+		scruffy.showName();
 		scruffy.speak();
 	}
 }

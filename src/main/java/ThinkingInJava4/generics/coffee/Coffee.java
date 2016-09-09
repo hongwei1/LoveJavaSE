@@ -1,10 +1,14 @@
 //: generics/coffee/Coffee.java
-package generics.coffee;
+package ThinkingInJava4.generics.coffee;
 
-public class Coffee {
-  private static long counter = 0;
-  private final long id = counter++;
-  public String toString() {
-    return getClass().getSimpleName() + " " + id;
-  }
-} ///:~
+public class Coffee
+{
+	private static long counter = 0;
+	private final long id = counter++;
+
+	@Override
+	public String toString()
+	{
+		return getClass().getSimpleName() + " " + id;
+	}
+} /// :~

@@ -1,3 +1,5 @@
+package ThinkingInJava4.operators;
+
 //: operators/Equivalence.java
 
 public class Equivalence {

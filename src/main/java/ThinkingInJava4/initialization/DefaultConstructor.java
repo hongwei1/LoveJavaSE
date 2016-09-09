@@ -1,9 +1,15 @@
+package ThinkingInJava4.initialization;
+
 //: initialization/DefaultConstructor.java
 
-class Bird {}
+class Bird
+{
+}
 
-public class DefaultConstructor {
-  public static void main(String[] args) {
-    Bird b = new Bird(); // Default!
-  }
-} ///:~
+public class DefaultConstructor
+{
+	public static void main(String[] args)
+	{
+		Bird b = new Bird(); // Default!
+	}
+} /// :~

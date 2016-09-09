@@ -3,7 +3,7 @@
 import typeinfo.pets.*;
 import static net.mindview.util.Print.*;
 
-class PerformingDog extends Dog implements Performs {
+class PerformingDog extends Dog1 implements Performs {
   public void speak() { print("Woof!"); }
   public void sit() { print("Sitting"); }
   public void reproduce() {}

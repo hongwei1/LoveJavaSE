@@ -1,7 +1,15 @@
 //: typeinfo/pets/Rodent.java
-package typeinfo.pets;
+package ThinkingInJava4.typeinfo.pets;
 
-public class Rodent extends Pet {
-  public Rodent(String name) { super(name); }
-  public Rodent() { super(); }
-} ///:~
+public class Rodent extends Pet
+{
+	public Rodent(String name)
+	{
+		super(name);
+	}
+
+	public Rodent()
+	{
+		super();
+	}
+} /// :~

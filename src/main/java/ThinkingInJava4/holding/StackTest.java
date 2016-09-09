@@ -1,14 +1,22 @@
-//: holding/StackTest.java
-import net.mindview.util.*;
+package ThinkingInJava4.holding;
 
-public class StackTest {
-  public static void main(String[] args) {
-    Stack<String> stack = new Stack<String>();
-    for(String s : "My dog has fleas".split(" "))
-      stack.push(s);
-    while(!stack.empty())
-      System.out.print(stack.pop() + " ");
-  }
-} /* Output:
-fleas has dog My
-*///:~
+//: holding/StackTest.java
+import ThinkingInJava4.net.mindview.util.Stack;
+
+public class StackTest
+{
+	public static void main(String[] args)
+	{
+		Stack<String> stack = new Stack<String>();
+		for (String s : "My dog has fleas".split(" "))
+		{
+			stack.push(s);
+		}
+		while (!stack.empty())
+		{
+			System.out.print(stack.pop() + " ");
+		}
+	}
+} /*
+	 * Output: fleas has dog My
+	 */// :~

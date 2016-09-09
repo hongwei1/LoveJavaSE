@@ -1,8 +1,19 @@
 //: polymorphism/shape/Circle.java
-package polymorphism.shape;
-import static net.mindview.util.Print.*;
+package ThinkingInJava4.polymorphism.shape;
 
-public class Circle extends Shape {
-  public void draw() { print("Circle.draw()"); }
-  public void erase() { print("Circle.erase()"); }
-} ///:~
+import static ThinkingInJava4.net.mindview.util.Print.print;
+
+public class Circle extends Shape
+{
+	@Override
+	public void draw()
+	{
+		print("Circle.draw()");
+	}
+
+	@Override
+	public void erase()
+	{
+		print("Circle.erase()");
+	}
+} /// :~

@@ -3,7 +3,7 @@ package ThinkingInJava4.operators;
 //: operators/HelloDate.java
 import java.util.Date;
 
-import ThinkingInJava4.net.mindview.util.Print;
+import thinkinginjava4.net.mindview.util.Print;
 
 public class HelloDate
 {

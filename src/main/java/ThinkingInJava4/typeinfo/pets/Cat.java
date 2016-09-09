@@ -1,7 +1,15 @@
 //: typeinfo/pets/Cat.java
-package typeinfo.pets;
+package ThinkingInJava4.typeinfo.pets;
 
-public class Cat extends Pet {
-  public Cat(String name) { super(name); }
-  public Cat() { super(); }
-} ///:~
+public class Cat extends Pet
+{
+	public Cat(String name)
+	{
+		super(name);
+	}
+
+	public Cat()
+	{
+		super();
+	}
+} /// :~

@@ -1,6 +1,7 @@
 //: access/mypackage/MyClass.java
-package access.mypackage;
+package ThinkingInJava4.access.mypackage;
 
-public class MyClass {
-  // ...
-} ///:~
+public class MyClass
+{
+	// ...
+} /// :~

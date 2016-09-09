@@ -1,7 +1,15 @@
 //: typeinfo/pets/Mutt.java
-package typeinfo.pets;
+package ThinkingInJava4.typeinfo.pets;
 
-public class Mutt extends Dog {
-  public Mutt(String name) { super(name); }
-  public Mutt() { super(); }
-} ///:~
+public class Mutt extends Dog
+{
+	public Mutt(String name)
+	{
+		super(name);
+	}
+
+	public Mutt()
+	{
+		super();
+	}
+} /// :~
