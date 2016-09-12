@@ -22,6 +22,7 @@ public class Rethrowing
 			System.out.println("Inside g(),e.printStackTrace()");
 			e.printStackTrace(System.out);
 			throw e;
+
 		}
 	}
 
@@ -62,10 +63,13 @@ public class Rethrowing
 		}
 	}
 } /*
-	 * Output: originating the exception in f() Inside g(),e.printStackTrace() java.lang.Exception: thrown from f() at Rethrowing.f(Rethrowing.java:7) at
-	 * Rethrowing.g(Rethrowing.java:11) at Rethrowing.main(Rethrowing.java:29) main: printStackTrace() java.lang.Exception: thrown from f() at
-	 * Rethrowing.f(Rethrowing.java:7) at Rethrowing.g(Rethrowing.java:11) at Rethrowing.main(Rethrowing.java:29) originating the exception in f() Inside
-	 * h(),e.printStackTrace() java.lang.Exception: thrown from f() at Rethrowing.f(Rethrowing.java:7) at Rethrowing.h(Rethrowing.java:20) at
-	 * Rethrowing.main(Rethrowing.java:35) main: printStackTrace() java.lang.Exception: thrown from f() at Rethrowing.h(Rethrowing.java:24) at
-	 * Rethrowing.main(Rethrowing.java:35)
+	 * Output: originating the exception in f() Inside g(),e.printStackTrace() java.lang.Exception:
+	 * thrown from f() at Rethrowing.f(Rethrowing.java:7) at Rethrowing.g(Rethrowing.java:11) at
+	 * Rethrowing.main(Rethrowing.java:29) main: printStackTrace() java.lang.Exception: thrown from
+	 * f() at Rethrowing.f(Rethrowing.java:7) at Rethrowing.g(Rethrowing.java:11) at
+	 * Rethrowing.main(Rethrowing.java:29) originating the exception in f() Inside
+	 * h(),e.printStackTrace() java.lang.Exception: thrown from f() at
+	 * Rethrowing.f(Rethrowing.java:7) at Rethrowing.h(Rethrowing.java:20) at
+	 * Rethrowing.main(Rethrowing.java:35) main: printStackTrace() java.lang.Exception: thrown from
+	 * f() at Rethrowing.h(Rethrowing.java:24) at Rethrowing.main(Rethrowing.java:35)
 	 */// :~

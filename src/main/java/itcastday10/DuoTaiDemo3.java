@@ -6,12 +6,18 @@ class Fu
 
 	void show()
 	{
-		System.out.println("fu show " + this.num);
+		System.out.println("fu show " + num);
+		show2();
 	}
 
 	static void staticMethod()
 	{
 		System.out.println("fu static method");
+	}
+
+	private void show2()
+	{
+		System.out.println("fu show " + num);
 	}
 }
 
@@ -22,12 +28,18 @@ class Zi extends Fu
 	@Override
 	void show()
 	{
-		System.out.println("zi show " + this.num);
+		System.out.println("zi show " + num);
+		show2();
 	}
 
 	void show1()
 	{
-		System.out.println("zi show " + this.num);
+		System.out.println("zi show " + num);
+	}
+
+	void show2()
+	{
+		System.out.println("zi show " + num);
 	}
 
 	static void staticMethod()

@@ -21,8 +21,8 @@ class Cups
 	static Cup cup2;
 	static
 	{
-		Cups.cup1 = new Cup(1);
-		Cups.cup2 = new Cup(2);
+		cup1 = new Cup(1);
+		cup2 = new Cup(2);
 	}
 
 	Cups()

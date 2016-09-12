@@ -3,7 +3,7 @@ package ThinkingInJava4.innerclasses;
 //: innerclasses/Sequence.java
 // Holds a sequence of Objects.
 
-interface Selector
+interface Selector// 遍历器
 {
 	boolean end();
 
@@ -12,7 +12,7 @@ interface Selector
 	void next();
 }
 
-public class Sequence
+public class Sequence// 会返回某种类型的selector,可以用它访问sequence的信息.虽然你不知道实现细节,但你明白selector接口
 {
 	private Object[] items;
 	private int next = 0;

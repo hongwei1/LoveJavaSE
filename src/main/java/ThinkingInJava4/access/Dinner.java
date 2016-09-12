@@ -1,12 +1,16 @@
+package ThinkingInJava4.access;
+
 //: access/Dinner.java
 // Uses the library.
-import access.dessert.*;
+import ThinkingInJava4.access.dessert.Cookie;
 
-public class Dinner {
-  public static void main(String[] args) {
-    Cookie x = new Cookie();
-    //! x.bite(); // Can't access
-  }
-} /* Output:
-Cookie constructor
-*///:~
+public class Dinner
+{
+	public static void main(String[] args)
+	{
+		Cookie x = new Cookie();
+		// ! x.bite(); // Can't access
+	}
+} /*
+	 * Output: Cookie constructor
+	 */// :~

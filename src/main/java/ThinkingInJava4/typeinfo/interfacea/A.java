@@ -1,6 +1,7 @@
 //: typeinfo/interfacea/A.java
-package typeinfo.interfacea;
+package ThinkingInJava4.typeinfo.interfacea;
 
-public interface A {
-  void f();
-} ///:~
+public interface A
+{
+	void f();
+} /// :~

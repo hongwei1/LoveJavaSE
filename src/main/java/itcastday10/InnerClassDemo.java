@@ -100,10 +100,4 @@ class InnerClassDemo
 
 	}
 
-	public void aa()
-	{
-		Outer out = new Outer();
-		Iterable<Object> in1 = out.getInnerPrivateInstance();
-		in1.iterator();
-	}
 }

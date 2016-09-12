@@ -2,6 +2,7 @@ package itcastday10;
 
 class FuT2
 {
+
 	static
 	{
 		System.out.println("fu lei static construction code run ");
@@ -9,6 +10,7 @@ class FuT2
 
 	{
 		System.out.println("fu lei construction code run ");
+		show();
 	}
 
 	FuT2()
@@ -34,8 +36,10 @@ class ZiT2 extends FuT2
 	}
 	{
 		System.out.println("zi constructor code ..." + ZiT2.numStatic);
+		System.out.println("zi constructor code ..." + numNormal);
 		ZiT2.numStatic = 3;
 		numNormal = 2;
+		show();
 	}
 
 	ZiT2()
@@ -47,7 +51,8 @@ class ZiT2 extends FuT2
 	@Override
 	void show()
 	{
-		System.out.println("zi show ... " + ZiT2.numStatic);
+		System.out.println("zi numStatic show ... " + ZiT2.numStatic);
+		System.out.println("zi numNormal show ... " + numNormal);
 	}
 
 }

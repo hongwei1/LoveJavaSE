@@ -676,6 +676,10 @@ DuoTaiDemo3.java //BK --day10 Class 8Polymorphism 4变量函数
 			tips: 其实对于静态方法，是不需要对象的。直接用类名调用即可。
 			eg :f.staticMethod();
 
+动态绑定.png  //BK --day10 Class 8Polymorphism 4变量函数 4Eg
+动态绑定遇到private,相当于final,静态绑定了.png
+
+
 ----------------//BK --day10 Class 9Inner class
 InnerClassDemo.java
 	1 definition

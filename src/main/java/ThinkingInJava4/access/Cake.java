@@ -1,4 +1,4 @@
-package access;
+package ThinkingInJava4.access;
 
 //: access/Cake.java
 // Accesses a class in a separate compilation unit.

@@ -1,16 +1,43 @@
 //: typeinfo/packageaccess/HiddenC.java
-package typeinfo.packageaccess;
-import typeinfo.interfacea.*;
-import static net.mindview.util.Print.*;
+package ThinkingInJava4.typeinfo.packageaccess;
 
-class C implements A {
-  public void f() { print("public C.f()"); }
-  public void g() { print("public C.g()"); }
-  void u() { print("package C.u()"); }
-  protected void v() { print("protected C.v()"); }
-  private void w() { print("private C.w()"); }
+import static ThinkingInJava4.net.mindview.util.Print.print;
+
+import ThinkingInJava4.typeinfo.interfacea.A;
+
+class C implements A
+{
+	@Override
+	public void f()
+	{
+		print("public C.f()");
+	}
+
+	public void g()
+	{
+		print("public C.g()");
+	}
+
+	void u()
+	{
+		print("package C.u()");
+	}
+
+	protected void v()
+	{
+		print("protected C.v()");
+	}
+
+	private void w()
+	{
+		print("private C.w()");
+	}
 }
 
-public class HiddenC {
-  public static A makeA() { return new C(); }
-} ///:~
+public class HiddenC
+{
+	public static A makeA()
+	{
+		return new C();
+	}
+} /// :~
