@@ -4,10 +4,10 @@
 import java.util.*;
 
 public class SetPerformance {
-  static List<Test<Set<Integer>>> tests =
-    new ArrayList<Test<Set<Integer>>>();
+  static List<MyTest<Set<Integer>>> tests =
+    new ArrayList<MyTest<Set<Integer>>>();
   static {
-    tests.add(new Test<Set<Integer>>("add") {
+    tests.add(new MyTest<Set<Integer>>("add") {
       int test(Set<Integer> set, TestParam tp) {
         int loops = tp.loops;
         int size = tp.size;
@@ -19,7 +19,7 @@ public class SetPerformance {
         return loops * size;
       }
     });
-    tests.add(new Test<Set<Integer>>("contains") {
+    tests.add(new MyTest<Set<Integer>>("contains") {
       int test(Set<Integer> set, TestParam tp) {
         int loops = tp.loops;
         int span = tp.size * 2;
@@ -29,7 +29,7 @@ public class SetPerformance {
         return loops * span;
       }
     });
-    tests.add(new Test<Set<Integer>>("iterate") {
+    tests.add(new MyTest<Set<Integer>>("iterate") {
       int test(Set<Integer> set, TestParam tp) {
         int loops = tp.loops * 10;
         for(int i = 0; i < loops; i++) {

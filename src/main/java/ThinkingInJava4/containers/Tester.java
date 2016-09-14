@@ -10,7 +10,7 @@ public class Tester<C> {
   protected C initialize(int size) { return container; }
   protected C container;
   private String headline = "";
-  private List<Test<C>> tests;
+  private List<MyTest<C>> tests;
   private static String stringField() {
     return "%" + fieldWidth + "s";
   }
@@ -20,13 +20,13 @@ public class Tester<C> {
   private static int sizeWidth = 5;
   private static String sizeField = "%" + sizeWidth + "s";
   private TestParam[] paramList = defaultParams;
-  public Tester(C container, List<Test<C>> tests) {
+  public Tester(C container, List<MyTest<C>> tests) {
     this.container = container;
     this.tests = tests;
     if(container != null)
       headline = container.getClass().getSimpleName();
   }
-  public Tester(C container, List<Test<C>> tests,
+  public Tester(C container, List<MyTest<C>> tests,
       TestParam[] paramList) {
     this(container, tests);
     this.paramList = paramList;
@@ -35,11 +35,11 @@ public class Tester<C> {
     headline = newHeadline;
   }
   // Generic methods for convenience :
-  public static <C> void run(C cntnr, List<Test<C>> tests){
+  public static <C> void run(C cntnr, List<MyTest<C>> tests){
     new Tester<C>(cntnr, tests).timedTest();
   }
   public static <C> void run(C cntnr,
-      List<Test<C>> tests, TestParam[] paramList) {
+      List<MyTest<C>> tests, TestParam[] paramList) {
     new Tester<C>(cntnr, tests, paramList).timedTest();
   }
   private void displayHeader() {
@@ -57,7 +57,7 @@ public class Tester<C> {
     System.out.println(head);
     // Print column headers:
     System.out.format(sizeField, "size");
-    for(Test test : tests)
+    for(MyTest test : tests)
       System.out.format(stringField(), test.name);
     System.out.println();
   }
@@ -66,7 +66,7 @@ public class Tester<C> {
     displayHeader();
     for(TestParam param : paramList) {
       System.out.format(sizeField, param.size);
-      for(Test<C> test : tests) {
+      for(MyTest<C> test : tests) {
         C kontainer = initialize(param.size);
         long start = System.nanoTime();
         // Call the overriden method:

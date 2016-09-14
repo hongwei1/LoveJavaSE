@@ -38,7 +38,7 @@ public class NullRobot {
       newNullRobot(SnowRemovalRobot.class)
     };
     for(Robot bot : bots)
-      Robot.Test.test(bot);
+      Robot.MyTest.test(bot);
   }
 } /* Output:
 Robot name: SnowBee

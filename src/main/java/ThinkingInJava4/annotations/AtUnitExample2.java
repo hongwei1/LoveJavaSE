@@ -13,16 +13,16 @@ public class AtUnitExample2 {
     System.out.println("This is methodTwo");
     return 2;
   }
-  @Test void assertExample() {
+  @MyTest void assertExample() {
     assert methodOne().equals("This is methodOne");
   }
-  @Test void assertFailureExample() {
+  @MyTest void assertFailureExample() {
     assert 1 == 2: "What a surprise!";
   }
-  @Test void exceptionExample() throws IOException {
+  @MyTest void exceptionExample() throws IOException {
     new FileInputStream("nofile.txt"); // Throws
   }
-  @Test boolean assertAndReturn() {
+  @MyTest boolean assertAndReturn() {
     // Assertion with message:
     assert methodTwo() == 2: "methodTwo must equal 2";
     return methodOne().equals("This is methodOne");

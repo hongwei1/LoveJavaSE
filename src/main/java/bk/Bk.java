@@ -1,6 +1,6 @@
 /**
 <pre>
-//BK --day01 概述
+//BK --day01 概述-JVM 环境变量
 	JAVA_HOME=F:\jdk1.6.0_01
 	path=%JAVA_HOME%\bin;%path%
 	%path%：动态获取path环境变量的值。
@@ -14,11 +14,34 @@
 	cd/ : 退回到根目录
 	del : 删除文件
 	exit : 推出dos命令行
+// TODO Z1: 进制转化的算法,继续练习练习,把你学得越来越会,越来越自信.
 
-//BK --day02 关键字 注释 变量 运算符
-0 Note.java 		 -- p1--P19   I took the notes by going though the PPT.
-1 Demo.java          -- P8 	      03-Java语言基础(注释).avi
-2 VarDemo.java       -- P10--P15  10-Java语言基础(变量的基本演示).avi
+//BK --day02 1关键字-53个
+0 Note02.java 		 -- p1--P19   I took the notes by going though the PPT.
+51+2个保留字(const,goto)=53个关键字(java的关键字都是小写的) http://flycatdeng.iteye.com/blog/1180264
+	strictfp的意思是FP-strict，也就是说精确浮点的意思。在Java虚拟机进行浮点运算时，如果没有指定strictfp关键字时，
+	Java的编译器以及运行环境在对浮点运算的表达式是采取一种近似于我行我素的行为来完成这些操作，以致于得到的结果往往无法
+	令你满意。而一旦使用了strictfp来声明一个类、接口或者方法时，那么所声明的范围内Java的编译器以及运行环境会完全依照
+	浮点规范IEEE-754来执行。因此如果你想让你的浮点运算更加精确，而且不会因为不同的硬件平台所执行的结果不一致的话，那就
+	请用关键字strictfp。
+
+	如果用transient声明一个实例变量，当对象存储时，它的值不需要维持。例如：
+	Java代码  收藏代码
+	class T {
+	   transient int a;  //不需要维持
+	   int b;  //需要维持
+	}
+
+	volatile修饰符告诉编译器被volatile修饰的变量可以被程序的其他部分改变。在多线程程序中，有时两个或更多的线程共享
+	一个相同的实例变量。考虑效率问题，每个线程可以自己保存该共享变量的私有拷贝。实际的变量副本在不同的时候更新，如当进入
+	synchronized方法时。
+
+//BK --day02 2标识符-38个
+26(个英文字母大小写)+10(0-9)+2 (_ $)= 38 identier
+
+//BK --day02 3注释--3种
+//BK --day02 4变量 1void+8primative
+VarDemo.java       -- P10--P15  10-Java语言基础(变量的基本演示).avi
 	八种基本类型：
 		数值型--整数类型(byte-8bits, short-16bits, int-32bits, long-64bits)
 		     --浮点类型(float-32bits, double-64bits)
@@ -28,22 +51,34 @@
 		类(class)-String ,int []a,
 		接口(interface)
 		数组( [ ] )
+	所占空间:
+		基本型别	大小  	最小值	    最大值
+		boolean	-----	-----	    ------
+		char	16-bit	Unicode 0	Unicode 2^16-1
+		byte	8-bit	-128	    +127
+		short	16-bit	-2^15	    +2^15-1
+		int		32-bit	-2^31	    +2^31-1
+		long	64-bit	-2^63	    +2^63-1
+		float	32-bit	IEEE754	    IEEE754
+		double	64-bit	IEEE754	    IEEE754
+		void
 
-			基本型别	大小	最小值	最大值
-	boolean	-----	-----	------
-	char	16-bit	Unicode 0	Unicode 2^16-1
-	byte	8-bit	-128	+127
-	short	16-bit	-2^15	+2^15-1
-	int	32-bit	-2^31	+2^31-1
-	long	64-bit	-2^63	+2^63-1
-	float	32-bit	IEEE754	IEEE754
-	double	64-bit	IEEE754	IEEE754
-	void
-3 VarDemo2.java      -- P15       11-Java语言基础(类型提升&强制转换).avi
+//BK --day02 4变量 2进制转换
+HexOctalDecimal.java
+	十六,十,八进制的显示(Hex,Octal,Decimal):
+		Integer.toBinaryString(i)
+		Integer.toOctalString(i)
+		Integer.toHexString(i)
+
+//BK --day02 4变量 3类型提升
+VarDemo2.java      -- P15       11-Java语言基础(类型提升&强制转换).avi
+
+//BK --day02 5运算符 28种
+https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
 4 OperateDemo.java   -- P17-P18   arithmetic operator eg: ++
 5 OperateDemo2.java  -- P19       assignment operator
 
-//BK --day03 2语句 1if&swich
+//BK --day03 6语句 1if&swich
 0 Note.java
 1 OperateDemo3.java -- P20--P22 compare and logic operator
 2 OperateDemo4.java -- P23 Bit operator
@@ -62,14 +97,14 @@
 12 SwitchTest.java
 13 if和switch.java
 
-//BK --day03 2语句 2While
+//BK --day03 6语句 2While
 14 WhileDemo.java
 15 DoWhileDemo.java
 16 WhileTest.java  -- P32 20-Java语言基础(while练习-累加思想).avi
 17 WhileTest2.java -- 21-Java语言基础(while练习-计数器思想).avi
 
 
-//BK --day04 2语句 3For
+//BK --day04 6语句 3For
 18 ForDemo.java -- P33  22-Java语言基础(语句-for).avi
 19 ForTest.java
 
@@ -89,7 +124,7 @@
 		continue：结束本次循环，继续下次循环。
 		如果continue单独存在时，下面不要有任何语句，因为执行不到。
 
-//BK --day04 3函数
+//BK --day04 7函数
 7 FunctionDemo.java
 	 定义函数的格式：
 		 修饰符 返回值类型 函数名(参数类型 形式参数1，参数类型 形式参数2，...)
@@ -144,7 +179,7 @@ ArrayDemo3.java
  	7 数组的操作
  		对数组操作最基本的动作就是存和取。 核心思想：就是对角标的操作。
 
-ArrayDemo4.java //BK --day05 4Array 1最值 排序 折半查找 反转 查表法
+ArrayDemo4.java //BK --day05 8Array 1最值 排序 折半查找 反转 查表法
 	8 数组的算法
 		冒泡排序.bmp
 		选择排序.bmp
@@ -1383,7 +1418,8 @@ StringBufferDemo.java
 		4，修改：
 				StringBuffer replace(start,end,string);
 				void setCharAt(index,char);
-
+		5, others:
+				public StringBuffer reverse() ;
 
 //BK --day15 StringBuilder
 StringBuilderDemo.java
@@ -1834,17 +1870,17 @@ ComparatorByLength.java
 ArraysDemo.java
 17-常用对象API(集合框架-工具类-Arrays-方法介绍).avi (11:32)
 	Arrays--105 static methods
-	1 Array --> list
+	1> Array --> list
 18-常用对象API(集合框架-工具类-Arrays-asList方法).avi (15:16)
 		1) 重点：List asList(数组)将数组转成集合。
-		   好处：其实可以使用集合的方法操作数组中的元素。
+		   好处：其实可以使用集合的方法操作数组中的元素,对列表的更改会“直接写”到数组。
 		   注意：数组的长度是固定的，所以对于集合的增删方法是不可以使用的,否则会发生UnsupportedOperationException
 		2) 如果数组中的元素是对象，那么转成集合时，直接将数组中的元素作为集合中的元素进行集合存储。
 		   如果数组中的元素是基本类型数值，那么会将该数组作为集合中的元素进行存储。
 
 ToArray.java
-	2 Collections --> Array
-19-常用对象API(集合框架-工具类-Collection-toArray方法).avi (11:49)
+	2> Collections --> Array
+19-常用对象API(集合框架-工具类-Collections-toArray方法).avi (11:49)
 	 	1)使用的就是Collection接口中的toArray方法。
 		  集合转成数组：可以对集合中的元素操作的方法进行限定,不允许对其进行增删。
 		2)toArray方法需要传入一个指定类型的数组。
@@ -2473,8 +2509,6 @@ PipedInputStream
 	DataInputStream
 	DataOutputStream
 
-
-
 设备是内存的流对象。
 ByteArrayInputStream ByteArrayOutputStream
 CharArrayReader  CharArrayWriter
@@ -2877,7 +2911,7 @@ class BK
 {
 	public static void main(String[] args) throws IOException
 	{
-		// BK --day03 2语句 2while 两重while嵌套
+		// BK --day03 6语句 2while 两重while嵌套
 		BK.readMyKey();
 	}
 

@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import commontools.MyTools;
+import algorithms.MyTools;
 
 public class FileReaderDemo2Test
 {

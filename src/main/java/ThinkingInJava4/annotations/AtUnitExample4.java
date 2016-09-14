@@ -33,11 +33,11 @@ public class AtUnitExample4 {
     else
       return null;
   }
-  @Test boolean words() {
+  @MyTest boolean words() {
     print("'" + getWord() + "'");
     return getWord().equals("are");
   }
-  @Test boolean scramble1() {
+  @MyTest boolean scramble1() {
     // Change to a specific seed to get verifiable results:
     rand = new Random(47);
     print("'" + getWord() + "'");
@@ -45,7 +45,7 @@ public class AtUnitExample4 {
     print(scrambled);
     return scrambled.equals("lAl");
   }
-  @Test boolean scramble2() {
+  @MyTest boolean scramble2() {
     rand = new Random(74);
     print("'" + getWord() + "'");
     String scrambled = scrambleWord();

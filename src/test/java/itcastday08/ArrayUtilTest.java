@@ -11,7 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import commontools.MyTools;
+import algorithms.MyTools;
 
 /**
  * @author zhanghongwei

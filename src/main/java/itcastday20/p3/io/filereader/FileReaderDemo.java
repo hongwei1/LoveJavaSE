@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import commontools.MyTools;
+import algorithms.MyTools;
 
 /**
  * 需求：读取一个文本文件。将读取到的字符打印到控制台.

@@ -1,6 +1,6 @@
 package itcastday15.p2.stringbuffer.demo;
 
-import commontools.Person;
+import algorithms.Person;
 
 public class StringBufferDemo
 {

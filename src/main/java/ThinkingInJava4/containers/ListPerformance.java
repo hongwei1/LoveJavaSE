@@ -7,12 +7,12 @@ import net.mindview.util.*;
 public class ListPerformance {
   static Random rand = new Random();
   static int reps = 1000;
-  static List<Test<List<Integer>>> tests =
-    new ArrayList<Test<List<Integer>>>();
-  static List<Test<LinkedList<Integer>>> qTests =
-    new ArrayList<Test<LinkedList<Integer>>>();
+  static List<MyTest<List<Integer>>> tests =
+    new ArrayList<MyTest<List<Integer>>>();
+  static List<MyTest<LinkedList<Integer>>> qTests =
+    new ArrayList<MyTest<LinkedList<Integer>>>();
   static {
-    tests.add(new Test<List<Integer>>("add") {
+    tests.add(new MyTest<List<Integer>>("add") {
       int test(List<Integer> list, TestParam tp) {
         int loops = tp.loops;
         int listSize = tp.size;
@@ -24,7 +24,7 @@ public class ListPerformance {
         return loops * listSize;
       }
     });
-    tests.add(new Test<List<Integer>>("get") {
+    tests.add(new MyTest<List<Integer>>("get") {
       int test(List<Integer> list, TestParam tp) {
         int loops = tp.loops * reps;
         int listSize = list.size();
@@ -33,7 +33,7 @@ public class ListPerformance {
         return loops;
       }
     });
-    tests.add(new Test<List<Integer>>("set") {
+    tests.add(new MyTest<List<Integer>>("set") {
       int test(List<Integer> list, TestParam tp) {
         int loops = tp.loops * reps;
         int listSize = list.size();
@@ -42,7 +42,7 @@ public class ListPerformance {
         return loops;
       }
     });
-    tests.add(new Test<List<Integer>>("iteradd") {
+    tests.add(new MyTest<List<Integer>>("iteradd") {
       int test(List<Integer> list, TestParam tp) {
         final int LOOPS = 1000000;
         int half = list.size() / 2;
@@ -52,7 +52,7 @@ public class ListPerformance {
         return LOOPS;
       }
     });
-    tests.add(new Test<List<Integer>>("insert") {
+    tests.add(new MyTest<List<Integer>>("insert") {
       int test(List<Integer> list, TestParam tp) {
         int loops = tp.loops;
         for(int i = 0; i < loops; i++)
@@ -60,7 +60,7 @@ public class ListPerformance {
         return loops;
       }
     });
-    tests.add(new Test<List<Integer>>("remove") {
+    tests.add(new MyTest<List<Integer>>("remove") {
       int test(List<Integer> list, TestParam tp) {
         int loops = tp.loops;
         int size = tp.size;
@@ -74,7 +74,7 @@ public class ListPerformance {
       }
     });
     // Tests for queue behavior:
-    qTests.add(new Test<LinkedList<Integer>>("addFirst") {
+    qTests.add(new MyTest<LinkedList<Integer>>("addFirst") {
       int test(LinkedList<Integer> list, TestParam tp) {
         int loops = tp.loops;
         int size = tp.size;
@@ -86,7 +86,7 @@ public class ListPerformance {
         return loops * size;
       }
     });
-    qTests.add(new Test<LinkedList<Integer>>("addLast") {
+    qTests.add(new MyTest<LinkedList<Integer>>("addLast") {
       int test(LinkedList<Integer> list, TestParam tp) {
         int loops = tp.loops;
         int size = tp.size;
@@ -99,7 +99,7 @@ public class ListPerformance {
       }
     });
     qTests.add(
-      new Test<LinkedList<Integer>>("rmFirst") {
+      new MyTest<LinkedList<Integer>>("rmFirst") {
         int test(LinkedList<Integer> list, TestParam tp) {
           int loops = tp.loops;
           int size = tp.size;
@@ -112,7 +112,7 @@ public class ListPerformance {
           return loops * size;
         }
       });
-    qTests.add(new Test<LinkedList<Integer>>("rmLast") {
+    qTests.add(new MyTest<LinkedList<Integer>>("rmLast") {
       int test(LinkedList<Integer> list, TestParam tp) {
         int loops = tp.loops;
         int size = tp.size;
@@ -128,7 +128,7 @@ public class ListPerformance {
   }
   static class ListTester extends Tester<List<Integer>> {
     public ListTester(List<Integer> container,
-        List<Test<List<Integer>>> tests) {
+        List<MyTest<List<Integer>>> tests) {
       super(container, tests);
     }
     // Fill to the appropriate size before each test:
@@ -139,7 +139,7 @@ public class ListPerformance {
     }
     // Convenience method:
     public static void run(List<Integer> list,
-        List<Test<List<Integer>>> tests) {
+        List<MyTest<List<Integer>>> tests) {
       new ListTester(list, tests).timedTest();
     }
   }

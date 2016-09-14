@@ -10,7 +10,7 @@ public class WrapperDemo
 		System.out.println(Integer.toBinaryString(-6));
 		System.out.println(Integer.toHexString(15));
 
-		// 2 two constructors
+		// 1.1 Two constructors
 		int num = 4;
 		Integer i = new Integer(5); // primitive number to Integer
 		Integer.parseInt("12");
@@ -22,6 +22,7 @@ public class WrapperDemo
 		System.out.println(Integer.parseInt("123") + 1);
 		int x1 = new Integer("123");
 		System.out.println(x == x1);
+		int x11 = Integer.valueOf("123");
 
 		Integer i3 = new Integer("123");
 		System.out.println(i3.intValue());
@@ -58,8 +59,8 @@ public class WrapperDemo
 		Integer a = new Integer("89");
 		Integer b = new Integer(90);
 
-		System.out.println((a + 1) == b);// 详情见：注释--
-											// /LoveJavaSE/src/goodtests/T08WrapInterString.java
+		// 详情见：注释-- /LoveJavaSE/src/goodtests/T08WrapInterString.java
+		System.out.println((a + 1) == b);
 		System.out.println(Integer.valueOf(a + 1).equals(b));
 
 		System.out.println(3 > 3);

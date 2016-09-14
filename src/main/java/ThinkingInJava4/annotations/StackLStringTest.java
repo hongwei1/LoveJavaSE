@@ -5,19 +5,19 @@ import net.mindview.atunit.*;
 import net.mindview.util.*;
 
 public class StackLStringTest extends StackL<String> {
-  @Test void _push() {
+  @MyTest void _push() {
     push("one");
     assert top().equals("one");
     push("two");
     assert top().equals("two");
   }
-  @Test void _pop() {
+  @MyTest void _pop() {
     push("one");
     push("two");
     assert pop().equals("two");
     assert pop().equals("one");
   }
-  @Test void _top() {
+  @MyTest void _top() {
     push("A");
     push("B");
     assert top().equals("B");

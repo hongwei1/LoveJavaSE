@@ -2,7 +2,7 @@ package itcastday05;
 
 class ArrayTest3
 {
-	// BK --day05 4Array 2进制转换 查表法
+	// BK --day05 8Array 2进制转换 查表法
 	public static void main(String[] args)
 	{
 		ArrayTest3.toHex(0xff);
@@ -37,7 +37,8 @@ class ArrayTest3
 			return;
 		}
 		// 定义一个对应关系表。
-		char[] chs = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+		char[] chs = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
+				'F' };
 		/*
 		 * 一会查表会查到比较的数据。 数据一多，就先存储起来，在进行操作。 所以定义一个数组。 临时容器。
 		 */

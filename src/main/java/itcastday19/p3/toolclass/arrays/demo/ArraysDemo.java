@@ -47,11 +47,11 @@ public class ArraysDemo
 
 		int[] arrInt = { 31, 11, 51, 61 };
 		List<int[]> listInt = Arrays.asList(arrInt);
-		System.out.println(listInt);
+		System.out.println(listInt);// [[I@7852e922]
 
 		String[] arrString1 = { "abc", "haha", "xixi" };
 		List<String> listString = Arrays.asList(arrString1);
-		System.out.println(listString);
+		System.out.println(listString); // [abc, haha, xixi]
 
 	}
 
@@ -66,27 +66,4 @@ public class ArraysDemo
 		}
 		return false;
 	}
-
-	// toString的经典实现。
-	public static String myToString(int[] a)
-	{
-		int iMax = a.length - 1;
-		if (iMax == -1)
-		{
-			return "[]";
-		}
-
-		StringBuilder b = new StringBuilder();
-		b.append('[');
-		for (int i = 0;; i++)
-		{// 中间省略条件判断，提高了效率。
-			b.append(a[i]);
-			if (i == iMax)
-			{
-				return b.append(']').toString();
-			}
-			b.append(", ");
-		}
-	}
-
 }

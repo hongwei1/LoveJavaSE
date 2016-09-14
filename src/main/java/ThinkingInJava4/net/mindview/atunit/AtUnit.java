@@ -93,7 +93,7 @@ public class AtUnit implements ProcessFiles.Strategy {
   }
   static class TestMethods extends ArrayList<Method> {
     void addIfTestMethod(Method m) {
-      if(m.getAnnotation(Test.class) == null)
+      if(m.getAnnotation(MyTest.class) == null)
         return;
       if(!(m.getReturnType().equals(boolean.class) ||
           m.getReturnType().equals(void.class)))

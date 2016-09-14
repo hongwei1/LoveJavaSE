@@ -1,6 +1,6 @@
 package itcastday04;
 
-import commontools.Person;
+import algorithms.Person;
 
 class ArrayDemo
 {

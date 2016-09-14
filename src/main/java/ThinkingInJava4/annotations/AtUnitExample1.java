@@ -11,14 +11,14 @@ public class AtUnitExample1 {
     System.out.println("This is methodTwo");
     return 2;
   }
-  @Test boolean methodOneTest() {
+  @MyTest boolean methodOneTest() {
     return methodOne().equals("This is methodOne");
   }
-  @Test boolean m2() { return methodTwo() == 2; }
-  @Test private boolean m3() { return true; }
+  @MyTest boolean m2() { return methodTwo() == 2; }
+  @MyTest private boolean m3() { return true; }
   // Shows output for failure:
-  @Test boolean failureTest() { return false; }
-  @Test boolean anotherDisappointment() { return false; }
+  @MyTest boolean failureTest() { return false; }
+  @MyTest boolean anotherDisappointment() { return false; }
   public static void main(String[] args) throws Exception {
     OSExecute.command(
       "java net.mindview.atunit.AtUnit AtUnitExample1");

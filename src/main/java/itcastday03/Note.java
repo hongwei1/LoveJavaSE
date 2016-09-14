@@ -1,6 +1,6 @@
 package itcastday03;
 
-public class Note
+abstract public class Note
 {
 	public static void main(String[] args)
 	{
@@ -85,7 +85,7 @@ public class Note
 		}
 		while (s > 0);
 		// 3 for
-		for (int i1 = 0; i1 < args.length; i1++)
+		for (String arg : args)
 		{
 			break;
 		}
@@ -136,7 +136,8 @@ public class Note
 		}
 
 		/*
-		 * test 3: draw the following picture: 1* ** 34 2* * * 25 3* * * 16 4* * * 25 5* ** 34 6* ****** 123456
+		 * test 3: draw the following picture: 1* ** 34 2* * * 25 3* * * 16 4* * * 25 5* ** 34 6*
+		 * ****** 123456
 		 */
 		System.out.println("Test3:");
 		for (int rowCounter = 0; rowCounter < 6; rowCounter++)

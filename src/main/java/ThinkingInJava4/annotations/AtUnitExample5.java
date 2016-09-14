@@ -24,15 +24,15 @@ public class AtUnitExample5 {
     System.out.println("Running cleanup");
     output.close();
   }
-  @Test boolean test1() {
+  @MyTest boolean test1() {
     output.print("test1");
     return true;
   }
-  @Test boolean test2() {
+  @MyTest boolean test2() {
     output.print("test2");
     return true;
   }
-  @Test boolean test3() {
+  @MyTest boolean test3() {
     output.print("test3");
     return true;
   }

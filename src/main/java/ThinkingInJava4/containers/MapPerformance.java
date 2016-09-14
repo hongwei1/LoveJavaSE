@@ -4,10 +4,10 @@
 import java.util.*;
 
 public class MapPerformance {
-  static List<Test<Map<Integer,Integer>>> tests =
-    new ArrayList<Test<Map<Integer,Integer>>>();
+  static List<MyTest<Map<Integer,Integer>>> tests =
+    new ArrayList<MyTest<Map<Integer,Integer>>>();
   static {
-    tests.add(new Test<Map<Integer,Integer>>("put") {
+    tests.add(new MyTest<Map<Integer,Integer>>("put") {
       int test(Map<Integer,Integer> map, TestParam tp) {
         int loops = tp.loops;
         int size = tp.size;
@@ -19,7 +19,7 @@ public class MapPerformance {
         return loops * size;
       }
     });
-    tests.add(new Test<Map<Integer,Integer>>("get") {
+    tests.add(new MyTest<Map<Integer,Integer>>("get") {
       int test(Map<Integer,Integer> map, TestParam tp) {
         int loops = tp.loops;
         int span = tp.size * 2;
@@ -29,7 +29,7 @@ public class MapPerformance {
         return loops * span;
       }
     });
-    tests.add(new Test<Map<Integer,Integer>>("iterate") {
+    tests.add(new MyTest<Map<Integer,Integer>>("iterate") {
       int test(Map<Integer,Integer> map, TestParam tp) {
         int loops = tp.loops * 10;
         for(int i = 0; i < loops; i ++) {
