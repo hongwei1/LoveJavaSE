@@ -7,7 +7,8 @@ import java.util.Properties;
 /**
  * 电脑运行，每次添加新硬件不用修改代码，可以直接按照格式修改pci.properties就可以了。 源代码根本不用动了。
  */
-public class RunComputer
+public class RunComputer // BK --day10 Class 7Interface 4PC-USB-Reflection
+
 {
 	public static void main(String[] args) throws Exception
 	{

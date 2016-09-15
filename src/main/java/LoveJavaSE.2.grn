@@ -1,0 +1,32 @@
+<uml>
+   <greenVersion="30500"/>
+   <type>
+      <name="=./src\/main\/java<day10{DuoTaiDemo3.java[DuoTaiDemo3"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="0"/>
+      <y="0"/>
+   </type>
+   <type>
+      <name="=./src\/main\/java<day10{DuoTaiDemo3.java[Fu"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="341"/>
+      <y="81"/>
+   </type>
+   <type>
+      <name="=./src\/main\/java<day10{DuoTaiDemo3.java[Zi"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="330"/>
+      <y="405"/>
+   </type>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.generalization.GeneralizationPart"/>
+      <sourceType="=./src\/main\/java<day10{DuoTaiDemo3.java[Zi"/>
+      <targetType="=./src\/main\/java<day10{DuoTaiDemo3.java[Fu"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+</uml>
+

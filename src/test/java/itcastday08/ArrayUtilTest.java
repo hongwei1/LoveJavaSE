@@ -54,7 +54,7 @@ public class ArrayUtilTest
 	}
 
 	/**
-	 * Test method for {@link itcastday08.ArrayMyUtil#getMax(int[])}.
+	 * Test method for {@link itcastday08.ArrayMyUtil#getMaxValue(int[])}.
 	 */
 	@Test
 	public final void testGetMax()

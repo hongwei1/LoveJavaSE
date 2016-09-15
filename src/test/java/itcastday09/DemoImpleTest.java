@@ -7,6 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import day09.DemoImple;
+
 public class DemoImpleTest
 {
 

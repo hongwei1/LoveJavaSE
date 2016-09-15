@@ -17,7 +17,7 @@ public class WrapperDemo2
 		// i1 = i1 + 6;
 
 		// 1.2 形式参数传递
-		Integer input = 1; // BK --day16 8种包装类 自动拆箱装箱 ? 输入是类引用,为什么改变不了值??
+		Integer input = 1; // BK --day06 Class 2基本参数&引用参数 1Integer
 		show(input); // answer:Final -> look inside Inter-- private final int value;
 		Integer input1 = input;
 		input1 = 3;

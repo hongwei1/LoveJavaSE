@@ -17,11 +17,11 @@ interface Instrument {
 }
 
 interface Playable {
-	void play(Note n); // Automatically public
+	void play(Note03 n); // Automatically public
 }
 
 class Wind implements Instrument, Playable {
-	public void play(Note n) {
+	public void play(Note03 n) {
 		print(this + ".play() " + n);
 	}
 	public String toString() { return "Wind"; }
@@ -30,7 +30,7 @@ class Wind implements Instrument, Playable {
 
 
 class Percussion implements Instrument, Playable {
-	public void play(Note n) {
+	public void play(Note03 n) {
 		print(this + ".play() " + n);
 	}
 	public String toString() { return "Percussion"; }
@@ -38,7 +38,7 @@ class Percussion implements Instrument, Playable {
 }
 
 class Stringed implements Instrument, Playable {
-	public void play(Note n) {
+	public void play(Note03 n) {
 		print(this + ".play() " + n);
 	}
 	public String toString() { return "Stringed"; }
@@ -58,7 +58,7 @@ public class Music10 {
 	// added to the system will work right:
 	static void tune(Playable p) {
 		//...
-		p.play(Note.MIDDLE_C);
+		p.play(Note03.MIDDLE_C);
 	}
 	static void tuneAll(Playable[] e) {
 		for(Playable p : e)

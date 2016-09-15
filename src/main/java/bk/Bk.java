@@ -16,7 +16,7 @@
 	exit : 推出dos命令行
 // TODO Z1: 进制转化的算法,继续练习练习,把你学得越来越会,越来越自信.
 
-//BK --day02 1关键字-53个
+//BK --day02 1Keywords-53个
 0 Note02.java 		 -- p1--P19   I took the notes by going though the PPT.
 51+2个保留字(const,goto)=53个关键字(java的关键字都是小写的) http://flycatdeng.iteye.com/blog/1180264
 	strictfp的意思是FP-strict，也就是说精确浮点的意思。在Java虚拟机进行浮点运算时，如果没有指定strictfp关键字时，
@@ -36,11 +36,11 @@
 	一个相同的实例变量。考虑效率问题，每个线程可以自己保存该共享变量的私有拷贝。实际的变量副本在不同的时候更新，如当进入
 	synchronized方法时。
 
-//BK --day02 2标识符-38个
+//BK --day02 2Identifiers-38个
 26(个英文字母大小写)+10(0-9)+2 (_ $)= 38 identier
 
-//BK --day02 3注释--3种
-//BK --day02 4变量 1void+8primative
+//BK --day02 3Comments-3种
+//BK --day02 4Variables 1void+8primative
 VarDemo.java       -- P10--P15  10-Java语言基础(变量的基本演示).avi
 	八种基本类型：
 		数值型--整数类型(byte-8bits, short-16bits, int-32bits, long-64bits)
@@ -63,57 +63,61 @@ VarDemo.java       -- P10--P15  10-Java语言基础(变量的基本演示).avi
 		double	64-bit	IEEE754	    IEEE754
 		void
 
-//BK --day02 4变量 2进制转换
+//BK --day02 4Variables 2进制转换
 HexOctalDecimal.java
 	十六,十,八进制的显示(Hex,Octal,Decimal):
 		Integer.toBinaryString(i)
 		Integer.toOctalString(i)
 		Integer.toHexString(i)
 
-//BK --day02 4变量 3类型提升
+//BK --day02 4Variables 3类型提升
 VarDemo2.java      -- P15       11-Java语言基础(类型提升&强制转换).avi
 
-//BK --day02 5运算符 28种
+//BK --day02 5Operators 1-28种operators
 https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
-4 OperateDemo.java   -- P17-P18   arithmetic operator eg: ++
-5 OperateDemo2.java  -- P19       assignment operator
+OperateDemo.java   -- P17-P18   arithmetic operator eg: ++
+OperateDemo2.java  -- P19       assignment operator
+Note03.java
+OperateDemo3.java -- P20 compare and logic operator
+OperateDemo4.java -- P23 Bit operator
+OperateDemo5.java -- P26 07-Java语言基础(三元运算符).avi
 
 //BK --day03 6语句 1if&swich
-0 Note.java
-1 OperateDemo3.java -- P20--P22 compare and logic operator
-2 OperateDemo4.java -- P23 Bit operator
-3 OperateTest.java  -- P25 05-Java语言基础(位运算符练习-1).avi
-4 OperateTest2.java -- P25 06-Java语言基础(位运算符练习-2).avi
-5 OperateDemo5.java -- P26 07-Java语言基础(三元运算符).avi
-
 2.6 程序流程控制
-6 IfDemo.java  -- P28
-7 IfDemo2.java -- P28
-8 IfDemo3.java -- P28
-9 IfTest.java
-10 IfTest2.java
+IfDemo.java  -- P28
+IfDemo2.java -- P28
+IfDemo3.java -- P28
+IfTest.java
+IfTest2.java
 
-11 SwitchDemo.java
-12 SwitchTest.java
-13 if和switch.java
+SwitchDemo.java
+SwitchTest.java
+if和switch的应用：
+	if:
+		1,对具体的值进行判断。
+		2,对区间判断。
+		3,对运算结果是Boolean类型的表达式进行判断。
+	switch:
+		1,对具体的值进行判断。
+		2,值的个数通常是固定的。
+	summary:
+		对于几个固定的值判断，建议使用switch语句，因为switch语句会将具体的答案都加载进内存。
+		效率相对高一点。
 
 //BK --day03 6语句 2While
-14 WhileDemo.java
-15 DoWhileDemo.java
-16 WhileTest.java  -- P32 20-Java语言基础(while练习-累加思想).avi
-17 WhileTest2.java -- 21-Java语言基础(while练习-计数器思想).avi
-
+WhileDemo.java
+DoWhileDemo.java
 
 //BK --day04 6语句 3For
-18 ForDemo.java -- P33  22-Java语言基础(语句-for).avi
-19 ForTest.java
+ForDemo.java -- P33  22-Java语言基础(语句-for).avi
 
-1 ForForDemo.java        01-Java语言基础(语句-For循环嵌套).avi -大圈套小圈思想。
-2 ForForTest.java        02-Java语言基础(语句-For循环嵌套练习).avi
-3 ForFor99.java          03-Java语言基础(语句-For循环嵌套练习2).avi
-4 Demo99.java            04-Java语言基础(语句-For循环嵌套练习-99乘法表&转义字符).avi
-5 ForForTest2.java       05-Java语言基础(语句-For循环嵌套练习3).avi
-6 BreakContinueDemo.java 06-Java语言基础(语句-break&continue).avi
+for和while的特点：
+			1,for和while可以互换。
+			2,格式上的不同，在使用上有点小区别。 如果需要通过变量来对循环进行控制，该变量只作为循环增量存在时，区别就体现出来了。
+			3,they are mostly the same ,just make a difference for the people to read.
+
+BreakContinueDemo.java
+06-Java语言基础(语句-break&continue).avi
 	break:跳出。
 		break作用的范围：要么是switch语句，要么是循环语句。
 		记住：当break语句单独存在时，下面不要定义其他语句，因为执行不到。
@@ -124,8 +128,8 @@ https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
 		continue：结束本次循环，继续下次循环。
 		如果continue单独存在时，下面不要有任何语句，因为执行不到。
 
-//BK --day04 7函数
-7 FunctionDemo.java
+//BK --day04 7Functions
+FunctionDemo.java
 	 定义函数的格式：
 		 修饰符 返回值类型 函数名(参数类型 形式参数1，参数类型 形式参数2，...)
 		 {
@@ -138,11 +142,15 @@ https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
 	 总结：没有具体返回值时，返回值类型用void来表示。
 	 注意：如果返回值类型是void，那么函数中的return语句可以省略不写。
 	 tips： 函数中只能调用函数，不可以在函数内部定义函数。
-8 FunctionDemo2.java
-9 FunctionDemo3.java
-10 FunctionDemo4.java
 
-//BK --day04 4Array
+	 重载。
+	 	1，同一个类，
+	 	2，同名。
+	 	3，参数个数不同。or 参数类型不同。
+	 	4，函数重载和返回值类型无关。
+	 	5，java是严谨性语言，如果函数出现的调用的不确定性，会编译失败。
+
+//BK --day04 8Array
 ArrayDemo.java
 	1,内存的划分：--5
  		1，寄存器。
@@ -154,16 +162,16 @@ ArrayDemo.java
  		1, 存储是数组和对象(其实数组就是对象) 凡是new建立在堆中。
  		2，每一个实体都有首地址值。
  		3，堆内存中的每一个变量都有默认初始化值，根据类型的不同而不同。
- 				整数		 : 0
- 				小数		 : 0.0或者0.0f，
- 				boolean  : false
- 				char 	 : '\u0000'
- 				Reference: null
+	 		整数		 : 0
+	 		小数		 : 0.0或者0.0f，
+	 		boolean  : false
+	 		char 	 : '\u0000'
+	 		Reference: null
  		4，垃圾回收机制。
-	3，局部代码块。限定局部变量的生命周期。
+	3，局部代码块:限定局部变量的生命周期。
 
-ArrayDemo2.java
-	4，数组异常 -2
+ArrayDemo2.java //BK --day04 8Array 1Exceptions
+	4，数组异常 -2 all RuntimeExceptions
 		1 System.out.println(arr[3]);   //ArrayIndexOutOfBoundsException:
 		2 System.out.println(arr[1000]);//NullPointerException
 
@@ -178,36 +186,27 @@ ArrayDemo3.java
 			int[] arr = new int[]{89,34,270,17};
  	7 数组的操作
  		对数组操作最基本的动作就是存和取。 核心思想：就是对角标的操作。
-
-ArrayDemo4.java //BK --day05 8Array 1最值 排序 折半查找 反转 查表法
 	8 数组的算法
 		冒泡排序.bmp
 		选择排序.bmp
 		选择排序2.bmp
-ArrayDemo5.java
-折半查找.bmp
+		折半查找.bmp
 	9 面试题
 		给定一个有序的数组，如果往该数组中存储一个元素，并保证这个数组还是有序的，
 		那么个元素的存储的角标为如何获取。
 		{13,15,19,28,33,45,78,106};
-ArrayTest.java
 	10 反转
 		给定一个数组，对其进行反转。
 		{3,1,6,5,8,2} -->
 		{2,8,5,6,1,3};
 		其实就是头尾元素的位置置换。
+	11 查表法
+		什么时候使用数组呢？ 如果数据出现了对应关系，而且对应关系的一方是有序的数字编号。并作为角标使用。 这时就必须要想到数组的使用。
+		就可以将这些数据存储到数组中。 根据运算的结果作为角标直接去查数组中对应的元素即可。
 
-ArrayTest2.java -查表法1
-	11 获取一个整数的16进制表现形式。
-ArrayTest3.java --查表法2
-	12 获取一个整数的2，8，16进制表现形式。
-ArrayTest4.java --查表法3
-
---day06 Two-dimensional array
+//BK --day06 8Array 3DimensionalArray
 Array2Demo.java
 二维数组图解.bmp
-画图题.java
-
 
 //BK --day06 Class
 面向对象.text
@@ -239,22 +238,14 @@ CarDemo.java
 			成员变量<-->属性，
 			成员函数<-->行为。
 
-
 	成员变量和局部变量的区别：//BK --day06 class 1成员变量和局部变量的区别
-		1，
-			成员变量定义在类中，整个类中都可以访问。
-			局部变量定义在函数，语句，局部代码块中，只在所属的区域有效。
-
-		2，
-			成员变量存在于堆内存的对象中。
+		1， 成员变量定义在类中，整个类中都可以访问。
+		   局部变量定义在函数，语句，局部代码块中，只在所属的区域有效。
+		2， 成员变量存在于堆内存的对象中。
 			局部变量存在于栈内存的方法中。
-
-		3，
-			成员变量随着对象的创建而存在，随着对象的消失而消失。
+		3， 成员变量随着对象的创建而存在，随着对象的消失而消失。
 			局部变量随着所属区域的执行而存在，随着所属区域的结束而释放。
-
-		4，
-			成员变量都有默认初始化值。
+		4， 成员变量都有默认初始化值。
 			局部变量没有默认初始化值。
 
 对象的内存图.bmp
@@ -267,7 +258,6 @@ PersonDemo06.java  //BK --day06 Class 4Encapsulation
 15-面向对象(封装-思想).avi (14:55)
 
 
-//BK --day07 Class
 ------------------//BK --day07 Class 4Encapsulation 1Construct
 ConsDemo.java
 构造函数.bmp --内存调用
@@ -307,7 +297,7 @@ this.bmp
 	用法：useful.
 		1 当成员变量和局部变量重名，可以用关键字this来区分。
 		2 this也可以用于在构造函数中调用其他构造函数。
-			注意：2.1只能定义在构造函数的第一行。因为初始化动作要先执行。
+			注意：2.1只能定义在构造函数的第一行,因为初始化动作要先执行。
 				 2.2 注意递归调用this
 
 ------------------//BK --day07 Class 4Encapsulation 3Static
@@ -385,7 +375,7 @@ itcastday10.InnerClassDemo3
 static 可以修饰成员，当成员是类时，也可以用static修饰 --//BK --day07 Class 4Encapsulation 3Static 5Static修饰内部类
 
 
-//BK --day08 Class
+//
 SingleDemo08.java  //BK --day08 Class 4Encapsulation 4单例
 单例内存图解.bmp
 	设计模式：对问题行之有效的解决方式。其实它是一种思想。
@@ -408,7 +398,7 @@ SingleDemo08.java  //BK --day08 Class 4Encapsulation 4单例
 
 
 -----------------------//BK --day08 Class 5Inheritance
-ExtendsDemo08.java //TODO 2继承和包的关系，不同包？不同继承关系的处理。
+ExtendsDemo08.java
 继承.bmp
 	继承的好处：
 		1，提高了代码的复用性。
@@ -458,8 +448,6 @@ ExtendsDemo3.java //BK --day08 Class 5Inheritance 3成员函数
 		当对一个类进行子类的扩展时，子类需要保留父类的功能声明，
 		但是要定义子类中该功能的特有内容时，就使用覆盖操作完成.
 
-//BK --day09 Class
-
 ExtendsDemo4.java //BK --day09 Class 5Inheritance 4构造函数
 	1子父类中的构造函数的特点。
 		为什么在子类构造对象时，发现，访问子类构造函数时，父类也运行了?
@@ -504,7 +492,7 @@ ExtendsDemo5.java
 		8，初始化完毕后，将地址值赋值给引用变量.
 
 FinalDemo.java //BK --day09 Class 5Inheritance 5Final
-继承弊端：打破了封装性,继承可以修改方法。
+继承弊端：打破了封装性。
 final关键字：
 	1，final是一个修饰符，可以修饰类，方法，变量。
 	2，final修饰的类不可以被继承。
@@ -519,7 +507,6 @@ final关键字：
 AbstractDemo.java //BK --day09 Class 6Abstract
 AbstractTest.java--example
 	1 抽象类：
-		抽象：笼统，模糊，看不懂！不具体。
 		Java中可以定义没有方法体的方法，该方法的具体实现由子类完成，该方法称为抽象方法，包含抽象方法的类就是抽象类。
 	2 特点：
 		1，方法只有声明没有实现时，该方法就是抽象方法，需要被abstract修饰。
@@ -533,15 +520,11 @@ AbstractTest.java--example
 		2)，抽象类可以不定义抽象方法吗？
 			可以的。 但是很少见，目的就是不让该类创建对象。AWT的适配器对象就是这种类。
 			通常这个类中的方法有方法体，但是却没有内容。
-
-			abstract class Demo
-			{
-				void show1()
-				{}
-
-				void show2()
-				{}
-			}
+				abstract class Demo
+				{
+					void show1(){}
+					void show2(){}
+				}
 		3)，抽象关键字不可以和那些关键字共存?
 			private 不行
 			static	不行  //static can be called by class name ,but abstract 通过类调用没有意义。
@@ -624,16 +607,15 @@ InterfaceDemo2.java //BK --day09 Class 7Interface 2抽象类和接口的异同�
 			   接口的实现,  是has a 关系，在定义体系额外功能。
 		eg:犬按功能分：有导盲犬，搜爆犬- 他们是犬，具有导盲，搜爆的功能。
 
-//BK --day10 Class
 Laptop.java  //BK --day10 Class 7Interface 3PC-USB
 USB.bmp
 
 ----------------//BK --day10 Class 8Polymorphism
 DuoTaiDemo.java
-	1 definition  对象的多态性:父类型引用指向了子类对象。
+	1 Definition  对象的多态性:父类型引用指向了子类对象。
 		class 动物{}
 		class 猫 extends 动物{}
-		class 狗 extends 动物 {}
+		class 狗 extends 动物{}
 		猫 x = new 猫();
 		动物 x = new 猫();//一个对象，两种形态。
 
@@ -717,7 +699,7 @@ DuoTaiDemo3.java //BK --day10 Class 8Polymorphism 4变量函数
 
 ----------------//BK --day10 Class 9Inner class
 InnerClassDemo.java
-	1 definition
+	1 Definition
 		将一个类定义在另一个类的里面，对里面那个类就称为内部类（内置类，嵌套类）。
 
 	2 内部类访问特点：
@@ -763,7 +745,7 @@ InnerClassDemo4.java
 
 // BK --day10 Class 9Inner class 3匿名内部类 使用场景
 InnerClassDemo5.java
-	3  通常的使用场景之一：
+	3  通常的使用场景：
 		当函数参数是接口类型时，而且接口中的方法不超过三个。
 		可以用匿名内部类作为实际参数进行传递
 		eg:show(new Inter()
@@ -784,8 +766,8 @@ InnerClassDemo6.java
 
 //BK --day10 Class 终极类初始化
 构造代码块初始化过程.bmp
-Test.java
-Test2.java
+FinalConstructions.java
+FinalConstructions2.java
 先初始化父类的静态代码-->初始化子类的静态代码-->
      (创建实例)-->父类默认初始化-->父类显示初始化-->父类构造代码块-->子类默认初始化
              -->初始化父类构造函数-->子类显示初始化-->子类构造代码块-->初始化子类构造函
@@ -802,23 +784,23 @@ ExceptionDemo.java
 		现在:将正常流程代码和问题处理代码分离。提高阅读性. eg:public static void sleep(int time)
 
 	2 体系 System
-		不同的问题用不同的类进行具体的描述。 比如角标越界。空指针等等,问题很多，意味着描述的类也很多，将其共性进行向上抽取，形成了异常体系。
+		不同的问题用不同的类进行具体的描述。 比如角标越界,空指针等等,问题很多，意味着描述的类也很多，将其共性进行向上抽取，形成了异常体系。
 
 		1 最终问题（不正常情况）就分成了两大类。
 			|--1，一般不可处理的。Error
-					特点：是由JVM抛出的严重性的问题。这种问题发生一般不针对性处理。直接修改程序
-					     eg:int[] arr = new int[1024*1024*800];
-					     //Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+				特点：是由JVM抛出的严重性的问题,这种问题发生一般不针对性处理,直接修改程序
+				     eg:int[] arr = new int[1024*1024*800];
+				     //Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
 			|--2，可以处理的。Exception
-						 eg: int [] arr =null; sop(arr[0]);
-						 //Exception in thread "main" java.lang.NullPointerException
+				eg: int [] arr =null; sop(arr[0]);
+				//Exception in thread "main" java.lang.NullPointerException
 
-		2 Throwable:无论是error，还是异常，问题，问题发生就应该可以抛出，让调用者知道并处理。
+		2 Throwable:无论是error，还是exception，问题发生就应该可以抛出，让调用者知道并处理。
 			该体系的特点就在于Throwable及其所有的子类都具有可抛性。
 
 		3 可抛性到底指的是什么呢？怎么体现可抛性呢？
 			其实是通过两个关键字来体现的。
-			throws and throw ,凡是可以被这两个关键字所操作的类和对象都具备可抛性.
+			throws & throw ,凡是可以被这两个关键字所操作的类和对象都具备可抛性.
 
 		4 该体系的特点：
 			子类的后缀名都是用其父类名作为后缀，阅读性很强。
@@ -838,14 +820,13 @@ ExceptionDemo2.java
 
 ExceptionDemo3.java
 	异常处理trycatch.bmp
-		4 自定义异常
+	4 自定义异常
 		如果让一个类称为异常类，必须要继承异常体系，因为只有称为异常体系的子类才有资格具备可抛性。
-		才可以被两个关键字所操作，throws throw
-		1 定义自己的异常就extends exception
-		2 在调用自定义异常的地方用throws:谁调用，谁声明throws
-			eg1: public int method(int[] arr, int index) throws FuShuIndexException// throws
-			eg2: public static void main(String[] args) throws FuShuIndexException
-
+		才可以被两个关键字所操作，throws & throw
+			1 定义自己的异常就extends exception
+			2 在调用自定义异常的地方用throws:谁调用，谁声明throws
+				eg1: public int method(int[] arr, int index) throws FuShuIndexException// throws
+				eg2: public static void main(String[] args) throws FuShuIndexException
 	5 异常的分类：自定义异常时，要么继承Exception。要么继承RuntimeException。
 		1，编译时被检测异常:只要是Exception和其子类都是，除了特殊子类RuntimeException体系。
 				这种问题一旦出现，希望在编译时就进行检测，让这种问题有对应的处理方式。
@@ -929,7 +910,7 @@ ExceptionDemo6.java //BK --day11 Exception 子类注意
 
 
 //BK --day11 Object
-ObjectDemo.java --1Cons (Object,是JVM调用不能显示调用)+9publicmethods+2protected (clone,finalize)+1native (registerNatives)
+ObjectDemo.java --1Cons (JVM调用不能显示调用)+9public methods+2protected (clone,finalize)+1native (registerNatives)
 	Object:所有类的根类，Object是不断抽取而来，具备着所有对象都具备的共性内容。
 	1 Object构造函数： --1 by JVM, can not control
 	    static {
@@ -937,7 +918,7 @@ ObjectDemo.java --1Cons (Object,是JVM调用不能显示调用)+9publicmethods+2
 	    }
 	    随着类的加载而加载，调用本地方法，加载到方法区。
 	01-面向对象(Object类-equals方法).avi (15:13)
-		default：
+		Default：
 			1 比较对象地址
 			2 默认形式：boolean equals(Object obj)，可以任意两个对象比较。
 			eg: public boolean equals(Person obj) (没overwrite equals, input must be Object )
@@ -955,6 +936,12 @@ ObjectDemo.java --1Cons (Object,是JVM调用不能显示调用)+9publicmethods+2
 	05-面向对象(Object类-toString方法).avi ( 4:30)
 
 //BK --day12 A包管理
+              public		protected		default		  private
+同一类中        ok             ok              ok           ok
+同一包中        ok             ok              ok
+不同包的子类中   ok             ok
+不同包不在子类   ok
+
 PackageDemo.java //BK --day12 A包管理 1Java命令行
 02-面向对象(包-包之间访问-protected).avi
 	Basic Java Commands:
@@ -962,13 +949,6 @@ PackageDemo.java //BK --day12 A包管理 1Java命令行
 		java itcastday12.DemoB  -- 执行生成的字节码文件，要加包的路径
 DemoA.java --子类
 DemoB.java --父类//BK --day12 A包管理 2Protected
-
-              public		protected		default		  private
-同一类中        ok             ok              ok           ok
-同一包中        ok             ok              ok
-不同包的子类中   ok             ok
-不同包不在子类   ok
-
 
 03-面向对象(包-导入import).avi
 //import packa.DemoA; //导入了packa包中的DemoA类
@@ -987,8 +967,6 @@ JarDemo.java
 haha.jar --相当于class 文件夹，只要设定classpath就可以运行其中类了：
 eg: set classpath = ./haha.jar
     java pack.JarDemo -->Helo Jar
-
-ExceptionTest2.java
 
 //BK --day12 Multithreading
 ThreadDemo.java
@@ -1213,7 +1191,7 @@ ProducerConsumerDemo02.java
 	notifyAll解决了本方线程一定会唤醒对方线程的问题。
 
 27-多线程(线程间通信-多生产者多消费者问题解决).avi (13:23)
-ProducerConsumerDemo.java
+ProducerConsumerDemo.java //BK --day14 Multithreading 10Model-多生产者多消费者 final
 T11ManyProduceManyBuyers.java -- My own practice on it without any issues
 多生产多消费.bmp
 	多生产者，多消费者的问题，完美解决方案
@@ -1317,7 +1295,7 @@ StringConstructorDemo.java
 	2 byte[]--> String ： 8个，涉及到了字节到字符集的转化
 	3 char[]--> String ： 2个
 
-StringMethodDemo.java //BK --day15 String 2四类:获取,转换,判断,比较
+StringMethodDemo.java //BK --day15 String 2功能:获取,转换,判断,比较
 	1 一共有65个methods：按照面向对象的思想对字符串进行功能分类。
 	1,获取：
 		1.1 获取字符串中字符的个数(长度).
@@ -1371,7 +1349,7 @@ StringMethodDemo.java //BK --day15 String 2四类:获取,转换,判断,比较
 StringObjectDemo.java //BK --day15 String 3常量池操作
 	//intern():对字符串池进行操作的,把堆中数据，放入常量池中
 
-//BK --day15 String 4Practice
+//BK --day15 String 4Examples ???you can take more practice here!
 StringTest.java
 	0, String 当形式参数传参数
 StringTest_1.java
@@ -1405,7 +1383,7 @@ StringBufferDemo.java
 	  既然是一个容器对象。应该具备什么功能呢？
 	  CURD --增删改查  C(create)U(update)R(read)D(delete)
 		1，添加：
-				StringBuffer append(data); --14
+				StringBuffer append(data); --14 //BK --day15 StringBuffer have look on how append work
 				StringBuffer insert(index,data); --12
 				sb.append(x) 和 sb.insert(sb.length(), x) 具有相同的效果。
 		2，删除：
@@ -1491,8 +1469,8 @@ Collection --15 methods
 		|--ArrayList :内部是数组数据结构，是不同步的。替代了Vector。查询的速度快! --3 constructions  20 methods
 		|--LinkedList:内部是链表数据结构，是不同步的。增删元素的速度很快。		   --2 constructions  39 methods
 	|--Set ：无序，元素不能重复。
-		|--HashSet：内部数据结构是哈希表 ，是不同步的。 --4Con + 8Meds
-		|--TreeSet：可以对Set集合中的元素进行排序。是不同步的。 --4Con + 26Meds
+		|--HashSet：内部数据结构是哈希表，是不同步的。        --4Con + 8Meds
+		|--TreeSet：可以对Set集合中的元素进行排序,是不同步的。 --4Con + 26Meds
 CollectionDemo.java //BK --day16 Collection 1-16methods
 	1 集合类的由来：
 		对象用于封装特有数据，对象多了需要存储，如果对象的个数不确定，就使用集合容器进行存储。
@@ -2112,7 +2090,7 @@ ReadKey.java  //BK --day22 IO-5键盘
         BufferedWriter
 
 
-//BK --day22 转换流桥梁
+//BK --day22 IO-6流桥梁
 TransStreamDemo.java
 转换流桥梁.bmp
 TransStreamDemo2.java --简化版
@@ -2900,59 +2878,9 @@ Wrapping.java
 
 </pre>
  * @author zhanghongwei
- *
  */
 package bk;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 class BK
 {
-	public static void main(String[] args) throws IOException
-	{
-		// BK --day03 6语句 2while 两重while嵌套
-		BK.readMyKey();
-	}
-
-	/**
-	 * <pre>
-	 * 1 read value from system.in and package it to a string.
-	 *
-	 * 2 while value is over , stop
-	 *
-	 * 3 while not over, loop get new value
-	 * </pre>
-	 *
-	 * @throws IOException
-	 */
-	final private static StringBuilder stringBuilder = new StringBuilder();
-	final private static InputStream inputValue = System.in;
-
-	private static void readMyKey() throws IOException
-	{
-		String finalValue = BK.stringBuilder.toString().toUpperCase();
-		int read;
-		while (true)
-		{
-			if ("OVER".equals(finalValue))
-			{
-				break;
-			}
-
-			read = BK.inputValue.read();
-			while (true)
-			{
-				if (read == '\n')
-				{
-					break;
-				}
-				BK.stringBuilder.append((char) read);
-				read = BK.inputValue.read();
-			}
-			finalValue = BK.stringBuilder.toString().toUpperCase();
-			System.out.println(finalValue);
-			BK.stringBuilder.delete(0, BK.stringBuilder.length());
-		}
-	}
 }

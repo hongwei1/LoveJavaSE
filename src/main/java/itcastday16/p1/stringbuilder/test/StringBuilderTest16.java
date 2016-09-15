@@ -7,7 +7,7 @@ public class StringBuilderTest16
 		// StringBuilder
 		StringBuilder s1 = new StringBuilder("hello");
 		StringBuilder s2 = new StringBuilder("java");
-		StringBuilderTest16.showBuilder(s1, s2);
+		StringBuilderTest16.showBuilder(s1, s2); // BK --day06 Class 2基本参数&引用参数 2StringBuilder
 		System.out.println(s1 + "......." + s2); // hhahallo +java
 
 		// String

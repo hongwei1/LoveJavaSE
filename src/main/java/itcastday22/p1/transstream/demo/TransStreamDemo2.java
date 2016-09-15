@@ -24,10 +24,11 @@ public class TransStreamDemo2
 		 *
 		 * 3,需求：将一个文件文件中的内容复制到的另一个文件中。
 		 */
-
+		// BK --day22 IO-6流桥梁 FinalSimple
 		BufferedReader bufr = new BufferedReader(new InputStreamReader(System.in));
 
-		BufferedWriter bufw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("b.txt")));
+		BufferedWriter bufw = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream("b.txt")));
 
 		String line = null;
 

@@ -3,7 +3,7 @@ package day02;
 import java.io.InputStream;
 
 /**
- * --day02 02-Java基础语法1 P1-P15 Test to define all the variables: values ,char,fraction and reference
+ * 02-Java基础语法1 P1-P15 Test to define all the variables: values ,char,fraction and reference
  *
  */
 class VarDemo

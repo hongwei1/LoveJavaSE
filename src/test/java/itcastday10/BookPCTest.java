@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import day10.Laptop;
 import itcastday11.MyException;
 
 public class BookPCTest
