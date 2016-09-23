@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import itcastday11.MyException;
+import day11.MyException;
 
 public class CopyTextTestTest
 {

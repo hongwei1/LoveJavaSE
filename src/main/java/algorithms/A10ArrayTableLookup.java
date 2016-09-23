@@ -1,13 +1,15 @@
 package algorithms;
 
+import java.util.Arrays;
+
 public class A10ArrayTableLookup
 {
 	// BK --day05 8Array 2A10进制转换 查表法
 	public static void main(String[] args)
 	{
 		toHex(0xff);
-		toBinary(-6);
-		toOctal(26);
+		// toBinary(-6);
+		// toOctal(26);
 	}
 
 	// 十进制-->二进制。
@@ -37,8 +39,11 @@ public class A10ArrayTableLookup
 			return;
 		}
 		// 定义一个对应关系表。
-		char[] chs = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
-				'F' };
+		char[] chs = { //
+				'0', '1', '2', '3', //
+				'4', '5', '6', '7', //
+				'8', '9', 'A', 'B', //
+				'C', 'D', 'E', 'F' };//
 		/*
 		 * 一会查表会查到比较的数据。 数据一多，就先存储起来，在进行操作。 所以定义一个数组。 临时容器。
 		 */
@@ -47,16 +52,12 @@ public class A10ArrayTableLookup
 
 		while (num != 0)
 		{
-			int temp = num & base;
-			arr[--pos] = chs[temp];
+			int temp = num & base;// base =1111 num=ff
+			arr[--pos] = chs[temp];// pos = arr.length;
 			num = num >>> offset;
 		}
 
-		for (int x = pos; x < arr.length; x++)
-		{
-			System.out.print(arr[x]);
-		}
-		System.out.println();
+		System.out.print(Arrays.toString(arr));
 
 	}
 

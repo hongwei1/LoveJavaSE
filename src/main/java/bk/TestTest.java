@@ -31,6 +31,11 @@ public class TestTest
 	{
 	}
 
+	/**
+	 * Transfor "110"-->5
+	 *
+	 * @param string
+	 */
 	@Test
 	public final void testMain()
 	{

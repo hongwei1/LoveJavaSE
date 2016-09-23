@@ -16,7 +16,7 @@ public class A12BaseConvertTest
 		int expected = 7;
 
 		// 2 run app
-		int actual = A12BaseConvert.BinaryToDecimal(inputValue);
+		int actual = A11BaseConvert.BinaryToDecimal(inputValue);
 
 		// 3 compare result
 		Assert.assertEquals(expected, actual);
@@ -33,7 +33,7 @@ public class A12BaseConvertTest
 		expecteds[1] = 1;
 		expecteds[2] = 0;
 
-		Object[] actuals = A12BaseConvert.DecimalToBinary(inputValue);
+		Object[] actuals = A11BaseConvert.DecimalToBinary(inputValue);
 		Assert.assertArrayEquals(expecteds, actuals);
 	}
 

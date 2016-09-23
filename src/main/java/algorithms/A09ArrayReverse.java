@@ -1,5 +1,6 @@
 package algorithms;
 
+//BK --day05 8Array 2A09Reverse
 public class A09ArrayReverse
 {
 	public static void main(String[] args)

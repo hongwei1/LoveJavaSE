@@ -7,7 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import day09.DemoImple;
+import day0910.DemoImple;
 
 public class DemoImpleTest
 {

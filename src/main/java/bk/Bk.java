@@ -14,10 +14,9 @@
 	cd/ : 退回到根目录
 	del : 删除文件
 	exit : 推出dos命令行
-// TODO Z1: 进制转化的算法,继续练习练习,把你学得越来越会,越来越自信.
 
 //BK --day02 1Keywords-53个
-0 Note02.java 		 -- p1--P19   I took the notes by going though the PPT.
+0 Note02.java 		5t -- p1--P19   I took the notes by going though the PPT.
 51+2个保留字(const,goto)=53个关键字(java的关键字都是小写的) http://flycatdeng.iteye.com/blog/1180264
 	strictfp的意思是FP-strict，也就是说精确浮点的意思。在Java虚拟机进行浮点运算时，如果没有指定strictfp关键字时，
 	Java的编译器以及运行环境在对浮点运算的表达式是采取一种近似于我行我素的行为来完成这些操作，以致于得到的结果往往无法
@@ -73,7 +72,7 @@ HexOctalDecimal.java
 //BK --day02 4Variables 3类型提升
 VarDemo2.java      -- P15       11-Java语言基础(类型提升&强制转换).avi
 
-//BK --day02 5Operators 1-28种operators
+//BK --day02 5Operators 28种operators
 https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html
 OperateDemo.java   -- P17-P18   arithmetic operator eg: ++
 OperateDemo2.java  -- P19       assignment operator
@@ -1420,7 +1419,7 @@ StringBuilderTest16.java
 	string内存图.bmp
 
 //BK --day16 8种包装类
-WrapperDemo.java
+WrapperDemo16.java
 	1 基本数据类型对象包装类--用于描述该对象的类就称为基本数据类型对象包装类。
 		为了方便操作基本数据类型值，将其封装成了对象，在对象中定义了属性和行为丰富了该数据的操作。
 		Integer --  Contructor -- 2
@@ -2603,6 +2602,7 @@ ReflectDemo4.java  // BK --day28 Reflection 4Get Method
 07-反射机制(反射练习).avi
 RunComputer.java// BK --day28 Reflection 4Practice
 
+//BK --day29-30 HTML CSS
 
 //BK --day36 Debug Tricks
 http://langgufu.iteye.com/blog/1168366
@@ -2882,6 +2882,41 @@ Wrapping.java
  */
 package bk;
 
-class BK
+import java.util.Arrays;
+
+import org.junit.Test;
+
+public class Bk
 {
+
+	@Test
+	public final void testMain()
+	{
+
+		int num = 6;
+		int base = 7;
+		int offset = 3;
+
+		char[] arr = new char[32];
+		int pos = arr.length;
+
+		// 定义一个对应关系表。
+		char[] chs = { //
+				'0', '1', '2', '3', //
+				'4', '5', '6', '7', //
+				'8', '9', 'A', 'B', //
+				'C', 'D', 'E', 'F' };//
+		// Table Method get the result
+		// 1 binary 0,1
+		// eg:6->110dt
+		// 6 /2
+
+		while (num != 0)
+		{
+			int temp = num & base;// base =1111 num=ff
+			arr[--pos] = chs[temp];// pos = arr.length;
+			num = num >>> offset;
+		}
+		System.out.println(Arrays.toString(arr));
+	}
 }
