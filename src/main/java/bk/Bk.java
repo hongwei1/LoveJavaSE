@@ -967,7 +967,7 @@ haha.jar --相当于class 文件夹，只要设定classpath就可以运行其中
 eg: set classpath = ./haha.jar
     java pack.JarDemo -->Helo Jar
 
-//BK --day12 Multithreading
+//BK --day12 M-Thread
 ThreadDemo.java
 	1:Definition
 		进程：正在进行中的程序(直译). 只分配开应用程序的应用空间
@@ -981,7 +981,7 @@ ThreadDemo.java
 		eg:  I/O例子：点对点的聊天工具，需要在我们编写信息的同时能够接受并打印出来对方说的话。
 		     如果将信息的发送和接受放在一个线程里，发送和接受两者不能兼顾。
 
-	3: JVM multithreading
+	3: JVM M-Thread
 		JVM启动时就启动了多个线程，至少有两个线程可以分析的出来。
 			1，执行main函数的线程--该线程的任务代码都定义在main函数中。
 			2，负责垃圾回收的线程。
@@ -991,7 +991,7 @@ ThreadDemo.java
 ThreadDemo2.java
 05-多线程(多线程创建的方式一-继承Thread类).avi (25:27)
 	4：Main Threading Example
-	5: Multithreading
+	5: Multithread
 		1 Thread Concept
 			创建线程的目的是为了开启一条执行路径，去运行指定的代码和其他代码实现同时运行。
 			而运行的指定代码就是这个执行路径的任务。
@@ -1010,7 +1010,7 @@ ThreadDemo2.java
 			4，调用start方法开启线程并调用线程的任务run方法执行。
 
 	6: Thread name and methods -- 06-多线程(Thread类中的方法&线程名称).avi (10:33)
-		//BK --day12 Multithreading 01Thread 8Cons+42Meds
+		//BK --day12 M-Thread 01Thread 8Cons+42Meds
 		1 methods:
 			1 getName() --Returns this thread's name.
 			2 Thread.currentThread() -- Returns a reference to the currently executing thread object.
@@ -1026,7 +1026,7 @@ ThreadDemo3.java
 		If main thread meet errors ,the other threads can work properly.
 08-多线程(线程的状态).avi (22:40)
 线程4状态.png
-	8 :	MutiThread states //BK --day12 Multithreading 03FourStates
+	8 :	MutiThread states //BK --day12 M-Thread 03FourStates
 			1 concepts
 			    CPU执行权 : 现在做(Yes1);
 			    执行资格   ：在排队(Yes2)
@@ -1034,7 +1034,6 @@ ThreadDemo3.java
 				        No,No-->Yes,Yes-->No,No -->No,Yes  --> No,No
 			 tips: only one thread has the execute right ,all others are in the block or freeze.
 
-//BK --day13 Multithreading
 ThreadDemo13.java
 09-多线程(创建线程的第二种方式—实现Runnable接口).avi (22:56)
 		二:实现Runnable接口。
@@ -1080,7 +1079,7 @@ Runnable实现的思想.png
 			2，避免了java单继承的局限性。
 		所以，创建线程的第二种方式较为常用。
 
-//BK --day13 Multithreading 05Model-单任务多线程
+//BK --day13 M-Thread 05Model-单任务多线程
 TicketDemo3.java -- three different ways. finally use the syn-block
 售票内存图.bmp
 12-多线程(卖票示例).avi (27:26)
@@ -1096,7 +1095,7 @@ TicketDemo3.java -- three different ways. finally use the syn-block
 		2，操作共享数据的线程代码有多条。
 		3，当一个线程在执行操作共享数据的多条代码过程中，其他线程参与了运算，就会导致线程安全问题。
 
-//BK --day13 Multithreading 06同步代码块和同步函数
+//BK --day13 M-Thread 06同步代码块和同步函数
 15-多线程(同步代码块).avi ( 9:43)
 	解决思路；
 		就是将多条操作共享数据的线程代码封装起来，当有线程在执行这些代码的时候，其他不可以参与运算.
@@ -1136,7 +1135,7 @@ StaticSynFunctionLockDemo.java
 		1 可以用 getClass方法获取，
 		2 也可以用当前  类名.class 表示。
 
-SingleDemo.java //BK --day13 Multithreading 07单例
+SingleDemo.java //BK --day13 M-Thread 07单例
 21-多线程(单例模式涉及的多线程问题).avi (12:13)--300
 		1 饿汉式，没有安全问题
 		2 SingleDemo line 39--41//懒汉式
@@ -1144,7 +1143,7 @@ SingleDemo.java //BK --day13 Multithreading 07单例
 			//加入双重判断是为了解决效率问题。
 
 
-DeadLockDemo.java //BK --day13 Multithreading 08死锁
+DeadLockDemo.java //BK --day13 M-Thread 08死锁
 DeadLockTest.java --remember one Lock, easy one .
 22-多线程(死锁示例).avi (18:38)
 	1 死锁：常见情景之一：同步的嵌套。
@@ -1156,11 +1155,11 @@ DeadLockTest.java --remember one Lock, easy one .
 郁闷答疑.avi
 --讲了同步锁必须相同，会同步锁错乱
 
-//BK --day14 Multithreading
+
+//BK --day14 M-Thread 09多线程通信
 23-多线程(线程间通信-示例).avi (37: 4)
 ResourceDemo.java
 
-//BK --day14 Multithreading 09多线程通信
 24-多线程(线程间通信-等待唤醒机制).avi (34:23)
 ResourceDemo2.java
 wait-notify应用.gif
@@ -1179,7 +1178,7 @@ wait-notify应用.gif
 25-多线程(线程间通信-等待唤醒机制-代码优化).avi ( 6:48)
 ResourceDemo3.java
 
-//BK --day14 Multithreading 10Model-多生产者多消费者
+//BK --day14 M-Thread 10Model-多生产者多消费者
 26-多线程(线程间通信-多生产者多消费者问题).avi (34: 3)
 ProducerConsumerDemo01.java
 	if判断标记，只有一次，会导致不该运行的线程运行了。出现了数据错误的情况。
@@ -1190,13 +1189,13 @@ ProducerConsumerDemo02.java
 	notifyAll解决了本方线程一定会唤醒对方线程的问题。
 
 27-多线程(线程间通信-多生产者多消费者问题解决).avi (13:23)
-ProducerConsumerDemo.java //BK --day14 Multithreading 10Model-多生产者多消费者 final
+ProducerConsumerDemo.java //BK --day14 M-Thread 10Model-多生产者多消费者 final
 T11ManyProduceManyBuyers.java -- My own practice on it without any issues
 多生产多消费.bmp
 	多生产者，多消费者的问题，完美解决方案
 
 
-//BK --day14 Multithreading 11JDK1.5 New
+//BK --day14 M-Thread 11JDK1.5 New
 28-多线程(线程间通信-多生产者多消费者问题-JDK1.5新特性-Lock).avi (18:41)
 ProducerConsumerDemo2.java -- line 33
 Lock升级原因.gif
@@ -1228,7 +1227,7 @@ ProducerConsumerDemo2.java -- line 82
 BoundedBuffer.java
 范例.gif
 
-//BK --day14 Multithreading 12 Other Methods
+//BK --day14 M-Thread 12 Other Methods
 32-多线程(wait和sleep的区别).avi (12:33)
 wait和sleep的区别.java
 	1，wait可以指定时间也可以不指定。
@@ -1261,7 +1260,7 @@ StopThreadDemo.java --t2.setDaemon(true);
 JoinDemo.java
 	join,setPriority(1-10,仅仅是概率),toString,threadGroup，yield
 
-//BK --day14 Multithreading 13Test
+//BK --day14 M-Thread 13Test
 37-多线程(面试题).avi ( 8: 9) --575m
 ThreadTest.java
 
@@ -2369,7 +2368,7 @@ BufferedOutputStream
 
 //TODO --stop java here
 
-//BK --day22File类 4 Cons+ 49 Mends -----------------------------
+//BK --day22 IO-7File类 4 Cons+ 49 Mends -----------------------------
 31-IO流(File对象-构造函数&字段).avi (14:45)
 FileDemo.java
 	4 Fields and 4 Constructions
@@ -2420,9 +2419,9 @@ File类：
 
 
 
-//BK --day23 IO-6 Others
+//BK --day23 IO-8Others
 IO中的其他功能流对象：
-
+//BK --day24 IO-8O-1PrintStream
 1,打印流：
 	PrintStream：字节打印流。
 		特点：
@@ -2440,16 +2439,14 @@ IO中的其他功能流对象：
 什么时候用？
 当需要保证数据表现的原样性时，就可以使用打印流的打印方法来完成，这样更为方便。
 保证原样性的原理：其实就是将数据变成字符串，在进行写入操作。
-
-
-
+//BK --day24 IO-8O-2PrintStream
 SequenceInputStream:
 	特点：
 	1，将多个字节读取流和并成一个读取流，将多个源合并成一个源，操作起来方便。
 	2，需要的枚举接口可以通过Collections.enumeration(collection);
 
 
-
+//BK --day24 IO-8O-3ObjectInputStream
 ObjectInputStream 和 ObjectOutputStream
 
 对象的序列化和反序列化。
@@ -2460,28 +2457,30 @@ Serializable标记接口
 
 关键字：transient
 
-
+RandomAccessFileDemo
 RandomAccessFile:
 	特点：
-	1，即可读取，又可以写入。
-	2，内部维护了一个大型的byte数组，通过对数组的操作完成读取和写入。
-	3，通过getFilePointer方法获取指针的位置，还可以通过seek方法设置指针的位置。
-	4，该对象的内容应该封装了字节输入流和字节输出流。
-	5，该对象只能操作文件。
+		1，即可读取，又可以写入。
+		2，内部维护了一个大型的byte数组，通过对数组的操作完成读取和写入。
+		3，通过getFilePointer方法获取指针的位置，还可以通过seek方法设置指针的位置。
+		4，该对象的内容应该封装了字节输入流和字节输出流。
+		5，该对象只能操作文件。
+		6, Random 指seek 可以指定任意位置,任意位置开始读写.
+		7, 可以用于多线程同时写入
 
 	通过seek方法操作指针，可以从这个数组中的任意位置上进行读和写
 	可以完成对数据的修改。
-	但是要注意：数据必须有规律。
+	但是要注意：数据必须有规律,随机才会有意义!
 
 
-
+//BK --day24 IO-8O-5PipedOutputStream
 管道流：需要和多线程技术相结合的流对象。
 PipedOutputStream
 PipedInputStream
 
 
 
-
+//BK --day24 IO-8O-6DataInputStream
 用操作基本数据类型值的对象。
 	DataInputStream
 	DataOutputStream
@@ -2538,35 +2537,28 @@ OutputStream
 RandomAccessFile:
 
 //BK --day25 GUI
+//BK --day25 GUI 1Applet
+Basic Labels
+	Applet1--Graphics
+	Applet2--button awt event bad!
+	Applet3--text Field
+Layout:
+	FlowLayout1.java
+	BorderLayout1.java
+	GridLayout1.java
 
-FrameDemo.java
-01-GUI(概述).avi (22:28)
-02-GUI(Frame演示).avi (12:51)
-03-GUI(事件监听机制).avi (25:31)
+//BK --day25 GUI 2事件机制
+Applet2   --Older One
+FrameDemo --New One
 事件监听机制.bmp
-04-GUI(ActionListener演示).avi ( 4:56)
+MouseAndKeyDemo.java -eg
 
-MouseAndKeyDemo.java
-05-GUI(鼠标事件).avi (22:12)
-06-GUI(键盘事件).avi (15:15)
-
-
-07-GUI(Swing演示&装插件).avi (17:47) //BK --day25 GUI Jigloo
-MouseAndKeyDemo.java
-
-08-GUI(练习-列出目录内容).avi (11:50)
-09-GUI(菜单).avi (10:50)
-10-GUI(练习).avi (22:48)
-
-
-DebugDemo.java
-DebugDemo.java
-MyMenu.java
-MySwing.java
-MyWindow.java
+//BK --day25 GUI Jigloo
+MySwing.java--07-GUI(Swing演示&装插件).avi (17:47)
+MyWindow.java--08-GUI(练习-列出目录内容).avi (11:50)
+MyMenu.java--09-GUI(菜单).avi (10:50)->10-GUI(练习).avi (22:48)
 NewJFrame.java
-
-
+DebugDemo.java
 
 //BK --day28 Reflection
 01-反射机制(概述&应用场景).avi
@@ -2602,6 +2594,32 @@ ReflectDemo4.java  // BK --day28 Reflection 4Get Method
 07-反射机制(反射练习).avi
 RunComputer.java// BK --day28 Reflection 4Practice
 
+
+// BK --day28 Regex
+RegexDemo.java
+	java.util.regex--package
+	Pattern --8Methods
+	Matcher --34Methods
+	正则表达式。
+		正则表达式用于操作字符串数据,通过一些特定的符号来体现的。
+		所以我们为了掌握正则表达式，必须要学习一些符号。
+		虽然简化了，但是阅读性差。
+RegexDemo2.java // BK --day28 Regex 1匹配切割替换获取
+	正则表达式对字符串的常见操作:
+		1, 匹配。 其实使用的就是String类中的matches方法。
+		2，切割。 其实使用的就是String类中的split方法。
+		3，替换。 其实使用的就是String类中的replaceAll()方法。
+		4，获取。
+
+RegexTest.java
+	1，治疗口吃:我我...我我...我我我要...要要要要...要要要要..学学学学学...学学编编...编编编编..编..程程...程程...程程程
+	2，对ip地址排序。
+	3，对邮件地址校验。
+
+RegexTest2.java
+ 	网页爬虫：其实就一个程序用于在互联网中获取符合指定规则的数据。
+ 	爬取邮箱地址。
+// BK --day28 Regex ???主要得写正则表达式,和理解Master的各种方法.
 //BK --day29-30 HTML CSS
 
 //BK --day36 Debug Tricks
@@ -2875,7 +2893,20 @@ Wrapping.java
 
 
 //BK --day38 DataStructure
+//BK --day38 DataStructure-Algorithm Introduction
+InsertSort --P39-English
 
+
+//BK --day39 Junit
+//BK --day39 Junit 1Parameterized Test
+https://www.tutorialspoint.com/junit/junit_parameterized_test.htm
+A1TwoSumTest.java
+
+//BK --day39 Junit 2Mockito
+http://www.tutorialspoint.com/mockito/mockito_quick_guide.htm
+
+//BK --day40 JVM
+Jvm1
 
 </pre>
  * @author zhanghongwei

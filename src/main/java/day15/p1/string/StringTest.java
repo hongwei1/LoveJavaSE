@@ -17,6 +17,18 @@ public class StringTest
 		StringTest.show(s1, s2);
 
 		System.out.println(s1 + "...." + s2);// hello java
+
+		// split will new a object
+		String aString = "j";
+		String aString1 = "j";
+		String[] aa = { "j", "j" };
+		String jjString = "jj";
+		String[] split = jjString.split("");
+
+		System.out.println(aString == aString1);// true
+		System.out.println(aa[0] == aa[1]); // true
+		System.out.println(split[0] == split[1]);// true // BK --day15 String 4Examples1
+
 	}
 
 	public static void show(String s1, String s2)

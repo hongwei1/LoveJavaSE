@@ -23,7 +23,7 @@ package day1234;
 
 
 */
-//BK --day13 Multithreading 04实现Runnable接口
+//BK --day13 M-Thread 04实现Runnable接口
 class Demo13 implements Runnable// extends Fu //准备扩展Demo类的功能，让其中的内容可以作为线程的任务执行。
 // 通过接口的形式完成。
 {

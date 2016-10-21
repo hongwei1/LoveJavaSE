@@ -13,8 +13,6 @@ public class FrameDemo
 	public static void main(String[] args)
 	{
 		Frame frame = new Frame("my frame");
-		// f.setSize(500, 400);
-		// f.setLocation(400, 200);
 		frame.setBounds(400, 200, 500, 400);
 		frame.setLayout(new FlowLayout());// 设置流式布局
 
@@ -30,7 +28,6 @@ public class FrameDemo
 				// System.out.println("closing......." + e);
 				System.exit(0);
 			}
-
 		});
 
 		// 在按钮上加上一个监听。
@@ -39,13 +36,22 @@ public class FrameDemo
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("button run .....");
+				System.out.println("button run1 .....");
+				// System.exit(0);
+			}
+		});
+		// 在按钮上加上一个监听。
+		aButton.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("button run2 .....");
 				// System.exit(0);
 			}
 		});
 
 		frame.setVisible(true);
-		System.out.println("over");
 	}
 
 }

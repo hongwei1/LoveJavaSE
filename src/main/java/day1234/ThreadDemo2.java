@@ -20,7 +20,7 @@ package day1234;
 			3，直接创建Thread的子类对象创建线程。
 
 */
-class Demo2 extends Thread // BK --day12 Multithreading 02继承Thread类
+class Demo2 extends Thread // BK --day12 M-Thread 02继承Thread类
 {
 
 	Demo2(String name)
@@ -28,6 +28,12 @@ class Demo2 extends Thread // BK --day12 Multithreading 02继承Thread类
 		super(name);// set the name for thread object
 	}
 
+	/**
+	 * 线程可以制定,线程组
+	 *
+	 * @param threadGroup
+	 * @param name
+	 */
 	public Demo2(ThreadGroup threadGroup, String name)
 	{
 		super(threadGroup, name);
@@ -38,7 +44,8 @@ class Demo2 extends Thread // BK --day12 Multithreading 02继承Thread类
 	{
 		for (int x = 0; x < 10; x++)
 		{
-			System.out.println("Thread name=" + Thread.currentThread().getName() + ", thread id =" + x);
+			System.out.println(
+					"Thread name=" + Thread.currentThread().getName() + ", thread id =" + x);
 		}
 	}
 }

@@ -8,10 +8,12 @@ import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 /**
- * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI Builder, which is free for non-commercial use. If Jigloo is being used
- * commercially (ie, by a corporation, company or business for any purpose whatever) then you should purchase a license for each developer using Jigloo. Please
- * visit www.cloudgarden.com for details. Use of Jigloo implies acceptance of these licensing terms. A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR THIS
- * MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+ * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI Builder, which is free
+ * for non-commercial use. If Jigloo is being used commercially (ie, by a corporation, company or
+ * business for any purpose whatever) then you should purchase a license for each developer using
+ * Jigloo. Please visit www.cloudgarden.com for details. Use of Jigloo implies acceptance of these
+ * licensing terms. A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR THIS MACHINE, SO JIGLOO OR THIS
+ * CODE CANNOT BE USED LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
  */
 public class MySwing extends javax.swing.JFrame
 {
@@ -37,21 +39,21 @@ public class MySwing extends javax.swing.JFrame
 	public MySwing()
 	{
 		super();
-		this.initGUI();
+		initGUI();
 	}
 
 	private void initGUI()
 	{
 		try
 		{
-			this.getContentPane().setLayout(null);
-			this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			getContentPane().setLayout(null);
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{
-				this.jButton1 = new JButton();
-				this.getContentPane().add(this.jButton1);
-				this.jButton1.setText("\u9000\u51fa");
-				this.jButton1.setBounds(142, 26, 103, 48);
-				this.jButton1.addActionListener(new ActionListener()
+				jButton1 = new JButton();
+				getContentPane().add(jButton1);
+				jButton1.setText("\u9000\u51fa");
+				jButton1.setBounds(142, 26, 103, 48);
+				jButton1.addActionListener(new ActionListener()
 				{
 					@Override
 					public void actionPerformed(ActionEvent evt)
@@ -60,7 +62,7 @@ public class MySwing extends javax.swing.JFrame
 					}
 				});
 			}
-			this.pack();
+			pack();
 			this.setSize(400, 300);
 		}
 		catch (Exception e)
@@ -73,7 +75,6 @@ public class MySwing extends javax.swing.JFrame
 	private void jButton1ActionPerformed(ActionEvent evt)
 	{
 		// System.out.println("jButton1.actionPerformed, event="+evt);
-		// TODO add your code for jButton1.actionPerformed
 
 		System.exit(0);
 	}

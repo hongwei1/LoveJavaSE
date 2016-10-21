@@ -21,23 +21,23 @@ public class MouseAndKeyDemo
 
 	public MouseAndKeyDemo()
 	{
-		this.init();
+		init();
 	}
 
 	private void init()
 	{
-		this.frame = new Frame("演示鼠标和键盘监听");
-		this.frame.setBounds(400, 200, 500, 400);
-		this.frame.setLayout(new FlowLayout());
+		frame = new Frame("演示鼠标和键盘监听");
+		frame.setBounds(400, 200, 500, 400);
+		frame.setLayout(new FlowLayout());
 
-		this.button = new Button("一个按钮");
-		this.testField = new TextField(40);
+		button = new Button("一个按钮");
+		testField = new TextField(40);
 
-		this.frame.add(this.button);
-		this.frame.add(this.testField);
+		frame.add(button);
+		frame.add(testField);
 
-		this.myEvent();
-		this.frame.setVisible(true);
+		myEvent();
+		frame.setVisible(true);
 
 	}
 
@@ -45,12 +45,13 @@ public class MouseAndKeyDemo
 	{
 
 		// 给文本框添加键盘监听。
-		this.testField.addKeyListener(new KeyAdapter()
+		testField.addKeyListener(new KeyAdapter()
 		{
 			@Override
 			public void keyPressed(KeyEvent e)
 			{
-				System.out.println("key run..." + KeyEvent.getKeyText(e.getKeyCode()) + "::::" + e.getKeyCode());
+				System.out.println("key run..." + KeyEvent.getKeyText(e.getKeyCode()) + "::::"
+						+ e.getKeyCode());
 				int code = e.getKeyCode();
 				if (!(code >= KeyEvent.VK_0 && code <= KeyEvent.VK_9))
 				{
@@ -65,13 +66,13 @@ public class MouseAndKeyDemo
 
 				if (e.getKeyCode() == 8)
 				{
-					MouseAndKeyDemo.this.testField.setText("");
+					testField.setText("");
 				}
 			}
 
 		});
 
-		this.frame.addWindowListener(new WindowAdapter()
+		frame.addWindowListener(new WindowAdapter()
 		{
 			@Override
 			public void windowClosing(WindowEvent e)
@@ -81,7 +82,7 @@ public class MouseAndKeyDemo
 
 		});
 
-		this.button.addActionListener(new ActionListener()
+		button.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -91,7 +92,7 @@ public class MouseAndKeyDemo
 		});
 
 		// 在按钮上添加一个鼠标监听.
-		this.button.addMouseListener(new MouseAdapter()
+		button.addMouseListener(new MouseAdapter()
 		{
 
 			private int count = 1;
@@ -112,7 +113,7 @@ public class MouseAndKeyDemo
 
 				if (e.getClickCount() == 2)
 				{
-					MouseAndKeyDemo.this.testField.setText("mouse double click..." + this.count++);
+					testField.setText("mouse double click..." + count++);
 				}
 			}
 
