@@ -4,7 +4,7 @@ class ExceptionDemo
 {
 	public static void main(String[] args)
 	{
-		int[] arr = new int[1024 * 1024 * 800];// java.lang.OutOfMemoryError: Java heap space
+		int[] arr = new int[1024 * 1024];// java.lang.OutOfMemoryError: Java heap space
 		// arr = null;
 		// System.out.println(arr[3]);
 		//
