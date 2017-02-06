@@ -3,3 +3,6 @@
 JavaBooks/
 /test/
 /.DS_Store
+.idea/
+LoveJavaSE.iml
+.project
