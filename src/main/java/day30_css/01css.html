@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- CSS与HTML 的四种结合方式： -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01css.html</title>
+
+    <!-- css和html相结合的第四种方式。  -->
+    <link rel="stylesheet" href="02.css" type="text/css"/>
+
+    <style type="text/css">
+        /* css和html相结合的第三种方式。 */
+        /* @import url(02.css);  */
+
+        /* css和html相结合的第二种方式。
+           使用style标签的方式。 一般都定义在head标签中 */
+        /* span {
+            background-color: #FC3;
+            color: #0C0;
+        } */
+    </style>
+
+</head>
+
+<body>
+<!--
+css和html相结合的第一种方式。
+    每一个html标签中都有一个style样式属性。该属性的值就是css代码。
+-->
+
+<div style="background-color:#FF0000;color:#FFFFFF">
+    这是一个div<b>区域</b>1
+</div>
+<div>这是一个div区域2</div>
+
+<span>span<b>区域</b>1
+	</span>
+<span>span区域2</span>
+
+<p>这是一个段落1</p>
+<p>这是一个段落2</p>
+
+</body>
+</html>
