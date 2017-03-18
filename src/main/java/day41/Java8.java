@@ -16,6 +16,7 @@ public class Java8
 			System.out.print(e);
 		});
 
+		//TOOD wei?? still do not know ?
 		Receiver south = request -> "aaaa";// 2 south is a receiver!
 		Sender north = south::respond;
 		System.out.println(north);
@@ -54,10 +55,11 @@ public class Java8
 	@FunctionalInterface
 	public interface FunctionalDefaultMethods
 	{
-		void method();
+		void method(int a);
 
 		default void defaultMethod()
 		{
+			System.out.println("I am defalut method! ");
 		}
 	}
 

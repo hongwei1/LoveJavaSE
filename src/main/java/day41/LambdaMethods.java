@@ -16,15 +16,46 @@ class LambdaMethods
 		Comparator<String> c;
 		c = (String s1, String s2) -> s1.compareToIgnoreCase(s2);
 
+		
+		// The functionalDefaultMethods is a object, Lambda implement the interface and it has been a concreate 
+		// class, it can be changed into object.
+		// Latter, it can call  the method, we defined in Lamdba expression.
+		Java8.FunctionalDefaultMethods functionalDefaultMethods = (a) -> {System.out.print("I am implement method!"+a);};
+		functionalDefaultMethods.defaultMethod();
+		functionalDefaultMethods.method(5);
+		
+
 		// BK --day41 JAVA8 2Lambda1基本语法
 		// 基本语法:
 		// ([参数名称列表]) ->{
-		// //执行语句,方法体
+		//   执行语句,方法体
 		// }
-		// TestClassMethodRef ref = (s) -> {
-		// LambdaMethods.output(s);
-		// };
+		//1 first old way
+		TestClassMethodRef refOld = new TestClassMethodRef(){
+
+			@Override
+			public void test(String str) {
+				LambdaMethods.output(str);
+			}
+		};
+		refOld.test("Hongwei come on : ref");
+		
+		//New way:
+		// In functional interface there is void test(String str), is abstract.
+		// It is the functionalInterface, it can use the Lambda expression.() -> {}
+		// Just contain the method body, need not care about the abstract method in interface.
+		// in the left, you use TestClassMethodRef, it has constained the number and input value
+		// Here it is the method 'void test(String str)', so we just need one parameter in the right side .
+		// () -> {}, means there is one parameter in the (), and than just create your method to call the parameter .
+		// and the new method can be call when later use the ref variable. 
+		// Actually, it is an object now. 
+		
+		
+		
 		TestClassMethodRef ref = s -> LambdaMethods.output(s);
+		// although, it is called the test method, but it is just interface, concrete method will be called in implement class. 
+		// So, it will call the Lambda expression (s -> LambdaMethods.output(s);)
+		// and run the methods in Lambda body. 
 		ref.test("Hongwei come on : ref");
 
 		// BK --day41 JAVA8 2Lambda2引用类方法
@@ -88,6 +119,7 @@ class LambdaMethods
 	}
 }
 
+@FunctionalInterface
 interface TestClassMethodRef
 {
 	void test(String str);
