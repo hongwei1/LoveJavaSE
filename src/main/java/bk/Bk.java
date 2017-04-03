@@ -2904,7 +2904,14 @@ A1TwoSumTest.java
 
 //BK --day39 Junit 2Mockito
 http://www.tutorialspoint.com/mockito/mockito_quick_guide.htm
-
+ 1 First Example
+	 Portfolio
+	 PortfolioTester
+	 Stock
+	 StockService
+ 
+ 
+ 
 //BK --day40 JVM
 Jvm1
 
@@ -2952,6 +2959,27 @@ LambdaMethods
 
 
 //BK --day41 JAVA8 3对接口的改变
+ 
+//BK --day41 JAVA8 4 Some pointsl 
+
+ //1 java 双冒号是什么操作符? 
+ 作者：hongjiang
+ 链接：https://www.zhihu.com/question/28565691/answer/41325917
+ 来源：知乎
+
+ eta-conversion 支持lambda表达式的语言大多都支持eta转换，scala和 haskell 里的 
+ eta转换写法比较简洁： x => abs(x) 经过 eta转换可以写为 abs 
+ 举个例子：scala> def hf(i:Int, f: Int=>Int) = f(i)
+ hf: (i: Int, f: Int => Int)Int
+ scala> hf(-99, x=>Math.abs(x))
+ res3: Int = 99上面对高阶函数 
+ hf 传递的第二个参数 x=>Math.abs(x) 是一段lambda表达式，这个lambda经过eta转换之后可以直接写为  
+ Math.abs，下面是等价的写法：scala> hf(-99, Math.abs)res2: Int = 99 上面传递的第二个参数 Math.abs 
+ 看上去只是一个函数名称，实际上是一段lambda的缩写。在java里同样也支持 eta 转换，
+ 但java对 eta转换 在风格上不同于 scala/haskell ，而是必须通过:: 来表示的，比如：number -> Math.abs(number) 
+ 经过eta转换后是 Math::abs 为什么Java要用:: 来表示eta转换，猜测可能是设计者考虑到java广大用户并不那么熟悉函数式风格，
+ 直接用一个函数名表达转换后的lambda 容易在理解上有歧义，就像上面 Math.abs 可能被新手把abs误解为Math里的一个静态常量而非方法，
+ 所以写成 Math::abs 就不容易误解了。
 
 </pre>
  * @author zhanghongwei
