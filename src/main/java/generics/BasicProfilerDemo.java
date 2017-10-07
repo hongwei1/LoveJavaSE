@@ -1,5 +1,7 @@
 package generics;
 
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.core.util.StatusPrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.profiler.Profiler;
@@ -10,6 +12,7 @@ public class BasicProfilerDemo
   {
     Logger logger = LoggerFactory.getLogger(BasicProfilerDemo.class);
     logger.info("Hello World");
+    logger.debug("Hello World");
 
     // create a profiler called "BASIC"
     Profiler profiler = new Profiler("BASIC");
@@ -22,23 +25,27 @@ public class BasicProfilerDemo
     profiler.start("OTHER");
     doOther();
     profiler.stop().print();
+
+    // print internal state
+    LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+    StatusPrinter.print(lc);
   }
 
 
   static private void doA()
   {
-    delay(200);
+    delay(20);
   }
 
   static private void doB()
   {
-    delay(2500);
+    delay(25);
   }
 
   static private void doOther()
   {
 
-    delay(3300);
+    delay(33);
   }
 
   static private void delay(int millis)
