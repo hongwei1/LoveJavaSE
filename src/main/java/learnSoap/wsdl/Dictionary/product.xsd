@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:simpleType name="processingCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>code traitement</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="7" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="8" />
+      <xs:enumeration value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="getProductSubscriptionListRequest">
+    <xs:sequence>
+      <xs:element name="customer" type="amp:populationFile" minOccurs="0" />
+      <xs:element name="product" type="amp:product" minOccurs="0" />
+      <xs:element name="package" type="amp:package" minOccurs="0" />
+      <xs:element name="fileModule" type="amp:module" minOccurs="0" />
+      <xs:element name="accountFile" type="amp:accountFile" minOccurs="0" />
+      <xs:element name="processingCode" type="amp:processingCode" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProductSubscriptionResponse">
+    <xs:complexContent>
+      <xs:extension base="amp:getProductSubscriptionListRequest">
+        <xs:sequence>
+          <xs:element name="fileType" type="amp:char3" />
+          <xs:element name="fileNumber" type="amp:char15" />
+          <xs:element name="referenceSubscription" type="amp:charMax25" />
+          <xs:element name="startDateSubscription" type="xs:date" />
+          <xs:element name="endDateSubscription" type="xs:date" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getProductSubscriptionListResponse">
+    <xs:sequence>
+      <xs:element name="productSubscription" type="amp:getProductSubscriptionResponse" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:pre1="http://soprabanking.com/amplitude/accountMaintenance/accounts"
+xmlns:preAmp="http://soprabanking.com/amplitude"
+targetNamespace="http://soprabanking.com/amplitude"
+name="getIntraDayMovementList">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soprabanking.com/amplitude/accountMaintenance/accounts" schemaLocation="../FlowDescription/getIntraDayMovementList.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getIntraDayMovementListRequestFlow">
+		<wsdl:part name="getIntraDayMovementListRequestFlow" element="pre1:getIntraDayMovementListRequestFlow"/>
+	</wsdl:message>
+
+	<wsdl:message name="getIntraDayMovementListResponseFlow">
+		<wsdl:part name="getIntraDayMovementListResponseFlow" element="pre1:getIntraDayMovementListResponseFlow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="getIntraDayMovementList">
+		<wsdl:operation name="getIntraDayMovementList">
+			<wsdl:input message="preAmp:getIntraDayMovementListRequestFlow" name="getIntraDayMovementListRequestFlow"/>
+			<wsdl:output message="preAmp:getIntraDayMovementListResponseFlow" name="getIntraDayMovementListResponseFlow"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="getIntraDayMovementList-binding" type="preAmp:getIntraDayMovementList">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getIntraDayMovementList">
+			<soap:operation soapAction="getIntraDayMovementList"/>
+			<wsdl:input name="getIntraDayMovementListRequestFlow">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getIntraDayMovementListResponseFlow">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="getIntraDayMovementList">
+		<wsdl:port binding="preAmp:getIntraDayMovementList-binding" name="getIntraDayMovementList">
+			<soap:address location="http://localhost:8080/getIntraDayMovementList"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

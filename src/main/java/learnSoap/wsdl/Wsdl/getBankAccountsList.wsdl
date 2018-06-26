@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:pre1="http://soprabanking.com/amplitude/codingSystems/banks"
+xmlns:preAmp="http://soprabanking.com/amplitude"
+targetNamespace="http://soprabanking.com/amplitude"
+name="getBankAccountsList">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soprabanking.com/amplitude/codingSystems/banks" schemaLocation="../FlowDescription/getBankAccountsList.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getBankAccountsListRequestFlow">
+		<wsdl:part name="getBankAccountsListRequestFlow" element="pre1:getBankAccountsListRequestFlow"/>
+	</wsdl:message>
+
+	<wsdl:message name="getBankAccountsListResponseFlow">
+		<wsdl:part name="getBankAccountsListResponseFlow" element="pre1:getBankAccountsListResponseFlow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="getBankAccountsList">
+		<wsdl:operation name="getBankAccountsList">
+			<wsdl:input message="preAmp:getBankAccountsListRequestFlow" name="getBankAccountsListRequestFlow"/>
+			<wsdl:output message="preAmp:getBankAccountsListResponseFlow" name="getBankAccountsListResponseFlow"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="getBankAccountsList-binding" type="preAmp:getBankAccountsList">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getBankAccountsList">
+			<soap:operation soapAction="getBankAccountsList"/>
+			<wsdl:input name="getBankAccountsListRequestFlow">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getBankAccountsListResponseFlow">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="getBankAccountsList">
+		<wsdl:port binding="preAmp:getBankAccountsList-binding" name="getBankAccountsList">
+			<soap:address location="http://localhost:8080/getBankAccountsList"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:pre1="http://soprabanking.com/amplitude/meansOfPayment/cheques"
+xmlns:preAmp="http://soprabanking.com/amplitude"
+targetNamespace="http://soprabanking.com/amplitude"
+name="getChequeBookRequestList">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soprabanking.com/amplitude/meansOfPayment/cheques" schemaLocation="../FlowDescription/getChequeBookRequestList.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getChequeBookRequestListRequestFlow">
+		<wsdl:part name="getChequeBookRequestListRequestFlow" element="pre1:getChequeBookRequestListRequestFlow"/>
+	</wsdl:message>
+
+	<wsdl:message name="getChequeBookRequestListResponseFlow">
+		<wsdl:part name="getChequeBookRequestListResponseFlow" element="pre1:getChequeBookRequestListResponseFlow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="getChequeBookRequestList">
+		<wsdl:operation name="getChequeBookRequestList">
+			<wsdl:input message="preAmp:getChequeBookRequestListRequestFlow" name="getChequeBookRequestListRequestFlow"/>
+			<wsdl:output message="preAmp:getChequeBookRequestListResponseFlow" name="getChequeBookRequestListResponseFlow"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="getChequeBookRequestList-binding" type="preAmp:getChequeBookRequestList">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getChequeBookRequestList">
+			<soap:operation soapAction="getChequeBookRequestList"/>
+			<wsdl:input name="getChequeBookRequestListRequestFlow">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getChequeBookRequestListResponseFlow">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="getChequeBookRequestList">
+		<wsdl:port binding="preAmp:getChequeBookRequestList-binding" name="getChequeBookRequestList">
+			<soap:address location="http://localhost:8080/getChequeBookRequestList"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

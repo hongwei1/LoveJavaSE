@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./codingSystems.xsd" />
+  <xs:complexType name="getCustomerRelationListRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>getCustomerRelationListRequest</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="customerCode" type="amp:charMax15">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>customerCode</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="jointsAccountsThirdParty">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Ensemble de comptes joints</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="jointAccountThirdParty" type="amp:jointAccountThirdParty" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>compte joint</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="employer">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>employeur</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="employerCode" type="amp:char15" />
+      <xs:element name="corporateName" type="amp:charMax36" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="professionsAndIncomesOfIndividualCustomer">
+    <xs:sequence>
+      <xs:element name="customerCode" type="amp:char15" />
+      <xs:element name="professionCode" type="amp:char3" minOccurs="0" />
+      <xs:element name="employerCode" type="amp:employer" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customerRelation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Ensemble des relations d'un client</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="spouse" type="amp:restrictedCustomer" minOccurs="0" />
+      <xs:element name="profession" type="amp:professionsAndIncomesOfIndividualCustomer" minOccurs="0" />
+      <xs:element name="jointsAccountsCustomer" type="amp:jointsAccountsThirdParty" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Liste des comptes joints</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="shareholders" type="amp:shareholders" minOccurs="0" />
+      <xs:element name="leaders" type="amp:leaders" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCustomerRelationListResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Flux reponse du service getCustomerRelationList</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="amp:getCustomerRelationListRequest">
+        <xs:sequence>
+          <xs:element name="customerRelation" type="amp:customerRelation" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+                <definition>Relations du client</definition>
+                <origin>SopraBankingSoftware</origin>
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

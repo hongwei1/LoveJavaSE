@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:pre1="http://soprabanking.com/amplitude/commitments/managementOfLimitsCeilings"
+xmlns:preAmp="http://soprabanking.com/amplitude"
+targetNamespace="http://soprabanking.com/amplitude"
+name="getOverdraftAuthNDetail">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soprabanking.com/amplitude/commitments/managementOfLimitsCeilings" schemaLocation="../FlowDescription/getOverdraftAuthNDetail.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getOverdraftAuthNDetailRequestFlow">
+		<wsdl:part name="getOverdraftAuthNDetailRequestFlow" element="pre1:getOverdraftAuthNDetailRequestFlow"/>
+	</wsdl:message>
+
+	<wsdl:message name="getOverdraftAuthNDetailResponseFlow">
+		<wsdl:part name="getOverdraftAuthNDetailResponseFlow" element="pre1:getOverdraftAuthNDetailResponseFlow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="getOverdraftAuthNDetail">
+		<wsdl:operation name="getOverdraftAuthNDetail">
+			<wsdl:input message="preAmp:getOverdraftAuthNDetailRequestFlow" name="getOverdraftAuthNDetailRequestFlow"/>
+			<wsdl:output message="preAmp:getOverdraftAuthNDetailResponseFlow" name="getOverdraftAuthNDetailResponseFlow"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="getOverdraftAuthNDetail-binding" type="preAmp:getOverdraftAuthNDetail">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getOverdraftAuthNDetail">
+			<soap:operation soapAction="getOverdraftAuthNDetail"/>
+			<wsdl:input name="getOverdraftAuthNDetailRequestFlow">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getOverdraftAuthNDetailResponseFlow">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="getOverdraftAuthNDetail">
+		<wsdl:port binding="preAmp:getOverdraftAuthNDetail-binding" name="getOverdraftAuthNDetail">
+			<soap:address location="http://localhost:8080/getOverdraftAuthNDetail"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:pre1="http://soprabanking.com/amplitude/accountMaintenance/accounts"
+xmlns:preAmp="http://soprabanking.com/amplitude"
+targetNamespace="http://soprabanking.com/amplitude"
+name="getAccountActivity">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soprabanking.com/amplitude/accountMaintenance/accounts" schemaLocation="../FlowDescription/getAccountActivity.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getAccountActivityRequestFlow">
+		<wsdl:part name="getAccountActivityRequestFlow" element="pre1:getAccountActivityRequestFlow"/>
+	</wsdl:message>
+
+	<wsdl:message name="getAccountActivityResponseFlow">
+		<wsdl:part name="getAccountActivityResponseFlow" element="pre1:getAccountActivityResponseFlow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="getAccountActivity">
+		<wsdl:operation name="getAccountActivity">
+			<wsdl:input message="preAmp:getAccountActivityRequestFlow" name="getAccountActivityRequestFlow"/>
+			<wsdl:output message="preAmp:getAccountActivityResponseFlow" name="getAccountActivityResponseFlow"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="getAccountActivity-binding" type="preAmp:getAccountActivity">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getAccountActivity">
+			<soap:operation soapAction="getAccountActivity"/>
+			<wsdl:input name="getAccountActivityRequestFlow">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getAccountActivityResponseFlow">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="getAccountActivity">
+		<wsdl:port binding="preAmp:getAccountActivity-binding" name="getAccountActivity">
+			<soap:address location="http://localhost:8080/getAccountActivity"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

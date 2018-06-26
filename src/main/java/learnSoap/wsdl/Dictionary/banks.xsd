@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:complexType name="bankDetailIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant du détail d'une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branchCode" type="amp:branchCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code agence</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="institutionCode" type="amp:institutionCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code établissement bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="branchSortCode" type="amp:branchCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code guichet  bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBankDetailRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Flux de requête du SMG getBankDetail</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bankIdentifier" type="amp:bankDetailIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant du détail d¿une banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bankAddressIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant adresse d'une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="institution" type="amp:bankInstitution">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code et désignation de l'établissement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="counter" type="amp:branch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>code et désignation du guichet</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBankAddressResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Adresse(s) d¿une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bankAddressIdentifier" type="amp:bankAddressIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant des adresses d¿une banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="addressLine1" type="amp:charMax30">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Adresse 1</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="addressLine2" type="amp:charMax30">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Adresse 2</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="addressLine3" type="amp:charMax30">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Adresse 3</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="city" type="amp:charMax30">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Ville</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postalCode" type="amp:charMax10">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code postal</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="country" type="amp:country">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>pays de l¿adresse</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contactName" type="amp:charMax36">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nom du contact</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="phoneNumber1" type="amp:charMax20">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de téléphone 1</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="phoneNumber2" type="amp:charMax20">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de téléphone 2</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="telexNumber" type="amp:charMax10">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de télex</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="faxNumber" type="amp:charMax20">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de fax</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="emailAddress" type="amp:charMax50">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>E-mail</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBankAddressDetailResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Adresse(s) d une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bankAddress" type="amp:getBankAddressResponse">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Adresse d¿une banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bankAccountInformation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant d'un numéro de compte de la banque. Il contient le code numérique de la devise (sur 3 caractères), le numéro de compte (sur 11 caractères au maximum), le suffixe du compte (sur 2 caractères) et la clé de contrôle du compte (sur 2 caractères)</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="currency" type="amp:simpleCurrency" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code devise du numéro de compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountNumber" type="amp:accountNumber" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountSuffix" type="amp:accountSuffix" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Suffixe du numéro de compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="checkDigit" type="amp:checkDigit" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Clé du numéro de compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bankAccountOrderNumber">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Numéro d¿ordre d¿un compte de banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax5" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro d¿ordre</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Désignation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bankAccountIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant d¿un compte de la banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branch" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code agence</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="institution" type="amp:bankInstitution" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code établissement  bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="counter" type="amp:branch" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Guichet</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="orderNumber" type="amp:bankAccountOrderNumber" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro d¿ordre</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBankAccountResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Compte d'une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bankAccountIdentifier" type="amp:bankAccountIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant d¿un compte de la banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bankAccountInformation" type="amp:bankAccountInformation">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant d¿un numéro de compte de la banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBankAccountsListResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Flux de sortie du SMG getBankAccountsList</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bankAccount" type="amp:getBankAccountResponse" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte d'une banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="localOrExternalBank">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Banque sur/hors place</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="localOrExternalBank" type="amp:char1">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Banque sur/hors place</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bankIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant d'une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branch" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code agence</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bankInstitution" type="amp:bankInstitution" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code établissement bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="counter" type="amp:branch" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code guichet bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBankDetailResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Flux de réponse du SMG getBankDetail</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bankIdentifier" type="amp:bankIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant d¿une banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bankDomiciliation" type="amp:charMax30">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Domiciliation bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postalCode" type="amp:charMax10">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code postal</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linkedBranch" type="amp:branch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code agence rattachée</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="currency" type="amp:simpleCurrency">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code devise</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="localOrExternalBank" type="amp:localOrExternalBank">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Banque sur/hors place</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="centreCode" type="amp:charMax2">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code place</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="clearable" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>compensable</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chequeCollectionPeriodInDays" type="amp:decimal3_0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nombre de jours d¿encaissement chèques</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="billRecoveryPeriodInDays" type="amp:decimal3_0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nombre de jours de recouvrement effets</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endOfMounthBillRecoveryPeriodInDays" type="amp:decimal3_0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nombre de jours de recouvrement pour les effets fin de mois</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bankNumberOfDays" type="amp:decimal3_0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nombre de jours de banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="billCollectionPeriodInDays" type="amp:decimal3_0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nombre de jours d¿encaissement effets</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="country" type="amp:country">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code pays</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linkedMainBankInstitution" type="amp:bankInstitution">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code établissement bancaire principal rattaché</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linkedMainCounter" type="amp:branch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code guichet bancaire principal rattaché</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="weekType" type="amp:char1">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Type de semaine</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="swiftCode" type="amp:swiftBicCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code swift</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bankingCentre" type="amp:char1">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Place bancable</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="deadlineForSendingForAcceptance" type="amp:decimal3_0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Delai d¿envoi à l¿acceptation (en nombre de jours)</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="deadlineForReturnFromAcceptance" type="amp:decimal3_0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Delai de retour à l¿acceptation (en nombre de jours)</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="locality" type="amp:locality">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code localité</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="clearingTown" type="amp:locality">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code ville de compensation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="branchConnectedToClearingProcess" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Guichet raccordé à la compensation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="institutionExtendedName" type="amp:charMax160">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nom étendu de l¿établissement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bankAccount" type="amp:getBankAccountsListResponse">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Liste des comptes d¿une banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bankAddress" type="amp:getBankAddressDetailResponse">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Détail de l¿adresse d¿une banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bankAccountDetailIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant d¿un compte de la banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branchCode" type="amp:branchCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code agence</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="institutionCode" type="amp:institutionCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code établissement  bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="branchSortCode" type="amp:branchCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>code guichet</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="orderNumber" type="amp:decimal5_0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro d¿ordre</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBankAccountsListRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Flux d'entrée du SMG getBankAccountsList</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bankAccountIdentifier" type="amp:bankAccountDetailIdentifier" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant d¿un compte de la banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bankAccountInformation" type="amp:bankAccountInformation" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de compte décomposé</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bankAddressDetailIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant de l adresse d¿une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="institutionCode" type="amp:institutionCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code établissement bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="counterCode" type="amp:branchCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code guichet  bancaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBankAddressDetailRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant de l¿adresse d¿une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bankAddressIdentifier" type="amp:bankAddressDetailIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant de l¿adresse d¿une banque</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

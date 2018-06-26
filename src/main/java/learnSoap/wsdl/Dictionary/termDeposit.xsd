@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:complexType name="tdIncreasIntRatesIdentifier">
+    <xs:sequence>
+      <xs:element name="branchCode" type="amp:branch" minOccurs="0" />
+      <xs:element name="tdNumber" type="amp:eventNumber" minOccurs="0" />
+      <xs:element name="increasInterests" type="amp:decimal5_0" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTDIncreasInterestRatesListRequest">
+    <xs:sequence>
+      <xs:element name="identifier" type="amp:tdIncreasIntRatesIdentifier" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdDetailIdentifier">
+    <xs:sequence>
+      <xs:element name="branchCode" type="amp:branchCode" />
+      <xs:element name="tdNumber" type="amp:eventNumber" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTDDetailRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Détail d'un DAT</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tdIdentifier" type="amp:tdDetailIdentifier" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdFreeAttributeInfo">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Informations sur un attribut libre DAT</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax10">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Designation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operation" type="amp:operation" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>operation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tdMandatoryInput" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>saisie obligatoire de la donnee pour un dossier de depot a terme</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataFormat" type="amp:freeAttributeFormat">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>format de la donnee</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="totalLengthIfAlpha" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Longueur totale si la donnée est alphanumerique</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfDecimalsIfAmountOrRate" type="xs:short" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nombre de decimales si la donnee est un montant ou un taux</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdFreeAttributeIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>identifiant d un attribut libre DAT</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branch" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Agence</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tdNumber" type="amp:eventNumber" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numero de DAT</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="amp:charMax5" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" type="amp:language" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code langue</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdFreeAttributeDetail">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Detail d un attribut libre DAT</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tdFreeAttributeIdentifier" type="amp:tdFreeAttributeIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant de l attribut libre</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additionalDataValue" type="amp:additionalDataValue">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>valeur de la donnee complementaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tdFreeAttributeInfo" type="amp:tdFreeAttributeInfo">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Informations sur l attribut libre DAT</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTDIncreasInterestRatesResponse">
+    <xs:complexContent>
+      <xs:extension base="amp:getTDIncreasInterestRatesListRequest">
+        <xs:sequence>
+          <xs:element name="interestRate" type="amp:decimal10_7" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getTDIncreasInterestRatesListResponse">
+    <xs:sequence>
+      <xs:element name="increasInterestRates" type="amp:getTDIncreasInterestRatesResponse" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdGenAmendmentIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant de la génération d'un avenant de DAT</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branchCode" type="amp:branchCode" />
+      <xs:element name="tdNumber" type="amp:eventNumber" />
+      <xs:element name="orderNumber" type="amp:decimal9_0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTDGenAmendmentsResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Génération d'avenant de DAT</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="genAmendmentIdentifier" type="amp:tdGenAmendmentIdentifier" />
+      <xs:element name="type" type="amp:tdType" />
+      <xs:element name="amendmentAccount" type="amp:internalFormatAccountOurBranch" />
+      <xs:element name="applicationDate" type="xs:date" />
+      <xs:element name="frequency" type="amp:tdFrequency" />
+      <xs:element name="applicationEndDate" type="xs:date" />
+      <xs:element name="amendmentAmount" type="amp:amount" />
+      <xs:element name="transferDate" type="xs:date" />
+      <xs:element name="minimumBalance" type="amp:amount" />
+      <xs:element name="levellingExecutionDay" type="amp:tdGenAmendmentLevellingExecutionDay" />
+      <xs:element name="maximumAmendmentAmount" type="amp:amount" />
+      <xs:element name="reasonForTheAmendment" type="amp:charMax70" />
+      <xs:element name="renewal" type="xs:boolean" />
+      <xs:element name="creationDate" type="xs:date" />
+      <xs:element name="modificationDate" type="xs:date" />
+      <xs:element name="cancellationDate" type="xs:date" />
+      <xs:element name="userCode" type="amp:userCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTDGenAmendmentsDetailResponse">
+    <xs:sequence>
+      <xs:element name="tdGenAmendmentsResponse" type="amp:getTDGenAmendmentsResponse" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdAmendmentIdentifier">
+    <xs:sequence>
+      <xs:element name="branchCode" type="amp:branchCode" />
+      <xs:element name="tdNumber" type="amp:eventNumber" />
+      <xs:element name="valueDate" type="xs:date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTDAmendmentsResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Avenant d'un DAT</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="amendmentIdentifier" type="amp:tdAmendmentIdentifier" />
+      <xs:element name="amendmentAccount" type="amp:internalFormatAccountOurBranch" />
+      <xs:element name="sideOfTheAmendment" type="amp:side" />
+      <xs:element name="amountInForeignCurrency" type="amp:amount" />
+      <xs:element name="amountInLocalCurrency" type="amp:amount" />
+      <xs:element name="processingCode" type="amp:tdAmendmentProcessingCode" />
+      <xs:element name="reasonForTheAmendment" type="amp:charMax70" />
+      <xs:element name="penaltyRateForNegativeAmendment" type="amp:decimal10_7" />
+      <xs:element name="creationDate" type="xs:date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTDAmendmentsDetailResponse">
+    <xs:sequence>
+      <xs:element name="tdAmendmentsResponse" type="amp:getTDAmendmentsResponse" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdAdditionalInformation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Informations additionnelles</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="userWhoInitiated" type="amp:user" />
+      <xs:element name="creationDate" type="xs:date" />
+      <xs:element name="userWhoOverride" type="amp:user" />
+      <xs:element name="lastModificationDate" type="xs:date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdFileCurrencySituation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Situation en devise du dossier</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="totalNetInterestPaidInForeignCurrency" type="amp:amount" />
+      <xs:element name="cumulativeTaxesInForeignCurrency" type="amp:amount" />
+      <xs:element name="totalInterestInForeignCurrencyLinkedToAmendments" type="amp:amount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdDomesticCurrencySituation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Situation en devise nationale</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="totalGrossInterestPaidInLocalCurrency" type="amp:amount" />
+      <xs:element name="totalProvisionInLocalCurrency" type="amp:amount" />
+      <xs:element name="totalTaxesCollectedInLocalCurrency" type="amp:amount" />
+      <xs:element name="totalDeductionAtSourceInLocalCurrency" type="amp:amount" />
+      <xs:element name="totalInterestLinkedToAmendments" type="amp:amount" />
+      <xs:element name="depositAmountInLocalCurrency" type="amp:amount" />
+      <xs:element name="dateOfTheLastInterestPayment" type="xs:date" />
+      <xs:element name="dateOfTheLastAmendmentCalculation" type="xs:date" />
+      <xs:element name="lastProvisionDate" type="xs:date" />
+      <xs:element name="stoppedTermDeposit" type="xs:boolean" />
+      <xs:element name="reasonForStoppage" type="amp:charMax160" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdInterest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Intérêts</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="totalDeductionAtSourceInForeignCurrency" type="amp:amount" />
+      <xs:element name="totalCompulsoryDeductionInLocalCurrency" type="amp:amount" />
+      <xs:element name="totalSocialDeductionInLocalCurrency" type="amp:amount" />
+      <xs:element name="totalSocialContributionInLocalCurrency" type="amp:amount" />
+      <xs:element name="totalGeneralizedSocialContributionInLocalCurrency" type="amp:amount" />
+      <xs:element name="totalFreeInputDeductionsInLocalCurrency" type="amp:amount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdMarginalCosts">
+    <xs:sequence>
+      <xs:element name="marginalCosts" type="xs:boolean" />
+      <xs:element name="initialMarketRate" type="amp:decimal10_7" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdCharacteristics">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Caracteristiques d'un DAT</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="executionDate" type="xs:date" />
+      <xs:element name="valueDate" type="xs:date" />
+      <xs:element name="maturityDate" type="xs:date" />
+      <xs:element name="initialMaturityDate" type="xs:date" />
+      <xs:element name="futurEffectiveDate" type="xs:boolean" />
+      <xs:element name="interestMethod" type="amp:tdMethodCalculingInterest" />
+      <xs:element name="renewalType" type="amp:tdType" />
+      <xs:element name="renewalRate" type="amp:decimal10_7" />
+      <xs:element name="rate" type="amp:decimal10_7" />
+      <xs:element name="amount" type="amp:amount" />
+      <xs:element name="frequency" type="amp:tdFrequency" />
+      <xs:element name="renewMethod" type="amp:tdRenewMethod" />
+      <xs:element name="renewalAtInitialRate" type="xs:boolean" />
+      <xs:element name="additionalRate" type="amp:decimal10_7" />
+      <xs:element name="indexedTermDeposit" type="xs:boolean" />
+      <xs:element name="baseRateCodeForIndexedTd" type="amp:baseRateCode" />
+      <xs:element name="realDays" type="amp:tdRealDays" />
+      <xs:element name="pledged" type="xs:boolean" />
+      <xs:element name="capitalizedOfInterest" type="xs:boolean" />
+      <xs:element name="upFrontInterest" type="xs:boolean" />
+      <xs:element name="endDateOfUpFrontInterestPeriod" type="xs:date" />
+      <xs:element name="deductionAtSource" type="xs:boolean" />
+      <xs:element name="progressiveRate" type="xs:boolean" />
+      <xs:element name="term" type="amp:tdTerm" />
+      <xs:element name="rateOfGrossAnnualActurialReturn" type="amp:decimal15_7" />
+      <xs:element name="residualPenaltyRate" type="amp:decimal15_7" />
+      <xs:element name="fairValueCalculation" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdConcernedAccounts">
+    <xs:sequence>
+      <xs:element name="currentAccount" type="amp:internalFormatAccountOurBranch" />
+      <xs:element name="depositAccount" type="amp:internalFormatAccountOurBranch" />
+      <xs:element name="accrualsAccount" type="amp:internalFormatAccountOurBranch" />
+      <xs:element name="interestsAccount" type="amp:internalFormatAccountOurBranch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tdType">
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTDDetailResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Flux de réponse du service getTDDetail</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tdIdentifier" type="amp:tdDetailIdentifier" />
+      <xs:element name="operation" type="amp:operation" />
+      <xs:element name="currency" type="amp:simpleCurrency" />
+      <xs:element name="type" type="amp:tdType" />
+      <xs:element name="debitCustomer" type="amp:restrictedCustomer" />
+      <xs:element name="processingCode" type="amp:tdProcessingCode" />
+      <xs:element name="status" type="amp:tdStatus" />
+      <xs:element name="salesAgent" type="amp:charMax4" />
+      <xs:element name="sourceOfFunds" type="amp:tdOriginOfFunds" />
+      <xs:element name="disapprovals" type="amp:disapproval" minOccurs="1" maxOccurs="5" />
+      <xs:element name="overrideKey" type="amp:charMax6" />
+      <xs:element name="concernedAccounts" type="amp:tdConcernedAccounts" />
+      <xs:element name="characteristics" type="amp:tdCharacteristics" />
+      <xs:element name="marginalCosts" type="amp:tdMarginalCosts" />
+      <xs:element name="interest" type="amp:tdInterest" />
+      <xs:element name="domesticCurrencySituation" type="amp:tdDomesticCurrencySituation" />
+      <xs:element name="fileCurrencySituation" type="amp:tdFileCurrencySituation" />
+      <xs:element name="additionalInformation" type="amp:tdAdditionalInformation" />
+      <xs:element name="amendmentsDetail" type="amp:getTDAmendmentsDetailResponse" />
+      <xs:element name="generationAmendmentsDetail" type="amp:getTDGenAmendmentsDetailResponse" />
+      <xs:element name="increasingInterestRates" type="amp:getTDIncreasInterestRatesListResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="tdGenAmendmentLevellingExecutionDay">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Jour d'exécution du nivellement</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:short">
+      <xs:minInclusive value="1" />
+      <xs:maxInclusive value="31" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdAmendmentProcessingCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0" />
+      <xs:enumeration value="8" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="5" />
+      <xs:enumeration value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdTerm">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="L" />
+      <xs:enumeration value="M" />
+      <xs:enumeration value="C" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdRealDays">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Calcul en nombre de jours réels</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="O" />
+      <xs:enumeration value="M" />
+      <xs:enumeration value="N" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdRenewMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="M" />
+      <xs:enumeration value="S" />
+      <xs:enumeration value="A" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdFrequency">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Périodicité</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="T" />
+      <xs:enumeration value="E" />
+      <xs:enumeration value="M" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="S" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdRateUpdate">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A" />
+      <xs:enumeration value="J" />
+      <xs:enumeration value="P" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdMethodCalculingInterest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Méthode de calcul des intérêts</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="L" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdOriginOfFunds">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="R" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="P" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IG" />
+      <xs:enumeration value="VA" />
+      <xs:enumeration value="AB" />
+      <xs:enumeration value="VF" />
+      <xs:enumeration value="FO" />
+      <xs:enumeration value="AT" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tdProcessingCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="4" />
+      <xs:enumeration value="5" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="8" />
+      <xs:enumeration value="0" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="6" />
+      <xs:enumeration value="7" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="getTDGenAmendmentsDetailRequest">
+    <xs:choice>
+      <xs:element name="tdIdentifier" type="amp:tdDetailIdentifier" />
+      <xs:element name="genAmendmentIdentifier" type="amp:tdGenAmendmentIdentifier" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="getTDAmendmentsDetailRequest">
+    <xs:choice>
+      <xs:element name="tdIdentifier" type="amp:tdDetailIdentifier" />
+      <xs:element name="amendmentIdentifier" type="amp:tdAmendmentIdentifier" />
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>

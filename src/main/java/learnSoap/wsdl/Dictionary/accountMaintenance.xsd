@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:complexType name="bothMovements">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Mouvements historiques et mouvements de la journée</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="startDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de début de période</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endTime" type="xs:time" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Heure de fin de période</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="intraDayMovementsOnly">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Mouvements de la journée uniquement</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="startTime" type="xs:time">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Heure de début de période</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endTime" type="xs:time" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Heure de fin de période</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="historyMovementsOnly">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Mouvements historiques uniquement</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="startDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de début de période</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de fin de période</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="movementPeriod">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Définition de la période des mouvements sélectionnés</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="historyMovementsOnly" type="amp:historyMovementsOnly" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Mouvements historiques uniquement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="intraDayMovementsOnly" type="amp:intraDayMovementsOnly" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Mouvements de la journée uniquement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bothMovements" type="amp:bothMovements" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Mouvements historiques et de la journée</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="accountHistoryMovementIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant unique de l¿historique d¿un compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="integrationHistoryDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date d¿intégration dans l¿historique</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="entryIdentifier" type="amp:charMax6">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant composé du type du site de comptabilisation et du code de l¿agence de comptabilisation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="orderNumberIdentifier" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>N° d¿ordre par identifiant</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="intraDayMovementIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant des mouvements générés pendant la journée.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="eventBranch" type="amp:branch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>agence de l evenement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eventOperation" type="amp:operation">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>operation de l evenement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eventNumber" type="amp:eventNumber">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de l¿évènement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eventOriginalAccount" type="amp:charMax6">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Origine du compte dans l¿évènement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

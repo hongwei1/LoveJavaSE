@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude/codingSystems/product">
+  <xs:import namespace="http://soprabanking.com/amplitude" schemaLocation="./../Dictionary/transverses-elements.xsd" />
+  <xs:element name="getProductSubscriptionListRequestFlow">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Request for retrieving list of products</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="amp:requestHeader" />
+        <xs:element name="getProductSubscriptionListRequest" type="amp:getProductSubscriptionListRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getProductSubscriptionListResponseFlow">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>List of products</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="amp:responseHeader" />
+        <xs:element ref="amp:responseStatus" />
+        <xs:element name="getProductSubscriptionListResponse" type="amp:getProductSubscriptionListResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

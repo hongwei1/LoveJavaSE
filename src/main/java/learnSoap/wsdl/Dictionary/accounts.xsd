@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./accountMaintenance.xsd" />
+  <xs:complexType name="getAccountActivityRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>détail de l'activité d'un compte : flux de requête</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="technicalCriteria" type="amp:technicalCriteria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>En-tête complémentaire technique</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountIdentifier" type="amp:internalFormatSimpleAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>identifiant du compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="moduleCode" type="amp:moduleCode" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code module</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileReference" type="amp:charMax50" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Référence du dossier</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="movementPeriod" type="amp:movementPeriod">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Période de sélection des mouvements</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="movementNumber">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Numéro de mouvement comptable</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="accountHistoryMovement">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Mouvement de l'historique d'un compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="accountHistoryMovementIdentifier" type="amp:accountHistoryMovementIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant des mouvements de l¿historique d¿un compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="movementNumber" type="amp:movementNumber">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de mouvement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ledgerDate" type="xs:date" />
+      <xs:element name="valueDate" type="xs:date" />
+      <xs:element name="movementAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant du mouvement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="movementSide" type="amp:side">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Sens du mouvement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Libellé du mouvement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="module" type="amp:module">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Module</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileReference" type="amp:charMax50" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Référence du dossier</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eventOperation" type="amp:operation">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code de l'opération</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operationNature" type="amp:operationNature" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nature d¿opération</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additionalDescriptionList" type="amp:additionalDescriptionList" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Liste des libellés complémentaires</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccountHistoryMovementListResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste des mouvements de l¿historique d¿un compte : flux de réponse</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="accountIdentifier" type="amp:internalFormatAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant du compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="movement" type="amp:accountHistoryMovement" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Mouvement de l'historique</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="intraDayMovement">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Évènement</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="intraDayMovementIdentifier" type="amp:intraDayMovementIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant des mouvements générés durant la journée</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ledgerDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date Comptable</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valueDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de valeur</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="movementAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant du mouvement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="movementSide" type="amp:side">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Sens du mouvement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Libellé de l¿opération</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="module" type="amp:module" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Module</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileReference" type="amp:charMax50" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Référence du dossier</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operationNature" type="amp:operationNature" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nature d¿opération</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additionalDescriptionList" type="amp:additionalDescriptionList" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Liste des libellés complémentaires</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getIntraDayMovementListResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste des évènements : flux de réponse</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="accountIdentifier" type="amp:internalFormatAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant du compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="intraDayMovement" type="amp:intraDayMovement" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Évènement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="accountActivityBalances">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Soldes de l¿activité du compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="debitedHistoryMovementsSum" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Somme des mouvements d¿historique débités sur le compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creditedHistoryMovementsSum" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Somme des mouvements d¿historique crédités sur le compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="debitedIntraDayMovementsSum" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Somme des évènements débités sur le compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creditedIntraDayMovementsSum" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Somme des évènements crédités sur le compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccountActivityResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>détail de l'activité d'un compte : flux de réponse</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="accountIdentifier" type="amp:internalFormatAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant du compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountActivityBalances" type="amp:accountActivityBalances">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>soldes de l'activité du compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="intraDayMovements" type="amp:getIntraDayMovementListResponse">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Évènements</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountHistory" type="amp:getAccountHistoryMovementListResponse">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Historique du compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccountDetailRequest">
+    <xs:sequence>
+      <xs:element name="accountIdentifier" type="amp:internalFormatSimpleAccountOurBranch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="accountFreeAttributeInfo">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Attribut libre compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax10" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="type" type="amp:accountFreeAttributeType">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Type d attribut libre</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataFormat" type="amp:freeAttributeFormat">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>format de la donnee</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mandatoryField" type="xs:boolean" />
+      <xs:element name="managementMethod" type="amp:additionalDataManagementMethod">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>mode de gestion</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="maxLength" type="xs:short" />
+      <xs:element name="numberOfDecimals" type="xs:short" />
+      <xs:element name="separator" type="xs:boolean" />
+      <xs:element name="existenceControl" type="xs:short" />
+      <xs:element name="displayOrder" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="accountFreeAttributeDetailIdentifer">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant du détail d'un attribut libre</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branchCode" minOccurs="0" />
+      <xs:element name="currency" type="amp:currencyCode" minOccurs="0" />
+      <xs:element name="accountNumber" type="amp:accountNumber" minOccurs="0" />
+      <xs:element name="accountSuffix" type="amp:accountSuffix" minOccurs="0" />
+      <xs:element name="identifier" type="amp:charMax10" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="accountFreeAttributeDetail">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Detail d'un attribut libre de compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="accountFreeAttributeIdentifier" type="amp:accountFreeAttributeDetailIdentifer">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>identifiant</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additionalDataValue" type="amp:additionalDataValue">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>valeur de la donnee complementaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountFreeAttributeInfo" type="amp:accountFreeAttributeInfo" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccountFreeAttributesDetailResponse">
+    <xs:sequence>
+      <xs:element name="accountFreeAttributeDetail" type="amp:accountFreeAttributeDetail" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="accountType">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type de compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax3" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code d'un type de compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="accountClass">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Chapitre comptable du compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax10" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccountDetailResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>o</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branch" />
+      <xs:element name="currency" type="amp:simpleCurrency" />
+      <xs:element name="accountNumber" type="amp:accountNumber" />
+      <xs:element name="accountSuffix" type="amp:accountSuffix" />
+      <xs:element name="accountClass" type="amp:accountClass" />
+      <xs:element name="accountKey" type="amp:charMax2" />
+      <xs:element name="customer" type="amp:restrictedCustomer" />
+      <xs:element name="accountDesignation" type="amp:charMax30" />
+      <xs:element name="service" type="amp:service" />
+      <xs:element name="accountSide" type="amp:accountSide" />
+      <xs:element name="matchingCode" type="amp:matchingCode" />
+      <xs:element name="accountType" type="amp:accountType" />
+      <xs:element name="accountSubjectToInterestCalculation" type="amp:accountSubjectToInterestCalculation" />
+      <xs:element name="codeForInterestLadderPrinting" type="amp:codeForInterestLadderPrinting" />
+      <xs:element name="accountStatementCode" type="amp:char1" />
+      <xs:element name="taxableAccount" type="xs:boolean" />
+      <xs:element name="accountNotToBePurged" type="xs:boolean" />
+      <xs:element name="pendingClosure" type="xs:boolean" />
+      <xs:element name="directCreditCeiling" type="amp:decimal12_0" />
+      <xs:element name="thresholdForReorderingCheques" type="amp:decimal4_0" />
+      <xs:element name="closedAccount" type="xs:boolean" />
+      <xs:element name="openingDate" type="xs:date" />
+      <xs:element name="lastModificationDate" type="xs:date" />
+      <xs:element name="pendingClosureStatusDate" type="xs:date" />
+      <xs:element name="closureDate" type="xs:date" />
+      <xs:element name="modificationSheetNumber" type="amp:decimal4_0" />
+      <xs:element name="accountSubjectToDeductionAtSource" type="amp:decimal1_0" />
+      <xs:element name="accountingBalance" type="amp:decimal19_4" />
+      <xs:element name="valueDateBalance" type="amp:decimal19_4" />
+      <xs:element name="valueDate" type="xs:date" />
+      <xs:element name="historyBalance" type="amp:decimal19_4" />
+      <xs:element name="historyDate" type="xs:date" />
+      <xs:element name="interestCalculationBalance" type="amp:decimal19_4" />
+      <xs:element name="interestCalculationDate" type="xs:date" />
+      <xs:element name="indicativeBalance" type="amp:decimal19_4" />
+      <xs:element name="unavailableFundsWithoutDirectCredit" type="amp:decimal19_4" />
+      <xs:element name="unavailableDirectCreditFunds" type="amp:decimal19_4" />
+      <xs:element name="dailyUnavailableFundsWithoutDirectCredit" type="amp:decimal19_4" />
+      <xs:element name="dailyUnavailableDirectCreditFunds" type="amp:decimal19_4" />
+      <xs:element name="debitTurnovers" type="amp:decimal19_4" />
+      <xs:element name="creditTurnovers" type="amp:decimal19_4" />
+      <xs:element name="lastMovementDate" type="xs:date" />
+      <xs:element name="lastCreditDate" type="xs:date" />
+      <xs:element name="lastDebitDate" type="xs:date" />
+      <xs:element name="userWhoInitiated" type="amp:user" />
+      <xs:element name="frequencyOfDebitInterestCalculation" type="amp:charMax1" />
+      <xs:element name="transferToDebtRecoveryProcedure" type="amp:charMax1" />
+      <xs:element name="mergeBranch" type="amp:branch" />
+      <xs:element name="mergeCurrency" type="amp:simpleCurrency" />
+      <xs:element name="mergeClass" type="amp:accountClass" />
+      <xs:element name="mergeAccountNumber" type="amp:accountNumber" />
+      <xs:element name="mergeAccountSuffix" type="amp:accountSuffix" />
+      <xs:element name="frequencyOfCreditInterestCalculation" type="amp:charMax1" />
+      <xs:element name="lastMatchingPairAllocated" type="amp:charMax2" />
+      <xs:element name="lastMatchingDate" type="xs:date" />
+      <xs:element name="overdraftLimit1" type="amp:decimal19_4" />
+      <xs:element name="expiryDate1" type="xs:date" />
+      <xs:element name="lastDebitMovementDate" type="xs:date" />
+      <xs:element name="lastOverdraftLimitDate" type="xs:date" />
+      <xs:element name="beginningOfOccasionalInstalment" type="xs:date" />
+      <xs:element name="realTimeTransferCode" type="amp:charMax1" />
+      <xs:element name="originalDateWhenAccountShowedDebitBalance" type="xs:date" />
+      <xs:element name="originalDateWhenOverdraftLimitExceeded" type="xs:date" />
+      <xs:element name="checkDigitDeclared" type="amp:charMax2" />
+      <xs:element name="product" type="amp:product" />
+      <xs:element name="maturityDate" type="xs:date" />
+      <xs:element name="accountPledging" type="amp:charMax1" />
+      <xs:element name="chequeDeliveryMethod" type="amp:chequeBookDeliveryMethod" minOccurs="0" />
+      <xs:element name="defaultChequeBookType" type="amp:charMax2" />
+      <xs:element name="branchThatDeliveredChequeBook" type="amp:branch" />
+      <xs:element name="reasonForAccountClosure" type="amp:charMax3" />
+      <xs:element name="userWhoCreated" type="amp:user" />
+      <xs:element name="userWhoSetThePendingClosureStatus" type="amp:user" />
+      <xs:element name="userWhoClosed" type="amp:user" />
+      <xs:element name="branchWhereTheAccountWasCreated" type="amp:branch" />
+      <xs:element name="branchFromAccountInformationForm" type="amp:branch" />
+      <xs:element name="lastBranchThatHeldTheAccount" type="amp:branch" />
+      <xs:element name="chequeAddressType" type="amp:charMax1" />
+      <xs:element name="chequeAddressCode" type="amp:charMax2" />
+      <xs:element name="iBANAccountKey" type="amp:charMax2" />
+      <xs:element name="temporaryOpening" type="amp:charMax1" />
+      <xs:element name="package" type="amp:package" />
+      <xs:element name="amountOfReservedFunds" type="amp:decimal19_4" />
+      <xs:element name="indicativeBalanceUpdatedByFundReservation" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>les réservations impactent le solde indicatif?&#xD;
+param 098 CPT-RESERV lib5</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="freeInputAmount2" type="amp:decimal19_4" />
+      <xs:element name="freeInputDate1" type="xs:date" />
+      <xs:element name="freeInputDate2" type="xs:date" />
+      <xs:element name="accountStatementDeliveryMethod" type="amp:charMax10" />
+      <xs:element name="freeInputField2" type="amp:charMax10" />
+      <xs:element name="freeInputField3" type="amp:charMax10" />
+      <xs:element name="lastAccountCurrency" type="amp:simpleCurrency" />
+      <xs:element name="currencyChangeDate" type="xs:date" />
+      <xs:element name="jointAccount" type="xs:boolean" />
+      <xs:element name="responsibleCustomer" type="amp:charMax15" />
+      <xs:element name="jointAccountTitle" type="amp:charMax2" />
+      <xs:element name="freeAttributes" type="amp:getAccountFreeAttributesDetailResponse" />
+      <xs:element name="stoppages" type="amp:getStoppageListResponse" />
+      <xs:element name="overdraftAuthorization" type="amp:getOverdraftAuthNDetailResponse" />
+      <xs:element name="availableBalance" type="amp:decimal19_4">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>solde disponible</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="accountFreeAttributeType">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type de donnee complementaire compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="C" />
+      <xs:enumeration value="I" />
+      <xs:enumeration value="T" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="codeForInterestLadderPrinting">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code de l¿édition de l'échelle d'arrêté</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="S" />
+      <xs:enumeration value="N" />
+      <xs:enumeration value="D" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="accountSubjectToInterestCalculation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Compte soumis à arrêté</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="N" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="O" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="matchingCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code émargement</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="3" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="accountSide">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Sens du compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="D" />
+      <xs:enumeration value="I" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="getAccountListRequest">
+    <xs:sequence>
+      <xs:element name="accountCategory" type="amp:accountCategory" minOccurs="0" />
+      <xs:element name="branch" type="amp:branch" minOccurs="0" />
+      <xs:element name="account" type="amp:accountFile" minOccurs="0" />
+      <xs:element name="accountType" type="amp:accountType" minOccurs="0" />
+      <xs:element name="product" type="amp:product" minOccurs="0" />
+      <xs:element name="accountStatus" type="amp:accountStatus" minOccurs="0" />
+      <xs:element name="balance" type="amp:comparisonAmount" minOccurs="0" />
+      <xs:element name="accountTitle" type="amp:designation" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="accountStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="I" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="O" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="accountCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="I" />
+      <xs:enumeration value="C" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="getAccountResponse">
+    <xs:complexContent>
+      <xs:extension base="amp:getAccountListRequest">
+        <xs:sequence>
+          <xs:element name="indicativeBalance" type="amp:decimal19_4" />
+          <xs:element name="openingDate" type="xs:date" />
+          <xs:element name="dateLocation" type="xs:date" minOccurs="0" />
+          <xs:element name="checkKey" type="amp:char2" />
+          <xs:element name="checkDigitDeclared" type="amp:char2" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getAccountListResponse">
+    <xs:sequence>
+      <xs:element name="account" type="amp:getAccountResponse" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getIntraDayMovementListRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste des évènements : flux de requête</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="technicalCriteria" type="amp:technicalCriteria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>En-tête complémentaire technique</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountIdentifier" type="amp:internalFormatSimpleAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant du compte au débit</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="moduleCode" type="amp:moduleCode" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code module</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileReference" type="amp:charMax50" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Référence du dossier</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="startTime" type="xs:time" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Heure de début pour les mouvements du jour</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endTime" type="xs:time" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Heure de fin pour les mouvements du jour</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccountHistoryMovementListRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste des mouvements de l¿historique d¿un compte : flux de requête</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="technicalCriteria" type="amp:technicalCriteria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>En-tête complémentaire technique</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountIdentifier" type="amp:internalFormatSimpleAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant du compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="moduleCode" type="amp:moduleCode" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code module</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileReference" type="amp:charMax50" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Référence du dossier</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="startDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de début de période</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de fin de période</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccountFreeAttributesDetailRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Detail des donnees complementaires d un compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="accountIdentifier" type="amp:internalAccountKey" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant de compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accountFreeAttributeIdentifier" type="amp:accountFreeAttributeDetailIdentifer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>identifiant de donnee complementaire compte</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>

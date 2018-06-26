@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:pre1="http://soprabanking.com/amplitude/codingSystems/stoppage"
+xmlns:preAmp="http://soprabanking.com/amplitude"
+targetNamespace="http://soprabanking.com/amplitude"
+name="getStoppageList">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soprabanking.com/amplitude/codingSystems/stoppage" schemaLocation="../FlowDescription/getStoppageList.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getStoppageListRequestFlow">
+		<wsdl:part name="getStoppageListRequestFlow" element="pre1:getStoppageListRequestFlow"/>
+	</wsdl:message>
+
+	<wsdl:message name="getStoppageListResponseFlow">
+		<wsdl:part name="getStoppageListResponseFlow" element="pre1:getStoppageListResponseFlow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="getStoppageList">
+		<wsdl:operation name="getStoppageList">
+			<wsdl:input message="preAmp:getStoppageListRequestFlow" name="getStoppageListRequestFlow"/>
+			<wsdl:output message="preAmp:getStoppageListResponseFlow" name="getStoppageListResponseFlow"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="getStoppageList-binding" type="preAmp:getStoppageList">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getStoppageList">
+			<soap:operation soapAction="getStoppageList"/>
+			<wsdl:input name="getStoppageListRequestFlow">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getStoppageListResponseFlow">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="getStoppageList">
+		<wsdl:port binding="preAmp:getStoppageList-binding" name="getStoppageList">
+			<soap:address location="http://localhost:8080/getStoppageList"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

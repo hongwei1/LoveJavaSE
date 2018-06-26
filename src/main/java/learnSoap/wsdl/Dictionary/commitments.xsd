@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:simpleType name="interestType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="I" />
+      <xs:enumeration value="N" />
+      <xs:enumeration value="P" />
+      <xs:enumeration value="R" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="detaildeferralPeriodManagement">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Gestion du différé</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="P" />
+      <xs:enumeration value="U" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="E" />
+      <xs:enumeration value="S" />
+      <xs:enumeration value="G" />
+      <xs:enumeration value="D" />
+      <xs:enumeration value="I" />
+      <xs:enumeration value="C" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="authorization">
+    <xs:sequence>
+      <xs:element name="reference" type="amp:char8" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

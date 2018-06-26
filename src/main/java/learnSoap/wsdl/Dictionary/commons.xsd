@@ -1,0 +1,1807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./stoppage.xsd" />
+  <xs:simpleType name="char2">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères égal à 2</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax8">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 8</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax15">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 15</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char6">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères égal à 6</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax40">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 40</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="integerBetween0And4">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="simpleCurrency">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Balise représentant</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alphaCode" type="amp:char3" minOccurs="0" />
+      <xs:element name="numericCode" type="amp:char3" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amountCurrency">
+    <xs:sequence>
+      <xs:element name="currency" type="amp:simpleCurrency" />
+      <xs:element name="numberOfDecimals" type="amp:integerBetween0And4" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amount">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>montant</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="amount" type="amp:decimal19_4" />
+      <xs:element name="currency" type="amp:amountCurrency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="operation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>code et designation de l'operation</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="branch">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Agence, définie par un code et une désignation, paramétrables en nomenclature 001</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:char5" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="internalFormatSimpleAccountOurBranch">
+    <xs:sequence>
+      <xs:element name="branch" type="amp:char5" />
+      <xs:element name="currency" type="amp:char3" />
+      <xs:element name="account" type="amp:charMax11" />
+      <xs:element name="suffix" type="amp:charMax2" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="technicalCriteria">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>En tête complémentaire qui peut être ajouté dans certains services de type liste.&#xD;
+Correspond à un "header" complémentaire dans le flux request.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="limitCriteria" type="amp:limitCriteria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nombre maximum limite d'enregistrements dans une réponse</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="moduleCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code module</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="limitCriteria">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Nombre d'enregistrements retourné par le service liste</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="charMax65">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 65</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="65" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal2_0">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type décimale avec 2 entiers</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="2" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="operationNatureCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>operationNatureCode</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="side">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>sens de l'opération</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="D" />
+      <xs:enumeration value="C" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax6">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 6</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="additionalDescription">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste des numéros d'ordre et des libellés complémentaires associés à un mouvement</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="orderNumber" type="amp:decimal2_0" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>N° d ordre</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="amp:charMax65" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Libellé complémentaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="additionalDescriptionList">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste des libellés complémentaires</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="additionalDescription" type="amp:additionalDescription" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Libellés complémentaires (Numéro d ordre et libellé)</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="operationNature">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Nature d'opération, se retrouvant en nomenclature 052.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="operationNatureCode" type="amp:operationNatureCode" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="module">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Elément représentant un module. Les modules sont définis en nomenclature 127.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax3" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code module</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="internalFormatAccountOurBranch">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Format des comptes pour nos agences.&#xD;
+Comprend les informations d'agence, de devise de l'agence, le numéro de compte et le suffix</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branch" minOccurs="0" />
+      <xs:element name="currency" type="amp:simpleCurrency" minOccurs="0" />
+      <xs:element name="account" type="amp:charMax11" minOccurs="0" />
+      <xs:element name="suffix" type="amp:charMax2" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="charMax34">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 34</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="34" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax25">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 25</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="25" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="comparator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BETWEEN EQUALS" />
+      <xs:enumeration value="GREATER EQUALS" />
+      <xs:enumeration value="EQUALS" />
+      <xs:enumeration value="NOT EQUALS" />
+      <xs:enumeration value="GREATER THAN" />
+      <xs:enumeration value="LOWER EQUALS" />
+      <xs:enumeration value="BETWEEN" />
+      <xs:enumeration value="LOWER THAN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal32_16">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>décimal (32,16)</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="32" />
+      <xs:fractionDigits value="16" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="comparisonOperator">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Comparateurs: "Commence par", "Termine par", "égal", "contient": Chargé avec "=" pour les flux de réponse</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CONTAINS" />
+      <xs:enumeration value="EQUALS" />
+      <xs:enumeration value="ENDS WITH" />
+      <xs:enumeration value="STARTS WITH" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax20">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 20</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="customerType">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type de client</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax67">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 67</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="67" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="accountComplementaryInformation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>information complémentaire du compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="complementaryInformation" type="amp:comparisonAdditionalData">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>information complémentaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>designation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="externalFormatAccount">
+    <xs:sequence>
+      <xs:element name="value" type="amp:charMax34" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ibanFormatAccount">
+    <xs:sequence>
+      <xs:element name="value" type="amp:charMax34" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="accountIdentifierOurBranch">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="internalFormatAccountOurBranch" type="amp:internalFormatAccountOurBranch" minOccurs="0" />
+      <xs:element name="ibanFormatAccount" type="amp:ibanFormatAccount" minOccurs="0" />
+      <xs:element name="externalFormatAccount" type="amp:externalFormatAccount" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="accountFile">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Balise représentant un compte et ses informations annexes</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="accountNumber" type="amp:accountIdentifierOurBranch" minOccurs="0" />
+      <xs:element name="accountClass" type="amp:designation" minOccurs="0" />
+      <xs:element name="customer" type="amp:populationFile" minOccurs="0" />
+      <xs:element name="additionalInformation" type="amp:accountComplementaryInformation" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comparisonDate">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type pour comparer des dates</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="date1" type="xs:date" />
+      <xs:element name="date2" type="xs:date" minOccurs="0" />
+      <xs:element name="comparator" type="amp:comparator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comparisonDecimal">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>comparaison décimal</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="decimal1" type="amp:decimal32_16">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>decimal1</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="decimal2" type="amp:decimal32_16" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>decimal2</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="comparator" type="amp:comparator">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>comparateur</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="designation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>designation</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="value" type="xs:string" />
+      <xs:element name="comparisonOperator" type="amp:comparisonOperator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comparisonAdditionalDataValue">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>valeur des données complémentaires</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="alphanumeric" type="amp:designation" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>designation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="amountOrRate" type="amp:comparisonDecimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>comparaison pour les décimal</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="date" type="amp:comparisonDate" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>comparateur pour les date</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="comparisonAdditionalData">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Structure de base d'une données complémentaires</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="identifier" type="amp:charMax10">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>identifier</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="value" type="amp:comparisonAdditionalDataValue">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>valeurs complémentaires</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customerComplementaryInformation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>information complémentaire du client</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="complementaryInformation" type="amp:comparisonAdditionalData">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>information complémentaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customerOfficer">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Gestionnaire</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax3" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code gestionnaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customerProfile">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Profil client</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax3" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code du profil client</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="restrictedCustomer">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type client, comporte le nom et le numéro du client.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="customerNumber" type="amp:charMax15" minOccurs="0" />
+      <xs:element name="displayedName" type="amp:charMax67" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="populationFile">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Balise représentant un client et ses informations annexes</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="customer" type="amp:restrictedCustomer" minOccurs="0" />
+      <xs:element name="customerType" type="amp:customerType" minOccurs="0" />
+      <xs:element name="activeProfile" type="amp:customerProfile" minOccurs="0" />
+      <xs:element name="nationalIdentifier" type="amp:charMax20" minOccurs="0" />
+      <xs:element name="customerOfficer" type="amp:customerOfficer" minOccurs="0" />
+      <xs:element name="additionalInformation" type="amp:customerComplementaryInformation" minOccurs="0" />
+      <xs:element name="externalReference" type="amp:charMax25" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="overdraftAuthNType">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type d'autorisation de découvert</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="overdraftAuthNIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant d'une autorisation de découvert</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branchCode" />
+      <xs:element name="currency" type="amp:currencyCode" />
+      <xs:element name="accountNumber" type="amp:accountNumber" />
+      <xs:element name="accountSuffix" type="amp:accountSuffix" />
+      <xs:element name="authorizationNumber" type="amp:charMax9">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numero d'autorisation</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="orderNumber" type="amp:decimal2_0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOverdraftAuthNDetailResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Informations sur une autorisation de découvert</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="overdraftAuthNIdentifier" type="amp:overdraftAuthNIdentifier" />
+      <xs:element name="overallCharges" type="xs:boolean" />
+      <xs:element name="reference" type="amp:charMax20" />
+      <xs:element name="overdraftLimitType" type="amp:char1" />
+      <xs:element name="startDateOfOverdraftLimit" type="xs:date" />
+      <xs:element name="endDateOfOverdraftLimit" type="xs:date" />
+      <xs:element name="expiryDate" type="xs:date" />
+      <xs:element name="overdraftLimitValue" type="amp:decimal12_0" />
+      <xs:element name="amountOfChargesInForeignCurrency" type="amp:decimal19_4" />
+      <xs:element name="amountOfChargesInLocalCurrency" type="amp:decimal19_4" />
+      <xs:element name="taxRate" type="amp:decimal15_7" />
+      <xs:element name="taxAmountInForeignCurrency" type="amp:decimal19_4" />
+      <xs:element name="taxAmountInLocalCurrency" type="amp:decimal19_4" />
+      <xs:element name="operationNature" type="amp:operationNature" />
+      <xs:element name="operation" type="amp:operation" />
+      <xs:element name="userWhoInitiated" type="amp:user" />
+      <xs:element name="creationDate" type="xs:date" />
+      <xs:element name="lastModificationDate" type="xs:date" />
+      <xs:element name="overdraftLimitStatus" type="amp:charMax2" />
+      <xs:element name="userWhoRetrievedToOverride" type="amp:user" />
+      <xs:element name="userWhoAuthorized" type="amp:user" />
+      <xs:element name="overrideKey" type="amp:decimal6_0" />
+      <xs:element name="date" type="xs:date" />
+      <xs:element name="overdraftLimitSituation" type="amp:overdraftLimitSituation" />
+      <xs:element name="eventNumber" type="amp:eventNumber" />
+      <xs:element name="financingCommitmentAccount" type="amp:internalFormatAccountOurBranch" />
+      <xs:element name="managementCommissionRate" type="amp:decimal19_4" />
+      <xs:element name="managementCommissionAmountInForeignCurrency" type="amp:decimal19_4" />
+      <xs:element name="managementCommissionAmountInLocalCurrency" type="amp:decimal19_4" />
+      <xs:element name="renewal" type="xs:boolean" />
+      <xs:element name="overdraftAuthNType" type="amp:overdraftAuthNType" />
+      <xs:element name="anniversaryDate" type="xs:date" />
+      <xs:element name="period" type="amp:decimal6_0" />
+      <xs:element name="offBalanceSheetCommitmentManagement" type="amp:char1" />
+      <xs:element name="initialCommissionAmountInForeignCurrency" type="amp:decimal19_4" />
+      <xs:element name="initialCommissionAmountInLocalCurrency" type="amp:decimal19_4" />
+      <xs:element name="amountOfFollowingYearsManagementCommissionInForeignCurrency" type="amp:decimal19_4" />
+      <xs:element name="amountOfFollowingYearsManagementCommissionInLocalCurrency" type="amp:decimal19_4" />
+      <xs:element name="rateOfFollowingYearsManagementCommission" type="amp:decimal19_4" />
+      <xs:element name="terminationCommissionAmountInForeignCurrency" type="amp:decimal19_4" />
+      <xs:element name="terminationCommissionAmountInLocalCurrency" type="amp:decimal19_4" />
+      <xs:element name="resiliationCommissionRate" type="amp:decimal19_4" />
+      <xs:element name="negotiationCommissionAmountInForeignCurrency" type="amp:decimal19_4" />
+      <xs:element name="negotiationCommissionAmountInLocalCurrency" type="amp:decimal19_4" />
+      <xs:element name="negotiationCommissionRate" type="amp:decimal19_4" />
+      <xs:element name="expenseAccount" type="amp:internalFormatAccountOurBranch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStoppageResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Informations sur une opposition client ou compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="amp:getStoppageListRequest">
+        <xs:sequence>
+          <xs:element name="stoppageEndUser" type="amp:user" />
+          <xs:element name="creationUser" type="amp:user" />
+          <xs:element name="stoppageReason" type="amp:charMax40" />
+          <xs:element name="stoppageEndReason" type="amp:charMax40" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getStoppageListResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste des oppositions clients et/ou comptes</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="stoppage" type="amp:getStoppageResponse" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="additionalDataValue">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Valeur d'une donnée complémentaire</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="alphanumeric" type="amp:charMax40" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Valeur alphanumérique</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="amountOrRate" type="amp:decimal22_7" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Valeur numérique (montant ou taux)</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="date" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="package">
+    <xs:sequence>
+      <xs:element name="code" type="amp:char6" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="product">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Informations sur un produit</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="productAttribute" type="amp:productAttribute" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="language">
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="user">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Utilisateur</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax10" />
+      <xs:element name="name" type="amp:charMax30" />
+      <xs:element name="forcingLevel" type="amp:char1" />
+      <xs:element name="language" type="amp:language" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="service">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Service interne à la banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code du service</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="overdraftLimitSituation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Situation de l'autorisation de découvert</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="O" />
+      <xs:enumeration value="M" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal6_0">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="6" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal15_7">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type décimale&#xD;
+Sert principalement aux taux</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="15" />
+      <xs:fractionDigits value="7" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="additionalDataManagementMethod">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Mode de gestion d'une donnée complémentaire</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="freeAttributeFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A" />
+      <xs:enumeration value="T" />
+      <xs:enumeration value="D" />
+      <xs:enumeration value="M" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal22_7">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>decimal(22,7)</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="22" />
+      <xs:fractionDigits value="7" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="productAttribute">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type de produit</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FILE PRODUCT" />
+      <xs:enumeration value="SERVICE PRODUCT" />
+      <xs:enumeration value="ACCOUNT PRODUCT" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax1">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 1</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal1_0">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>DECIMAL(1,0)</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="1" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal4_0">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="4" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal12_0">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="12" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères égal à 1</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="accountSuffix">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Suffixe du compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="accountNumber">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Numéro de compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="11" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="languageCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code langue</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="statusCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="-1" />
+      <xs:enumeration value="0" />
+      <xs:enumeration value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="errorInformation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Permet de restituer les informations relatives à l'erreur rencontrée.&#xD;
+Cette balise n'est présente que pour les messages d'erreur.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="errorCode" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code original de l'erreur, provenant du SGBD ou de Genero.</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="convertedCode" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code de l'erreur converti pour homogénéiser les codes erreurs entre les SGBD Informix et Oracle.</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="errorMessage" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Message de l'erreur originale provenant du SGBD.</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="responseStatusMessage">
+    <xs:sequence>
+      <xs:element name="nature" type="amp:responseMessageNature" />
+      <xs:element name="code" type="amp:char6">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code du message restitué dans la réponse.</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="line" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="errorInformation" type="amp:errorInformation" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Informations sur l'erreur rencontrée.</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="responseStatusMessages">
+    <xs:sequence>
+      <xs:element name="message" type="amp:responseStatusMessage" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="responseMessageNature">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ERROR" />
+      <xs:enumeration value="INFO" />
+      <xs:enumeration value="WARNING" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="institutionCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code établissement bancaire</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="locality">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Informations de localité</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax5">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code localité</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Désignation de la localité</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="country">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Un pays</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax3" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code pays</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bankInstitution">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Etablissement bancaire</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax10" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax40" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="checkDigit">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Clé RIB d'un compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax160">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type de chaine de caractères variant de 1 à 160</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="160" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax5">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 5</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="swiftBicCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code BIC du système SWIFT. Attention ce code BIC sur 12 caractères ne fait pas partie des standards ISO, et n'a de sens que dans un contexte SWIFT.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="8" />
+      <xs:maxLength value="12" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="comparisonAmount">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type permettant la recherche sur des fourchettes de montant, exprimés dans une même devise.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="amount1" type="amp:decimal19_4" />
+      <xs:element name="amount2" type="amp:decimal19_4" minOccurs="0" />
+      <xs:element name="currency" type="amp:amountCurrency" minOccurs="0" />
+      <xs:element name="comparator" type="amp:comparator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="bicCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code BIC aux normes ISO</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="8" />
+      <xs:maxLength value="11" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char8">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères égal à 8</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal3_0">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type décimale avec 3 entiers</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="3" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal10_7">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Taux rémunération du dépôt a terme</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="10" />
+      <xs:fractionDigits value="7" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal5_0">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>DECIMAL(5,0)</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="5" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal8_6">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>decimal(8,6)</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="8" />
+      <xs:fractionDigits value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal9_6">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type décimal à 9 chiffres dont 6 décimales.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="9" />
+      <xs:fractionDigits value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="periodicityUnit">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Unité de période</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="J" />
+      <xs:enumeration value="M" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax36">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 36</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="36" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="internationalBankIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiants internationaux d'une banque</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bic" type="amp:bicCode" minOccurs="0" />
+      <xs:element name="iban" type="amp:ibanFormatAccount" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="baseRateCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code taux de base</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:char2" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="disapprovals">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste de desaccords</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="disapproval" type="amp:disapproval" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Desaccord</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="char15">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères égal à 15</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="operationCode">
+    <xs:restriction base="xs:string">
+      <xs:length value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="userCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code utilisateur</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="userCode" type="amp:charMax10">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code utilisateur</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="decimal9_0">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="9" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax70">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>charMax70</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="70" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax50">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 50</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax4">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 4</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax9">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 9</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="9" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax3">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 3</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax10">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 10</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax30">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 30</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char3">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères égal à 3</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="chequeBookDeliveryMethod">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Mode d¿expédition du chéquier</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="B" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="C" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="customerCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code client</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax2">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 2</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="charMax11">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères compris entre 1 et 11</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="11" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="currencyCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Devise</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char5">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type avec un nombre de caractères égal à 5</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="branchCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code de l¿agence</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="addressCreateIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant adresse d'un client pour la création</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="customerCode" type="amp:customerCode" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code client</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="amp:charMax2">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Type d'adresse</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createCustomerAddressRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Requête de création d'une adresse client</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="identifier" type="amp:addressCreateIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant adresse client pour la création</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="languageCode" type="amp:char3" />
+      <xs:element name="addressFormat" type="amp:charMax2">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Format de l'adresse</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="addressLine1" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="addressLine2" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="addressLine3" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="city" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="postalCode" type="amp:charMax10" minOccurs="0" />
+      <xs:element name="deliveryOffice" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="poBox" type="amp:charMax10" minOccurs="0" />
+      <xs:element name="postalSector" type="amp:charMax10" minOccurs="0" />
+      <xs:element name="postalSectorDesignation" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="countryCode" type="amp:charMax3" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code pays</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="branchCode" type="amp:char5" minOccurs="0" />
+      <xs:element name="locker" type="amp:charMax9" minOccurs="0" />
+      <xs:element name="serviceCode" type="amp:charMax4" minOccurs="0" />
+      <xs:element name="transportTypeCode" type="amp:charMax3" minOccurs="0" />
+      <xs:element name="emailAddress" type="amp:charMax50" minOccurs="0" />
+      <xs:element name="provisionalAddressStartDate" type="xs:date" minOccurs="0" />
+      <xs:element name="provisionalAddressEndDate" type="xs:date" minOccurs="0" />
+      <xs:element name="geographicalDepartment" type="amp:charMax30" minOccurs="0" />
+      <xs:element name="county" type="amp:charMax50" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customerOrThirdPartyCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code du client/Tiers</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="customerCode" type="amp:customerCode" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code client</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="thirdPartyCode" type="amp:customerCode" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code tiers</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="internalAccountKey">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Compte interne</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:char5" />
+      <xs:element name="currency" type="amp:currencyCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>code devise</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="account" type="amp:charMax11" />
+      <xs:element name="suffix" type="amp:charMax2" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="disapprovalCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code d'un désaccord</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimal19_4">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type décimal à 19 chiffres dont 4 décimales.&#xD;
+Sert principalement aux montants.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="19" />
+      <xs:fractionDigits value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="eventNumber">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Numéro d'événement à l'image de bkeve.eve.</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="disapproval">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Désaccord</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:disapprovalCode" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

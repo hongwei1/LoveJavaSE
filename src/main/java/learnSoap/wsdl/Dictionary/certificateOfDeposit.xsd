@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:complexType name="coDDetailIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant du detail d'un bon de caisse</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branchCode" type="amp:branchCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code banque du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="coDNumber" type="amp:eventNumber">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de bon</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subscriptionNumber" type="amp:eventNumber">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de souscription</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCoDDetailRequest">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Flux de requete pour le détail d'un BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="coDDetailIdentifier" type="amp:coDDetailIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coDDomesticCurrencySituation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Situation du dossier en devise nationnale</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="cumulativeInterestPaid" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul des intérets</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="partiallyRepaidInterest" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Dont intérets de tombée partiel</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeDeductions" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul des taxes</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeAccruals" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Provisions passées</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="taxAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant des taxes</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="taxRate" type="amp:decimal10_7">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Taux de taxe</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="commissionAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant de la commission</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="commissionRate" type="amp:decimal10_7">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Taux de commission</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chargesAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant des frais</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeFreeDeductions" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul des prélèvements libres</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeCSG" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul CSG</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeSocialContribution" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul contribution sociale</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeSocialDeductions" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul prelevements sociaux</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeCompulsoryDeductions" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul prelevements obligatoires</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeTaxesCollected" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>cumul des taxes perçues</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeRSATaxDeductions" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>cumul rsa</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coDFileCurrencySituation">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Situation du BDC en devise du dossier</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="cumulativeInterestPaid" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul des intérêts en devise</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="partiallyRepaidInterest" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Dont intérêts de tombée partiel en devise</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeDeductions" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Cumul des taxes en devise</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeAccruals" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Provisions passées en devise</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coDAdvance">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Avance sur un BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="advanceAccount" type="amp:accountIdentifierOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte d'avance</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="executionDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de mise en place</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="expiryDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date d'expiration</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="releaseDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de levée</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="advanceAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant de l'avance</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="interestExpenseRate" type="amp:decimal10_7">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Taux d¿intérêt de l¿avance</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="frequency" type="amp:coDFrequency">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Périodicité</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeInterestExpense" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Total des intérêts débiteurs</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeInterestExpenseTaxes" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Total des taxes sur les intérêts débiteurs</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="interestExpenseCalculationDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date du dernier calcul des intérêts débiteurs</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cumulativeInterestExpenseAccruals" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Total des provisions pour les intérêts débiteurs</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coDAdvances">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Liste des avances de BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="coDAdvance" type="amp:coDAdvance" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Avance de BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coDCharacteristics">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Caractéristiques d'un BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="executionDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de création</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valueDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date de valeur</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="maturityDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date d'échéance</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="initialMaturityDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Date d'échéance initiale</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="interestRate" type="amp:decimal10_7">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Taux d'intéret</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="initialAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant initial</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="partialBreakingAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant de tombée partielle</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="partialRepaymentAmount" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant de remboursement partiel</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="frequency" type="amp:coDFrequency">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Périodicité</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indexed" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Indexé</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="baseRateCode" type="amp:baseRateCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code taux de base</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="beneficiary" type="amp:restrictedCustomer">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Bénéficiaire</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="realDays" type="amp:coDRealDays">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Jours réels</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pledged" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nanti</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="capitalizedOfInterest" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Intérêts capitalisés</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="upFrontInterest" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Intérêts précomptés</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endDateOfUpFrontInterest" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Fin de période de précomptage</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="deductionAtSource" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Prélèvements libératoires</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="advanceOnInterestAuthorised" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Avance d'intérets autorisée</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="advancedInterest" type="amp:amount">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Montant des intérêts avancés</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="safeBox" type="amp:coDSafeBox" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Mise à coffre</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="stoppage" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Opposition</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="destination" type="amp:coDDestination">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Destination du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="replacingCertificateOfDeposit" type="amp:char6" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Replace le BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="replacedByCertificateOfDeposit" type="amp:char6" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Bon remplacé par</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="registredCertificateOfDeposit" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>BDC nominatif</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="amp:charMax36" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Nom</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="coDAdvances" type="amp:coDAdvances">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Liste des avances</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coDConcernedAccounts">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Comptes d'un BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="debitedAccount" type="amp:internalFormatAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte à débiter</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creditedAccount" type="amp:internalFormatAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte à créditer</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="depositAccount" type="amp:internalFormatAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte de dépot</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="repaymentAccount" type="amp:internalFormatAccountOurBranch" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte de remboursement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chargesAccount" type="amp:internalFormatAccountOurBranch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte de frais</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="interestAccount" type="amp:internalFormatAccountOurBranch" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte d'intérets</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="matureCoDToRepayAccount" type="amp:internalFormatAccountOurBranch" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Compte de BDC échu à rembourser</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="coDIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant d¿un bon de caisse</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branch">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Agence du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="coDNumber" type="amp:eventNumber">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de bon de caisse</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subscriptionNumber" type="amp:eventNumber">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Numéro de souscription</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCoDDetailResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Flux de réponse du détail d'un BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="coDIdentifier" type="amp:coDIdentifier">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Identifiant du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operation" type="amp:operation">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code opération</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="currency" type="amp:simpleCurrency">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Devise du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="amp:certificateOfDepositType">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Type de bon de caisse</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="customer" type="amp:restrictedCustomer">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Client du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="processingCode" type="amp:coDProcessingCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code traitement du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="amp:coDStatus">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Etat du BDC</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="disapprovals" type="amp:disapprovals">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Liste des désaccords</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="overrideKey" type="amp:charMax6">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Clé de forçage</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="concernedAccounts" type="amp:coDConcernedAccounts">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Comptes concernés</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="characteristics" type="amp:coDCharacteristics">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Caractéristiques</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FileCurrencySituation" type="amp:coDFileCurrencySituation">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Situation en devise du dossier</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="domesticCurrencySituation" type="amp:coDDomesticCurrencySituation">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Situation du dossier en devise nationnale</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="coDDestination">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Destination du BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="N" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="R" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="coDSafeBox">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Mise au coffre des BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="R" />
+      <xs:enumeration value="M" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="coDRealDays">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Jours réels</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="O" />
+      <xs:enumeration value="N" />
+      <xs:enumeration value="M" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="coDFrequency">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Périodicité</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="M" />
+      <xs:enumeration value="S" />
+      <xs:enumeration value="T" />
+      <xs:enumeration value="E" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="A" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="coDStatus">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Etat d¿un dossier de BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FO" />
+      <xs:enumeration value="AT" />
+      <xs:enumeration value="VF" />
+      <xs:enumeration value="AB" />
+      <xs:enumeration value="VA" />
+      <xs:enumeration value="IG" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="coDProcessingCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code traitement des BDC</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1" />
+      <xs:enumeration value="0" />
+      <xs:enumeration value="7" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="6" />
+      <xs:enumeration value="8" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="certificateOfDepositType">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type de bon de caisse</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" minOccurs="0" />
+      <xs:element name="designation" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

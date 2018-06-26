@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commitments.xsd" />
+  <xs:complexType name="amortizableLoanDetailIdentifier">
+    <xs:sequence>
+      <xs:element name="branchCode" type="amp:char5" />
+      <xs:element name="fileNumber" type="amp:char6" />
+      <xs:element name="orderNumber" type="amp:char3" />
+      <xs:element name="amendmentNumber" type="amp:decimal2_0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAmortizableLoanDetailRequest">
+    <xs:sequence>
+      <xs:element name="amortizableLoanIdentifier" type="amp:amortizableLoanDetailIdentifier" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="amortizableLoanRateTypeCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code type de cours de change</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailInstallmentRepayingMethodtype">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="P" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="amortizableLoanFileProcessingCode">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="4" />
+      <xs:enumeration value="5" />
+      <xs:enumeration value="0" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="amortizableLoanFileStatus">
+    <xs:restriction base="xs:string">
+      <xs:length value="2" />
+      <xs:enumeration value="DE" />
+      <xs:enumeration value="VD" />
+      <xs:enumeration value="SI" />
+      <xs:enumeration value="VB" />
+      <xs:enumeration value="TR" />
+      <xs:enumeration value="VA" />
+      <xs:enumeration value="VC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailCalculationMethodInterestUnpaidAndPenaltiesType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="I" />
+      <xs:enumeration value="E" />
+      <xs:enumeration value="P" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailPeriodUsedForCalculationInterestUnpaidAmountType">
+    <xs:restriction base="xs:string">
+      <xs:length value="3" />
+      <xs:enumeration value="360" />
+      <xs:enumeration value="365" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailInterestOnUnpaidAmountType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="O" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="N" />
+      <xs:enumeration value="K" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailProcessingUnpaidAmountRecoveryType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="N" />
+      <xs:enumeration value="O" />
+      <xs:enumeration value="P" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailCommitmentFeeType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="N" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="M" />
+      <xs:enumeration value="T" />
+      <xs:enumeration value="E" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailCalculationMethodType">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Mode de calcul de la commission</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="P" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="D" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="L" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailRepaymentMethodType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="T" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailCollectionMethodType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="P" />
+      <xs:enumeration value="M" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailPeriodicityType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1" />
+      <xs:maxInclusive value="12" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtDetailMaturityType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="E" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="fundsReleaseMethod">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="M" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="P" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="I" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="scheduleType">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="O" />
+      <xs:enumeration value="P" />
+      <xs:enumeration value="D" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="N" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dosprtFinancingSourceCode">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Code de la source de financement credit</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="amortizableLoanCreditor">
+    <xs:sequence>
+      <xs:element name="creditorIdentification" type="amp:internationalBankIdentifier" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailRevaluation">
+    <xs:sequence>
+      <xs:element name="fileRevaluation" type="xs:boolean" />
+      <xs:element name="revaluationCurrency" type="amp:simpleCurrency" />
+      <xs:element name="rateTypeToBeApplieOnCapital" type="amp:char3" />
+      <xs:element name="previousRateMargin" type="amp:decimal9_6" />
+      <xs:element name="rateValuationValue" type="amp:decimal9_6" />
+      <xs:element name="officialExchangeRate" type="amp:decimal15_7" />
+      <xs:element name="exchangeRateForPaymentUsedCapital" type="amp:decimal15_7" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanRateType">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Type de cours de change</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:amortizableLoanRateTypeCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Type de cours de change</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailConversion">
+    <xs:sequence>
+      <xs:element name="fundsReleaseRateType" type="amp:amortizableLoanRateType" />
+      <xs:element name="foreignCurrenciesFilesSelectionRate" type="xs:boolean" />
+      <xs:element name="currencyConversionRateType" type="amp:amortizableLoanRateType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailFollowingYearsCommission">
+    <xs:sequence>
+      <xs:element name="collectionRateCommissionFollowingYears" type="amp:decimal8_6" />
+      <xs:element name="taxRateCommissionFollowingYears" type="amp:decimal8_6" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailFirstYearCommission">
+    <xs:sequence>
+      <xs:element name="collectionRateCommissionFirstYear" type="amp:decimal8_6" />
+      <xs:element name="amountCommissionToBePerceivedFirstYear" type="amp:decimal19_4" />
+      <xs:element name="taxRateCommissionFirstYear" type="amp:decimal8_6" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailEffectiveInterestRate">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Taux d¿intérêt effectif global</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="effectiveInterestRate" type="amp:decimal9_6" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailMargin">
+    <xs:sequence>
+      <xs:element name="variableMargin" type="xs:boolean" />
+      <xs:element name="minimumMargin" type="amp:decimal9_6" />
+      <xs:element name="maximumMargin" type="amp:decimal9_6" />
+      <xs:element name="correspondentMargin" type="amp:decimal9_6" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailFundsReservation">
+    <xs:sequence>
+      <xs:element name="fundsReservationForCreditInstallment" type="xs:boolean" />
+      <xs:element name="periodTriggeringFundsReservationBeforeDueDate" type="amp:decimal5_0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanFreeAttribute">
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" />
+      <xs:element name="designation" type="amp:charMax30" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailFileImplementationPosting">
+    <xs:sequence>
+      <xs:element name="studyPosting" type="xs:boolean" />
+      <xs:element name="bankDecisionPosting" type="xs:boolean" />
+      <xs:element name="customerDecisionPosting" type="xs:boolean" />
+      <xs:element name="afterFileValidationPosting" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanFileGrade">
+    <xs:sequence>
+      <xs:element name="code" type="amp:char1" />
+      <xs:element name="designation" type="amp:charMax30" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailFileGrade">
+    <xs:sequence>
+      <xs:element name="currentFileGrade" type="amp:amortizableLoanFileGrade" />
+      <xs:element name="previousFileGrade" type="amp:amortizableLoanFileGrade" />
+      <xs:element name="currentFileGradeDate" type="xs:date" />
+      <xs:element name="previousFileGradeDate" type="xs:date" />
+      <xs:element name="downGradingForSuspendedInterest" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailPenalties">
+    <xs:sequence>
+      <xs:element name="cumulativePenalties" type="amp:decimal19_4" />
+      <xs:element name="cumulativePenaltiesTax" type="amp:decimal19_4" />
+      <xs:element name="latePenaltiesCode" type="xs:boolean" />
+      <xs:element name="latePenaltiesAmount" type="amp:decimal19_4" />
+      <xs:element name="latePenaltiesAmountTax" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanInterestOnUnpaidAmountRateCode">
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" />
+      <xs:element name="designation" type="amp:charMax30" />
+      <xs:element name="value" type="amp:amortizableLoanRateValue" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailInterestOnUnpaidAmount">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Interets sur impayes</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="interestOnUnpaidAmount" type="amp:dosprtDetailInterestOnUnpaidAmountType" />
+      <xs:element name="cumulativeInterestOnUnpaidAmount" type="amp:decimal19_4" />
+      <xs:element name="cumulativeInterestOnUnpaidAmountTax" type="amp:decimal19_4" />
+      <xs:element name="lastInterestOnUnpaidAmountCalculationDate" type="xs:date" />
+      <xs:element name="lastInterestOnUnpaidAmountBalance" type="amp:decimal19_4" />
+      <xs:element name="dueInterestOnUnpaidAmount" type="amp:decimal19_4" />
+      <xs:element name="dueInterestOnUnpaidAmountTax" type="amp:decimal19_4" />
+      <xs:element name="interestOnUnpaidAmountRateCode" type="amp:amortizableLoanInterestOnUnpaidAmountRateCode" />
+      <xs:element name="periodUsedForCalculationInterestUnpaidAmount" type="amp:dosprtDetailPeriodUsedForCalculationInterestUnpaidAmountType" />
+      <xs:element name="conditionVARIMPValue" type="amp:decimal22_7" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailUnpaid">
+    <xs:sequence>
+      <xs:element name="cumulativeUnpaidAmount" type="amp:decimal19_4" />
+      <xs:element name="lastUnpaidDate" type="xs:date" />
+      <xs:element name="processingUnpaidAmountRecoveryInProcess" type="amp:dosprtDetailProcessingUnpaidAmountRecoveryType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailCapital">
+    <xs:sequence>
+      <xs:element name="capitalTaxRate" type="amp:decimal8_6" />
+      <xs:element name="cumulativeCapitalTax" type="amp:decimal19_4" />
+      <xs:element name="cumulativeRepayment" type="amp:decimal19_4" />
+      <xs:element name="capitalMaturity" type="amp:dosprtDetailMaturityType" />
+      <xs:element name="capitalPeriodicity" type="amp:dosprtDetailPeriodicityType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailRetentionMoney">
+    <xs:sequence>
+      <xs:element name="retentionMoneyRate" type="amp:decimal8_6" />
+      <xs:element name="cumulativeRetentionMoney" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailRevenueStamp">
+    <xs:sequence>
+      <xs:element name="revenueStampRate" type="amp:decimal8_6" />
+      <xs:element name="cumulativeRevenueStamp" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailCommitmentFee">
+    <xs:sequence>
+      <xs:element name="commitmentFeeType" type="amp:dosprtDetailCommitmentFeeType" />
+      <xs:element name="implementationDateCommitmentFeeDue" type="xs:date" />
+      <xs:element name="commitmentFeeRate" type="amp:decimal8_6" />
+      <xs:element name="cumulativeCommitmentFee" type="amp:decimal19_4" />
+      <xs:element name="cumulativeCommitmentFeeTax" type="amp:decimal19_4" />
+      <xs:element name="lastCommitmentFeeCalculationDate" type="xs:date" />
+      <xs:element name="lastCommitmentFeeCalculationBalance" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailCommission">
+    <xs:sequence>
+      <xs:element name="commissionRate" type="amp:decimal8_6" />
+      <xs:element name="commissionTaxRate" type="amp:decimal8_6" />
+      <xs:element name="commissionAmount" type="amp:decimal19_4" />
+      <xs:element name="cumulativeCommissionAmount" type="amp:decimal19_4" />
+      <xs:element name="cumulativeCommissionTax" type="amp:decimal19_4" />
+      <xs:element name="commissionMaturity" type="amp:dosprtDetailMaturityType" />
+      <xs:element name="commissionPeriodicity" type="amp:dosprtDetailPeriodicityType" />
+      <xs:element name="commissionCollectionMethod" type="amp:dosprtDetailCollectionMethodType" />
+      <xs:element name="lastCommissionCalculationDate" type="xs:date" />
+      <xs:element name="lastCommissionCalculationBalance" type="amp:decimal19_4" />
+      <xs:element name="commissionCalculationMethod" type="amp:dosprtDetailCalculationMethodType" />
+      <xs:element name="commissionItemToBeIntegratedToEIRCalculation" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailFees">
+    <xs:sequence>
+      <xs:element name="feesRate" type="amp:decimal8_6" />
+      <xs:element name="feesTaxRate" type="amp:decimal8_6" />
+      <xs:element name="feesAmount" type="amp:decimal19_4" />
+      <xs:element name="cumulativeFeesAmount" type="amp:decimal19_4" />
+      <xs:element name="cumulativeFeesTax" type="amp:decimal19_4" />
+      <xs:element name="feesMaturity" type="amp:dosprtDetailMaturityType" />
+      <xs:element name="feesPeriodicity" type="amp:dosprtDetailPeriodicityType" />
+      <xs:element name="feesCollectionMethod" type="amp:dosprtDetailCollectionMethodType" />
+      <xs:element name="feesRepaymentMethod" type="amp:dosprtDetailRepaymentMethodType" />
+      <xs:element name="intemFeesToBeIntegratedToEIRCalculation" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailInterest">
+    <xs:sequence>
+      <xs:element name="interestRate" type="amp:decimal8_6" />
+      <xs:element name="interestTaxRate" type="amp:decimal8_6" />
+      <xs:element name="cumulativeInterest" type="amp:decimal19_4" />
+      <xs:element name="cumulativeInterestTax" type="amp:decimal19_4" />
+      <xs:element name="interestMaturity" type="amp:dosprtDetailMaturityType" />
+      <xs:element name="interestPeriodicity" type="amp:dosprtDetailPeriodicityType" />
+      <xs:element name="lastInterestCalculationDate" type="xs:date" />
+      <xs:element name="lastInterestCalculationBalance" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailAnnualPercentageRate">
+    <xs:sequence>
+      <xs:element name="annualPercentageRate" type="amp:decimal9_6" />
+      <xs:element name="APRSmoothing" type="amp:char1" />
+      <xs:element name="proRataAPR" type="amp:decimal9_6" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailPayment">
+    <xs:sequence>
+      <xs:element name="creditRepaymentdate" type="xs:date" />
+      <xs:element name="capitalisationOnPartialRepayment" type="xs:boolean" />
+      <xs:element name="earlyRepaymentAmount" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailFundsReleases">
+    <xs:sequence>
+      <xs:element name="cumulativeFundsReleases" type="amp:decimal19_4" />
+      <xs:element name="lastFundsReleaseDate" type="xs:date" />
+      <xs:element name="fundsReleaseMethod" type="amp:fundsReleaseMethod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanRateValue">
+    <xs:sequence>
+      <xs:element name="effectiveDate" type="xs:date" />
+      <xs:element name="value" type="amp:decimal9_6" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailBaseRateCode">
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" />
+      <xs:element name="designation" type="amp:charMax30" />
+      <xs:element name="value" type="amp:amortizableLoanRateValue" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dosprtDetailFloatingOrProgressiveRate">
+    <xs:sequence>
+      <xs:element name="creditBaseRates" type="amp:dosprtDetailBaseRateCode" minOccurs="0" />
+      <xs:element name="codeApplicationDate" type="xs:date" />
+      <xs:element name="margin" type="amp:decimal9_6" />
+      <xs:element name="fixRate" type="amp:decimal9_6" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanNegociatedRate">
+    <xs:sequence>
+      <xs:element name="effectiveDate" type="xs:date" />
+      <xs:element name="baseRate" type="amp:decimal9_6" />
+      <xs:element name="margin" type="amp:decimal9_6" />
+      <xs:element name="interestRate" type="amp:decimal9_6" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanFileRates">
+    <xs:sequence>
+      <xs:element name="negociatedRates" type="amp:amortizableLoanNegociatedRate" maxOccurs="unbounded" />
+      <xs:element name="floatingOrProgressiveCreditRates" type="amp:dosprtDetailFloatingOrProgressiveRate" maxOccurs="unbounded" />
+      <xs:element name="creditBaseRates" type="amp:dosprtDetailBaseRateCode" />
+      <xs:element name="originOrFixRate" type="amp:decimal8_6" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanFinancingSource">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Source de financement</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="amp:dosprtFinancingSourceCode">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Code source du financement</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="designation" type="amp:charMax30" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanMasterFile">
+    <xs:sequence>
+      <xs:element name="fileNumber" type="amp:char6" />
+      <xs:element name="amendmentNumber" type="amp:decimal2_0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanBusinessGetter">
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax6" />
+      <xs:element name="name" type="amp:charMax36" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanProjectBusinessOrigin">
+    <xs:sequence>
+      <xs:element name="code" type="amp:charMax6" />
+      <xs:element name="designation" type="amp:charMax30" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanType">
+    <xs:sequence>
+      <xs:element name="code" type="amp:char3" minOccurs="0" />
+      <xs:element name="label" type="amp:charMax30" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanIdentifier">
+    <xs:sequence>
+      <xs:element name="fileNumber" type="amp:char6" minOccurs="0" />
+      <xs:element name="orderNumber" type="amp:char3" minOccurs="0" />
+      <xs:element name="branch" type="amp:branch" minOccurs="0" />
+      <xs:element name="amendmentNumber" type="amp:decimal2_0" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="amortizableLoanFile">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Dossier de credit amortissable</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="amortizableLoanIdentifier" type="amp:amortizableLoanIdentifier" />
+      <xs:element name="customer" type="amp:restrictedCustomer" />
+      <xs:element name="agreementNumber" type="amp:decimal6_0" />
+      <xs:element name="loanType" type="amp:amortizableLoanType" />
+      <xs:element name="operation" type="amp:operation" />
+      <xs:element name="projectBusinessOriginCode" type="amp:amortizableLoanProjectBusinessOrigin" />
+      <xs:element name="businessGetter" type="amp:amortizableLoanBusinessGetter" />
+      <xs:element name="masterFile" type="amp:amortizableLoanMasterFile" />
+      <xs:element name="fileCurrency" type="amp:simpleCurrency" />
+      <xs:element name="accountsCurrency" type="amp:simpleCurrency" />
+      <xs:element name="jointBorrowersNumber" type="xs:integer" />
+      <xs:element name="letterOfGuaranteeNumber" type="xs:integer" />
+      <xs:element name="financingSource" type="amp:amortizableLoanFinancingSource" />
+      <xs:element name="establishmentDate" type="xs:date" />
+      <xs:element name="firstInstallmentDate" type="xs:date" />
+      <xs:element name="lastInstallmentDate" type="xs:date" />
+      <xs:element name="periodicityUnit" type="amp:periodicityUnit" />
+      <xs:element name="installmentsNumber" type="xs:integer" />
+      <xs:element name="totalInstallmentsNumber" type="xs:integer" />
+      <xs:element name="lastTriggeredInstallment" type="xs:integer" />
+      <xs:element name="endOfMonthInstallment" type="xs:boolean" />
+      <xs:element name="calculationBasedOnRealNumber" type="xs:boolean" />
+      <xs:element name="deferralPeriodManagement" type="amp:detaildeferralPeriodManagement" />
+      <xs:element name="scheduleType" type="amp:scheduleType" />
+      <xs:element name="interestType" type="amp:interestType" />
+      <xs:element name="fileRates" type="amp:amortizableLoanFileRates" />
+      <xs:element name="baseRateVariation" type="amp:decimal8_6" />
+      <xs:element name="loanAmount" type="amp:decimal19_4" />
+      <xs:element name="constantInstallmentAmount" type="amp:decimal19_4" />
+      <xs:element name="personalInvestmentAmount" type="amp:decimal19_4" />
+      <xs:element name="usedPersonalInvestmentAmount" type="amp:decimal19_4" />
+      <xs:element name="fundsReleases" type="amp:dosprtDetailFundsReleases" />
+      <xs:element name="amortizableLoanPayment" type="amp:dosprtDetailPayment" />
+      <xs:element name="annualPercentageRate" type="amp:dosprtDetailAnnualPercentageRate" />
+      <xs:element name="interest" type="amp:dosprtDetailInterest" />
+      <xs:element name="fees" type="amp:dosprtDetailFees" />
+      <xs:element name="commission1" type="amp:dosprtDetailCommission" />
+      <xs:element name="commission2" type="amp:dosprtDetailCommission" />
+      <xs:element name="commission3" type="amp:dosprtDetailCommission" />
+      <xs:element name="commitmentFee" type="amp:dosprtDetailCommitmentFee" />
+      <xs:element name="revenueStamp" type="amp:dosprtDetailRevenueStamp" />
+      <xs:element name="retentionMoney" type="amp:dosprtDetailRetentionMoney" />
+      <xs:element name="capital" type="amp:dosprtDetailCapital" />
+      <xs:element name="unpaidAmount" type="amp:dosprtDetailUnpaid" />
+      <xs:element name="interestOnUnpaidAmount" type="amp:dosprtDetailInterestOnUnpaidAmount" />
+      <xs:element name="penalties" type="amp:dosprtDetailPenalties" />
+      <xs:element name="calculationMethodInterestUnpaidAmountAndPenalties" type="amp:dosprtDetailCalculationMethodInterestUnpaidAndPenaltiesType" />
+      <xs:element name="offerExpiryDate" type="xs:date" />
+      <xs:element name="fileOpeningDate" type="xs:date" />
+      <xs:element name="fileModificationDate" type="xs:date" />
+      <xs:element name="user" type="amp:user" />
+      <xs:element name="fileRefusalReason" type="amp:disapproval" />
+      <xs:element name="grantingDate" type="xs:date" />
+      <xs:element name="lastFileStatusDate" type="xs:date" />
+      <xs:element name="fileStatus" type="amp:amortizableLoanFileStatus" />
+      <xs:element name="processingCode" type="amp:amortizableLoanFileProcessingCode" />
+      <xs:element name="fileGrade" type="amp:dosprtDetailFileGrade" />
+      <xs:element name="implementationPosting" type="amp:dosprtDetailFileImplementationPosting" />
+      <xs:element name="interestAtDueDate" type="xs:boolean" />
+      <xs:element name="lastReviewDate" type="xs:date" />
+      <xs:element name="repayingCustomer" type="amp:restrictedCustomer" />
+      <xs:element name="freeAttribute1" type="amp:amortizableLoanFreeAttribute" />
+      <xs:element name="freeAttribute2" type="amp:amortizableLoanFreeAttribute" />
+      <xs:element name="installmentRepayingMethod" type="amp:dosprtDetailInstallmentRepayingMethodtype" />
+      <xs:element name="installmentPaidInAdvance" type="xs:boolean" />
+      <xs:element name="fundsReservation" type="amp:dosprtDetailFundsReservation" />
+      <xs:element name="margin" type="amp:dosprtDetailMargin" />
+      <xs:element name="fairValueCalculationLaunch" type="xs:boolean" />
+      <xs:element name="marketRate" type="amp:decimal10_7" />
+      <xs:element name="marginalCosts" type="xs:boolean" />
+      <xs:element name="effectiveInterestRate" type="amp:dosprtDetailEffectiveInterestRate" />
+      <xs:element name="compoundInterestCalculationFrequency" type="amp:dosprtDetailPeriodicityType" />
+      <xs:element name="lastCompoundInterestCalculationDate" type="xs:date" />
+      <xs:element name="realAnnualNumberOfDays" type="amp:decimal3_0" />
+      <xs:element name="authorization" type="amp:authorization" />
+      <xs:element name="firstYearCommission" type="amp:dosprtDetailFirstYearCommission" />
+      <xs:element name="followingYearsCommission" type="amp:dosprtDetailFollowingYearsCommission" />
+      <xs:element name="bankHolidaysUpdating" type="xs:boolean" />
+      <xs:element name="acquiredLoanAmount" type="amp:decimal19_4" />
+      <xs:element name="totalAmountPaidDownPayment" type="amp:decimal19_4" />
+      <xs:element name="renegociatedFile" type="xs:boolean" />
+      <xs:element name="creditTitle" type="amp:charMax30" />
+      <xs:element name="conversion" type="amp:dosprtDetailConversion" />
+      <xs:element name="specificCode" type="amp:char2" />
+      <xs:element name="fileRevaluation" type="amp:dosprtDetailRevaluation" />
+      <xs:element name="socialHousingFile" type="xs:boolean" />
+      <xs:element name="printCode" type="amp:char1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAmortizableLoanDetailResponse">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Détail d'un dossier de crédit</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="amortizableLoanFile" type="amp:amortizableLoanFile">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Dossier de crédit</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="repaymentSchedule" type="amp:getAmortizableLoanInstallmentListResponse">
+        <xs:annotation>
+          <xs:documentation>
+            <definition>Echeancier associe au dossier de credit amortissable</definition>
+            <origin>SopraBankingSoftware</origin>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="amortizableLoanInstallmentProcessingCode">
+    <xs:restriction base="xs:string">
+      <xs:length value="1" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="8" />
+      <xs:enumeration value="7" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="amortizableLoanInstallmentStatus">
+    <xs:restriction base="xs:string">
+      <xs:length value="2" />
+      <xs:enumeration value="PR" />
+      <xs:enumeration value="VC" />
+      <xs:enumeration value="IM" />
+      <xs:enumeration value="SI" />
+      <xs:enumeration value="PA" />
+      <xs:enumeration value="VB" />
+      <xs:enumeration value="VA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="getAmortizableLoanInstallmentListRequest">
+    <xs:sequence>
+      <xs:element name="amortizableLoanIdentifier" type="amp:amortizableLoanIdentifier" minOccurs="0" />
+      <xs:element name="installmentNumber" type="xs:integer" minOccurs="0" />
+      <xs:element name="currency" type="amp:simpleCurrency" minOccurs="0" />
+      <xs:element name="installmentDate" type="amp:comparisonDate" minOccurs="0" />
+      <xs:element name="openingDate" type="amp:comparisonDate" minOccurs="0" />
+      <xs:element name="modificationDate" type="amp:comparisonDate" minOccurs="0" />
+      <xs:element name="installmentStatus" type="amp:amortizableLoanInstallmentStatus" minOccurs="0" />
+      <xs:element name="processingCode" type="amp:amortizableLoanInstallmentProcessingCode" minOccurs="0" />
+      <xs:element name="totalInstallmentAmount" type="amp:comparisonAmount" minOccurs="0" />
+      <xs:element name="totalCalling" type="amp:comparisonAmount" minOccurs="0" />
+      <xs:element name="remainingCapital" type="amp:comparisonAmount" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailRevenueStamp">
+    <xs:sequence>
+      <xs:element name="revenueStamp" type="amp:decimal19_4" />
+      <xs:element name="unpaidRevenueStamp" type="amp:decimal19_4" />
+      <xs:element name="calledRevenueStamp" type="amp:decimal19_4" />
+      <xs:element name="distributedDeferredRevenueStamp" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailPenalties">
+    <xs:sequence>
+      <xs:element name="penalties" type="amp:decimal19_4" />
+      <xs:element name="unpaidPenalties" type="amp:decimal19_4" />
+      <xs:element name="penaltiesTax" type="amp:decimal19_4" />
+      <xs:element name="unpaidPenaltiesTax" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailInterestOnUnpaidAmount">
+    <xs:sequence>
+      <xs:element name="interestOnUnpaidAmount" type="amp:decimal19_4" />
+      <xs:element name="unpaidInterestOnUnpaidAmount" type="amp:decimal19_4" />
+      <xs:element name="interestOnUnpaidAmountTax" type="amp:decimal19_4" />
+      <xs:element name="unpaidInterestOnUnpaidAmountTax" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailCommitmentFee">
+    <xs:sequence>
+      <xs:element name="commitmentFee" type="amp:decimal19_4" />
+      <xs:element name="unpaidCommitmentFee" type="amp:decimal19_4" />
+      <xs:element name="commitmentFeeTax" type="amp:decimal19_4" />
+      <xs:element name="unpaidCommitmentFeeTax" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailCapitalTax">
+    <xs:sequence>
+      <xs:element name="capitalTax" type="amp:decimal19_4" />
+      <xs:element name="unpaidCapitalTax" type="amp:decimal19_4" />
+      <xs:element name="distributedDeferredCapitalTax" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailFees">
+    <xs:sequence>
+      <xs:element name="fees" type="amp:decimal19_4" />
+      <xs:element name="unpaidFees" type="amp:decimal19_4" />
+      <xs:element name="calledFees" type="amp:decimal19_4" />
+      <xs:element name="distributedDeferredFees" type="amp:decimal19_4" />
+      <xs:element name="feesTax" type="amp:decimal19_4" />
+      <xs:element name="unpaidFeesTax" type="amp:decimal19_4" />
+      <xs:element name="calledFeesTax" type="amp:decimal19_4" />
+      <xs:element name="distributedDeferredFeesTax" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailCommission">
+    <xs:sequence>
+      <xs:element name="commission" type="amp:decimal19_4" />
+      <xs:element name="unpaidCommission" type="amp:decimal19_4" />
+      <xs:element name="calledCommission" type="amp:decimal19_4" />
+      <xs:element name="distributedDeferredCommission" type="amp:decimal19_4" />
+      <xs:element name="commissionTax" type="amp:decimal19_4" />
+      <xs:element name="unpaidCommissionTax" type="amp:decimal19_4" />
+      <xs:element name="calledCommissionTax" type="amp:decimal19_4" />
+      <xs:element name="distributedDeferredCommissionTax" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailInterest">
+    <xs:sequence>
+      <xs:element name="interest" type="amp:decimal19_4" />
+      <xs:element name="unpaidInterest" type="amp:decimal19_4" />
+      <xs:element name="calledInterest" type="amp:decimal19_4" />
+      <xs:element name="distributedDeferredInterest" type="amp:decimal19_4" />
+      <xs:element name="interestTax" type="amp:decimal19_4" />
+      <xs:element name="unpaidInterestTax" type="amp:decimal19_4" />
+      <xs:element name="calledInterestTax" type="amp:decimal19_4" />
+      <xs:element name="distributedDeferredInterestTax" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="echprtDetailAmortisation">
+    <xs:sequence>
+      <xs:element name="calculatedAmortisation" type="amp:decimal19_4" />
+      <xs:element name="inputAmortisation" type="amp:decimal19_4" />
+      <xs:element name="unpaidAmortisation" type="amp:decimal19_4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAmortizableLoanInstallmentResponse">
+    <xs:complexContent>
+      <xs:extension base="amp:getAmortizableLoanInstallmentListRequest">
+        <xs:sequence>
+          <xs:element name="calculationDate" type="xs:date" />
+          <xs:element name="amortisation" type="amp:echprtDetailAmortisation" />
+          <xs:element name="interest" type="amp:echprtDetailInterest" />
+          <xs:element name="commission1" type="amp:echprtDetailCommission" />
+          <xs:element name="commission2" type="amp:echprtDetailCommission" />
+          <xs:element name="commission3" type="amp:echprtDetailCommission" />
+          <xs:element name="fees" type="amp:echprtDetailFees" />
+          <xs:element name="capitalTax" type="amp:echprtDetailCapitalTax" />
+          <xs:element name="commitmentFee" type="amp:echprtDetailCommitmentFee" />
+          <xs:element name="interestOnUnpaidAmount" type="amp:echprtDetailInterestOnUnpaidAmount" />
+          <xs:element name="penalties" type="amp:echprtDetailPenalties" />
+          <xs:element name="revenueStamp" type="amp:echprtDetailRevenueStamp" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="getAmortizableLoanInstallmentListResponse">
+    <xs:sequence>
+      <xs:element name="installment" type="amp:getAmortizableLoanInstallmentResponse" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

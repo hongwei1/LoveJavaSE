@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude/savings/termDeposit">
+  <xs:import namespace="http://soprabanking.com/amplitude" schemaLocation="./../Dictionary/transverses-elements.xsd" />
+  <xs:element name="getTDAmendmentsDetailRequestFlow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="amp:requestHeader" />
+        <xs:element name="getTDAmendmentsDetailRequest" type="amp:getTDAmendmentsDetailRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getTDAmendmentsDetailResponseFlow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="amp:responseHeader" />
+        <xs:element ref="amp:responseStatus" />
+        <xs:element name="getTDAmendmentsDetailResponse" type="amp:getTDAmendmentsDetailResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

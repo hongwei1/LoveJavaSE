@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:pre1="http://soprabanking.com/amplitude/commitments/amortizableLoan"
+xmlns:preAmp="http://soprabanking.com/amplitude"
+targetNamespace="http://soprabanking.com/amplitude"
+name="getAmortizableLoanDetail">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soprabanking.com/amplitude/commitments/amortizableLoan" schemaLocation="../FlowDescription/getAmortizableLoanDetail.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getAmortizableLoanDetailRequestFlow">
+		<wsdl:part name="getAmortizableLoanDetailRequestFlow" element="pre1:getAmortizableLoanDetailRequestFlow"/>
+	</wsdl:message>
+
+	<wsdl:message name="getAmortizableLoanDetailResponseFlow">
+		<wsdl:part name="getAmortizableLoanDetailResponseFlow" element="pre1:getAmortizableLoanDetailResponseFlow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="getAmortizableLoanDetail">
+		<wsdl:operation name="getAmortizableLoanDetail">
+			<wsdl:input message="preAmp:getAmortizableLoanDetailRequestFlow" name="getAmortizableLoanDetailRequestFlow"/>
+			<wsdl:output message="preAmp:getAmortizableLoanDetailResponseFlow" name="getAmortizableLoanDetailResponseFlow"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="getAmortizableLoanDetail-binding" type="preAmp:getAmortizableLoanDetail">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getAmortizableLoanDetail">
+			<soap:operation soapAction="getAmortizableLoanDetail"/>
+			<wsdl:input name="getAmortizableLoanDetailRequestFlow">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getAmortizableLoanDetailResponseFlow">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="getAmortizableLoanDetail">
+		<wsdl:port binding="preAmp:getAmortizableLoanDetail-binding" name="getAmortizableLoanDetail">
+			<soap:address location="http://localhost:8080/getAmortizableLoanDetail"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

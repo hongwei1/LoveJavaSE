@@ -72,6 +72,12 @@
 			<artifactId>kafka-clients</artifactId>
 			<version>0.10.2.0</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>net.databinder.dispatch</groupId>
+			<artifactId>dispatch-core_2.12</artifactId>
+        <version>0.12.3</version>
+    </dependency>
 				
     </dependencies>
 
@@ -98,6 +104,21 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+            <groupId>org.scalaxb</groupId>
+            <artifactId>scalaxb-maven-plugin</artifactId>
+            <configuration>
+                <packageName>backend</packageName>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>scalaxb</id>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
 		</plugins>
 	</build>
 </project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:amp="http://soprabanking.com/amplitude" elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude">
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:include schemaLocation="./commons.xsd" />
+  <xs:complexType name="currentOverdraftAuthNIdentifier">
+    <xs:annotation>
+      <xs:documentation>
+        <definition>Identifiant de l'autorisation de découvert en cours sur le compte</definition>
+        <origin>SopraBankingSoftware</origin>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="branch" type="amp:branchCode" />
+      <xs:element name="currency" type="amp:currencyCode" />
+      <xs:element name="accountNumber" type="amp:accountNumber" />
+      <xs:element name="accountSuffix" type="amp:accountSuffix" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOverdraftAuthNDetailRequest">
+    <xs:choice>
+      <xs:element name="overdraftAuthNIdentifier" type="amp:overdraftAuthNIdentifier" />
+      <xs:element name="currentOverdraftAuthNIdentifier" type="amp:currentOverdraftAuthNIdentifier" />
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>

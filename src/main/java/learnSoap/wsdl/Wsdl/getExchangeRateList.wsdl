@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:pre1="http://soprabanking.com/amplitude/codingSystems/exchangeRate"
+xmlns:preAmp="http://soprabanking.com/amplitude"
+targetNamespace="http://soprabanking.com/amplitude"
+name="getExchangeRateList">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://soprabanking.com/amplitude/codingSystems/exchangeRate" schemaLocation="../FlowDescription/getExchangeRateList.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getExchangeRateListRequestFlow">
+		<wsdl:part name="getExchangeRateListRequestFlow" element="pre1:getExchangeRateListRequestFlow"/>
+	</wsdl:message>
+
+	<wsdl:message name="getExchangeRateListResponseFlow">
+		<wsdl:part name="getExchangeRateListResponseFlow" element="pre1:getExchangeRateListResponseFlow"/>
+	</wsdl:message>
+
+	<wsdl:portType name="getExchangeRateList">
+		<wsdl:operation name="getExchangeRateList">
+			<wsdl:input message="preAmp:getExchangeRateListRequestFlow" name="getExchangeRateListRequestFlow"/>
+			<wsdl:output message="preAmp:getExchangeRateListResponseFlow" name="getExchangeRateListResponseFlow"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="getExchangeRateList-binding" type="preAmp:getExchangeRateList">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getExchangeRateList">
+			<soap:operation soapAction="getExchangeRateList"/>
+			<wsdl:input name="getExchangeRateListRequestFlow">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getExchangeRateListResponseFlow">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="getExchangeRateList">
+		<wsdl:port binding="preAmp:getExchangeRateList-binding" name="getExchangeRateList">
+			<soap:address location="http://localhost:8080/getExchangeRateList"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
