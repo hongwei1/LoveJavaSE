@@ -1,6 +1,10 @@
 //https://www.jianshu.com/p/4e6fff9d27b5
-
+//https://www.jianshu.com/p/514e498c1dd6
 package proxy;
+
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -69,10 +73,20 @@ class ApricotHandler implements InvocationHandler {
     }
 }
 
+class ApricotInterceptor implements MethodInterceptor {
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+        methodProxy.invokeSuper(o, objects);
+        System.out.println("adding apricot...");
+        return o;
+    }
+}
+
+
 //蛋糕店
 class CakeShop {
     public static void main(String[] args) {
-        
+
+/*****************************************静态代理****************************************************************/
         FruitCakeMachine fruitCakeMachineStatic = new FruitCakeMachine();
         FruitCakeMachineProxy fruitCakeProxyStatic = new FruitCakeMachineProxy(fruitCakeMachineStatic);
         fruitCakeProxyStatic.makeCake();   //making a Fruit Cake...   adding apricot...
@@ -80,14 +94,16 @@ class CakeShop {
         ChocolateCakeMachine chocolateCakeMachineStatic = new ChocolateCakeMachine();
         ChocolateCakeMachineProxy chocolateCakeProxyStatic = new ChocolateCakeMachineProxy(chocolateCakeMachineStatic);
         chocolateCakeProxyStatic.makeCake();   //making a Fruit Cake...   adding apricot...
-        
-        
+
+/*****************************************动态代理****************************************************************/
         //水果蛋糕撒一层杏仁
         CakeMachine fruitCakeMachine = new FruitCakeMachine();
         ApricotHandler fruitCakeApricotHandler = new ApricotHandler(fruitCakeMachine);
-        CakeMachine fruitCakeProxyDynamic = (CakeMachine) Proxy.newProxyInstance(
+        // 这里必须限制是CakeMachine的接口.不能值具体类:
+        // Java.lang.ClassCastException: proxy.$Proxy0 cannot be cast to proxy.FruitCakeMachine
+        CakeMachine fruitCakeProxyDynamic = (CakeMachine) Proxy.newProxyInstance( 
                 fruitCakeMachine.getClass().getClassLoader(),
-                fruitCakeMachine.getClass().getInterfaces(), 
+                fruitCakeMachine.getClass().getInterfaces(),
                 fruitCakeApricotHandler
         );
         fruitCakeProxyDynamic.makeCake();
@@ -97,9 +113,24 @@ class CakeShop {
         ApricotHandler chocolateCakeApricotHandler = new ApricotHandler(chocolateCakeMachine);
         CakeMachine chocolateCakeProxy = (CakeMachine) Proxy.newProxyInstance(
                 chocolateCakeMachine.getClass().getClassLoader(),
-                chocolateCakeMachine.getClass().getInterfaces(), 
+                chocolateCakeMachine.getClass().getInterfaces(),
                 chocolateCakeApricotHandler
         );
         chocolateCakeProxy.makeCake();
+
+/*****************************************CGLib代理****************************************************************/
+        //CGLib就是直接叫增强类,直接方法增加逻辑,然后生成对象,直接调用.
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(FruitCakeMachine.class);
+        enhancer.setCallback(new ApricotInterceptor());
+        FruitCakeMachine fruitCakeMachine2 = (FruitCakeMachine) enhancer.create();
+        fruitCakeMachine2.makeCake();
+
+        Enhancer enhancer2 = new Enhancer();
+        enhancer2.setSuperclass(ChocolateCakeMachine.class);
+        enhancer2.setCallback(new ApricotInterceptor());
+        ChocolateCakeMachine chocolateCakeMachine2 = (ChocolateCakeMachine) enhancer2.create();
+        chocolateCakeMachine2.makeCake();
+     
     }
 }
