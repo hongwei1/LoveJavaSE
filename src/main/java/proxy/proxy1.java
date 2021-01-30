@@ -27,10 +27,11 @@ public class proxy1 {
             }
         };
         // newProxyInstance 返回的object 强制转化为 Hello 接口.
+        Class[] interfaceClasses = {Hello.class};
         Hello hello = (Hello) Proxy.newProxyInstance(
                 Hello.class.getClassLoader(), // 传入ClassLoader
-                new Class[] { Hello.class },  // 传入要实现的接口
-                handler
+                interfaceClasses,             // 传入要实现的接口 Class<?>[]
+                handler                       // InvocationHandler--> 实现接口未实现的方法.
         ); // 传入处理调用方法的InvocationHandler
         hello.morning("Bob");
 //        hello.test("Bob",12);
