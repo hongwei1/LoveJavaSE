@@ -1,0 +1,73 @@
+https://blog.csdn.net/u013256816/article/details/103306252
+
+JVM是怎么和操作系统交互的？
+Java代码必须通过编译器转成虚拟机所能识别的指令序列(Java字节码,eg: HelloWorld.class), 之所以称为字节码,是因为Java字节码的操作指令被固定
+为一个字节. eg:  System.out.println("Hello world") 编译后的字节码：
+最左列是偏移；中间列是给虚拟机读的字节码；最右列是高级语言的代码，
+0x00:  b2 00 02         getstatic  Java .lang.System.out
+0x03:  12 03            ldc "Hello， World!"
+0x05:  b6 00 04         invokevirtual  Java .io.PrintStream.println
+0x08:  b1               return
+
+
+下面是通过汇编语言转换成的机器指令，中间是机器码，第三列为对应的机器指令，最后一列是对应的汇编代码：
+0x00:  55                    push   rbp
+0x01:  48 89 e5              mov    rbp，rsp
+0x04:  48 83 ec 10           sub    rsp，0x10
+0x08:  48 8d 3d 3b 00 00 00  lea    rdi，[rip+0x3b]
+                                    ; 加载 "Hello， World!\n"
+0x0f:  c7 45 fc 00 00 00 00  mov    DWORD PTR [rbp-0x4]，0x0
+0x16:  b0 00                 mov    al，0x0
+0x18:  e8 0d 00 00 00        call   0x12
+                                    ; 调用 printf 方法
+0x1d:  31 c9                 xor    ecx，ecx
+0x1f:  89 45 f8              mov    DWORD PTR [rbp-0x8]，eax
+0x22:  89 c8                 mov    eax，ecx
+0x24:  48 83 c4 10           add    rsp，0x10
+0x28:  5d                    pop    rbp
+0x29:  c3                    ret
+
+class文件里的字节码 --> JVM通过类加载器加载 -->会通过解释器解释成汇编指令 --> 在转义成CPU可以识别的机器指令
+字节码->汇编 (解释器) 是软件实现的,为了实现同一份Java字节码可以再不同的硬件平台上运行.
+汇编指令-->机器指令(转义器)是硬件实现,(JVM也可以将某些热点代码一次编译成机器指令也就是即时编译器(Just In Time JIT)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
