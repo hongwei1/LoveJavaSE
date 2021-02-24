@@ -21,25 +21,12 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
         </dependency>
-	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
-		<dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.20.0-GA</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.2.3</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
-		</dependency>
+        <!-- https://mvnrepository.com/artifact/javassist/javassist -->
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.12.1.GA</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-ext -->
         <dependency>
@@ -60,12 +47,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>2.5.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -103,7 +84,6 @@
             <artifactId>cglib</artifactId>
             <version>2.2.2</version>
         </dependency>
-
     </dependencies>
 
     <build>
