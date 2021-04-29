@@ -113,22 +113,8 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>GBK</encoding>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.scalaxb</groupId>
-                <artifactId>scalaxb-maven-plugin</artifactId>
-                <configuration>
-                    <packageName>backend</packageName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>scalaxb</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
