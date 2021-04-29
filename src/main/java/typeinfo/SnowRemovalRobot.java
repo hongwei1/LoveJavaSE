@@ -6,6 +6,7 @@ public class SnowRemovalRobot implements Robot {
   public SnowRemovalRobot(String name) {this.name = name;}
   public String name() { return name; }
   public String model() { return "SnowBot Series 11"; }
+
   public List<Operation> operations() {
     return Arrays.asList(
       new Operation() {

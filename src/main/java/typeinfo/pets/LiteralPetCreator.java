@@ -13,14 +13,22 @@ public class LiteralPetCreator extends PetCreator {
       Cymric.class, Rat.class, Mouse.class,Hamster.class));
   // Types for random creation:
   private static final List<Class<? extends Pet>> types =
-    allTypes.subList(allTypes.indexOf(Mutt.class),
-      allTypes.size());
+    allTypes.subList(//only only get subList of the all types:
+            allTypes.indexOf(Mutt.class),
+            allTypes.size()
+    );
   public List<Class<? extends Pet>> types() {
     return types;
   }	
   public static void main(String[] args) {
     System.out.println(types);
+    System.out.println(types.toArray().length);
+    System.out.println(allTypes);
+    System.out.println(allTypes.toArray().length);
   }
 } /* Output:
-[class typeinfo.pets.Mutt, class typeinfo.pets.Pug, class typeinfo.pets.EgyptianMau, class typeinfo.pets.Manx, class typeinfo.pets.Cymric, class typeinfo.pets.Rat, class typeinfo.pets.Mouse, class typeinfo.pets.Hamster]
+[class typeinfo.pets.Mutt, class typeinfo.pets.Pug,
+class typeinfo.pets.EgyptianMau, class typeinfo.pets.Manx,
+class typeinfo.pets.Cymric, class typeinfo.pets.Rat,
+class typeinfo.pets.Mouse, class typeinfo.pets.Hamster]
 *///:~

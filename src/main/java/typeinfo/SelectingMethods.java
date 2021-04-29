@@ -8,10 +8,8 @@ class MethodSelector implements InvocationHandler {
   public MethodSelector(Object proxied) {
     this.proxied = proxied;
   }
-  public Object
-  invoke(Object proxy, Method method, Object[] args)
-  throws Throwable {
-    if(method.getName().equals("interesting"))
+  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    if(method.getName().equals("interesting"))//only add logic for the interesting method!!!
       print("Proxy detected the interesting method");
     return method.invoke(proxied, args);
   }
@@ -38,7 +36,8 @@ class SelectingMethods {
     SomeMethods proxy= (SomeMethods)Proxy.newProxyInstance(
       SomeMethods.class.getClassLoader(),
       new Class[]{ SomeMethods.class },
-      new MethodSelector(new Implementation()));
+      new MethodSelector(new Implementation())
+    );
     proxy.boring1();
     proxy.boring2();
     proxy.interesting("bonobo");

@@ -2,10 +2,12 @@ package typeinfo;//: typeinfo/GenericClassReferences.java
 
 public class GenericClassReferences {
   public static void main(String[] args) {
-    Class intClass = int.class;
+    Class<Integer> intClass = int.class;
     Class<Integer> genericIntClass = int.class;
     genericIntClass = Integer.class; // Same thing
-    intClass = double.class;
-    // genericIntClass = double.class; // Illegal
+    genericIntClass = intClass; // Same thing
+    intClass = Integer.class;
+//    using generic syntax ==> enforce extra type checking.
+//     genericIntClass = double.class; // Illegal
   }
 } ///:~

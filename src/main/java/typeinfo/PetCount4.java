@@ -6,7 +6,8 @@ import static net.mindview.util.Print.*;
 public class PetCount4 {
   public static void main(String[] args) {
     TypeCounter counter = new TypeCounter(Pet.class);
-    for(Pet pet : Pets.createArray(20)) {
+    Pet[] pets = Pets.createArray(20);
+    for(Pet pet : pets) {
       printnb(pet.getClass().getSimpleName() + " ");
       counter.count(pet);
     }

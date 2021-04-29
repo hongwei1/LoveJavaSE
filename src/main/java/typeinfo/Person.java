@@ -15,8 +15,8 @@ class Person {
   public String toString() {
     return "Person: " + first + " " + last + " " + address;
   }
-  public static class NullPerson
-  extends Person implements net.mindview.util.Null {
+
+  public static class NullPerson extends Person implements net.mindview.util.Null {
     private NullPerson() { super("None", "None", "None"); }
     public String toString() { return "NullPerson"; }
   }

@@ -6,6 +6,7 @@ public interface Robot {
   String name();
   String model();
   List<Operation> operations();
+  //nested class to test this:
   class Test {
     public static void test(Robot r) {
       if(r instanceof Null)

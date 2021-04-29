@@ -7,10 +7,20 @@ public class GenericToyTest {
     Class<FancyToy> ftClass = FancyToy.class;
     // Produces exact type:
     FancyToy fancyToy = ftClass.newInstance();
+
+//  you can only get some class that is a superclass of FancyToy"
     Class<? super FancyToy> up = ftClass.getSuperclass();
+    Class<? super FancyToy> superclass = ftClass.getSuperclass();
+
     // This won't compile:
     // Class<Toy> up2 = ftClass.getSuperclass();
     // Only produces Object:
-    Object obj = up.newInstance();
+    Object object = up.newInstance();
+
+
+    Class<? extends Toy> down = ftClass.asSubclass(FancyToy.class);
+    Toy fancyToy1 = down.newInstance();
+    //Can not compile
+//    FancyToy fancyToy2 = down.newInstance();
   }
 } ///:~

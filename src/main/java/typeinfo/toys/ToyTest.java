@@ -6,25 +6,28 @@ import static net.mindview.util.Print.*;
 interface HasBatteries {}
 interface Waterproof {}
 interface Shoots {}
+interface Shoots2 {}
 
 class Toy {
   // Comment out the following default constructor
   // to see NoSuchMethodError from (*1*)
-  Toy() {}
+  Toy() {} //--> obj = up.newInstance(); will throw InstantiationException;
   Toy(int i) {}
 }
 
+
 class FancyToy extends Toy
-implements HasBatteries, Waterproof, Shoots {
+implements HasBatteries, Waterproof, Shoots,Shoots2{
   FancyToy() { super(1); }
 }
+class HappyFancyToy extends FancyToy{}
 
 public class ToyTest {
-  static void printInfo(Class cc) {
-    print("Class name: " + cc.getName() +
-      " is interface? [" + cc.isInterface() + "]");
-    print("Simple name: " + cc.getSimpleName());
-    print("Canonical name : " + cc.getCanonicalName());
+  static void printTypeInfo(Class classObject) {
+    print("Class name: " + classObject.getName() +
+      " is interface? [" + classObject.isInterface() + "]");
+    print("Simple name: " + classObject.getSimpleName());
+    print("Canonical name : " + classObject.getCanonicalName());
   }
   public static void main(String[] args) {
     Class c = null;
@@ -34,10 +37,15 @@ public class ToyTest {
       print("Can't find FancyToy");
       System.exit(1);
     }
-    printInfo(c);	
+    printTypeInfo(c); // print the FancyToy it self
+
+
     for(Class face : c.getInterfaces())
-      printInfo(face);
-    Class up = c.getSuperclass();
+      printTypeInfo(face);//print the 3 interfaces: HasBatteries , Waterproof {} and  Shoots {}
+
+
+
+    Class up = c.getSuperclass();//no further type info know at compile time until you create new instance,
     Object obj = null;
     try {
       // Requires default constructor:
@@ -49,7 +57,7 @@ public class ToyTest {
       print("Cannot access");
       System.exit(1);
     }
-    printInfo(obj.getClass());
+    printTypeInfo(obj.getClass());// --> print the super class: Toy
   }
 } /* Output:
 Class name: typeinfo.toys.FancyToy is interface? [false]

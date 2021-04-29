@@ -14,7 +14,9 @@ class RealObject implements Interface {
 }	
 
 class SimpleProxy implements Interface {
-  private Interface proxied;
+  //I am the proxy, please give me the real object, I will help you do sth...
+  //I can do all you can, and I also can do something else.
+  private Interface proxied;//the real object
   public SimpleProxy(Interface proxied) {
     this.proxied = proxied;
   }
@@ -35,6 +37,7 @@ class SimpleProxyDemo {
   }
   public static void main(String[] args) {
     consumer(new RealObject());
+    print();
     consumer(new SimpleProxy(new RealObject()));
   }
 } /* Output:

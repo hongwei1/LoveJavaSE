@@ -7,12 +7,14 @@ class Base {}
 class Derived extends Base {}	
 
 public class FamilyVsExactType {
+  // == and equals  ==> Exact Type checking (no concern with inheritance)
+  // isInstance and instanceof ==> Are you this class, or a class derived from this class?
   static void test(Object x) {
     print("Testing x of type " + x.getClass());
     print("x instanceof Base " + (x instanceof Base));
     print("x instanceof Derived "+ (x instanceof Derived));
     print("Base.isInstance(x) "+ Base.class.isInstance(x));
-    print("Derived.isInstance(x) " +
+    print("Derivedtypeinfo/ShowMethods.java.isInstance(x) " +
       Derived.class.isInstance(x));
     print("x.getClass() == Base.class " +
       (x.getClass() == Base.class));

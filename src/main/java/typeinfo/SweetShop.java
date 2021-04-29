@@ -3,7 +3,9 @@ package typeinfo;//: typeinfo/SweetShop.java
 import static net.mindview.util.Print.*;
 
 class Candy {
-  static { print("Loading Candy"); }
+
+  static { print("Loading Class Candy"); }//this is belong to the Class, only load once.
+
 }
 
 class Gum {
@@ -18,14 +20,21 @@ public class SweetShop {
   public static void main(String[] args) {	
     print("inside main");
     new Candy();
+    new Candy();
+    new Candy();
+    new Candy();
     print("After creating Candy");
+
     try {
-      Class.forName("Gum");
+      Class<?> gum = Class.forName("typeinfo.Gum");
+      Class<?> gum2 = Class.forName("typeinfo.Gum");//only load class unpon the first tie.
+      Class<?> gum3 = Class.forName("Gum");
     } catch(ClassNotFoundException e) {
       print("Couldn't find Gum");
     }
     print("After Class.forName(\"Gum\")");
-    new Cookie();
+    Cookie cookie = new Cookie();
+    Class<? extends Cookie> aClass = cookie.getClass();
     print("After creating Cookie");
   }
 } /* Output:

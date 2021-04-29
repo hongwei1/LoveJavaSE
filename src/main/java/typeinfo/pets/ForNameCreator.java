@@ -20,12 +20,19 @@ public class ForNameCreator extends PetCreator {
   private static void loader() {
     try {
       for(String name : typeNames)
-        types.add(
-          (Class<? extends Pet>)Class.forName(name));
+        types.add((Class<? extends Pet>)Class.forName(name));
     } catch(ClassNotFoundException e) {
       throw new RuntimeException(e);
     }
   }
   static { loader(); }
   public List<Class<? extends Pet>> types() {return types;}
-} ///:~
+
+  public static void main(String[] args) {
+    System.out.println(types);
+    System.out.println(types.toArray().length);
+  }
+} ///:~[class typeinfo.pets.Mutt, class typeinfo.pets.Pug,
+// class typeinfo.pets.EgyptianMau, class typeinfo.pets.Manx,
+// class typeinfo.pets.Cymric, class typeinfo.pets.Rat,
+// class typeinfo.pets.Mouse, class typeinfo.pets.Hamster]

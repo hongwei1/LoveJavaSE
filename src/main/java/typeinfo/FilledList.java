@@ -5,6 +5,7 @@ class CountedInteger {
   private static long counter;
   private final long id = counter++;
   public String toString() { return Long.toString(id); }
+//  CountedInteger(String a){}
 }
 
 public class FilledList<T> {
@@ -13,8 +14,10 @@ public class FilledList<T> {
   public List<T> create(int nElements) {
     List<T> result = new ArrayList<T>();
     try {
-      for(int i = 0; i < nElements; i++)
-        result.add(type.newInstance());
+      for(int i = 0; i < nElements; i++) {
+        T e = type.newInstance();
+        result.add(e);
+      }
     } catch(Exception e) {
       throw new RuntimeException(e);
     }

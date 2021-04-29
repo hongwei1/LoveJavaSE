@@ -18,7 +18,7 @@ class Initable2 {
 }
 
 class Initable3 {
-  static int staticNonFinal = 74;
+  static  final int staticNonFinal = 74;
   static {
     System.out.println("Initializing Initable3");
   }
@@ -30,16 +30,20 @@ public class ClassInitialization {
     Class initable = Initable.class;
     System.out.println("After creating Initable ref");
     // Does not trigger initialization:
-    System.out.println(Initable.staticFinal);
+    System.out.println("Initable.staticFinal:"+Initable.staticFinal);
     // Does trigger initialization:
-    System.out.println(Initable.staticFinal2);
+    System.out.println("Initable.staticFinal2:"+Initable.staticFinal2);
+
     // Does trigger initialization:
-    System.out.println(Initable2.staticNonFinal);
-    Class initable3 = Class.forName("Initable3");
+    System.out.println("Initable2.staticNonFinal:"+Initable2.staticNonFinal);
+
+    // Does trigger initialization:
+    Class initable3 = Class.forName("typeinfo.Initable3");
     System.out.println("After creating Initable3 ref");
-    System.out.println(Initable3.staticNonFinal);
+    System.out.println("Initable3.staticNonFinal:"+Initable3.staticNonFinal);
   }
-} /* Output:
+}
+/* Output:
 After creating Initable ref
 47
 Initializing Initable

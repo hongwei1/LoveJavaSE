@@ -36,6 +36,13 @@ class FuelFilter extends Filter {
     public FuelFilter create() { return new FuelFilter(); }
   }
 }
+class MyFuelFilter extends Filter {
+  // Create a Class Factory for each specific type:
+  public static class Factory
+          implements typeinfo.factory.Factory<MyFuelFilter> {
+    public MyFuelFilter create() { return new MyFuelFilter(); }
+  }
+}
 
 class AirFilter extends Filter {
   public static class Factory
@@ -89,7 +96,13 @@ class PowerSteeringBelt extends Belt {
 
 public class RegisteredFactories {
   public static void main(String[] args) {
-    for(int i = 0; i < 10; i++)
+
+    //you just need add the new class into `partFactories`
+    // and provide the create method for the later useage.
+    Part.partFactories.add(new MyFuelFilter.Factory());
+
+    //
+    for(int i = 0; i < 100; i++)
       System.out.println(Part.createRandom());
   }
 } /* Output:

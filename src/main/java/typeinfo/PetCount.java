@@ -7,20 +7,24 @@ import static net.mindview.util.Print.*;
 public class PetCount {
   static class PetCounter extends HashMap<String,Integer> {
     public void count(String type) {
-      Integer quantity = get(type);
-      if(quantity == null)
-        put(type, 1);
-      else
-        put(type, quantity + 1);
+      //counter the type times
+      Integer quantity = this.get(type);
+      if(quantity == null)// if there is one, just set it to 1
+        this.put(type, 1);
+      else// otherwise will ++1
+        this.put(type, quantity + 1);
     }
   }	
-  public static void
-  countPets(PetCreator creator) {
+  public static void countPets(PetCreator creator) {
+    //1st, we create the PetCounter().
     PetCounter counter= new PetCounter();
-    for(Pet pet : creator.createArray(20)) {
+    //2rd, we random create 20 pets.
+    Pet[] pets = creator.createArray(20);
+    //3rd, loop the pets and counter each type.
+    for(Pet pet : pets) {
       // List each individual pet:
       printnb(pet.getClass().getSimpleName() + " ");
-      if(pet instanceof Pet)
+      if(pet instanceof Pet) // You can compare it to a named type only, and not to a Class object.
         counter.count("Pet");
       if(pet instanceof Dog)
         counter.count("Dog");

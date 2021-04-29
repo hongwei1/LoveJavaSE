@@ -1,7 +1,7 @@
 package typeinfo;//: typeinfo/ShowMethods.java
 // Using reflection to show all the methods of a class,
 // even if the methods are defined in the base class.
-// {Args: ShowMethods}
+// {Args: typeinfo.ShowMethods}
 import java.lang.reflect.*;
 import java.util.regex.*;
 import static net.mindview.util.Print.*;
